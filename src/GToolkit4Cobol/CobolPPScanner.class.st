@@ -1,7 +1,7 @@
 Class {
 	#name : #CobolPPScanner,
 	#superclass : #SmaCCScanner,
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #'generated-initialization' }

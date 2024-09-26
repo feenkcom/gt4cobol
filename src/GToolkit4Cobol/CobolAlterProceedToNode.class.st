@@ -6,7 +6,7 @@ Class {
 		'keywords',
 		'toSection'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

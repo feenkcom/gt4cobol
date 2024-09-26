@@ -5,7 +5,7 @@ Class {
 		'keywords',
 		'sendLocation'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

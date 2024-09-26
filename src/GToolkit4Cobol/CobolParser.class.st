@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'isFixedFormat'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }
@@ -6449,6 +6449,24 @@ pic <pictureString>
     | <MORETHANCHAR>
     | [0-9]
 	;"
+]
+
+{ #category : #accessing }
+CobolParser class >> fileExtension [
+	^ '.cbl'
+]
+
+{ #category : #parsing }
+CobolParser class >> loadSource: aFilename withLibraries: directories [
+	| newSource |
+	newSource := CobolPPParser preprocessFile: aFilename using: directories.
+	^ (self parse: newSource asString)
+		attributeNamed: #filename put: aFilename;
+		yourself
+]
+
+{ #category : #parsing }
+CobolParser class >> loadSource: aFilename withLibrary: aDirectoryReference [
 ]
 
 { #category : #generated }

@@ -7,7 +7,7 @@ Class {
 		'nationalName',
 		'alphanumericName'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

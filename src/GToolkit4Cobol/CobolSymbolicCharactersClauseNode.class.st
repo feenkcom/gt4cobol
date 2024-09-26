@@ -7,7 +7,7 @@ Class {
 		'values',
 		'alphabetName'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

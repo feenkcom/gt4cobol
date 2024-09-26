@@ -8,7 +8,7 @@ Class {
 		'notAtEndPhrase',
 		'intoName'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

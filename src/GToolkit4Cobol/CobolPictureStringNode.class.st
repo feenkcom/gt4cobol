@@ -7,7 +7,7 @@ Class {
 		'cardinalities',
 		'rightParens'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

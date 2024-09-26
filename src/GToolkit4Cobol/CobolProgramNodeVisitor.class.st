@@ -3,5 +3,5 @@ Class {
 	#superclass : #Object,
 	#traits : 'TCobolProgramNodeVisitor',
 	#classTraits : 'TCobolProgramNodeVisitor classTrait',
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }

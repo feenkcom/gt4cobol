@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'units'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

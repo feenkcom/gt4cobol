@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'isFixedFormat'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #'generated-initialization' }

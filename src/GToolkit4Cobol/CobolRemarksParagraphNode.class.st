@@ -6,7 +6,7 @@ Class {
 		'period',
 		'descriptions'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

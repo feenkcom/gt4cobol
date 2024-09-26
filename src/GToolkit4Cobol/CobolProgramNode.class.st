@@ -1,7 +1,7 @@
 Class {
 	#name : #CobolProgramNode,
 	#superclass : #SmaCCParseNode,
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

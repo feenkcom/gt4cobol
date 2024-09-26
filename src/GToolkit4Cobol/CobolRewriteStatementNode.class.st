@@ -8,7 +8,7 @@ Class {
 		'invalidKeyPhrase',
 		'rewriteFrom'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

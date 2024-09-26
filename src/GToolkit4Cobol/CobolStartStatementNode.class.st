@@ -9,7 +9,7 @@ Class {
 		'ops',
 		'keyName'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

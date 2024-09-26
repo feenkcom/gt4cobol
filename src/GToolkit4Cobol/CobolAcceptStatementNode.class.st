@@ -8,7 +8,7 @@ Class {
 		'onExceptionClause',
 		'mnemonic'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

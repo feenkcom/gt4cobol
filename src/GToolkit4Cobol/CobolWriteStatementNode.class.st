@@ -11,7 +11,7 @@ Class {
 		'lines',
 		'from'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }

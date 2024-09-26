@@ -13,7 +13,7 @@ Class {
 		'inputThru',
 		'alphabetNames'
 	],
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Parser'
 }
 
 { #category : #generated }
