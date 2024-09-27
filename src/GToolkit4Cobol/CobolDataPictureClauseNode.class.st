@@ -13,6 +13,20 @@ CobolDataPictureClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataPictureClause: self
 ]
 
+{ #category : #accessing }
+CobolDataPictureClauseNode >> byteSize [
+	| stream length char |
+	stream := picture value readStream.
+	length := 0.
+	[ stream atEnd ]
+		whileFalse: [ char := stream next.
+			('SVP' includes: char)
+				ifFalse: [ (stream peekFor: $()
+						ifTrue: [ length := length + (stream upTo: $)) asInteger ]
+						ifFalse: [ length := length + 1 ] ] ].
+	^ length
+]
+
 { #category : #generated }
 CobolDataPictureClauseNode >> compositeTokenVariables [
 	^ #(#keywords)

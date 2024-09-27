@@ -12,6 +12,20 @@ CobolDataUsageClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataUsageClause: self
 ]
 
+{ #category : #accessing }
+CobolDataUsageClauseNode >> byteSizeBasedOn: anInteger [
+	(#('BINARY' 'COMP' 'COMP-4' 'COMP-5')
+		anySatisfy: [ :each | self hasKeyword: each ])
+		ifTrue: [ ^ anInteger < 5
+				ifTrue: [ 2 ]
+				ifFalse: [ anInteger < 10 ifTrue: [ 4 ] ifFalse: [ 8 ] ] ].
+	(self hasKeyword: 'COMP-3') ifTrue: [ ^ ((anInteger + 1) / 2) ceiling ].
+	(self hasKeyword: 'COMP-1') ifTrue: [ ^ 4 ].
+	(self hasKeyword: 'COMP-2') ifTrue: [ ^ 8 ].
+	(self hasKeyword: 'POINTER') ifTrue: [ ^ 8 ].
+	^ anInteger
+]
+
 { #category : #generated }
 CobolDataUsageClauseNode >> compositeTokenVariables [
 	^ #(#keywords)

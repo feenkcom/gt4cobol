@@ -12,6 +12,17 @@ CobolLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLiteral: self
 ]
 
+{ #category : #'as yet unclassified' }
+CobolLiteralNode >> literalString [
+	| str |
+	str := value source.
+	str first = $'
+		ifTrue: [ ^ str allButFirst allButLast copyReplaceAll: '''''' with: '''' ].
+	str first = $"
+		ifTrue: [ ^ str allButFirst allButLast copyReplaceAll: '""' with: '"' ].
+	^ nil
+]
+
 { #category : #generated }
 CobolLiteralNode >> tokenVariables [
 	^ #(#value)

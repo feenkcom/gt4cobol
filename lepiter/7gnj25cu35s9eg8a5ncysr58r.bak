@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T14:21:42.024872-05:00"
+						"dateAndTimeString" : "2024-09-27T17:42:09.080623-05:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Finding CICS expressions:"
+				"string" : "Finding CICS XCTL expressions:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -66,14 +66,51 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T14:22:31.826034-05:00"
+						"dateAndTimeString" : "2024-09-27T17:43:14.316987-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "pPK4YGzfDQCLEwGcBmINfg=="
 				},
-				"code" : "cics := OrderedCollection new.\rAWSCardDemo asts\r\tdo: [ :each | each allNodesOfType: CobolExecCicsStatementNode do: [ :node | cics add: node ] ].\rcics"
+				"code" : "xctlNodes := AWSCardDemo asts flatCollect: [ :each | each xctlNodes ]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T17:42:31.818061-05:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-09-27T17:42:34.126697-05:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Kgge8W3fDQCPwwd0BmINfg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Finding programs "
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -100,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T14:25:09.055234-05:00"
+						"dateAndTimeString" : "2024-09-27T17:43:26.531221-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "r1gkbGzfDQCNwIBsBmINfg=="
 				},
-				"code" : "cics\r\tselect: [ :each | each source includesSubstring: 'XCTL' caseSensitive: false ]"
+				"code" : "xctlNodes \r\tselect: [ :each | each source includesSubstring: 'XCTL' caseSensitive: false ]"
 			}
 		]
 	},

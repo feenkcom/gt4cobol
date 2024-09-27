@@ -81,6 +81,11 @@ CobolDataOccursClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
+{ #category : #accessing }
+CobolDataOccursClauseNode >> maxCount [
+	^ (toCount ifNil: [ count ]) source asInteger
+]
+
 { #category : #generated }
 CobolDataOccursClauseNode >> nodeVariables [
 	^ #(#count #dependingOnName #toCount)

@@ -27,6 +27,16 @@ CobolDataDescription88EntryNode >> clause: aCobolDataValueClauseNode [
 	self clause notNil ifTrue: [ self clause parent: self ]
 ]
 
+{ #category : #accessing }
+CobolDataDescription88EntryNode >> dataName [
+	^ name ifNotNil: [ name source ]
+]
+
+{ #category : #testing }
+CobolDataDescription88EntryNode >> hasSpecialLevel [
+	^ true
+]
+
 { #category : #generated }
 CobolDataDescription88EntryNode >> level [
 	^ level
@@ -35,6 +45,11 @@ CobolDataDescription88EntryNode >> level [
 { #category : #generated }
 CobolDataDescription88EntryNode >> level: aSmaCCToken [
 	level := aSmaCCToken
+]
+
+{ #category : #accessing }
+CobolDataDescription88EntryNode >> levelNumber [
+	^ 88
 ]
 
 { #category : #generated }

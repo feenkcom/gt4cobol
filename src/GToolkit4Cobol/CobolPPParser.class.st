@@ -4400,6 +4400,10 @@ CobolPPParser >> finishCopyArgs: args [
 		or: [ replacementArray third notEmpty or: [ replacementArray last notEmpty ] ])
 		ifTrue: [ self error: 'Not implemented yet' ].
 	file := sourceArray first value.
+	file first = $'
+		ifTrue: [ file := file allButFirst allButLast copyReplaceAll: '''''' with: '''' ].
+	file first = $"
+		ifTrue: [ file := file allButFirst allButLast copyReplaceAll: '""' with: '"' ].
 	directories
 		do: [ :each | 
 			(self find: file in: each)

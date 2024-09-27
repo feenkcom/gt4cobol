@@ -761,11 +761,6 @@ TCobolProgramNodeVisitor >> visitPerformVaryingClause: aPerformVaryingClause [
 ]
 
 { #category : #generated }
-TCobolProgramNodeVisitor >> visitPictureString: aPictureString [
-	^ self visitProgram: aPictureString
-]
-
-{ #category : #generated }
 TCobolProgramNodeVisitor >> visitProcedureDeclaratives: aProcedureDeclaratives [
 	^ self visitProgram: aProcedureDeclaratives
 ]

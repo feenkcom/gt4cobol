@@ -48,3 +48,31 @@ CobolExecCicsStatementNode >> keywords: anOrderedCollection [
 CobolExecCicsStatementNode >> tokenVariables [
 	^ #(#_source)
 ]
+
+{ #category : #accessing }
+CobolExecCicsStatementNode >> xctlPrograms [
+	| source index program node count |
+	source := self source.
+	index := source asUppercase indexOfSubCollection: 'PROGRAM'.
+	index = 0 ifTrue: [ ^ #() ].
+	source := source allButFirst: index + 6.
+	program := ''.
+	source
+		readStreamDo: [ :in | 
+			[ in atEnd not
+				and: [ (count := program occurrencesOf: $() = 0
+						or: [ count ~= (program occurrencesOf: $)) ] ] ]
+				whileTrue: [ program := program , (in upTo: $)) , ')' ] ].
+	node := [ CobolParser
+			parse: program
+			startingAt: CobolParser startingStateForevaluateSelect ]
+			on: Error
+			do: [ :ex | ^ #() ].
+	(node isKindOf: CobolTableCallNode) ifTrue: [ node := node name ].
+	(node isKindOf: CobolLiteralNode)
+		ifTrue: [ node literalString ifNotNil: [ :val | ^ {val} ] ].
+	(node isKindOf: CobolIdentifierNode)
+		ifTrue: [ (self variables at: node source ifAbsent: [  ])
+				ifNotNil: [ :vars | ^ vars flatCollect: [ :each | each literalValues ] ] ].
+	^ #()
+]

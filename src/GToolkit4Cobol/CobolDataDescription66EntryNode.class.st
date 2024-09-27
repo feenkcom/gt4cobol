@@ -27,6 +27,16 @@ CobolDataDescription66EntryNode >> clause: aCobolDataRenamesClauseNode [
 	self clause notNil ifTrue: [ self clause parent: self ]
 ]
 
+{ #category : #accessing }
+CobolDataDescription66EntryNode >> dataName [
+	^ name ifNotNil: [ name source ]
+]
+
+{ #category : #testing }
+CobolDataDescription66EntryNode >> hasSpecialLevel [
+	^ true
+]
+
 { #category : #generated }
 CobolDataDescription66EntryNode >> level [
 	^ level
@@ -35,6 +45,11 @@ CobolDataDescription66EntryNode >> level [
 { #category : #generated }
 CobolDataDescription66EntryNode >> level: aSmaCCToken [
 	level := aSmaCCToken
+]
+
+{ #category : #accessing }
+CobolDataDescription66EntryNode >> levelNumber [
+	^ 88
 ]
 
 { #category : #generated }
