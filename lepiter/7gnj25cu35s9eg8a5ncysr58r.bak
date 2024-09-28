@@ -100,7 +100,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T17:42:34.126697-05:00"
+						"dateAndTimeString" : "2024-09-28T08:52:27.372868-05:00"
 					}
 				},
 				"uid" : {
@@ -110,7 +110,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Finding programs "
+				"string" : "Graphing program calls:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T17:43:26.531221-05:00"
+						"dateAndTimeString" : "2024-09-28T09:01:43.567312-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "r1gkbGzfDQCNwIBsBmINfg=="
 				},
-				"code" : "xctlNodes \r\tselect: [ :each | each source includesSubstring: 'XCTL' caseSensitive: false ]"
+				"code" : "calls := (AWSCardDemo asts\r\t\tcollect: [ :each | each filename basenameWithoutExtension -> each xctlProgramNames ])\r\t\tasDictionary select: [ :each | each notEmpty ].\rnodes := Set withAll: calls keys.\rcalls do: [ :each | nodes addAll: each ].\rview := GtMondrian new.\rview nodes\r\tstencil: [ :x | \r\t\tBrLabel new\r\t\t\tfitContent;\r\t\t\taptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;\r\t\t\ttext: x asRopedText ];\r\twith: nodes.\rview edges connectToAll: [ :each | (calls at: each ifAbsent: [ #() ]) asSortedCollection ].\rview layout horizontalTree\r\tnodeDistance: 10;\r\tlevelDistance: 20.\rview"
 			}
 		]
 	},

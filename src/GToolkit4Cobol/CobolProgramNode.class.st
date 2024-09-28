@@ -45,3 +45,8 @@ CobolProgramNode >> xctlNodes [
 				ifTrue: [ xctl add: node ] ].
 	^ xctl
 ]
+
+{ #category : #accessing }
+CobolProgramNode >> xctlProgramNames [
+	^ self xctlNodes flatCollect: #xctlPrograms
+]
