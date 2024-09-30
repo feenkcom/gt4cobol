@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T13:28:00.032837-05:00"
+						"dateAndTimeString" : "2024-09-30T13:42:18.120766-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "pEhkKmzfDQCHVlqRBmINfg=="
 				},
-				"code" : "rootDirectory := 'aws-carddemo' asFileReference.\rasts := (rootDirectory allChildrenMatching: '*' , CobolParser fileExtension)\r\t\tcollect: [ :each | \r\t\t\tCobolParser\r\t\t\t\tloadSource: each\r\t\t\t\twithLibraries: {rootDirectory / 'app/cpy'.\r\t\t\t\t\t\trootDirectory / 'app/cpy-bms'} ].\rasts do: [:each | each buildDataStructures].\rAWSCardDemo asts: asts.\rasts"
+				"code" : "asts := (AWSCardDemo rootDirectory allChildrenMatching: '*' , CobolParser fileExtension)\r\t\tcollect: [ :each | \r\t\t\tCobolParser\r\t\t\t\tloadSource: each\r\t\t\t\twithLibraries: AWSCardDemo copyBool ].\rAWSCardDemo asts: asts.\rasts"
 			}
 		]
 	},

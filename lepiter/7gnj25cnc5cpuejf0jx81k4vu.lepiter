@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T13:56:29.70266-05:00"
+						"dateAndTimeString" : "2024-09-30T13:42:00.429424-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "uHduBmzfDQCBSZFJBmINfg=="
 				},
-				"code" : "rootDirectory := 'aws-carddemo' asFileReference"
+				"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -100,14 +100,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T13:57:48.694735-05:00"
+						"dateAndTimeString" : "2024-09-30T13:41:57.916982-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "hgPQCGzfDQCC7YBtBmINfg=="
 				},
-				"code" : "repository := IceRepositoryCreator\r\t\tfromUrl: 'https://github.com/aws-samples/aws-mainframe-modernization-carddemo.git'\r\t\tto: rootDirectory.\rrootDirectory"
+				"code" : "repository := IceRepositoryCreator\r\t\tfromUrl: 'https://github.com/aws-samples/aws-mainframe-modernization-carddemo.git'\r\t\tto: AWSCardDemo rootDirectory.\rAWSCardDemo\r\tcopyBookDirectories: {AWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'}.\rAWSCardDemo rootDirectory"
 			},
 			{
 				"__type" : "textSnippet",
@@ -171,14 +171,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T13:57:14.415549-05:00"
+						"dateAndTimeString" : "2024-09-30T13:40:29.845012-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "1mXcCmzfDQCD+5RRBmINfg=="
 				},
-				"code" : "rootDirectory ensureDeleteAll"
+				"code" : "AWSCardDemo rootDirectory ensureDeleteAll"
 			}
 		]
 	},

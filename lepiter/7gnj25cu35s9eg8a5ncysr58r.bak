@@ -18,7 +18,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T14:20:32.453478-05:00"
+						"dateAndTimeString" : "2024-09-30T13:37:55.69613-05:00"
 					}
 				},
 				"editEmail" : {
@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T17:42:09.080623-05:00"
+						"dateAndTimeString" : "2024-09-30T13:38:04.577952-05:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Finding CICS XCTL expressions:"
+				"string" : "Creating a model of the program calls:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-27T17:43:14.316987-05:00"
+						"dateAndTimeString" : "2024-09-30T13:42:47.511272-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "pPK4YGzfDQCLEwGcBmINfg=="
 				},
-				"code" : "xctlNodes := AWSCardDemo asts flatCollect: [ :each | each xctlNodes ]"
+				"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: AWSCardDemo copyBookDirectories;\r\t\t\timportDirectory: AWSCardDemo rootDirectory;\r\t\t\tmodel).\rAWSCardDemo model"
 			},
 			{
 				"__type" : "textSnippet",
@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-28T09:01:43.567312-05:00"
+						"dateAndTimeString" : "2024-09-30T13:44:46.110868-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "r1gkbGzfDQCNwIBsBmINfg=="
 				},
-				"code" : "calls := (AWSCardDemo asts\r\t\tcollect: [ :each | each filename basenameWithoutExtension -> each xctlProgramNames ])\r\t\tasDictionary select: [ :each | each notEmpty ].\rnodes := Set withAll: calls keys.\rcalls do: [ :each | nodes addAll: each ].\rview := GtMondrian new.\rview nodes\r\tstencil: [ :x | \r\t\tBrLabel new\r\t\t\tfitContent;\r\t\t\taptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;\r\t\t\ttext: x asRopedText ];\r\twith: nodes.\rview edges connectToAll: [ :each | (calls at: each ifAbsent: [ #() ]) asSortedCollection ].\rview layout horizontalTree\r\tnodeDistance: 10;\r\tlevelDistance: 20.\rview"
+				"code" : "nodes := AWSCardDemo model allCobolPrograms\r\t\tasSortedCollection: [ :a :b | a name < b name ].\rview := GtMondrian new.\rview nodes\r\tstencil: [ :program | \r\t\tBrLabel new\r\t\t\tfitContent;\r\t\t\taptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;\r\t\t\ttext: program name asRopedText ];\r\twith: nodes.\rview edges\r\tfromRightCenter;\r\ttoLeftCenter;\r\tconnectToAll: [ :each | (calls at: each ifAbsent: [ #() ]) asSortedCollection ].\rview layout horizontalTree\r\tnodeDistance: 10;\r\tlevelDistance: 20.\rview"
 			}
 		]
 	},
