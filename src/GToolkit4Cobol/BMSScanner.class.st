@@ -71,18 +71,6 @@ BMSScanner >> scan1 [
 ]
 
 { #category : #generated }
-BMSScanner >> scan10 [
-	[ self recordMatch: #(5 7).
-	self step.
-	currentCharacter isDigit ] whileTrue.
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
-	(currentCharacter == $&
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan2 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
 BMSScanner >> scan2 [
 	[ self recordMatch: #(5).
 	self step.
@@ -119,16 +107,23 @@ BMSScanner >> scan4 [
 { #category : #generated }
 BMSScanner >> scan5 [
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan6 ].
+	currentCharacter isDigit
+		ifTrue: [ [ self recordMatch: #(7).
+			self step.
+			currentCharacter isDigit ] whileTrue.
+			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan6 ] ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 BMSScanner >> scan6 [
-	[ self recordMatch: #(7).
 	self step.
-	currentCharacter isDigit ] whileTrue.
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+	currentCharacter isDigit
+		ifTrue: [ [ self recordMatch: #(7).
+			self step.
+			currentCharacter isDigit ] whileTrue.
+			^ self reportLastMatch ].
+	('+-' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch
 ]
 
@@ -138,29 +133,29 @@ BMSScanner >> scan7 [
 	currentCharacter isDigit
 		ifTrue: [ [ self recordMatch: #(7).
 			self step.
-			currentCharacter isDigit ] whileTrue.
-			^ self reportLastMatch ].
-	('+-' includes: currentCharacter) ifTrue: [ ^ self scan8 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-BMSScanner >> scan8 [
-	self step.
-	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(7).
-			self step.
 			currentCharacter isDigit ] whileTrue ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-BMSScanner >> scan9 [
+BMSScanner >> scan8 [
 	[ self recordMatch: #(7).
 	self step.
+	currentCharacter == $. ifTrue: [ ^ self scan5 ].
 	currentCharacter isDigit ] whileTrue.
-	(',.' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
-	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan7 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+BMSScanner >> scan9 [
+	[ self recordMatch: #(5 7).
+	self step.
+	currentCharacter isDigit ] whileTrue.
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
+	(currentCharacter == $&
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan2 ].
 	^ self reportLastMatch
 ]
 
@@ -171,30 +166,30 @@ BMSScanner >> scanForToken [
 	currentCharacter == $' ifTrue: [ ^ self scan4 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	^ self scanForTokenX7
+	^ self scanForTokenX6
 ]
 
 { #category : #generated }
 BMSScanner >> scanForTokenX1 [
 	[ self recordMatch: #(5 7).
 	self step.
+	currentCharacter == $. ifTrue: [ ^ self scan5 ].
 	currentCharacter isDigit ] whileTrue.
-	(',.' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
 	('Ee' includes: currentCharacter)
 		ifTrue: [ self recordMatch: #(5).
 			self step.
-			currentCharacter == $+ ifTrue: [ ^ self scan8 ].
+			currentCharacter == $+ ifTrue: [ ^ self scan7 ].
 			currentCharacter == $-
 				ifTrue: [ self step.
-					currentCharacter isDigit ifTrue: [ ^ self scan10 ].
+					currentCharacter isDigit ifTrue: [ ^ self scan9 ].
 					('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
 					(currentCharacter == $&
 						or: [ (currentCharacter between: $A and: $Z)
 								or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan2 ].
 					^ self reportLastMatch ].
 			currentCharacter == $_ ifTrue: [ ^ self scan3 ].
-			currentCharacter isDigit ifTrue: [ ^ self scan10 ] ].
+			currentCharacter isDigit ifTrue: [ ^ self scan9 ] ].
 	(currentCharacter == $&
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan2 ].
@@ -215,8 +210,8 @@ BMSScanner >> scanForTokenX2 [
 BMSScanner >> scanForTokenX3 [
 	self recordMatch: #(9).
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan9 ].
-	(',.' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan8 ].
 	^ self reportLastMatch
 ]
 
@@ -232,24 +227,16 @@ BMSScanner >> scanForTokenX4 [
 { #category : #generated }
 BMSScanner >> scanForTokenX5 [
 	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan9 ].
-	(',.' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan5 ].
+	currentCharacter isDigit ifTrue: [ ^ self scan8 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 BMSScanner >> scanForTokenX6 [
-	self recordMatch: #(3).
-	self step.
-	currentCharacter isDigit ifTrue: [ ^ self scan6 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-BMSScanner >> scanForTokenX7 [
 	currentCharacter == $* ifTrue: [ ^ self scanForTokenX2 ].
 	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX5 ].
-	currentCharacter == $, ifTrue: [ ^ self scanForTokenX6 ].
+	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
 	currentCharacter == $- ifTrue: [ ^ self scanForTokenX3 ].
 	currentCharacter == $. ifTrue: [ ^ self scan5 ].
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(4) ].

@@ -8,3 +8,8 @@ Class {
 BMSValueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitValue: self
 ]
+
+{ #category : #accessing }
+BMSValueNode >> literalValue [
+	^ self subclassResponsibility
+]

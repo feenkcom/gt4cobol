@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 BMSParser class >> cacheId [
-	^'2024-09-29T07:09:10.304187-05:00'
+	^'2024-09-30T18:39:54.827067-05:00'
 ]
 
 { #category : #generated }
@@ -29,7 +29,7 @@ BMSParser class >> definitionComment [
 	| (\"" [^\""]* \"")+
 	;
 <number>
-	: ([\+\-]? [0-9]+ ([\,\.] [0-9]+)? | [\+\-]? [\,\.] [0-9]+) (e [\+\-]? [0-9]+)?
+	: ([\+\-]? [0-9]+ ([\.] [0-9]+)? | [\+\-]? [\.] [0-9]+) (e [\+\-]? [0-9]+)?
 	;
 <comment>
 	: \* [^\r\n]*
@@ -73,24 +73,24 @@ BMSParser class >> fileExtension [
 { #category : #generated }
 BMSParser class >> reduceTable [
 ^#(
-	#(13 0 #reduceActionForMacro__macro__1: 425985 false) 
-	#(12 1 #reduceActionForFile1: 416769 false) 
-	#(13 2 #reduceActionForMacro__macro__2: 425986 false) 
-	#(14 1 #reduceActionForMacro1: 449537 false) 
-	#(17 1 #reduceActionForValue1: 651265 false) 
-	#(17 1 #reduceActionForValue3: 651267 false) 
-	#(17 1 #reduceActionForValue2: 651266 false) 
-	#(14 2 #reduceActionForMacro2: 449538 false) 
-	#(15 1 #reduceActionForFields1: 506881 false) 
-	#(16 1 #reduceActionForField2: 571394 false) 
-	#(14 2 #reduceActionForMacro3: 449539 false) 
-	#(17 2 #reduceActionForValue4: 651268 false) 
-	#(18 1 #reduceActionForFields1: 808961 false) 
-	#(14 3 #reduceActionForMacro4: 449540 false) 
-	#(17 3 #reduceActionForValue5: 651269 false) 
-	#(16 3 #reduceActionForField1: 571393 false) 
-	#(15 3 #reduceActionForFields2: 506882 false) 
-	#(18 3 #reduceActionForFields2: 808962 false)
+	#(13 0 #reduceActionForMacro__macro__1: 421889 false) 
+	#(12 1 #reduceActionForFile1: 412673 false) 
+	#(13 2 #reduceActionForMacro__macro__2: 421890 false) 
+	#(14 1 #reduceActionForMacro1: 445441 false) 
+	#(17 1 #reduceActionForValue1: 647169 false) 
+	#(17 1 #reduceActionForValue3: 647171 false) 
+	#(17 1 #reduceActionForValue2: 647170 false) 
+	#(14 2 #reduceActionForMacro2: 445442 false) 
+	#(15 1 #reduceActionForFields1: 502785 false) 
+	#(16 1 #reduceActionForField2: 567298 false) 
+	#(14 2 #reduceActionForMacro3: 445443 false) 
+	#(17 2 #reduceActionForValue4: 647172 false) 
+	#(18 1 #reduceActionForFields1: 804865 false) 
+	#(14 3 #reduceActionForMacro4: 445444 false) 
+	#(17 3 #reduceActionForValue5: 647173 false) 
+	#(16 3 #reduceActionForField1: 567297 false) 
+	#(15 3 #reduceActionForFields2: 502786 false) 
+	#(18 3 #reduceActionForFields2: 804866 false)
 	).
 ]
 

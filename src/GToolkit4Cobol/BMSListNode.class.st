@@ -52,6 +52,11 @@ BMSListNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
+{ #category : #accessing }
+BMSListNode >> literalValue [
+	^ values collect: #literalValue
+]
+
 { #category : #generated }
 BMSListNode >> rightParen [
 	^ rightParen

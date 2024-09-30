@@ -12,6 +12,11 @@ BMSIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]
 
+{ #category : #accessing }
+BMSIdentifierNode >> literalValue [
+	^ name value
+]
+
 { #category : #generated }
 BMSIdentifierNode >> name [
 	^ name

@@ -12,6 +12,11 @@ BMSNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
+{ #category : #accessing }
+BMSNumberNode >> literalValue [
+	^ value source asNumber
+]
+
 { #category : #generated }
 BMSNumberNode >> tokenVariables [
 	^ #(#value)

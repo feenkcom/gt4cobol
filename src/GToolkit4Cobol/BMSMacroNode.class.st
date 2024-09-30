@@ -47,6 +47,15 @@ BMSMacroNode >> fields: anOrderedCollection [
 	self setParents: self fields to: self
 ]
 
+{ #category : #accessing }
+BMSMacroNode >> getValue: aString [
+	fields
+		do: [ :each | 
+			each name
+				ifNotNil: [ :token | (token source sameAs: aString) ifTrue: [ ^ each value literalValue ] ] ].
+	^ nil
+]
+
 { #category : #'generated-initialize-release' }
 BMSMacroNode >> initialize [
 	super initialize.

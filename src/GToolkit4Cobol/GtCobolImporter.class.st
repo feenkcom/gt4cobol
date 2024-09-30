@@ -106,6 +106,45 @@ GtCobolImporter >> ensureVariable: node [
 ]
 
 { #category : #importing }
+GtCobolImporter >> importBMSFile: aFileReference [
+	| currentScreen file |
+	file := self ensureFile: aFileReference.
+	file declaredSourceLanguage: GtBMSSourceLanguage new.
+	(BMSParser parseFile: aFileReference) macros
+		do: [ :each | 
+			(each macro value sameAs: 'DFHMDI')
+				ifTrue: [ currentScreen := GtBMSScreen new
+							name: (each name value ifNil: [ aFileReference basenameWithoutExtension ]);
+							x: (each getValue: 'LINE');
+							y: (each getValue: 'COLUMN');
+							width: (each getValue: 'SIZE') second;
+							height: (each getValue: 'SIZE') first;
+							sourceAnchor: (FAMIXIndexedFileEntityAnchor
+									file: file
+									startPos: each startPosition
+									endPos: each stopPosition
+									model: model);
+							declaredSourceLanguage: GtBMSSourceLanguage new;
+							mooseModel: model ].
+			(each macro value sameAs: 'DFHMDF')
+				ifTrue: [ GtBMSField new
+						name: (each name value ifNil: [ 'unnamed' ]);
+						length: (each getValue: 'LENGTH');
+						x: (each getValue: 'POS') second;
+						y: (each getValue: 'POS') first;
+						color: (each getValue: 'COLOR');
+						initialValue: (each getValue: 'INITIAL');
+						sourceAnchor: (FAMIXIndexedFileEntityAnchor
+								file: file
+								startPos: each startPosition
+								endPos: each stopPosition
+								model: model);
+						declaredSourceLanguage: GtBMSSourceLanguage new;
+						mooseModel: model;
+						screen: currentScreen ] ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> importDataIn: ast [
 	| index |
 	index := 1.
@@ -130,7 +169,8 @@ GtCobolImporter >> importDataIn: ast [
 { #category : #importing }
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
-	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ]
+	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ].
+	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ]
 ]
 
 { #category : #importing }
