@@ -11,6 +11,31 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
+{ #category : #private }
+GtBMSScreen >> buildScreenString [
+	| screen |
+	screen := SmaCCString
+			on: (String
+					streamContents: [ :stream | 
+						height
+							timesRepeat: [ stream
+									next: width put: $ ;
+									lf ] ]).
+	fields do: [ :each | each applyInitialValueOn: screen ].
+	^ screen asString
+]
+
+{ #category : #private }
+GtBMSScreen >> buildScreenText [
+	| text |
+	text := self buildScreenString asRopedText.
+	text
+		fontName: 'Andale Mono';
+		foreground: Color white.
+	fields do: [ :each | each applyAttributesOn: text ].
+	^ text
+]
+
 { #category : #accessing }
 GtBMSScreen >> fields [
 	<MSEProperty: #fields type: #GtBMSField opposite: #screen>
@@ -34,6 +59,20 @@ GtBMSScreen >> gtFieldsFor: aView [
 		column: 'Y' text: #y
 ]
 
+{ #category : #'as yet unclassified' }
+GtBMSScreen >> gtScreenFor: aView [
+	<gtView>
+	^ aView explicit
+		priority: 1;
+		title: 'Screen';
+		stencil: [ | editor |
+			editor := BrEditor new
+					matchParent;
+					background: Color black.
+			editor editor text: self buildScreenText.
+			editor ]
+]
+
 { #category : #accessing }
 GtBMSScreen >> height [
 	^ height
@@ -42,6 +81,11 @@ GtBMSScreen >> height [
 { #category : #accessing }
 GtBMSScreen >> height: anObject [
 	height := anObject
+]
+
+{ #category : #private }
+GtBMSScreen >> indexForRow: row andColumn: column [
+	^ (row - 1) * (width + 1) + column
 ]
 
 { #category : #initialization }

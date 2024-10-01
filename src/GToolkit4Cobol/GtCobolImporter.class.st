@@ -115,10 +115,10 @@ GtCobolImporter >> importBMSFile: aFileReference [
 			(each macro value sameAs: 'DFHMDI')
 				ifTrue: [ currentScreen := GtBMSScreen new
 							name: (each name value ifNil: [ aFileReference basenameWithoutExtension ]);
-							x: (each getValue: 'LINE');
-							y: (each getValue: 'COLUMN');
-							width: (each getValue: 'SIZE') second;
-							height: (each getValue: 'SIZE') first;
+							x: ((each getValue: 'LINE') ifNotNil: [ :v | v asInteger ]);
+							y: ((each getValue: 'COLUMN') ifNotNil: [ :v | v asInteger ]);
+							width: (each getValue: 'SIZE') second asInteger;
+							height: (each getValue: 'SIZE') first asInteger;
 							sourceAnchor: (FAMIXIndexedFileEntityAnchor
 									file: file
 									startPos: each startPosition
@@ -129,9 +129,9 @@ GtCobolImporter >> importBMSFile: aFileReference [
 			(each macro value sameAs: 'DFHMDF')
 				ifTrue: [ GtBMSField new
 						name: (each name value ifNil: [ 'unnamed' ]);
-						length: (each getValue: 'LENGTH');
-						x: (each getValue: 'POS') second;
-						y: (each getValue: 'POS') first;
+						length: (each getValue: 'LENGTH') asInteger;
+						x: (each getValue: 'POS') second asInteger;
+						y: (each getValue: 'POS') first asInteger;
 						color: (each getValue: 'COLOR');
 						initialValue: (each getValue: 'INITIAL');
 						sourceAnchor: (FAMIXIndexedFileEntityAnchor
