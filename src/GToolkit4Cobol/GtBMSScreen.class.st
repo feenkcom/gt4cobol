@@ -23,6 +23,17 @@ GtBMSScreen >> fields: anObject [
 	fields value: anObject
 ]
 
+{ #category : #'as yet unclassified' }
+GtBMSScreen >> gtFieldsFor: aView [
+	<gtView>
+	^ aView columnedList 
+		title: 'Fields';
+		items: [ self fields ];
+		column: 'Name' text: #yourself;
+		column: 'X' text: #x;
+		column: 'Y' text: #y
+]
+
 { #category : #accessing }
 GtBMSScreen >> height [
 	^ height
