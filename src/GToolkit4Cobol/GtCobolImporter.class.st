@@ -9,7 +9,8 @@ Class {
 		'folders',
 		'files',
 		'currentFile',
-		'currentProgram'
+		'currentProgram',
+		'maps'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -74,6 +75,11 @@ GtCobolImporter >> ensureFolderNamed: aFileReference [
 ]
 
 { #category : #importing }
+GtCobolImporter >> ensureMap: mapName [
+	^ maps at: mapName asUppercase ifAbsentPut: [ GtBMSMap new name: mapName ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> ensureProgram: aString [
 	^ programs
 		at: aString asUppercase
@@ -107,25 +113,28 @@ GtCobolImporter >> ensureVariable: node [
 
 { #category : #importing }
 GtCobolImporter >> importBMSFile: aFileReference [
-	| currentScreen file |
+	| currentMap file |
 	file := self ensureFile: aFileReference.
 	file declaredSourceLanguage: GtBMSSourceLanguage new.
 	(BMSParser parseFile: aFileReference) macros
 		do: [ :each | 
 			(each macro value sameAs: 'DFHMDI')
-				ifTrue: [ currentScreen := GtBMSScreen new
-							name: (each name value ifNil: [ aFileReference basenameWithoutExtension ]);
-							x: ((each getValue: 'LINE') ifNotNil: [ :v | v asInteger ]);
-							y: ((each getValue: 'COLUMN') ifNotNil: [ :v | v asInteger ]);
-							width: (each getValue: 'SIZE') second asInteger;
-							height: (each getValue: 'SIZE') first asInteger;
-							sourceAnchor: (FAMIXIndexedFileEntityAnchor
-									file: file
-									startPos: each startPosition
-									endPos: each stopPosition
-									model: model);
-							declaredSourceLanguage: GtBMSSourceLanguage new;
-							mooseModel: model ].
+				ifTrue: [ | mapName |
+					mapName := each name value
+							ifNil: [ aFileReference basenameWithoutExtension ].
+					currentMap := self ensureMap: mapName.
+					currentMap
+						x: ((each getValue: 'LINE') ifNotNil: [ :v | v asInteger ]);
+						y: ((each getValue: 'COLUMN') ifNotNil: [ :v | v asInteger ]);
+						width: (each getValue: 'SIZE') second asInteger;
+						height: (each getValue: 'SIZE') first asInteger;
+						sourceAnchor: (FAMIXIndexedFileEntityAnchor
+								file: file
+								startPos: each startPosition
+								endPos: each stopPosition
+								model: model);
+						declaredSourceLanguage: GtBMSSourceLanguage new;
+						mooseModel: model ].
 			(each macro value sameAs: 'DFHMDF')
 				ifTrue: [ GtBMSField new
 						name: (each name value ifNil: [ 'unnamed' ]);
@@ -141,7 +150,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 								model: model);
 						declaredSourceLanguage: GtBMSSourceLanguage new;
 						mooseModel: model;
-						screen: currentScreen ] ]
+						map: currentMap ] ]
 ]
 
 { #category : #importing }
@@ -169,8 +178,8 @@ GtCobolImporter >> importDataIn: ast [
 { #category : #importing }
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
-	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ].
-	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ]
+	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
+	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ]
 ]
 
 { #category : #importing }
@@ -186,7 +195,32 @@ GtCobolImporter >> importFile: aFileReference [
 	self
 		importDataIn: ast;
 		importParagraphsIn: ast;
-		importXctlCallsIn: ast
+		importXctlCallsIn: ast;
+		importMapCallsIn: ast
+]
+
+{ #category : #importing }
+GtCobolImporter >> importMapCallsIn: ast [
+	ast
+		withAllNodesOfType: CobolExecCicsStatementNode
+		do: [ :each | 
+			| isReceive targets |
+			((isReceive := each isReceive) or: [ each isSend ])
+				ifTrue: [ targets := each potentialValuesFor: 'MAP'.
+					targets isEmpty
+						ifTrue: [ GtBMSMapExpression new
+								isReceive: isReceive;
+								program: currentProgram;
+								sourceAnchor: (self sourceAnchorFor: each);
+								mooseModel: model ]
+						ifFalse: [ targets
+								do: [ :map | 
+									GtBMSMapExpression new
+										isReceive: isReceive;
+										program: currentProgram;
+										map: (self ensureMap: map);
+										sourceAnchor: (self sourceAnchorFor: each);
+										mooseModel: model ] ] ] ]
 ]
 
 { #category : #importing }
@@ -231,7 +265,8 @@ GtCobolImporter >> initialize [
 	model := MooseModel new.
 	model sourceLanguage: GtCobolSourceLanguage new.
 	programs := Dictionary new.
-	variables := Dictionary new
+	variables := Dictionary new.
+	maps := Dictionary new
 ]
 
 { #category : #accessing }

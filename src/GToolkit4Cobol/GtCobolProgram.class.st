@@ -3,7 +3,8 @@ Class {
 	#superclass : #FAMIXScopingEntity,
 	#instVars : [
 		'xctlToPrograms',
-		'xctlFromPrograms'
+		'xctlFromPrograms',
+		'mapExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -12,7 +13,23 @@ Class {
 GtCobolProgram >> initialize [
 	super initialize.
 	xctlFromPrograms := FMMultiMultivalueLink on: self opposite: #xctlToPrograms.
-	xctlToPrograms := FMMultiMultivalueLink on: self opposite: #xctlFromPrograms
+	xctlToPrograms := FMMultiMultivalueLink on: self opposite: #xctlFromPrograms.
+	mapExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #map:
+			selector: #mapExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> mapExpressions [
+	<MSEProperty: #mapExpressions type: #GtBMSMapExpression opposite: #program>
+	<multivalued>
+	^ mapExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> mapExpressions: anObject [
+	mapExpressions value: anObject
 ]
 
 { #category : #accessing }

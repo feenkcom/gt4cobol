@@ -1,9 +1,9 @@
 Extension { #name : #MooseModel }
 
 { #category : #'*GToolkit4Cobol' }
-MooseModel >> allBMSScreens [
-	<navigation: 'All BMS Screens'>
-	^ self allWithType: GtBMSScreen
+MooseModel >> allBMSMaps [
+	<navigation: 'All BMS Maps'>
+	^ self allWithType: GtBMSMap
 ]
 
 { #category : #'*GToolkit4Cobol' }

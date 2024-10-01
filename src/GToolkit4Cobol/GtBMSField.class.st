@@ -5,9 +5,9 @@ Class {
 		'x',
 		'y',
 		'length',
-		'screen',
 		'color',
-		'initialValue'
+		'initialValue',
+		'map'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -18,7 +18,7 @@ GtBMSField >> applyAttributesOn: aRopedText [
 	color ifNil: [ ^ self ].
 	(Color respondsTo: color asLowercase asSymbol)
 		ifTrue: [ value := self initialValueString.
-			index := self screen indexForRow: self y andColumn: self x.
+			index := self map indexForRow: self y andColumn: self x.
 			(aRopedText from: index to: index + value size - 1)
 				foreground: (Color perform: color asLowercase asSymbol) ]
 ]
@@ -29,7 +29,7 @@ GtBMSField >> applyInitialValueOn: aSmaCCString [
 	value := self initialValueString.
 	value isEmpty ifTrue: [ ^ self ].
 	value size > length ifTrue: [ self error: 'initial value too large' ].
-	index := self screen indexForRow: self y andColumn: self x.
+	index := self map indexForRow: self y andColumn: self x.
 	aSmaCCString
 		replaceFrom: index
 		to: index + value size - 1
@@ -82,18 +82,18 @@ GtBMSField >> length: anObject [
 ]
 
 { #category : #accessing }
-GtBMSField >> screen [
-	<MSEProperty: #screen type: #GtBMSScreen opposite: #fields>
+GtBMSField >> map [
+	<MSEProperty: #map type: #GtBMSMap opposite: #fields>
 	<container>
-	^ screen
+	^ map
 ]
 
 { #category : #accessing }
-GtBMSField >> screen: anObject [
-	screen := FMMultivalueLink
+GtBMSField >> map: anObject [
+	map := FMMultivalueLink
 			on: self
 			update: #fields
-			from: self screen
+			from: self map
 			to: anObject
 ]
 

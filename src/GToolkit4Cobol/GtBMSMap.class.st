@@ -1,18 +1,19 @@
 Class {
-	#name : #GtBMSScreen,
+	#name : #GtBMSMap,
 	#superclass : #FAMIXNamedEntity,
 	#instVars : [
 		'width',
 		'height',
 		'x',
 		'y',
-		'fields'
+		'fields',
+		'mapExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
 
 { #category : #private }
-GtBMSScreen >> buildScreenString [
+GtBMSMap >> buildScreenString [
 	| screen |
 	screen := SmaCCString
 			on: (String
@@ -26,7 +27,7 @@ GtBMSScreen >> buildScreenString [
 ]
 
 { #category : #private }
-GtBMSScreen >> buildScreenText [
+GtBMSMap >> buildScreenText [
 	| text |
 	text := self buildScreenString asRopedText.
 	text
@@ -37,19 +38,19 @@ GtBMSScreen >> buildScreenText [
 ]
 
 { #category : #accessing }
-GtBMSScreen >> fields [
-	<MSEProperty: #fields type: #GtBMSField opposite: #screen>
+GtBMSMap >> fields [
+	<MSEProperty: #fields type: #GtBMSField opposite: #map>
 	<multivalued>
 	^ fields
 ]
 
 { #category : #accessing }
-GtBMSScreen >> fields: anObject [
+GtBMSMap >> fields: anObject [
 	fields value: anObject
 ]
 
 { #category : #'as yet unclassified' }
-GtBMSScreen >> gtFieldsFor: aView [
+GtBMSMap >> gtFieldsFor: aView [
 	<gtView>
 	^ aView columnedList 
 		title: 'Fields';
@@ -60,7 +61,7 @@ GtBMSScreen >> gtFieldsFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
-GtBMSScreen >> gtScreenFor: aView [
+GtBMSMap >> gtScreenFor: aView [
 	<gtView>
 	^ aView explicit
 		priority: 1;
@@ -74,55 +75,71 @@ GtBMSScreen >> gtScreenFor: aView [
 ]
 
 { #category : #accessing }
-GtBMSScreen >> height [
+GtBMSMap >> height [
 	^ height
 ]
 
 { #category : #accessing }
-GtBMSScreen >> height: anObject [
+GtBMSMap >> height: anObject [
 	height := anObject
 ]
 
 { #category : #private }
-GtBMSScreen >> indexForRow: row andColumn: column [
+GtBMSMap >> indexForRow: row andColumn: column [
 	^ (row - 1) * (width + 1) + column
 ]
 
 { #category : #initialization }
-GtBMSScreen >> initialize [
+GtBMSMap >> initialize [
 	super initialize.
 	fields := FMNullMultivalueLink
 			on: self
-			opposite: #screen:
-			selector: #fields
+			opposite: #map:
+			selector: #fields.
+	mapExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #map:
+			selector: #mapExpressions
 ]
 
 { #category : #accessing }
-GtBMSScreen >> width [
+GtBMSMap >> mapExpressions [
+	<MSEProperty: #mapExpressions type: #GtBMSMapExpression opposite: #map>
+	<multivalued>
+	^ mapExpressions
+]
+
+{ #category : #accessing }
+GtBMSMap >> mapExpressions: anObject [
+	mapExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtBMSMap >> width [
 	^ width
 ]
 
 { #category : #accessing }
-GtBMSScreen >> width: anObject [
+GtBMSMap >> width: anObject [
 	width := anObject
 ]
 
 { #category : #accessing }
-GtBMSScreen >> x [
+GtBMSMap >> x [
 	^ x
 ]
 
 { #category : #accessing }
-GtBMSScreen >> x: anObject [
+GtBMSMap >> x: anObject [
 	x := anObject
 ]
 
 { #category : #accessing }
-GtBMSScreen >> y [
+GtBMSMap >> y [
 	^ y
 ]
 
 { #category : #accessing }
-GtBMSScreen >> y: anObject [
+GtBMSMap >> y: anObject [
 	y := anObject
 ]
