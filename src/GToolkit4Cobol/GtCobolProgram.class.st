@@ -9,6 +9,14 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
+{ #category : #'as yet unclassified' }
+GtCobolProgram >> gtFunctionsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Functions';
+		items: [ functions ]
+]
+
 { #category : #initialization }
 GtCobolProgram >> initialize [
 	super initialize.
