@@ -2,12 +2,112 @@ Class {
 	#name : #GtCobolProgram,
 	#superclass : #FAMIXScopingEntity,
 	#instVars : [
-		'xctlToPrograms',
-		'xctlFromPrograms',
-		'mapExpressions'
+		'mapExpressions',
+		'xctlToExpressions',
+		'xctlFromExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
+
+{ #category : #graphing }
+GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems [
+	| todo done item programs screens forwardEdges backEdges |
+	done := IdentitySet new.
+	todo := OrderedCollection withAll: startItems.
+	programs := OrderedCollection new.
+	screens := OrderedCollection new.
+	forwardEdges := IdentityDictionary new.
+	backEdges := IdentityDictionary new.
+	[ todo notEmpty ]
+		whileTrue: [ item := todo removeFirst.
+			(done includes: item)
+				ifFalse: [ done add: item.
+					(item isKindOf: GtCobolProgram)
+						ifTrue: [ programs add: item.
+							item mapExpressions
+								do: [ :each | 
+									(done includes: each to)
+										ifTrue: [ (backEdges at: each ifAbsentPut: [ IdentitySet new ]) add: each to ]
+										ifFalse: [ todo add: each to.
+											(forwardEdges at: each ifAbsentPut: [ IdentitySet new ]) add: each to ] ].
+							item xctlToExpressions
+								do: [ :each | 
+									each toPrograms
+										do: [ :to | 
+											(done includes: to)
+												ifTrue: [ (backEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ]
+												ifFalse: [ todo add: to.
+													(forwardEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ] ] ] ]
+						ifFalse: [ screens add: item.
+							item mapExpressions
+								do: [ :expr | 
+									(done includes: expr to)
+										ifTrue: [ (backEdges at: expr ifAbsentPut: [ IdentitySet new ]) add: expr to ]
+										ifFalse: [ todo add: expr to.
+											(forwardEdges at: expr ifAbsentPut: [ IdentitySet new ]) add: expr to ] ] ] ] ].
+	mondrian nodes
+		stencil: [ :program | 
+			BrLabel new
+				fitContent;
+				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+				text: program name asRopedText ];
+		with: programs.
+	mondrian nodes
+		stencil: [ :each | 
+			| editor |
+			editor := BrEditor new
+					fitContent;
+					background: Color black.
+			editor editor text: each buildScreenText.
+
+			editor asScalableElement size: 300 @ 200 ];
+		with: screens.
+	mondrian edges
+		fromCenterBottom;
+		toCenterTop;
+		stencil: [ :d | 
+			BlParabollaArcElement new
+				zIndex: 0;
+				curvatureFraction: 0.1;
+				border: (BlBorder paint: (Color black alpha: 0.8) width: 2);
+				toHead: (BlArrowheadSimpleArrow new
+						border: (BlBorder builder
+								paint: (Color black alpha: 0.8);
+								width: 4;
+								build)) ];
+		connect: forwardEdges keys
+			from: #from
+			toAll: [ :each | forwardEdges at: each ].
+	mondrian edges passive
+		fromCenterTop;
+		toCenterBottom;
+		stencil: [ :d | 
+			BlParabollaArcElement new
+				zIndex: 0;
+				curvatureFraction: 0.1;
+				border: (BlBorder paint: (Color gray alpha: 0.5) width: 2);
+				toHead: (BlArrowheadSimpleArrow new
+						border: (BlBorder builder
+								paint: (Color gray muchLighter alpha: 0.5);
+								width: 4;
+								build)) ];
+		connect: backEdges keys
+			from: #from
+			toAll: [ :each | backEdges at: each ].
+	mondrian layout tree
+		nodeDistance: 10;
+		levelDistance: 30
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolProgram >> gtDependenciesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Dependencies';
+		priority: 10;
+		object: [ GtCobolProgramGroup with: self ];
+		view: #gtProgramDependenciesFor:
+]
 
 { #category : #'as yet unclassified' }
 GtCobolProgram >> gtFunctionsFor: aView [
@@ -20,8 +120,11 @@ GtCobolProgram >> gtFunctionsFor: aView [
 { #category : #initialization }
 GtCobolProgram >> initialize [
 	super initialize.
-	xctlFromPrograms := FMMultiMultivalueLink on: self opposite: #xctlToPrograms.
-	xctlToPrograms := FMMultiMultivalueLink on: self opposite: #xctlFromPrograms.
+	xctlFromExpressions := FMMultiMultivalueLink on: self opposite: #toPrograms.
+	xctlToExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #fromProgram:
+			selector: #xctlToExpressions.
 	mapExpressions := FMNullMultivalueLink
 			on: self
 			opposite: #map:
@@ -41,25 +144,35 @@ GtCobolProgram >> mapExpressions: anObject [
 ]
 
 { #category : #accessing }
-GtCobolProgram >> xctlFromPrograms [
-	<MSEProperty: #xctlFromPrograms type: #GtCobolProgram opposite: #xctlToPrograms>
+GtCobolProgram >> xctlFromExpressions [
+	<MSEProperty: #xctlFromExpressions type: #GtCobolCicsXctlExpression opposite: #toPrograms>
 	<multivalued>
-	^ xctlFromPrograms
+	^ xctlFromExpressions
 ]
 
 { #category : #accessing }
-GtCobolProgram >> xctlFromPrograms: aCollection [
-	xctlFromPrograms value: aCollection
+GtCobolProgram >> xctlFromExpressions: anObject [
+	xctlFromExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtCobolProgram >> xctlFromPrograms [
+	^ xctlFromExpressions collectAsSet: [ :each | each fromProgram ]
+]
+
+{ #category : #accessing }
+GtCobolProgram >> xctlToExpressions [
+	<MSEProperty: #xctlToExpressions type: #GtCobolCicsXctlExpression opposite: #fromProgram>
+	<multivalued>
+	^ xctlToExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> xctlToExpressions: anObject [
+	xctlToExpressions value: anObject
 ]
 
 { #category : #accessing }
 GtCobolProgram >> xctlToPrograms [
-	<MSEProperty: #xctlToPrograms type: #GtCobolProgram opposite: #xctlFromPrograms>
-	<multivalued>
-	^ xctlToPrograms
-]
-
-{ #category : #accessing }
-GtCobolProgram >> xctlToPrograms: aCollection [
-	xctlToPrograms value: aCollection
+	^ xctlToExpressions flatCollectAsSet: [ :each | each toPrograms ]
 ]

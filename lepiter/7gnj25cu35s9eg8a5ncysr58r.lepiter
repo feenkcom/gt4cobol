@@ -66,7 +66,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-30T13:42:47.511272-05:00"
+						"dateAndTimeString" : "2024-10-02T12:50:43.886744-05:00"
 					}
 				},
 				"uid" : {
@@ -100,7 +100,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-28T08:52:27.372868-05:00"
+						"dateAndTimeString" : "2024-10-02T13:19:49.158181-05:00"
 					}
 				},
 				"uid" : {
@@ -110,7 +110,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Graphing program calls:"
+				"string" : "Graphing programs and screens from the sign-on program:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -126,7 +126,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T14:24:21.022635-05:00"
+						"dateAndTimeString" : "2024-10-02T12:50:47.137389-05:00"
 					}
 				},
 				"editEmail" : {
@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-30T13:45:11.832078-05:00"
+						"dateAndTimeString" : "2024-10-02T13:19:25.716751-05:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
-					"uidString" : "r1gkbGzfDQCNwIBsBmINfg=="
+					"uidString" : "nnqT0OPfDQCflAVJA3f76w=="
 				},
-				"code" : "nodes := AWSCardDemo model allCobolPrograms\r\t\tasSortedCollection: [ :a :b | a name < b name ].\rview := GtMondrian new.\rview nodes\r\tstencil: [ :program | \r\t\tBrLabel new\r\t\t\tfitContent;\r\t\t\taptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;\r\t\t\ttext: program name asRopedText ];\r\twith: nodes.\rview edges\r\tfromRightCenter;\r\ttoLeftCenter;\r\tconnectToAll: [ :each | each xctlToPrograms asSortedCollection: [ :a :b | a name < b name ] ].\rview layout horizontalTree\r\tnodeDistance: 10;\r\tlevelDistance: 20.\rview"
+				"code" : "signOnProgram := AWSCardDemo model entityNamed: #COSGN00C.\rview := GtMondrian new.\rGtCobolProgram paintProgramDependenciesWith: view from: {signOnProgram}.\rview"
 			}
 		]
 	},
