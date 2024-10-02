@@ -11,13 +11,33 @@ CobolProgramNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #private }
 CobolProgramNode >> buildDataStructures [
-	self attributeNamed: #variables put: Dictionary new.
+	| data variables |
+	data := OrderedCollection new.
+	self attributeNamed: #variables put: (variables := Dictionary new).
 	self
 		withAllNodesOfType: CobolDataDescriptionEntryNode
-		do: [ :each | each buildDataStructure ].
+		do: [ :each | 
+			data add: each.
+			each buildDataStructure ].
+	data do: [ :each | each literalValues addAll: each currentValues ].
 	self
-		withAllNodesOfType: CobolDataDescriptionEntryNode
-		do: [ :each | each literalValues addAll: each currentValues ]
+		withAllNodesOfType: CobolMoveStatementNode
+		do: [ :node | 
+			| values |
+			values := #().
+			(node moveToSendingArea isKindOf: CobolIdentifierNode)
+				ifTrue: [ variables
+						at: node moveToSendingArea name source asUppercase
+						ifPresent: [ :vars | values := vars flatCollectAsSet: [ :var | var literalValues ] ] ].
+			(node moveToSendingArea isKindOf: CobolLiteralNode)
+				ifTrue: [ node moveToSendingArea literalString ifNotNil: [ :str | values := {str} ] ].
+			values notEmpty
+				ifTrue: [ node tos
+						do: [ :to | 
+							(to isKindOf: CobolIdentifierNode)
+								ifTrue: [ variables
+										at: to name source asUppercase
+										ifPresent: [ :vars | vars do: [ :var | var literalValues addAll: values ] ] ] ] ] ]
 ]
 
 { #category : #testing }

@@ -65,8 +65,20 @@ CobolExecCicsStatementNode >> isReceive [
 ]
 
 { #category : #testing }
+CobolExecCicsStatementNode >> isReceiveMapSet [
+	^ (_source value includesSubstring: 'RECEIVE' caseSensitive: false)
+		and: [ _source value includesSubstring: 'MAPSET' caseSensitive: false ]
+]
+
+{ #category : #testing }
 CobolExecCicsStatementNode >> isSend [
 	^ _source value includesSubstring: 'SEND' caseSensitive: false
+]
+
+{ #category : #testing }
+CobolExecCicsStatementNode >> isSendMapSet [
+	^ (_source value includesSubstring: 'SEND' caseSensitive: false)
+		and: [ _source value includesSubstring: 'MAPSET' caseSensitive: false ]
 ]
 
 { #category : #generated }
@@ -111,7 +123,7 @@ CobolExecCicsStatementNode >> xctlPrograms [
 	(node isKindOf: CobolLiteralNode)
 		ifTrue: [ node literalString ifNotNil: [ :val | ^ {val} ] ].
 	(node isKindOf: CobolIdentifierNode)
-		ifTrue: [ (self variables at: node source ifAbsent: [  ])
+		ifTrue: [ (self variables at: node name source ifAbsent: [  ])
 				ifNotNil: [ :vars | ^ vars flatCollect: [ :each | each literalValues ] ] ].
 	^ #()
 ]
