@@ -12,6 +12,17 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
+{ #category : #'as yet unclassified' }
+GtBMSMap >> asElement [
+	| editor |
+	editor := BrEditor new
+			fitContent;
+			background: Color black.
+	editor editor text: self buildScreenText.
+	editor margin: (BlInsets all: 10).
+	^ editor
+]
+
 { #category : #private }
 GtBMSMap >> buildScreenString [
 	| screen |
@@ -102,13 +113,7 @@ GtBMSMap >> gtScreenFor: aView [
 	^ aView explicit
 		priority: 1;
 		title: 'Screen';
-		stencil: [ | editor |
-			editor := BrEditor new
-					fitContent;
-					background: Color black.
-			editor editor text: self buildScreenText.
-			editor margin: (BlInsets all: 10).
-			editor ]
+		stencil: [ self asElement ]
 ]
 
 { #category : #accessing }
