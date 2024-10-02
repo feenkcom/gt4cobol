@@ -252,8 +252,20 @@ GtCobolImporter >> importParagraphsIn: ast [
 
 { #category : #importing }
 GtCobolImporter >> importXctlCallsIn: ast [
-	currentProgram
-		xctlToPrograms: (ast xctlProgramNames collect: [ :each | self ensureProgram: each ])
+	ast xctlNodes
+		do: [ :each | 
+			| targets |
+			targets := each xctlPrograms.
+			targets isEmpty
+				ifTrue: [ GtCobolCicsXctlExpression new
+						fromProgram: currentProgram;
+						sourceAnchor: (self sourceAnchorFor: each);
+						mooseModel: model ]
+				ifFalse: [ GtCobolCicsXctlExpression new
+						fromProgram: currentProgram;
+						toPrograms: (targets collect: [ :program | self ensureProgram: program ]);
+						sourceAnchor: (self sourceAnchorFor: each);
+						mooseModel: model ] ]
 ]
 
 { #category : #'initialize-release' }

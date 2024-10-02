@@ -63,37 +63,9 @@ GtBMSMap >> gtFieldsFor: aView [
 { #category : #'as yet unclassified' }
 GtBMSMap >> gtProgramsAndScreenFor: aView [
 	<gtView>
-	| editor |
 	^ aView mondrian
 		title: 'Programs & Screen';
-		painting: [ :m | 
-			m nodes
-				stencil: [ editor := BrEditor new
-							fitContent;
-							background: Color black.
-					editor editor text: self buildScreenText.
-				
-					editor asScalableElement size: 300 @ 200 ];
-				with: {self}.
-			m nodes
-				stencil: [ :program | 
-					BrLabel new
-						text: program name;
-						aptitude: BrGlamorousLabelAptitude ];
-				with: (mapExpressions collectAsSet: #program).
-			m edges
-				stencil: [ :node | 
-					BlParabollaArcElement new
-						zIndex: 0;
-						curvatureFraction: 0.3;
-						border: (BlBorder paint: Color lightGray);
-						toHead: (BlArrowheadSimpleArrow new border: (BlBorder paint: Color lightGray)) ];
-				connect: mapExpressions
-					from: #from
-					to: #to.
-			m layout dominanceTree
-				levelDistance: 30;
-				nodeDistance: 30 ]
+		painting: [ :m | GtCobolProgram paintProgramDependenciesWith: m from: {self} ]
 ]
 
 { #category : #'as yet unclassified' }
