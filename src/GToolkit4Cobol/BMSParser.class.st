@@ -4,9 +4,38 @@ Class {
 	#category : #'GToolkit4Cobol-BMS-Parser'
 }
 
+{ #category : #accessing }
+BMSParser class >> bmsStyler: aParserClass [
+	<smaccStyler: #BMSParser priority: 10>
+	^ (GtSmaCCParserStyler forParser: aParserClass)
+		stylerRules: {(GtSmaCCNodeVariableStylerRule
+					nodeClassName: #BMSMacroNode
+					variableNames: #(macro)
+					styleBlock: [ :styler | 
+						styler
+							bold;
+							foreground: Color purple ]) continueOnMatch: true.
+				GtSmaCCNodeVariableStylerRule
+					nodeClassName: #BMSMacroNode
+					variableNames: #(name)
+					styleBlock: [ :styler | styler foreground: Color blue muchDarker ].
+				GtSmaCCNodeStylerRule
+					nodeClassName: #BMSNumberNode
+					styleBlock: [ :styler | styler foreground: Color blue ].
+				GtSmaCCNodeStylerRule
+					nodeClassName: #BMSStringNode
+					styleBlock: [ :styler | styler foreground: Color blue ].
+				GtSmaCCCommentStylerRule
+					styleBlock: [ :styler | styler foreground: Color lightGray ].
+				GtSmaCCNodeVariableStylerRule
+					nodeClassName: #SmaCCErrorNode
+					variableNames: #(dismissedTokens errorToken)
+					styleBlock: [ :styler | styler foreground: Color red ]}
+]
+
 { #category : #'generated-accessing' }
 BMSParser class >> cacheId [
-	^'2024-09-30T18:39:54.827067-05:00'
+	^'2024-10-02T05:17:40.491654-05:00'
 ]
 
 { #category : #generated }
@@ -21,15 +50,15 @@ BMSParser class >> definitionComment [
 %prefix BMS;
 %suffix Node;
 %hierarchy Value (Identifier Number String List);
-<id>
-	: [\&a-zA-Z0-9]+ ([-_]+ [\&a-zA-Z0-9]+)*
+<number>
+	: ([\+\-]? [0-9]+ ([\.] [0-9]+)? | [\+\-]? [\.] [0-9]+) (e [\+\-]? [0-9]+)?
 	;
 <string>
 	: (\' [^\']* \')+
 	| (\"" [^\""]* \"")+
 	;
-<number>
-	: ([\+\-]? [0-9]+ ([\.] [0-9]+)? | [\+\-]? [\.] [0-9]+) (e [\+\-]? [0-9]+)?
+<id>
+	: [\&a-zA-Z0-9]+ ([-_]+ [\&a-zA-Z0-9]+)*
 	;
 <comment>
 	: \* [^\r\n]*
@@ -77,9 +106,9 @@ BMSParser class >> reduceTable [
 	#(12 1 #reduceActionForFile1: 412673 false) 
 	#(13 2 #reduceActionForMacro__macro__2: 421890 false) 
 	#(14 1 #reduceActionForMacro1: 445441 false) 
-	#(17 1 #reduceActionForValue1: 647169 false) 
-	#(17 1 #reduceActionForValue3: 647171 false) 
 	#(17 1 #reduceActionForValue2: 647170 false) 
+	#(17 1 #reduceActionForValue3: 647171 false) 
+	#(17 1 #reduceActionForValue1: 647169 false) 
 	#(14 2 #reduceActionForMacro2: 445442 false) 
 	#(15 1 #reduceActionForFields1: 502785 false) 
 	#(16 1 #reduceActionForField2: 567298 false) 
@@ -106,7 +135,7 @@ BMSParser class >> startingStateForFile [
 
 { #category : #generated }
 BMSParser class >> symbolNames [
-	^ #('"("' '")"' '","' '"="' '<id>' '<string>' '<number>' '<comment>' '<continuation>' '<whitespace>' 'B e g i n' 'File' 'Macro ''macro''*' 'Macro' 'Fields' 'Field' 'Value' 'Values' '<macro>' '<name>' 'E O F' 'error')
+	^ #('"("' '")"' '","' '"="' '<number>' '<string>' '<id>' '<comment>' '<continuation>' '<whitespace>' 'B e g i n' 'File' 'Macro ''macro''*' 'Macro' 'Fields' 'Field' 'Value' 'Values' '<macro>' '<name>' 'E O F' 'error')
 ]
 
 { #category : #generated }
@@ -123,23 +152,23 @@ BMSParser class >> transitionTable [
 #[0 0 14 0 19 0 20 0 21] 
 #[1 0 29 0 1 0 33 0 5 0 37 0 6 0 41 0 7 0 45 0 15 0 49 0 16 0 53 0 17 0 18 0 19 0 18 0 20 0 18 0 21] 
 #[0 0 57 0 19] 
-#[1 0 29 0 1 0 61 0 2 0 65 0 5 0 37 0 6 0 41 0 7 0 69 0 17 0 73 0 18] 
-#[1 0 22 0 3 0 77 0 4 0 22 0 19 0 22 0 20 0 22 0 21] 
+#[1 0 29 0 1 0 61 0 2 0 33 0 5 0 37 0 6 0 65 0 7 0 69 0 17 0 73 0 18] 
+#[0 0 22 0 2 0 3 0 19 0 20 0 21] 
 #[0 0 26 0 2 0 3 0 19 0 20 0 21] 
-#[0 0 30 0 2 0 3 0 19 0 20 0 21] 
+#[1 0 30 0 3 0 77 0 4 0 30 0 19 0 30 0 20 0 30 0 21] 
 #[1 0 81 0 3 0 34 0 19 0 34 0 20 0 34 0 21] 
 #[0 0 38 0 3 0 19 0 20 0 21] 
 #[0 0 42 0 3 0 19 0 20 0 21] 
 #[1 0 29 0 1 0 33 0 5 0 37 0 6 0 41 0 7 0 85 0 15 0 49 0 16 0 53 0 17 0 46 0 19 0 46 0 20 0 46 0 21] 
 #[0 0 50 0 2 0 3 0 19 0 20 0 21] 
-#[0 0 22 0 2 0 3 0 19 0 20 0 21] 
+#[0 0 30 0 2 0 3 0 19 0 20 0 21] 
 #[0 0 54 0 2 0 3] 
 #[1 0 89 0 2 0 93 0 3] 
-#[1 0 29 0 1 0 65 0 5 0 37 0 6 0 41 0 7 0 97 0 17] 
+#[1 0 29 0 1 0 33 0 5 0 37 0 6 0 65 0 7 0 97 0 17] 
 #[1 0 29 0 1 0 33 0 5 0 37 0 6 0 41 0 7 0 101 0 16 0 53 0 17] 
 #[1 0 81 0 3 0 58 0 19 0 58 0 20 0 58 0 21] 
 #[0 0 62 0 2 0 3 0 19 0 20 0 21] 
-#[1 0 29 0 1 0 65 0 5 0 37 0 6 0 41 0 7 0 105 0 17] 
+#[1 0 29 0 1 0 33 0 5 0 37 0 6 0 65 0 7 0 105 0 17] 
 #[0 0 66 0 3 0 19 0 20 0 21] 
 #[0 0 70 0 3 0 19 0 20 0 21] 
 #[0 0 74 0 2 0 3]
@@ -286,4 +315,14 @@ BMSParser >> reduceActionForValue5: nodes [
 	result addTokens: ((nodes at: 2) at: 2) to: result commas.
 	result rightParen: (nodes at: 3).
 	^ result
+]
+
+{ #category : #testing }
+BMSParser >> tryAllTokens [
+	^ true
+]
+
+{ #category : #testing }
+BMSParser >> useAllTokenIds [
+	^ false
 ]

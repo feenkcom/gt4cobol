@@ -36,7 +36,7 @@ BMSScanner >> id [
 
 { #category : #generated }
 BMSScanner >> idId [
-	^ 5
+	^ 7
 ]
 
 { #category : #generated }
@@ -72,7 +72,7 @@ BMSScanner >> scan1 [
 
 { #category : #generated }
 BMSScanner >> scan2 [
-	[ self recordMatch: #(5).
+	[ self recordMatch: #(7).
 	self step.
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
 	currentCharacter == $&
@@ -108,7 +108,7 @@ BMSScanner >> scan4 [
 BMSScanner >> scan5 [
 	self step.
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(7).
+		ifTrue: [ [ self recordMatch: #(5).
 			self step.
 			currentCharacter isDigit ] whileTrue.
 			('Ee' includes: currentCharacter) ifTrue: [ ^ self scan6 ] ].
@@ -119,7 +119,7 @@ BMSScanner >> scan5 [
 BMSScanner >> scan6 [
 	self step.
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(7).
+		ifTrue: [ [ self recordMatch: #(5).
 			self step.
 			currentCharacter isDigit ] whileTrue.
 			^ self reportLastMatch ].
@@ -131,7 +131,7 @@ BMSScanner >> scan6 [
 BMSScanner >> scan7 [
 	self step.
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(7).
+		ifTrue: [ [ self recordMatch: #(5).
 			self step.
 			currentCharacter isDigit ] whileTrue ].
 	^ self reportLastMatch
@@ -139,7 +139,7 @@ BMSScanner >> scan7 [
 
 { #category : #generated }
 BMSScanner >> scan8 [
-	[ self recordMatch: #(7).
+	[ self recordMatch: #(5).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan5 ].
 	currentCharacter isDigit ] whileTrue.
@@ -177,7 +177,7 @@ BMSScanner >> scanForTokenX1 [
 	currentCharacter isDigit ] whileTrue.
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan3 ].
 	('Ee' includes: currentCharacter)
-		ifTrue: [ self recordMatch: #(5).
+		ifTrue: [ self recordMatch: #(7).
 			self step.
 			currentCharacter == $+ ifTrue: [ ^ self scan7 ].
 			currentCharacter == $-
@@ -251,7 +251,7 @@ BMSScanner >> scanForTokenX6 [
 
 { #category : #generated }
 BMSScanner >> tokenActions [
-	^ #(nil nil nil nil #id nil nil #comment #continuation #whitespace)
+	^ #(nil nil nil nil nil nil #id #comment #continuation #whitespace)
 ]
 
 { #category : #generated }

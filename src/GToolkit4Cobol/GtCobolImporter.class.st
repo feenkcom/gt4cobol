@@ -205,7 +205,7 @@ GtCobolImporter >> importMapCallsIn: ast [
 		withAllNodesOfType: CobolExecCicsStatementNode
 		do: [ :each | 
 			| isReceive targets |
-			((isReceive := each isReceive) or: [ each isSend ])
+			((isReceive := each isReceiveMapSet) or: [ each isSendMapSet ])
 				ifTrue: [ targets := each potentialValuesFor: 'MAP'.
 					targets isEmpty
 						ifTrue: [ GtBMSMapExpression new
