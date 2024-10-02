@@ -2923,6 +2923,52 @@ CobolParser class >> cacheId [
 	^'2024-09-27T17:04:27.480184-05:00'
 ]
 
+{ #category : #accessing }
+CobolParser class >> cobolStyler: aParserClass [
+	<smaccStyler: #CobolParser priority: 10>
+	| rules variables |
+	variables := Set new.
+	rules := {GtSmaCCNodeStylerRule
+				nodeClassName: #CobolFileNode
+				styleBlock: [ :styler | variables := Set new ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolDataDescriptionEntryNode
+				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolDataDescription66EntryNode
+				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolDataDescription88EntryNode
+				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolIdentifierNode
+				styleBlock: [ :styler | styler foreground: Color blue muchDarker ].
+			GtSmaCCKeywordTokensStylerRule
+				styleBlock: [ :styler | 
+					styler
+						bold;
+						foreground: Color purple ].
+			GtSmaCCNodeVariableStylerRule
+				nodeClassName: #CobolParagraphNode
+				variableNames: #(name)
+				styleBlock: [ :styler | styler bold ].
+			GtSmaCCNodeVariableStylerRule
+				nodeClassName: #CobolDataDescriptionEntryNode
+				variableNames: #(name)
+				styleBlock: [ :styler :node | node isFiller ifFalse: [ styler foreground: Color blue muchDarker ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolLiteralNode
+				styleBlock: [ :styler | styler foreground: Color blue ].
+			GtSmaCCCommentStylerRule
+				styleBlock: [ :styler | styler foreground: Color lightGray ].
+			GtSmaCCNodeVariableStylerRule
+				nodeClassName: #SmaCCErrorNode
+				variableNames: #(dismissedTokens errorToken)
+				styleBlock: [ :styler | styler foreground: Color red ]}.
+	rules do: [ :each | each continueOnMatch: true ].
+	^ (GtSmaCCParserStyler forParser: aParserClass) stylerRules: rules
+]
+
 { #category : #generated }
 CobolParser class >> definitionComment [
 "/*
