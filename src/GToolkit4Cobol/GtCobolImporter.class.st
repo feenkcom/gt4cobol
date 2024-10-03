@@ -61,6 +61,7 @@ GtCobolImporter >> ensureFile: aFileReference [
 
 { #category : #importing }
 GtCobolImporter >> ensureFolderNamed: aFileReference [
+	self hasImportDirectory ifFalse: [ ^ nil ].
 	^ folders
 		at: aFileReference pathString
 		ifAbsentPut: [ | folder |
@@ -112,10 +113,23 @@ GtCobolImporter >> ensureVariable: node [
 ]
 
 { #category : #importing }
+GtCobolImporter >> entityFor: aNode [
+	^ aNode withAllParents
+		detect: [ :each | (each attributeNamed: #entity) notNil ]
+		ifFound: [ :each | each attributeNamed: #entity ]
+		ifNone: [  ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> hasImportDirectory [
+	^ (model privateState attributeAt: #rootFolder ifAbsent: [  ]) notNil
+]
+
+{ #category : #importing }
 GtCobolImporter >> importBMSFile: aFileReference [
-	| currentMap file |
-	file := self ensureFile: aFileReference.
-	file declaredSourceLanguage: GtBMSSourceLanguage new.
+	| currentMap |
+	currentFile := self ensureFile: aFileReference.
+	currentFile declaredSourceLanguage: GtBMSSourceLanguage new.
 	(BMSParser parseFile: aFileReference) macros
 		do: [ :each | 
 			(each macro value sameAs: 'DFHMDI')
@@ -123,13 +137,14 @@ GtCobolImporter >> importBMSFile: aFileReference [
 					mapName := each name value
 							ifNil: [ aFileReference basenameWithoutExtension ].
 					currentMap := self ensureMap: mapName.
+					currentFile addEntity: currentMap.
 					currentMap
 						x: ((each getValue: 'LINE') ifNotNil: [ :v | v asInteger ]);
 						y: ((each getValue: 'COLUMN') ifNotNil: [ :v | v asInteger ]);
 						width: (each getValue: 'SIZE') second asInteger;
 						height: (each getValue: 'SIZE') first asInteger;
 						sourceAnchor: (FAMIXIndexedFileEntityAnchor
-								file: file
+								file: currentFile
 								startPos: each startPosition
 								endPos: each stopPosition
 								model: model);
@@ -144,13 +159,14 @@ GtCobolImporter >> importBMSFile: aFileReference [
 						color: (each getValue: 'COLOR');
 						initialValue: (each getValue: 'INITIAL');
 						sourceAnchor: (FAMIXIndexedFileEntityAnchor
-								file: file
+								file: currentFile
 								startPos: each startPosition
 								endPos: each stopPosition
 								model: model);
 						declaredSourceLanguage: GtBMSSourceLanguage new;
 						mooseModel: model;
-						map: currentMap ] ]
+						map: currentMap ] ].
+	^ currentMap
 ]
 
 { #category : #importing }
@@ -176,6 +192,15 @@ GtCobolImporter >> importDataIn: ast [
 ]
 
 { #category : #importing }
+GtCobolImporter >> importDataReferencesIn: ast [
+	ast
+		withAllNodesOfType: CobolIdentifierNode
+		do: [ :each | 
+			(each parentOfType: CobolProcedureDivisionNode)
+				ifNotNil: [ self importVariableReference: each ] ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
@@ -191,12 +216,14 @@ GtCobolImporter >> importFile: aFileReference [
 			withLibraries: copyBookDirectories.
 	currentProgram := self ensureProgram: aFileReference basenameWithoutExtension.
 	ast attributeNamed: #entity put: currentProgram.
+	currentFile addEntity: currentProgram.
 	currentProgram sourceAnchor: (self sourceAnchorFor: ast).
 	self
 		importDataIn: ast;
 		importParagraphsIn: ast;
 		importXctlCallsIn: ast;
-		importMapCallsIn: ast
+		importMapCallsIn: ast;
+		importDataReferencesIn: ast
 ]
 
 { #category : #importing }
@@ -262,11 +289,7 @@ GtCobolImporter >> importParagraphsIn: ast [
 				do: [ :name | 
 					| invocation |
 					invocation := FAMIXInvocation new.
-					invocation
-						sender: (goto withAllParents
-								detect: [ :each | (each attributeNamed: #entity) notNil ]
-								ifFound: [ :each | each attributeNamed: #entity ]
-								ifNone: [  ]).
+					invocation sender: (self entityFor: goto).
 					labels
 						at: name source
 						ifPresent: [ :candidate | invocation addCandidate: candidate ].
@@ -280,11 +303,7 @@ GtCobolImporter >> importParagraphsIn: ast [
 			name
 				ifNotNil: [ | invocation |
 					invocation := FAMIXInvocation new.
-					invocation
-						sender: (perform withAllParents
-								detect: [ :each | (each attributeNamed: #entity) notNil ]
-								ifFound: [ :each | each attributeNamed: #entity ]
-								ifNone: [  ]).
+					invocation sender: (self entityFor: perform).
 					labels
 						at: name source
 						ifPresent: [ :candidate | invocation addCandidate: candidate ].
@@ -293,6 +312,26 @@ GtCobolImporter >> importParagraphsIn: ast [
 					invocation sourceAnchor: (self sourceAnchorFor: perform) ] ]
 				value: perform procedureName;
 				value: perform thru ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importVariableReference: idNode [
+	| var vars |
+	(idNode parent isKindOf: CobolInExpressionNode)
+		ifTrue: [ idNode parent name == idNode ifFalse: [ ^ self ] ].
+	vars := variables at: idNode name source asUppercase ifAbsent: [ #() ].
+	vars size = 1
+		ifTrue: [ var := vars first ]
+		ifFalse: [ (idNode parent isKindOf: CobolInExpressionNode)
+				ifTrue: [ var := vars
+							detect: [ :v | self is: v inContainers: idNode parent inValues ]
+							ifNone: [  ] ] ].
+	var ifNil: [ ^ self ].
+	FAMIXAccess new
+		from: (self entityFor: idNode);
+		to: var;
+		sourceAnchor: (self sourceAnchorFor: idNode);
+		mooseModel: model
 ]
 
 { #category : #importing }
@@ -324,6 +363,18 @@ GtCobolImporter >> initialize [
 	programs := Dictionary new.
 	variables := Dictionary new.
 	maps := Dictionary new
+]
+
+{ #category : #importing }
+GtCobolImporter >> is: var inContainers: aCollection [
+	| current index |
+	index := 1.
+	current := var container.
+	[ current isNil or: [ index > aCollection size ] ]
+		whileFalse: [ (current name sameAs: (aCollection at: index) source)
+				ifTrue: [ index := index + 1 ].
+			current := current container ].
+	^ index > aCollection size
 ]
 
 { #category : #accessing }

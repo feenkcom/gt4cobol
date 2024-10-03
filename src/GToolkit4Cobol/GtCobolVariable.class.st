@@ -59,6 +59,43 @@ GtCobolVariable >> container: anObject [
 			to: anObject
 ]
 
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> gtOverlappingVariablesFor: aView [
+	<gtView>
+	| overlapping |
+	overlapping := self overlappingVariables.
+	overlapping size < 2 ifTrue: [ ^ aView empty ].
+	^ aView columnedList
+		title: 'Overlapping';
+		items: [ overlapping
+				asSortedCollection: [ :a :b | 
+					a offsets first < b offsets first
+						or: [ a offsets first = b offsets first
+								and: [ a length > b length or: [ a length = b length and: [ a == b container ] ] ] ] ] ];
+		column: 'Name'
+			text: [ :each | 
+				each == self
+					ifTrue: [ each name asRopedText bold ]
+					ifFalse: [ each name asRopedText ] ];
+		column: 'Start'
+			text: [ :each | 
+				String
+					streamContents: [ :stream | 
+						each offsets
+							do: [ :i | stream print: i ]
+							separatedBy: [ stream nextPutAll: ', ' ] ] ];
+		column: 'Length' text: [ :each | each length gtDisplayText ]
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> gtPotentialAccessesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Potential accesses';
+		object: [ self potentialAccesses ];
+		view: #gtItemsFor:
+]
+
 { #category : #initialization }
 GtCobolVariable >> initialize [
 	super initialize.
@@ -109,6 +146,35 @@ GtCobolVariable >> offsets [
 { #category : #accessing }
 GtCobolVariable >> offsets: anObject [
 	offsets := anObject
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> overlappingVariables [
+	<MSEProperty: #overlappingVariables
+		type: #GtCobolVariable
+		opposite: #overlappingVariables>
+	<multivalued>
+	<derived>
+	| globals model |
+	model := self mooseModel.
+	model ifNil: [ ^ {self} ].
+	globals := model allWithType: self class.
+	^ globals
+		select: [ :each | 
+			each parentScope == self parentScope
+				and: [ each length notNil
+						and: [ self length notNil
+								and: [ each offsets
+										anySatisfy: [ :eachOffset | 
+											self offsets
+												anySatisfy: [ :selfOffset | 
+													(selfOffset + self length - 1 < eachOffset
+														or: [ eachOffset + each length - 1 < selfOffset ]) not ] ] ] ] ] ]
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> potentialAccesses [
+	^ self overlappingVariables flatCollect: [ :each | each incomingAccesses ]
 ]
 
 { #category : #accessing }
