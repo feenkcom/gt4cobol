@@ -210,6 +210,7 @@ GtCobolImporter >> importDirectory: aDirectory [
 { #category : #importing }
 GtCobolImporter >> importFile: aFileReference [
 	| ast |
+	variables := Dictionary new.
 	currentFile := self ensureFile: aFileReference.
 	ast := CobolParser
 			loadSource: aFileReference
