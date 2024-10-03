@@ -106,14 +106,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-03T18:27:17.753881+02:00"
+									"dateAndTimeString" : "2024-10-03T18:26:01.202347+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "aSo4v/bfDQCnGbzzC+Z0VA=="
 							},
-							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: {\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\t\timportDirectory: 'aws-carddemo' asFileReference;\r\t\t\tmodel).\rAWSCardDemo model"
+							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: AWSCardDemo copyBookDirectories;\r\t\t\timportDirectory: AWSCardDemo rootDirectory;\r\t\t\tmodel).\rAWSCardDemo model"
 						}
 					]
 				},
