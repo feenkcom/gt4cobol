@@ -49,31 +49,28 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		stencil: [ :program | 
 			BrLabel new
 				fitContent;
-				aptitude: BrGlamorousLabelAptitude new glamorousRegularFontAndSize;
+				background: ((startItems includes: program) ifTrue: [Color blue muchLighter] ifFalse: [ Color white ]);
+				margin: (BlInsets all: 10);
+				padding: (BlInsets all: 10);
+				aptitude: BrShadowAptitude new + BrGlamorousLabelAptitude new glamorousCodeFontAndSize;
 				text: program name asRopedText ];
 		with: programs.
 	mondrian nodes
 		stencil: [ :each | 
-			| editor |
-			editor := BrEditor new
-					fitContent;
-					background: Color black.
-			editor editor text: each buildScreenText.
-
-			editor asScalableElement size: 300 @ 200 ];
+			each asElement preventMouseEvents asScalableElement size: 120 @ 80 ];
 		with: screens.
 	mondrian edges
 		fromCenterBottom;
 		toCenterTop;
 		stencil: [ :d | 
 			BlParabollaArcElement new
-				zIndex: 0;
+				zIndex: -1;
 				curvatureFraction: 0.1;
-				border: (BlBorder paint: (Color black alpha: 0.8) width: 2);
+				border: (BlBorder paint: (Color blue muchLighter) width: 2);
 				toHead: (BlArrowheadSimpleArrow new
 						border: (BlBorder builder
-								paint: (Color black alpha: 0.8);
-								width: 4;
+								paint: (Color blue muchLighter);
+								width: 2;
 								build)) ];
 		connect: forwardEdges keys
 			from: #from
@@ -83,13 +80,13 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		toCenterBottom;
 		stencil: [ :d | 
 			BlParabollaArcElement new
-				zIndex: 0;
+				zIndex: -1;
 				curvatureFraction: 0.1;
-				border: (BlBorder paint: (Color gray alpha: 0.5) width: 2);
+				border: (BlBorder paint: (Color veryVeryLightGray) width: 1);
 				toHead: (BlArrowheadSimpleArrow new
 						border: (BlBorder builder
-								paint: (Color gray muchLighter alpha: 0.5);
-								width: 4;
+								paint: (Color veryVeryLightGray);
+								width: 1;
 								build)) ];
 		connect: backEdges keys
 			from: #from

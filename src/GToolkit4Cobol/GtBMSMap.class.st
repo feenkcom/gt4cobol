@@ -93,7 +93,7 @@ GtBMSMap >> gtProgramsAndScreenFor: aView [
 GtBMSMap >> gtScreenFor: aView [
 	<gtView>
 	^ aView explicit
-		priority: 1;
+		priority: -1;
 		title: 'Screen';
 		stencil: [ self asElement ]
 ]
