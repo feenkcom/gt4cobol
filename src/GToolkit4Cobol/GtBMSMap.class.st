@@ -72,6 +72,16 @@ GtBMSMap >> gtFieldsFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
+GtBMSMap >> gtMapExpressionsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Map expressions';
+		items: [ self mapExpressions ];
+		column: 'From' text: #from;
+		column: 'To' text: #to
+]
+
+{ #category : #'as yet unclassified' }
 GtBMSMap >> gtProgramsAndScreenFor: aView [
 	<gtView>
 	^ aView mondrian
