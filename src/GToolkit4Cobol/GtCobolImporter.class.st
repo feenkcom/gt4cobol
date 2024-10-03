@@ -197,16 +197,7 @@ GtCobolImporter >> importDataReferencesIn: ast [
 		withAllNodesOfType: CobolIdentifierNode
 		do: [ :each | 
 			(each parentOfType: CobolProcedureDivisionNode)
-				ifNotNil: [ self importVariableReference: each ] ].
-	ast
-		withAllNodesOfType: CobolExecCicsStatementNode
-		do: [ :cics | 
-			cics cobolExpressions
-				do: [ :expr | 
-					expr parent: cics.
-					expr
-						withAllNodesOfType: CobolIdentifierNode
-						do: [ :each | self importVariableReference: each ] ] ]
+				ifNotNil: [ self importVariableReference: each ] ]
 ]
 
 { #category : #importing }
