@@ -225,8 +225,8 @@ GtCobolImporter >> importMapCallsIn: ast [
 
 { #category : #importing }
 GtCobolImporter >> importParagraphsIn: ast [
-	| index |
-	index := 1.
+	| initial labels |
+	initial := true.
 	ast
 		withAllNodesOfType: CobolProcedureDivisionNode
 		do: [ :node | 
@@ -235,19 +235,64 @@ GtCobolImporter >> importParagraphsIn: ast [
 						attributeNamed: #entity
 						put: (GtCobolParagraph new
 								name: ast topParent filename basenameWithoutExtension;
+								isInitial: initial;
 								container: currentProgram;
 								sourceAnchor: (self sourceAnchorFor: node);
-								mooseModel: model) ] ].
+								mooseModel: model).
+					initial := false ] ].
+	labels := Dictionary new.
 	ast
 		withAllNodesOfType: CobolParagraphNode
 		do: [ :node | 
 			node
 				attributeNamed: #entity
-				put: (GtCobolParagraph new
-						name: node name source;
-						container: currentProgram;
-						sourceAnchor: (self sourceAnchorFor: node);
-						mooseModel: model) ]
+				put: (labels
+						at: node name source
+						put: (GtCobolParagraph new
+								name: node name source;
+								isInitial: initial;
+								container: currentProgram;
+								sourceAnchor: (self sourceAnchorFor: node);
+								mooseModel: model)).
+			initial := false ].
+	ast
+		withAllNodesOfType: CobolGoToStatementNode
+		do: [ :goto | 
+			goto procedureNames
+				do: [ :name | 
+					| invocation |
+					invocation := FAMIXInvocation new.
+					invocation
+						sender: (goto withAllParents
+								detect: [ :each | (each attributeNamed: #entity) notNil ]
+								ifFound: [ :each | each attributeNamed: #entity ]
+								ifNone: [  ]).
+					labels
+						at: name source
+						ifPresent: [ :candidate | invocation addCandidate: candidate ].
+					invocation signature: name source.
+					invocation mooseModel: model.
+					invocation sourceAnchor: (self sourceAnchorFor: goto) ] ].
+	ast
+		withAllNodesOfType: CobolPerformStatementNode
+		do: [ :perform | 
+			[ :name | 
+			name
+				ifNotNil: [ | invocation |
+					invocation := FAMIXInvocation new.
+					invocation
+						sender: (perform withAllParents
+								detect: [ :each | (each attributeNamed: #entity) notNil ]
+								ifFound: [ :each | each attributeNamed: #entity ]
+								ifNone: [  ]).
+					labels
+						at: name source
+						ifPresent: [ :candidate | invocation addCandidate: candidate ].
+					invocation signature: name source.
+					invocation mooseModel: model.
+					invocation sourceAnchor: (self sourceAnchorFor: perform) ] ]
+				value: perform procedureName;
+				value: perform thru ]
 ]
 
 { #category : #importing }
