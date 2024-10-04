@@ -7,6 +7,28 @@ Class {
 	#category : #'GToolkit4Cobol-Parser'
 }
 
+{ #category : #accessing }
+CobolParser class >> addExpanderFor: node in: text to: var [
+	(text from: node stopPosition to: node stopPosition)
+		attribute: (BrGlamorousTriangleExpanderTextAttribute new
+				attributesCreatingBlock: [ BrTextAdornmentDynamicAttribute new
+						beAppend;
+						stencil: [ | pane |
+							pane := BrVerticalPane new
+									height: 300;
+									aptitude: BrShadowAptitude
+											+ (BrGlamorousWithVerticalResizerAptitude new
+													beBottom;
+													yourself);
+									background: Color white;
+									margin: (BlInsets all: 10);
+									constraintsDo: [ :c | 
+										c textFlow pushLine.
+										c horizontal matchParent ].
+							pane
+								addChild: (var gtSourceFor: GtPhlowProtoView new) asElement matchParent ] ])
+]
+
 { #category : #generated }
 CobolParser class >> ambiguousTransitions [
 ^#(
@@ -2930,16 +2952,14 @@ CobolParser class >> cobolStyler: aParserClass [
 	variables := Set new.
 	rules := {GtSmaCCNodeStylerRule
 				nodeClassName: #CobolFileNode
-				styleBlock: [ :styler | variables := Set new ].
-			GtSmaCCNodeStylerRule
-				nodeClassName: #CobolDataDescriptionEntryNode
-				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
-			GtSmaCCNodeStylerRule
-				nodeClassName: #CobolDataDescription66EntryNode
-				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
-			GtSmaCCNodeStylerRule
-				nodeClassName: #CobolDataDescription88EntryNode
-				styleBlock: [ :styler :node | node name ifNotNil: [ :n | variables add: n source ] ].
+				styleBlock: [ :styler :node | 
+					variables := Set new.
+					node
+						withAllNodesDo: [ :each | 
+							((node isKindOf: CobolDataDescriptionEntryNode)
+								or: [ (node isKindOf: CobolDataDescription88EntryNode)
+										or: [ node isKindOf: CobolDataDescription66EntryNode ] ])
+								ifTrue: [ node name ifNotNil: [ :n | variables add: n source ] ] ] ].
 			GtSmaCCNodeVariableStylerRule
 				nodeClassName: #CobolIdentifierNode
 				variableNames: #(name)
@@ -2968,6 +2988,76 @@ CobolParser class >> cobolStyler: aParserClass [
 				styleBlock: [ :styler | styler foreground: Color red ]}.
 	rules do: [ :each | each continueOnMatch: true ].
 	^ (GtSmaCCParserStyler forParser: aParserClass) stylerRules: rules
+]
+
+{ #category : #accessing }
+CobolParser class >> cobolStylerWithExpanders [
+	| rules variables procedures |
+	rules := {GtSmaCCNodeStylerRule
+				nodeClassName: #CobolFileNode
+				styleBlock: [ :styler :ast | 
+					variables := Dictionary new.
+					procedures := Dictionary new.
+					ast
+						withAllNodesDo: [ :node | 
+							(node isKindOf: CobolParagraphNode)
+								ifTrue: [ procedures at: node name source asUppercase put: node ].
+							(node isKindOf: CobolDataDescriptionEntryNode)
+								ifTrue: [ node dataName
+										ifNotNil: [ :n | (variables at: n asUppercase ifAbsentPut: [ OrderedCollection new ]) add: node ] ] ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolGoToStatementNode
+				styleBlock: [ :styler :node :text | 
+					node procedureNames
+						do: [ :each | 
+							procedures
+								at: each source asUppercase
+								ifPresent: [ :proc | 
+									self
+										addExpanderFor: each
+										in: text
+										to: proc ] ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolPerformStatementNode
+				styleBlock: [ :styler :node :text | 
+					{node procedureName.
+						node thru}
+						do: [ :each | 
+							each
+								ifNotNil: [ procedures
+										at: each source asUppercase
+										ifPresent: [ :proc | 
+											self
+												addExpanderFor: each
+												in: text
+												to: proc ] ] ] ].
+			GtSmaCCNodeStylerRule
+				nodeClassName: #CobolIdentifierNode
+				styleBlock: [ :styler :node :text | 
+					(node parentOfType: CobolProcedureDivisionNode)
+						ifNotNil: [ variables
+								at: node name source asUppercase
+								ifPresent: [ :vars | 
+									| var |
+									((node parent isKindOf: CobolInExpressionNode)
+										and: [ node parent name ~~ node ])
+										ifFalse: [ var := vars size = 1
+													ifTrue: [ vars first ]
+													ifFalse: [ vars
+															detect: [ :each | 
+																each
+																	isInsideOf: ((node parent isKindOf: CobolInExpressionNode)
+																			ifTrue: [ node parent inValues collect: [ :e | e name source ] ]
+																			ifFalse: [ #() ]) ] ].
+											var
+												ifNotNil: [ self
+														addExpanderFor: node
+														in: text
+														to: var ] ] ] ] ]}.
+	rules do: [ :each | each continueOnMatch: true ].
+	^ (GtCompositeSmaCCASTStyler forParser: self)
+		stylers: {self gtStyler.
+				(GtSmaCCParserStyler forParser: self) stylerRules: rules}
 ]
 
 { #category : #generated }

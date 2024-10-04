@@ -201,6 +201,18 @@ CobolDataDescriptionEntryNode >> isFiller [
 	^ self dataName ifNil: [ true ] ifNotNil: [ :each | each sameAs: 'FILLER' ]
 ]
 
+{ #category : #private }
+CobolDataDescriptionEntryNode >> isInsideOf: aCollection [
+	| index current |
+	index := 1.
+	current := self container.
+	[ index <= aCollection size ]
+		whileTrue: [ ((current dataName ifNil: [ '' ]) sameAs: (aCollection at: index))
+				ifTrue: [ index := index + 1 ].
+			current := current container ].
+	^ index > aCollection size
+]
+
 { #category : #testing }
 CobolDataDescriptionEntryNode >> isRedefines [
 	^ self clauses

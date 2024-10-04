@@ -91,7 +91,7 @@ GtCobolVariable >> gtOverlappingVariablesFor: aView [
 GtCobolVariable >> gtPotentialAccessesFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Potential accesses';
+		title: 'Accesses';
 		object: [ self potentialAccesses ];
 		view: #gtItemsFor:
 ]
@@ -136,6 +136,14 @@ GtCobolVariable >> maxOccurrences [
 { #category : #accessing }
 GtCobolVariable >> maxOccurrences: anObject [
 	maxOccurrences := anObject
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> mooseNameOn: stream [
+	parentScope
+		ifNotNil: [ parentScope mooseNameOn: stream.
+			stream << '::' ].
+	super mooseNameOn: stream
 ]
 
 { #category : #accessing }
