@@ -2991,7 +2991,8 @@ CobolParser class >> cobolStyler: aParserClass [
 ]
 
 { #category : #accessing }
-CobolParser class >> cobolStylerWithExpanders [
+CobolParser class >> cobolStylerWithExpanders: aParserClass [
+	<smaccStyler: #CobolParser priority: 5>
 	| rules variables procedures |
 	rules := {GtSmaCCNodeStylerRule
 				nodeClassName: #CobolFileNode
@@ -3056,7 +3057,7 @@ CobolParser class >> cobolStylerWithExpanders [
 														to: var ] ] ] ] ]}.
 	rules do: [ :each | each continueOnMatch: true ].
 	^ (GtCompositeSmaCCASTStyler forParser: self)
-		stylers: {self gtStyler.
+		stylers: {self cobolStyler: self.
 				(GtSmaCCParserStyler forParser: self) stylerRules: rules}
 ]
 
