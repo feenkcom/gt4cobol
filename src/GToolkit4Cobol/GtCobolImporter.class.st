@@ -10,7 +10,8 @@ Class {
 		'files',
 		'currentFile',
 		'currentProgram',
-		'maps'
+		'maps',
+		'mapSets'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -81,6 +82,13 @@ GtCobolImporter >> ensureMap: mapName [
 ]
 
 { #category : #importing }
+GtCobolImporter >> ensureMapSet: mapSetName [
+	^ mapSets
+		at: mapSetName asUppercase
+		ifAbsentPut: [ GtBMSMapSet new name: mapSetName ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> ensureProgram: aString [
 	^ programs
 		at: aString asUppercase
@@ -127,11 +135,24 @@ GtCobolImporter >> hasImportDirectory [
 
 { #category : #importing }
 GtCobolImporter >> importBMSFile: aFileReference [
-	| currentMap |
+	| currentMap currentMapSet |
 	currentFile := self ensureFile: aFileReference.
 	currentFile declaredSourceLanguage: GtBMSSourceLanguage new.
 	(BMSParser parseFile: aFileReference) macros
 		do: [ :each | 
+			(each macro value sameAs: 'DFHMSD')
+				ifTrue: [ (each getValue: 'TYPE') = 'FINAL'
+						ifFalse: [ | mapSetName |
+							mapSetName := each name value.
+							currentMapSet := self ensureMapSet: mapSetName.
+							currentMapSet
+								declaredSourceLanguage: GtBMSSourceLanguage new;
+								sourceAnchor: (FAMIXIndexedFileEntityAnchor
+										file: currentFile
+										startPos: each startPosition
+										endPos: each stopPosition
+										model: model);
+								mooseModel: model ] ].
 			(each macro value sameAs: 'DFHMDI')
 				ifTrue: [ | mapName |
 					mapName := each name value
@@ -139,6 +160,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 					currentMap := self ensureMap: mapName.
 					currentFile addEntity: currentMap.
 					currentMap
+						mapSet: currentMapSet;
 						x: ((each getValue: 'LINE') ifNotNil: [ :v | v asInteger ]);
 						y: ((each getValue: 'COLUMN') ifNotNil: [ :v | v asInteger ]);
 						width: (each getValue: 'SIZE') second asInteger;
@@ -191,7 +213,15 @@ GtCobolImporter >> importCSDFile: aFileReference [
 	(groups at: 'FILE' ifAbsent: [ #() ])
 		do: [ :each | self importCSDDefineFile: each ].
 	(groups at: 'PROGRAM' ifAbsent: [ #() ])
-		do: [ :each | self importCSDProgram: each ]
+		do: [ :each | self importCSDProgram: each ].
+	(groups at: 'MAPSET' ifAbsent: [#()])
+		do: [ :each | self importCSDMapSet: each ].
+]
+
+{ #category : #importing }
+GtCobolImporter >> importCSDMapSet: aDefineNode [
+	(aDefineNode propertyNamed: 'DESCRIPTION')
+		ifNotNil: [ :str | (self ensureMapSet: (aDefineNode propertyNamed: 'MAPSET')) description: str ]
 ]
 
 { #category : #importing }
@@ -396,7 +426,8 @@ GtCobolImporter >> initialize [
 	model sourceLanguage: GtCobolSourceLanguage new.
 	programs := Dictionary new.
 	variables := Dictionary new.
-	maps := Dictionary new
+	maps := Dictionary new.
+	mapSets := Dictionary new
 ]
 
 { #category : #importing }

@@ -1,6 +1,12 @@
 Extension { #name : #MooseModel }
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allBMSMapSets [
+	<navigation: 'All BMS MapSets'>
+	^ GtBMSMapSetGroup withAll: (self allWithType: GtBMSMapSet)
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allBMSMaps [
 	<navigation: 'All BMS Maps'>
 	^ self allWithType: GtBMSMap

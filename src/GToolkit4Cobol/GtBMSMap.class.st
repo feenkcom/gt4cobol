@@ -7,7 +7,8 @@ Class {
 		'x',
 		'y',
 		'fields',
-		'mapExpressions'
+		'mapExpressions',
+		'mapSet'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -136,6 +137,22 @@ GtBMSMap >> mapExpressions [
 { #category : #accessing }
 GtBMSMap >> mapExpressions: anObject [
 	mapExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtBMSMap >> mapSet [
+	<MSEProperty: #mapSet type: #GtBMSMapSet opposite: #maps>
+	<container>
+	^ mapSet
+]
+
+{ #category : #accessing }
+GtBMSMap >> mapSet: anObject [
+	mapSet := FMMultivalueLink
+			on: self
+			update: #maps
+			from: self mapSet
+			to: anObject
 ]
 
 { #category : #accessing }
