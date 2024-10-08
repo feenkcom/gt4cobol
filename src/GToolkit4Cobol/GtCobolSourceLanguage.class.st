@@ -17,5 +17,5 @@ GtCobolSourceLanguage >> gtASTNodeFor: aString at: anInterval [
 
 { #category : #accessing }
 GtCobolSourceLanguage >> gtStyler [
-	^ CobolParser cobolStylerWithExpanders
+	^ CobolParser gtStyler
 ]
