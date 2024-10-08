@@ -114,6 +114,14 @@ GtCobolProgram >> gtFunctionsFor: aView [
 		items: [ functions ]
 ]
 
+{ #category : #'as yet unclassified' }
+GtCobolProgram >> gtVariablesFor: aView [
+	<gtView>
+	^ aView list 
+		title: 'Variables';
+		items: [ self globalVariables ]
+]
+
 { #category : #initialization }
 GtCobolProgram >> initialize [
 	super initialize.

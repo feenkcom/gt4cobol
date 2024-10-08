@@ -14,3 +14,15 @@ GtBMSMapGroup >> gtScreensFor: aView [
 		itemStencil: [ :each | BrVerticalPane new fitContent];
 		itemDataBinder: [ :pane :each | pane removeChildren; addChild: (each asElement) ]
 ]
+
+{ #category : #'as yet unclassified' }
+GtBMSMapGroup >> gtSearchForScreenStringFor: aSearch [
+	<gtSearch>
+	^ aSearch list
+		priority: 1;
+		title: 'Strings';
+		items: [ self ];
+		itemName: #buildScreenString;
+		filterBySubstring;
+		wantsToDisplayOnEmptyQuery: true
+]
