@@ -6,7 +6,7 @@ Class {
 
 { #category : #'generated-accessing' }
 CSDParser class >> cacheId [
-	^'2024-10-07T13:36:00.462866-05:00'
+	^'2024-10-08T07:49:19.100583-05:00'
 ]
 
 { #category : #accessing }
@@ -75,7 +75,7 @@ value <value>
 	: \s+
 	;
 File 
-	: Define 'statement'* {{}}
+	: Define 'definition'* {{}}
 	;
 Define
 	: <define> 'defineToken' Property 'property'+ {{}}
@@ -95,16 +95,21 @@ SwitchToValue
 	;"
 ]
 
+{ #category : #accessing }
+CSDParser class >> fileExtension [
+	^ '.csd'
+]
+
 { #category : #generated }
 CSDParser class >> reduceTable [
 ^#(
-	#(10 0 #reduceActionForDefine__statement__1: 320513 false) 
-	#(9 1 #reduceActionForFile1: 311297 false) 
-	#(10 2 #reduceActionForDefine__statement__2: 320514 false) 
+	#(10 0 #reduceActionForDefine__definition__1: 319489 false) 
+	#(9 1 #reduceActionForFile1: 310273 false) 
+	#(10 2 #reduceActionForDefine__definition__2: 319490 false) 
 	#(16 0 #reduceActionForSwitchToValue1: 658433 true) 
 	#(11 2 #reduceActionForDefine1: 349185 false) 
 	#(12 1 #reduceActionForProperty__property__1: 382977 false) 
-	#(12 2 #reduceActionForDefine__statement__2: 382978 false) 
+	#(12 2 #reduceActionForDefine__definition__2: 382978 false) 
 	#(15 1 #reduceActionForValue2: 587778 false) 
 	#(15 1 #reduceActionForValue1: 587777 false) 
 	#(14 0 #reduceActionForSwitchToDefault1: 536577 true) 
@@ -124,7 +129,7 @@ CSDParser class >> startingStateForFile [
 
 { #category : #generated }
 CSDParser class >> symbolNames [
-	^ #('<define>' '<name>' '<lparen>' '<rparen>' '<number>' '<value>' '<whitespace>' 'B e g i n' 'File' 'Define ''statement''*' 'Define' 'Property ''property''+' 'Property' 'SwitchToDefault' 'Value' 'SwitchToValue' 'E O F' 'error')
+	^ #('<define>' '<name>' '<lparen>' '<rparen>' '<number>' '<value>' '<whitespace>' 'B e g i n' 'File' 'Define ''definition''*' 'Define' 'Property ''property''+' 'Property' 'SwitchToDefault' 'Value' 'SwitchToValue' 'E O F' 'error')
 ]
 
 { #category : #generated }
@@ -164,14 +169,14 @@ CSDParser >> reduceActionForDefine1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-CSDParser >> reduceActionForDefine__statement__1: nodes [
+CSDParser >> reduceActionForDefine__definition__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
 { #category : #'generated-reduction actions' }
-CSDParser >> reduceActionForDefine__statement__2: nodes [
+CSDParser >> reduceActionForDefine__definition__2: nodes [
 	| result |
 	result := nodes at: 1.
 	self add: (nodes at: 2) to: result.
@@ -182,7 +187,7 @@ CSDParser >> reduceActionForDefine__statement__2: nodes [
 CSDParser >> reduceActionForFile1: nodes [
 	| result |
 	result := CSDFileNode new.
-	result addNodes: (nodes at: 1) to: result statements.
+	result addNodes: (nodes at: 1) to: result definitions.
 	^ result
 ]
 

@@ -8,3 +8,8 @@ Class {
 CSDValueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitValue: self
 ]
+
+{ #category : #accessing }
+CSDValueNode >> literalValue [
+	^ token source
+]

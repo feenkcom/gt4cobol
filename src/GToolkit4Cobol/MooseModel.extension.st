@@ -7,6 +7,12 @@ MooseModel >> allBMSMaps [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allCICSFiles [
+	<navigation: 'All CICS Files'>
+	^ self allWithType: GtCICSFile
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allCobolPrograms [
 	<navigation: 'All Cobol Programs'>
 	^ self allWithType: GtCobolProgram

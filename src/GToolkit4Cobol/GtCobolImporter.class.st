@@ -170,6 +170,37 @@ GtCobolImporter >> importBMSFile: aFileReference [
 ]
 
 { #category : #importing }
+GtCobolImporter >> importCSDDefineFile: aDefineNode [
+	| cicsFile |
+	cicsFile := GtCICSFile new.
+	(aDefineNode propertyNamed: 'FILE') ifNotNil: [ :name | cicsFile name: name ].
+	(aDefineNode propertyNamed: 'DSNAME')
+		ifNotNil: [ :name | cicsFile datasetName: name ].
+	(aDefineNode propertyNamed: 'DESCRIPTION')
+		ifNotNil: [ :name | cicsFile description: name ].
+	cicsFile sourceAnchor: (self sourceAnchorFor: aDefineNode).
+	cicsFile mooseModel: model.
+	currentFile addEntity: cicsFile
+]
+
+{ #category : #importing }
+GtCobolImporter >> importCSDFile: aFileReference [
+	| groups |
+	currentFile := self ensureFile: aFileReference.
+	groups := (CSDParser parseFileWithErrors: aFileReference) groups.
+	(groups at: 'FILE' ifAbsent: [ #() ])
+		do: [ :each | self importCSDDefineFile: each ].
+	(groups at: 'PROGRAM' ifAbsent: [ #() ])
+		do: [ :each | self importCSDProgram: each ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importCSDProgram: aDefineNode [
+	(aDefineNode propertyNamed: 'DESCRIPTION')
+		ifNotNil: [ :str | (self ensureProgram: (aDefineNode propertyNamed: 'PROGRAM')) description: str ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> importDataIn: ast [
 	| index |
 	index := 1.
@@ -204,7 +235,8 @@ GtCobolImporter >> importDataReferencesIn: ast [
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
-	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ]
+	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ].
+	(CSDParser sourceFilesIn: aDirectory) do: [ :each | self importCSDFile: each ]
 ]
 
 { #category : #importing }
@@ -329,7 +361,8 @@ GtCobolImporter >> importVariableReference: idNode [
 							ifNone: [  ] ] ].
 	var ifNil: [ ^ self ].
 	FAMIXAccess new
-		from: (self entityFor: idNode);
+		from: ((self entityFor: idNode)
+				ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
 		to: var;
 		sourceAnchor: (self sourceAnchorFor: idNode);
 		mooseModel: model

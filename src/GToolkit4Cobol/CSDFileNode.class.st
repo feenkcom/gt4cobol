@@ -2,7 +2,7 @@ Class {
 	#name : #CSDFileNode,
 	#superclass : #CSDProgramNode,
 	#instVars : [
-		'statements'
+		'definitions'
 	],
 	#category : #'GToolkit4Cobol-CSD-Parser'
 }
@@ -14,23 +14,30 @@ CSDFileNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 CSDFileNode >> compositeNodeVariables [
-	^ #(#statements)
+	^ #(#definitions)
+]
+
+{ #category : #generated }
+CSDFileNode >> definitions [
+	^ definitions
+]
+
+{ #category : #generated }
+CSDFileNode >> definitions: anOrderedCollection [
+	self setParents: self definitions to: nil.
+	definitions := anOrderedCollection.
+	self setParents: self definitions to: self
+]
+
+{ #category : #accessing }
+CSDFileNode >> groups [
+	^ self
+		attributeNamed: #groups
+		ifAbsentPut: [ self definitions groupedBy: [ :each | each name asUppercase ] ]
 ]
 
 { #category : #'generated-initialize-release' }
 CSDFileNode >> initialize [
 	super initialize.
-	statements := OrderedCollection new: 2.
-]
-
-{ #category : #generated }
-CSDFileNode >> statements [
-	^ statements
-]
-
-{ #category : #generated }
-CSDFileNode >> statements: anOrderedCollection [
-	self setParents: self statements to: nil.
-	statements := anOrderedCollection.
-	self setParents: self statements to: self
+	definitions := OrderedCollection new: 2.
 ]

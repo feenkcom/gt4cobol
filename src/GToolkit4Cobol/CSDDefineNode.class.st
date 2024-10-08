@@ -34,6 +34,11 @@ CSDDefineNode >> initialize [
 	properties := OrderedCollection new: 2.
 ]
 
+{ #category : #'as yet unclassified' }
+CSDDefineNode >> name [
+	^ properties first propertyName
+]
+
 { #category : #generated }
 CSDDefineNode >> properties [
 	^ properties
@@ -44,6 +49,13 @@ CSDDefineNode >> properties: anOrderedCollection [
 	self setParents: self properties to: nil.
 	properties := anOrderedCollection.
 	self setParents: self properties to: self
+]
+
+{ #category : #'as yet unclassified' }
+CSDDefineNode >> propertyNamed: aString [
+	self properties
+		do: [ :each | (each propertyName sameAs: aString) ifTrue: [ ^ each value literalValue ] ].
+	^ nil
 ]
 
 { #category : #generated }

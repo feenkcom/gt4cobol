@@ -40,6 +40,11 @@ CSDPropertyNode >> nodeVariables [
 	^ #(#value)
 ]
 
+{ #category : #accessing }
+CSDPropertyNode >> propertyName [
+	^ name source
+]
+
 { #category : #generated }
 CSDPropertyNode >> rightParen [
 	^ rightParen

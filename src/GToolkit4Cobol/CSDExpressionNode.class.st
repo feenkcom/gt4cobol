@@ -12,6 +12,11 @@ CSDExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
+{ #category : #accessing }
+CSDExpressionNode >> literalValue [
+	self subclassResponsibility
+]
+
 { #category : #generated }
 CSDExpressionNode >> token [
 	^ token
