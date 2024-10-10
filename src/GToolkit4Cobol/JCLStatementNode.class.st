@@ -27,6 +27,11 @@ JCLStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
+{ #category : #accessing }
+JCLStatementNode >> components [
+	^ self attributeNamed: #components ifAbsentPut: [ OrderedCollection new ]
+]
+
 { #category : #generated }
 JCLStatementNode >> compositeNodeVariables [
 	^ #(#values)
@@ -37,12 +42,33 @@ JCLStatementNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
+{ #category : #testing }
+JCLStatementNode >> contains: aStatementNode [
+	self owner ifNil: [ ^ true ].
+	^ self operationName = 'EXEC' and: [ aStatementNode operationName = 'DD' ]
+]
+
 { #category : #'generated-initialize-release' }
 JCLStatementNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
+]
+
+{ #category : #testing }
+JCLStatementNode >> isDD [
+	^ self operationName = 'DD'
+]
+
+{ #category : #testing }
+JCLStatementNode >> isEXEC [
+	^ self operationName = 'EXEC'
+]
+
+{ #category : #testing }
+JCLStatementNode >> isJOB [
+	^ self operationName = 'JOB'
 ]
 
 { #category : #generated }
@@ -55,6 +81,13 @@ JCLStatementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
+{ #category : #'as yet unclassified' }
+JCLStatementNode >> namedParameterValueOf: aString [
+	parameters
+		do: [ :each | each key source = aString ifTrue: [ ^ each value literalValue ] ].
+	^ nil
+]
+
 { #category : #generated }
 JCLStatementNode >> operation [
 	^ operation
@@ -65,9 +98,25 @@ JCLStatementNode >> operation: aSmaCCToken [
 	operation := aSmaCCToken
 ]
 
+{ #category : #accessing }
+JCLStatementNode >> operationName [
+	^ operation source
+]
+
 { #category : #generated }
 JCLStatementNode >> otherVariables [
 	^ #(#parameters)
+]
+
+{ #category : #accessing }
+JCLStatementNode >> owner [
+	^ self attributeNamed: #owner
+]
+
+{ #category : #accessing }
+JCLStatementNode >> owner: aStatementNode [
+	self attributeNamed: #owner put: aStatementNode.
+	aStatementNode components add: self
 ]
 
 { #category : #generated }
@@ -80,6 +129,11 @@ JCLStatementNode >> parameters: anOrderedCollection [
 	self setParent: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParent: self parameters to: self
+]
+
+{ #category : #'as yet unclassified' }
+JCLStatementNode >> positionalParameterValueOf: anInteger [
+	^ values size >= anInteger ifTrue: [ (values at: anInteger) literalValue ]
 ]
 
 { #category : #generated }

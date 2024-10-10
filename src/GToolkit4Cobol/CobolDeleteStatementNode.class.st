@@ -3,24 +3,12 @@ Class {
 	#superclass : #CobolStatementNode,
 	#instVars : [
 		'keywords',
-		'_filename',
+		'fileName',
 		'notInvalidKeyPhrase',
 		'invalidKeyPhrase'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolDeleteStatementNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolDeleteStatementNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolDeleteStatementNode >> acceptVisitor: aProgramVisitor [
@@ -30,6 +18,18 @@ CobolDeleteStatementNode >> acceptVisitor: aProgramVisitor [
 { #category : #generated }
 CobolDeleteStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+CobolDeleteStatementNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolDeleteStatementNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -62,7 +62,7 @@ CobolDeleteStatementNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolDeleteStatementNode >> nodeVariables [
-	^ #(#_filename #notInvalidKeyPhrase #invalidKeyPhrase)
+	^ #(#fileName #notInvalidKeyPhrase #invalidKeyPhrase)
 ]
 
 { #category : #generated }

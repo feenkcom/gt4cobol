@@ -13,6 +13,11 @@ JCLNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitName: self
 ]
 
+{ #category : #accessing }
+JCLNameNode >> literalValue [
+	^ name source
+]
+
 { #category : #generated }
 JCLNameNode >> name [
 	^ name

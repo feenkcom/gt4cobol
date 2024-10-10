@@ -12,6 +12,11 @@ JCLNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
+{ #category : #accessing }
+JCLNumberNode >> literalValue [
+	^ value source asNumber
+]
+
 { #category : #generated }
 JCLNumberNode >> tokenVariables [
 	^ #(#value)

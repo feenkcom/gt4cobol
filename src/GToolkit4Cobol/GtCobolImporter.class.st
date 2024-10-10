@@ -11,7 +11,8 @@ Class {
 		'currentFile',
 		'currentProgram',
 		'maps',
-		'mapSets'
+		'mapSets',
+		'jobs'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -77,6 +78,11 @@ GtCobolImporter >> ensureFolderNamed: aFileReference [
 ]
 
 { #category : #importing }
+GtCobolImporter >> ensureJCLJob: aName [
+	^ jobs at: aName asUppercase ifAbsentPut: [ GtJCLJob new name: aName ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> ensureMap: mapName [
 	^ maps at: mapName asUppercase ifAbsentPut: [ GtBMSMap new name: mapName ]
 ]
@@ -93,6 +99,7 @@ GtCobolImporter >> ensureProgram: aString [
 	^ programs
 		at: aString asUppercase
 		ifAbsentPut: [ GtCobolProgram new
+				isStub: true;
 				name: aString;
 				mooseModel: model ]
 ]
@@ -200,6 +207,7 @@ GtCobolImporter >> importCSDDefineFile: aDefineNode [
 		ifNotNil: [ :name | cicsFile datasetName: name ].
 	(aDefineNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :name | cicsFile description: name ].
+	cicsFile declaredSourceLanguage: GtCSDSourceLanguage new.
 	cicsFile sourceAnchor: (self sourceAnchorFor: aDefineNode).
 	cicsFile mooseModel: model.
 	currentFile addEntity: cicsFile
@@ -209,13 +217,16 @@ GtCobolImporter >> importCSDDefineFile: aDefineNode [
 GtCobolImporter >> importCSDFile: aFileReference [
 	| groups |
 	currentFile := self ensureFile: aFileReference.
+	currentFile declaredSourceLanguage: GtCSDSourceLanguage new.
 	groups := (CSDParser parseFileWithErrors: aFileReference) groups.
 	(groups at: 'FILE' ifAbsent: [ #() ])
 		do: [ :each | self importCSDDefineFile: each ].
 	(groups at: 'PROGRAM' ifAbsent: [ #() ])
 		do: [ :each | self importCSDProgram: each ].
-	(groups at: 'MAPSET' ifAbsent: [#()])
+	(groups at: 'MAPSET' ifAbsent: [ #() ])
 		do: [ :each | self importCSDMapSet: each ].
+	(groups at: 'TRANSACTION' ifAbsent: [ #() ])
+		do: [ :each | self importCSDTransaction: each ]
 ]
 
 { #category : #importing }
@@ -228,6 +239,23 @@ GtCobolImporter >> importCSDMapSet: aDefineNode [
 GtCobolImporter >> importCSDProgram: aDefineNode [
 	(aDefineNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :str | (self ensureProgram: (aDefineNode propertyNamed: 'PROGRAM')) description: str ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importCSDTransaction: aDefineNode [
+	| transaction |
+	transaction := GtCICSTransaction new.
+	transaction name: (aDefineNode propertyNamed: 'TRANSACTION').
+	(aDefineNode propertyNamed: 'GROUP')
+		ifNotNil: [ :name | transaction group: name ].
+	(aDefineNode propertyNamed: 'PROGRAM')
+		ifNotNil: [ :name | transaction program: (self ensureProgram: name) ].
+	(aDefineNode propertyNamed: 'DESCRIPTION')
+		ifNotNil: [ :name | transaction description: name ].
+	transaction declaredSourceLanguage: GtCSDSourceLanguage new.
+	transaction sourceAnchor: (self sourceAnchorFor: aDefineNode).
+	transaction mooseModel: model.
+	currentFile addEntity: transaction
 ]
 
 { #category : #importing }
@@ -266,7 +294,8 @@ GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
 	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ].
-	(CSDParser sourceFilesIn: aDirectory) do: [ :each | self importCSDFile: each ]
+	(CSDParser sourceFilesIn: aDirectory) do: [ :each | self importCSDFile: each ].
+	(JCLParser sourceFilesIn: aDirectory) do: [ :each | self importJCLFile: each ]
 ]
 
 { #category : #importing }
@@ -278,15 +307,107 @@ GtCobolImporter >> importFile: aFileReference [
 			loadSource: aFileReference
 			withLibraries: copyBookDirectories.
 	currentProgram := self ensureProgram: aFileReference basenameWithoutExtension.
+	currentProgram isStub: false.
 	ast attributeNamed: #entity put: currentProgram.
 	currentFile addEntity: currentProgram.
 	currentProgram sourceAnchor: (self sourceAnchorFor: ast).
 	self
 		importDataIn: ast;
+		importFileDescriptorsIn: ast;
 		importParagraphsIn: ast;
 		importXctlCallsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast
+]
+
+{ #category : #importing }
+GtCobolImporter >> importFileDescriptorsIn: ast [
+	| descriptor descriptors |
+	descriptors := Dictionary new.
+	ast
+		withAllNodesOfType: CobolFileDescriptionEntryNode
+		do: [ :node | 
+			descriptor := GtCobolFileDescriptor new
+					name: node fileName source;
+					program: currentProgram;
+					mooseModel: model;
+					sourceAnchor: (self sourceAnchorFor: node).
+			descriptors at: descriptor name put: descriptor.
+			(node entries first attributeNamed: #entity)
+				ifNotNil: [ :entity | descriptor variables add: entity ] ].
+	ast
+		withAllNodesOfType: CobolFileControlEntryNode
+		do: [ :node | 
+			descriptors
+				at: node selectClause fileName source
+				ifPresent: [ :d | 
+					node
+						allNodesOfType: CobolAssignClauseNode
+						do: [ :each | each assignment ifNotNil: [ d dataSetNames add: each assignment source ] ] ] ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importJCLDD: aNode into: step [
+	| dd |
+	dd := GtJCLDataDescriptor new
+			step: step;
+			sourceAnchor: (self sourceAnchorFor: aNode);
+			declaredSourceLanguage: GtJCLSourceLanguage new;
+			mooseModel: model.
+	aNode name
+		ifNotNil: [ :token | 
+			dd name: token source.
+			step program
+				ifNotNil: [ :program | 
+					dd
+						fileDescriptors: (program fileDescriptors select: [ :each | each dataSetNames includes: dd name ]) ] ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importJCLExec: aNode into: job [
+	| step |
+	step := GtJCLStep new
+			job: job;
+			sourceAnchor: ((GtCobolSourceFileAnchor
+					file: currentFile
+					startPos: aNode startPosition
+					endPos: (aNode components ifEmpty: [ aNode ] ifNotEmpty: [ :c | c last ])
+							stopPosition
+					model: model)
+					sourceText: aNode topParent completeSource;
+					yourself);
+			declaredSourceLanguage: GtJCLSourceLanguage new;
+			mooseModel: model.
+	aNode name ifNotNil: [ :token | step name: token source ].
+	(aNode namedParameterValueOf: 'PGM')
+		ifNotNil: [ :program | step program: (self ensureProgram: program) ].
+	aNode components
+		do: [ :each | each isDD ifTrue: [ self importJCLDD: each into: step ] ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importJCLFile: aFileReference [
+	| ast |
+	currentFile := self ensureFile: aFileReference.
+	currentFile declaredSourceLanguage: GtJCLSourceLanguage new.
+	ast := JCLParser parseFileWithErrors: aFileReference.
+	(ast isErrorNode or: [ ast statements anySatisfy: #isErrorNode ])
+		ifTrue: [ ^ self ].
+	ast buildComponents.
+	ast statements do: [ :each | each isJOB ifTrue: [ self importJCLJob: each ] ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> importJCLJob: aNode [
+	| job |
+	job := self ensureJCLJob: aNode name source.
+	job declaredSourceLanguage: GtJCLSourceLanguage new.
+	job sourceAnchor: (self sourceAnchorFor: aNode).
+	job mooseModel: model.
+	aNode components
+		do: [ :each | each isEXEC ifTrue: [ self importJCLExec: each into: job ] ].
+	(aNode positionalParameterValueOf: 1)
+		ifNotNil: [ :name | job description: name ]
 ]
 
 { #category : #importing }
@@ -427,7 +548,8 @@ GtCobolImporter >> initialize [
 	programs := Dictionary new.
 	variables := Dictionary new.
 	maps := Dictionary new.
-	mapSets := Dictionary new
+	mapSets := Dictionary new.
+	jobs := Dictionary new
 ]
 
 { #category : #importing }

@@ -3,7 +3,7 @@ Class {
 	#superclass : #CobolProgramNode,
 	#instVars : [
 		'keywords',
-		'filenames'
+		'fileNames'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -15,7 +15,7 @@ CobolSameClauseNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 CobolSameClauseNode >> compositeNodeVariables [
-	^ #(#filenames)
+	^ #(#fileNames)
 ]
 
 { #category : #generated }
@@ -24,22 +24,22 @@ CobolSameClauseNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
-CobolSameClauseNode >> filenames [
-	^ filenames
+CobolSameClauseNode >> fileNames [
+	^ fileNames
 ]
 
 { #category : #generated }
-CobolSameClauseNode >> filenames: anOrderedCollection [
-	self setParents: self filenames to: nil.
-	filenames := anOrderedCollection.
-	self setParents: self filenames to: self
+CobolSameClauseNode >> fileNames: anOrderedCollection [
+	self setParents: self fileNames to: nil.
+	fileNames := anOrderedCollection.
+	self setParents: self fileNames to: self
 ]
 
 { #category : #'generated-initialize-release' }
 CobolSameClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
-	filenames := OrderedCollection new: 2.
+	fileNames := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

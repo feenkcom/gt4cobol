@@ -5,22 +5,10 @@ Class {
 		'keyword',
 		'periods',
 		'clauses',
-		'_filename'
+		'fileName'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolIoControlParagraphNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolIoControlParagraphNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolIoControlParagraphNode >> acceptVisitor: aProgramVisitor [
@@ -49,6 +37,18 @@ CobolIoControlParagraphNode >> compositeTokenVariables [
 	^ #(#periods)
 ]
 
+{ #category : #generated }
+CobolIoControlParagraphNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolIoControlParagraphNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 CobolIoControlParagraphNode >> initialize [
 	super initialize.
@@ -68,7 +68,7 @@ CobolIoControlParagraphNode >> keyword: aSmaCCToken [
 
 { #category : #generated }
 CobolIoControlParagraphNode >> nodeVariables [
-	^ #(#_filename)
+	^ #(#fileName)
 ]
 
 { #category : #generated }

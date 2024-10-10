@@ -3,7 +3,7 @@ Class {
 	#superclass : #CobolStatementNode,
 	#instVars : [
 		'keywords',
-		'_filename',
+		'fileName',
 		'clauses',
 		'usings',
 		'givings',
@@ -15,18 +15,6 @@ Class {
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolSortStatementNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolSortStatementNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolSortStatementNode >> acceptVisitor: aProgramVisitor [
@@ -65,6 +53,18 @@ CobolSortStatementNode >> compositeNodeVariables [
 { #category : #generated }
 CobolSortStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+CobolSortStatementNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolSortStatementNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #generated }
@@ -125,7 +125,7 @@ CobolSortStatementNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolSortStatementNode >> nodeVariables [
-	^ #(#_filename #outputProcedure #outputThru #inputProcedure #inputThru)
+	^ #(#fileName #outputProcedure #outputThru #inputProcedure #inputThru)
 ]
 
 { #category : #generated }

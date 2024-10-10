@@ -9,7 +9,8 @@ Class {
 		'potentialValues',
 		'redefinesVariable',
 		'redefinedByVariables',
-		'maxOccurrences'
+		'maxOccurrences',
+		'fileDescriptors'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -59,7 +60,19 @@ GtCobolVariable >> container: anObject [
 			to: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
+GtCobolVariable >> fileDescriptors [
+	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #variables>
+	<multivalued>
+	^ fileDescriptors
+]
+
+{ #category : #accessing }
+GtCobolVariable >> fileDescriptors: anObject [
+	fileDescriptors value: anObject
+]
+
+{ #category : #accessing }
 GtCobolVariable >> gtOverlappingVariablesFor: aView [
 	<gtView>
 	| overlapping |
@@ -87,7 +100,7 @@ GtCobolVariable >> gtOverlappingVariablesFor: aView [
 		column: 'Length' text: [ :each | each length gtDisplayText ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtCobolVariable >> gtPotentialAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -110,6 +123,7 @@ GtCobolVariable >> initialize [
 			on: self
 			opposite: #redefinesVariable:
 			selector: #redefinedByVariables.
+	fileDescriptors := FMMultiMultivalueLink on: self opposite: #variables.
 	potentialValues := Set new
 ]
 
@@ -138,7 +152,7 @@ GtCobolVariable >> maxOccurrences: anObject [
 	maxOccurrences := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #printing }
 GtCobolVariable >> mooseNameOn: stream [
 	parentScope
 		ifNotNil: [ parentScope mooseNameOn: stream.
@@ -156,7 +170,7 @@ GtCobolVariable >> offsets: anObject [
 	offsets := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtCobolVariable >> overlappingVariables [
 	<MSEProperty: #overlappingVariables
 		type: #GtCobolVariable
@@ -180,7 +194,7 @@ GtCobolVariable >> overlappingVariables [
 														or: [ eachOffset + each length - 1 < selfOffset ]) not ] ] ] ] ] ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 GtCobolVariable >> potentialAccesses [
 	^ self overlappingVariables flatCollect: [ :each | each incomingAccesses ]
 ]

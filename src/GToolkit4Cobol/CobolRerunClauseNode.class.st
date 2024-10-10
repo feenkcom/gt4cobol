@@ -4,23 +4,11 @@ Class {
 	#instVars : [
 		'keywords',
 		'count',
-		'_filename',
+		'fileName',
 		'name'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolRerunClauseNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolRerunClauseNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolRerunClauseNode >> acceptVisitor: aProgramVisitor [
@@ -42,6 +30,18 @@ CobolRerunClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
+]
+
+{ #category : #generated }
+CobolRerunClauseNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolRerunClauseNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -74,5 +74,5 @@ CobolRerunClauseNode >> name: aCobolIdentifierNode [
 
 { #category : #generated }
 CobolRerunClauseNode >> nodeVariables [
-	^ #(#count #_filename #name)
+	^ #(#count #fileName #name)
 ]

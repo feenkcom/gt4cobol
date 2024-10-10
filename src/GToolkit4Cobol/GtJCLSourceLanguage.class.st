@@ -1,10 +1,10 @@
 Class {
-	#name : #GtCobolSourceLanguage,
+	#name : #GtJCLSourceLanguage,
 	#superclass : #FAMIXSourceLanguage,
 	#category : #'GToolkit4Cobol-Model'
 }
 
 { #category : #accessing }
-GtCobolSourceLanguage >> gtParserClass [
-	^ CobolParser
+GtJCLSourceLanguage >> gtParserClass [
+	^ JCLParser
 ]

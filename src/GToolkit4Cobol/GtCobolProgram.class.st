@@ -4,7 +4,10 @@ Class {
 	#instVars : [
 		'mapExpressions',
 		'xctlToExpressions',
-		'xctlFromExpressions'
+		'xctlFromExpressions',
+		'transaction',
+		'jclSteps',
+		'fileDescriptors'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -96,6 +99,18 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		levelDistance: 30
 ]
 
+{ #category : #accessing }
+GtCobolProgram >> fileDescriptors [
+	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #program>
+	<multivalued>
+	^ fileDescriptors
+]
+
+{ #category : #accessing }
+GtCobolProgram >> fileDescriptors: anObject [
+	fileDescriptors value: anObject
+]
+
 { #category : #'as yet unclassified' }
 GtCobolProgram >> gtDependenciesFor: aView [
 	<gtView>
@@ -133,7 +148,27 @@ GtCobolProgram >> initialize [
 	mapExpressions := FMNullMultivalueLink
 			on: self
 			opposite: #map:
-			selector: #mapExpressions
+			selector: #mapExpressions.
+	jclSteps := FMNullMultivalueLink
+			on: self
+			opposite: #program:
+			selector: #jclSteps.
+	fileDescriptors := FMNullMultivalueLink
+			on: self
+			opposite: #program:
+			selector: #fileDescriptors
+]
+
+{ #category : #accessing }
+GtCobolProgram >> jclSteps [
+	<MSEProperty: #jclSteps type: #GtJCLStep opposite: #program>
+	<multivalued>
+	^ jclSteps
+]
+
+{ #category : #accessing }
+GtCobolProgram >> jclSteps: aCollection [
+	jclSteps value: aCollection
 ]
 
 { #category : #accessing }
@@ -146,6 +181,22 @@ GtCobolProgram >> mapExpressions [
 { #category : #accessing }
 GtCobolProgram >> mapExpressions: anObject [
 	mapExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtCobolProgram >> transaction [
+	<MSEProperty: #transaction type: #GtCICSTransaction opposite: #program>
+	^ transaction
+]
+
+{ #category : #accessing }
+GtCobolProgram >> transaction: anObject [
+	| oldValue |
+	anObject == transaction ifTrue: [ ^ self ].
+	transaction ifNotNil: [ oldValue := transaction ].
+	transaction := anObject.
+	(oldValue notNil and: [ oldValue program == self ])
+		ifTrue: [ oldValue program: nil ]
 ]
 
 { #category : #accessing }

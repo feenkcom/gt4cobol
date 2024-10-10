@@ -23,6 +23,11 @@ JCLInlinedValueNode >> input: aSmaCCToken [
 	input := aSmaCCToken
 ]
 
+{ #category : #accessing }
+JCLInlinedValueNode >> literalValue [
+	^ input source
+]
+
 { #category : #generated }
 JCLInlinedValueNode >> star [
 	^ star

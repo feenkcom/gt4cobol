@@ -8,3 +8,8 @@ Class {
 JCLValueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitValue: self
 ]
+
+{ #category : #accessing }
+JCLValueNode >> literalValue [
+	^ nil
+]

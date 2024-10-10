@@ -3,7 +3,7 @@ Class {
 	#superclass : #CobolStatementNode,
 	#instVars : [
 		'keywords',
-		'_filename',
+		'fileName',
 		'keyName',
 		'invalidKeyPhrase',
 		'notInvalidKeyPhrase',
@@ -13,18 +13,6 @@ Class {
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolReadStatementNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolReadStatementNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolReadStatementNode >> acceptVisitor: aProgramVisitor [
@@ -46,6 +34,18 @@ CobolReadStatementNode >> atEndPhrase: aCobolHandlerNode [
 { #category : #generated }
 CobolReadStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+CobolReadStatementNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolReadStatementNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -102,7 +102,7 @@ CobolReadStatementNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolReadStatementNode >> nodeVariables [
-	^ #(#_filename #keyName #invalidKeyPhrase #notInvalidKeyPhrase #atEndPhrase #notAtEndPhrase #into)
+	^ #(#fileName #keyName #invalidKeyPhrase #notInvalidKeyPhrase #atEndPhrase #notAtEndPhrase #into)
 ]
 
 { #category : #generated }

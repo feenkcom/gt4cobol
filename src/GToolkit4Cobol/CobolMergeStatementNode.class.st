@@ -3,7 +3,7 @@ Class {
 	#superclass : #CobolStatementNode,
 	#instVars : [
 		'keywords',
-		'_filename',
+		'fileName',
 		'clauses',
 		'usings',
 		'givings',
@@ -13,18 +13,6 @@ Class {
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolMergeStatementNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolMergeStatementNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolMergeStatementNode >> acceptVisitor: aProgramVisitor [
@@ -66,6 +54,18 @@ CobolMergeStatementNode >> compositeTokenVariables [
 ]
 
 { #category : #generated }
+CobolMergeStatementNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolMergeStatementNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
+]
+
+{ #category : #generated }
 CobolMergeStatementNode >> givings [
 	^ givings
 ]
@@ -99,7 +99,7 @@ CobolMergeStatementNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolMergeStatementNode >> nodeVariables [
-	^ #(#_filename #outputProcedure #outputThru)
+	^ #(#fileName #outputProcedure #outputThru)
 ]
 
 { #category : #generated }

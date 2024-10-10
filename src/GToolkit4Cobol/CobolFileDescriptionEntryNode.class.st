@@ -3,25 +3,13 @@ Class {
 	#superclass : #CobolProgramNode,
 	#instVars : [
 		'keyword',
-		'_filename',
+		'fileName',
 		'clauses',
 		'periods',
 		'entries'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolFileDescriptionEntryNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolFileDescriptionEntryNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolFileDescriptionEntryNode >> acceptVisitor: aProgramVisitor [
@@ -62,6 +50,18 @@ CobolFileDescriptionEntryNode >> entries: anOrderedCollection [
 	self setParents: self entries to: self
 ]
 
+{ #category : #generated }
+CobolFileDescriptionEntryNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolFileDescriptionEntryNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
+]
+
 { #category : #'generated-initialize-release' }
 CobolFileDescriptionEntryNode >> initialize [
 	super initialize.
@@ -82,7 +82,7 @@ CobolFileDescriptionEntryNode >> keyword: aSmaCCToken [
 
 { #category : #generated }
 CobolFileDescriptionEntryNode >> nodeVariables [
-	^ #(#_filename)
+	^ #(#fileName)
 ]
 
 { #category : #generated }

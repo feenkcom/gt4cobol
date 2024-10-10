@@ -2,24 +2,12 @@ Class {
 	#name : #CobolCloseFileNode,
 	#superclass : #CobolProgramNode,
 	#instVars : [
-		'_filename',
+		'fileName',
 		'keywords',
 		'files'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolCloseFileNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolCloseFileNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolCloseFileNode >> acceptVisitor: aProgramVisitor [
@@ -34,6 +22,18 @@ CobolCloseFileNode >> compositeNodeVariables [
 { #category : #generated }
 CobolCloseFileNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+CobolCloseFileNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolCloseFileNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #generated }
@@ -67,5 +67,5 @@ CobolCloseFileNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolCloseFileNode >> nodeVariables [
-	^ #(#_filename)
+	^ #(#fileName)
 ]

@@ -486,6 +486,11 @@ TCobolProgramNodeVisitor >> visitFile: aFile [
 ]
 
 { #category : #generated }
+TCobolProgramNodeVisitor >> visitFileControlEntry: aFileControlEntry [
+	^ self visitProgram: aFileControlEntry
+]
+
+{ #category : #generated }
 TCobolProgramNodeVisitor >> visitFileControlParagraph: aFileControlParagraph [
 	^ self visitProgram: aFileControlParagraph
 ]

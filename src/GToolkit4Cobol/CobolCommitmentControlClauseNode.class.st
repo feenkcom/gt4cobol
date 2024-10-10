@@ -3,22 +3,10 @@ Class {
 	#superclass : #CobolProgramNode,
 	#instVars : [
 		'keywords',
-		'_filename'
+		'fileName'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
-
-{ #category : #generated }
-CobolCommitmentControlClauseNode >> _filename [
-	^ _filename
-]
-
-{ #category : #generated }
-CobolCommitmentControlClauseNode >> _filename: aCobolIdentifierNode [
-	self _filename notNil ifTrue: [ self _filename parent: nil ].
-	_filename := aCobolIdentifierNode.
-	self _filename notNil ifTrue: [ self _filename parent: self ]
-]
 
 { #category : #generated }
 CobolCommitmentControlClauseNode >> acceptVisitor: aProgramVisitor [
@@ -28,6 +16,18 @@ CobolCommitmentControlClauseNode >> acceptVisitor: aProgramVisitor [
 { #category : #generated }
 CobolCommitmentControlClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
+]
+
+{ #category : #generated }
+CobolCommitmentControlClauseNode >> fileName [
+	^ fileName
+]
+
+{ #category : #generated }
+CobolCommitmentControlClauseNode >> fileName: aCobolIdentifierNode [
+	self fileName notNil ifTrue: [ self fileName parent: nil ].
+	fileName := aCobolIdentifierNode.
+	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
 { #category : #'generated-initialize-release' }
@@ -48,5 +48,5 @@ CobolCommitmentControlClauseNode >> keywords: anOrderedCollection [
 
 { #category : #generated }
 CobolCommitmentControlClauseNode >> nodeVariables [
-	^ #(#_filename)
+	^ #(#fileName)
 ]

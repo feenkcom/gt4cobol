@@ -19,6 +19,12 @@ MooseModel >> allCICSFiles [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allCICSTransactions [
+	<navigation: 'All CICS Transactions'>
+	^ self allWithType: GtCICSTransaction
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allCobolPrograms [
 	<navigation: 'All Cobol Programs'>
 	^ self allWithType: GtCobolProgram
@@ -28,4 +34,16 @@ MooseModel >> allCobolPrograms [
 MooseModel >> allCobolVariables [
 	<navigation: 'All Cobol Variables'>
 	^ self allWithType: GtCobolVariable
+]
+
+{ #category : #'*GToolkit4Cobol' }
+MooseModel >> allJCLJobs [
+	<navigation: 'All JCL Jobs'>
+	^ self allWithType: GtJCLJob
+]
+
+{ #category : #'*GToolkit4Cobol' }
+MooseModel >> allJCLSteps [
+	<navigation: 'All JCL Steps'>
+	^ self allWithType: GtJCLStep
 ]

@@ -54,6 +54,11 @@ JCLListNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
+{ #category : #accessing }
+JCLListNode >> literalValue [
+	^ parameters isEmpty ifTrue: [ values collect: #literalValue ]
+]
+
 { #category : #generated }
 JCLListNode >> otherVariables [
 	^ #(#parameters)

@@ -12,6 +12,11 @@ JCLStringNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitString: self
 ]
 
+{ #category : #accessing }
+JCLStringNode >> literalValue [
+	^ value source allButFirst allButLast copyReplaceAll: '''''' with: ''''
+]
+
 { #category : #generated }
 JCLStringNode >> tokenVariables [
 	^ #(#value)
