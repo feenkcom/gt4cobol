@@ -4,19 +4,22 @@ Class {
 	#instVars : [
 		'step',
 		'fileDescriptors',
-		'cicsFiles'
+		'cicsFiles',
+		'input'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
 
 { #category : #accessing }
 GtJCLDataDescriptor >> cicsFiles [
+	<MSEProperty: #cicsFiles type: #GtCICSFile opposite: #jclDataDescriptors>
+	<multivalued>
 	^ cicsFiles
 ]
 
 { #category : #accessing }
 GtJCLDataDescriptor >> cicsFiles: anObject [
-	cicsFiles := anObject
+	cicsFiles value: anObject
 ]
 
 { #category : #accessing }
@@ -34,7 +37,18 @@ GtJCLDataDescriptor >> fileDescriptors: anObject [
 { #category : #initialization }
 GtJCLDataDescriptor >> initialize [
 	super initialize.
-	fileDescriptors := FMMultiMultivalueLink on: self opposite: #jclDataDescriptors
+	fileDescriptors := FMMultiMultivalueLink on: self opposite: #jclDataDescriptors.
+	cicsFiles := FMMultiMultivalueLink on: self opposite: #jclDataDescriptors
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> input [
+	^ input
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> input: aString [
+	input := aString
 ]
 
 { #category : #accessing }

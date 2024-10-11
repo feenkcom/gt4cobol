@@ -37,35 +37,44 @@ CobolExecCicsStatementNode >> initialize [
 ]
 
 { #category : #testing }
-CobolExecCicsStatementNode >> isProgram [
+CobolExecCicsStatementNode >> is: aString [
 	^ items
-		anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: 'PROGRAM' ] ]
+		anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: aString ] ]
+]
+
+{ #category : #testing }
+CobolExecCicsStatementNode >> isProgram [
+	^ self is: 'PROGRAM'
+]
+
+{ #category : #testing }
+CobolExecCicsStatementNode >> isRead [
+	^ self is: 'READ'
 ]
 
 { #category : #testing }
 CobolExecCicsStatementNode >> isReceive [
-	^ items
-		anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: 'RECEIVE' ] ]
+	^ self is: 'RECEIVE'
 ]
 
 { #category : #testing }
 CobolExecCicsStatementNode >> isReceiveMapSet [
-	^ self isReceive
-		and: [ items
-				anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: 'MAPSET' ] ] ]
+	^ self isReceive and: [ self is: 'MAPSET' ]
 ]
 
 { #category : #testing }
 CobolExecCicsStatementNode >> isSend [
-	^ items
-		anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: 'SEND' ] ]
+	^ self is: 'SEND'
 ]
 
 { #category : #testing }
 CobolExecCicsStatementNode >> isSendMapSet [
-	^ self isSend
-		and: [ items
-				anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: 'MAPSET' ] ] ]
+	^ self isSend and: [ self is: 'MAPSET' ]
+]
+
+{ #category : #testing }
+CobolExecCicsStatementNode >> isWrite [
+	^ self is: 'WRITE'
 ]
 
 { #category : #generated }

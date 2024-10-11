@@ -15,7 +15,7 @@ MooseModel >> allBMSMaps [
 { #category : #'*GToolkit4Cobol' }
 MooseModel >> allCICSFiles [
 	<navigation: 'All CICS Files'>
-	^ self allWithType: GtCICSFile
+	^ GtCICSFileGroup withAll: (self allWithType: GtCICSFile)
 ]
 
 { #category : #'*GToolkit4Cobol' }

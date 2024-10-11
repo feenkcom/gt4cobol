@@ -10,7 +10,8 @@ Class {
 		'redefinesVariable',
 		'redefinedByVariables',
 		'maxOccurrences',
-		'fileDescriptors'
+		'fileDescriptors',
+		'cicsFileAccesses'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -30,6 +31,17 @@ GtCobolVariable >> addOffset: anIndex [
 						ifTrue: [ sum ]
 						ifFalse: [ each addOffset: sum.
 							sum + each totalByteSize ] ] ]
+]
+
+{ #category : #accessing }
+GtCobolVariable >> cicsFileAccesses [
+	<MSEProperty: #cicsFileAccesses type: #GtCICSFileAccess opposite: #variable>
+	^ cicsFileAccesses
+]
+
+{ #category : #accessing }
+GtCobolVariable >> cicsFileAccesses: anObject [
+	cicsFileAccesses value: anObject
 ]
 
 { #category : #accessing }
@@ -124,6 +136,10 @@ GtCobolVariable >> initialize [
 			opposite: #redefinesVariable:
 			selector: #redefinedByVariables.
 	fileDescriptors := FMMultiMultivalueLink on: self opposite: #variables.
+	cicsFileAccesses := FMNullMultivalueLink
+			on: self
+			opposite: #variable:
+			selector: #cicsFileAccesses.
 	potentialValues := Set new
 ]
 
