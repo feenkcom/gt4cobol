@@ -31,6 +31,14 @@ GtCICSFile >> datasetName: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+GtCICSFile >> gtVariablesFor: aView [
+	<gtView>
+	^ aView list 
+		title: 'Variables';
+		items: [ self variables sorted: [:a :b | a mooseName < b mooseName ] ]
+]
+
+{ #category : #'as yet unclassified' }
 GtCICSFile >> initialize [
 	super initialize.
 	jclDataDescriptors := FMMultiMultivalueLink on: self opposite: #cicsFiles.

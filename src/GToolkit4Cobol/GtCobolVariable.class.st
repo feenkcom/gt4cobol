@@ -84,6 +84,14 @@ GtCobolVariable >> fileDescriptors: anObject [
 	fileDescriptors value: anObject
 ]
 
+{ #category : #'as yet unclassified' }
+GtCobolVariable >> gtComponentsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Components';
+		items: [ self components sorted: [:a :b | a mooseName < b mooseName ] ]
+]
+
 { #category : #accessing }
 GtCobolVariable >> gtOverlappingVariablesFor: aView [
 	<gtView>
