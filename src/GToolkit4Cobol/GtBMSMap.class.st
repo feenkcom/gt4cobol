@@ -86,7 +86,7 @@ GtBMSMap >> gtMapExpressionsFor: aView [
 GtBMSMap >> gtProgramsAndScreenFor: aView [
 	<gtView>
 	^ aView mondrian
-		title: 'Programs & Screen';
+		title: 'Programs & screens';
 		painting: [ :m | GtCobolProgram paintProgramDependenciesWith: m from: {self} ]
 ]
 

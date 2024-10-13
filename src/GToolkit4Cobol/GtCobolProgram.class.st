@@ -115,7 +115,7 @@ GtCobolProgram >> fileDescriptors: anObject [
 GtCobolProgram >> gtDependenciesFor: aView [
 	<gtView>
 	^ aView forward
-		title: 'Dependencies';
+		title: 'Programs & screens';
 		priority: 10;
 		object: [ GtCobolProgramGroup with: self ];
 		view: #gtProgramDependenciesFor:

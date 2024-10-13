@@ -7,6 +7,14 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
+{ #category : #'as yet unclassified' }
+GtJCLJob >> gtStepsFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Steps';
+		items: [ self steps ]
+]
+
 { #category : #initialization }
 GtJCLJob >> initialize [
 	super initialize.
