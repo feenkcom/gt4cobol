@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-14T20:33:56.243117+02:00"
+						"dateAndTimeString" : "2024-10-14T20:34:05.227864+02:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "First, please make sure [[Downloading AWS CardDemo]]"
+				"string" : "First, please make sure you have the sources: [[Downloading AWS CardDemo]]"
 			},
 			{
 				"__type" : "textSnippet",
@@ -101,7 +101,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-03T18:26:29.396046+02:00"
+						"dateAndTimeString" : "2024-10-14T20:34:15.357767+02:00"
 					}
 				},
 				"uid" : {
@@ -111,7 +111,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Browsing the code:"
+				"string" : "You can browse the files:"
 			},
 			{
 				"__type" : "textSnippet",
@@ -143,14 +143,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-03T18:27:17.753881+02:00"
+									"dateAndTimeString" : "2024-10-14T20:36:54.872006+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "aSo4v/bfDQCnGbzzC+Z0VA=="
 							},
-							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: {\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\t\timportDirectory: 'aws-carddemo' asFileReference;\r\t\t\tmodel).\rAWSCardDemo model"
+							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\tcopyBookDirectories: {\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\timportDirectory: AWSCardDemo rootDirectory;\r\t\t\tmodel).\rAWSCardDemo model"
 						}
 					]
 				},

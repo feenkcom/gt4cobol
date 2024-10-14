@@ -46,6 +46,7 @@ AWSCardDemo class >> rootDirectory [
 ]
 
 { #category : #accessing }
-AWSCardDemo class >> rootDirectory: anObject [
-	rootDirectory := anObject
+AWSCardDemo class >> rootDirectory: aFileReference [
+	rootDirectory := aFileReference.
+	^ aFileReference
 ]
