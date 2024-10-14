@@ -8,6 +8,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-14T20:33:44.377055+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-14T20:34:05.227864+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "rotJ0NXgDQCt7JGGD+XoGg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "First, please make sure you have the sources: [[Downloading AWS CardDemo]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "pharoSnippet",
@@ -34,14 +71,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-03T18:26:48.772597+02:00"
+									"dateAndTimeString" : "2024-10-14T20:37:06.87475+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "FF/0v/bfDQCnbsPSC+Z0VA=="
 							},
-							"code" : "'aws-carddemo' asFileReference"
+							"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference"
 						}
 					]
 				},
@@ -64,7 +101,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-03T18:26:29.396046+02:00"
+						"dateAndTimeString" : "2024-10-14T20:34:15.357767+02:00"
 					}
 				},
 				"uid" : {
@@ -74,7 +111,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Browsing the code:"
+				"string" : "You can browse the files:"
 			},
 			{
 				"__type" : "textSnippet",
@@ -106,14 +143,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-03T18:27:17.753881+02:00"
+									"dateAndTimeString" : "2024-10-14T20:36:54.872006+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "aSo4v/bfDQCnGbzzC+Z0VA=="
 							},
-							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: {\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\t\timportDirectory: 'aws-carddemo' asFileReference;\r\t\t\tmodel).\rAWSCardDemo model"
+							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\tcopyBookDirectories: {\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\timportDirectory: AWSCardDemo rootDirectory;\r\t\t\tmodel).\rAWSCardDemo model"
 						}
 					]
 				},
