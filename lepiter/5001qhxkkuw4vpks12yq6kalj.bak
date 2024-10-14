@@ -8,6 +8,43 @@
 				"__type" : "textSnippet",
 				"children" : {
 					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-14T20:33:44.377055+02:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-10-14T20:33:56.243117+02:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "rotJ0NXgDQCt7JGGD+XoGg=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "First, please make sure [[Downloading AWS CardDemo]]"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
 					"items" : [
 						{
 							"__type" : "pharoSnippet",
@@ -106,14 +143,14 @@
 								"__type" : "time",
 								"time" : {
 									"__type" : "dateAndTime",
-									"dateAndTimeString" : "2024-10-03T18:26:01.202347+02:00"
+									"dateAndTimeString" : "2024-10-03T18:27:17.753881+02:00"
 								}
 							},
 							"uid" : {
 								"__type" : "uid",
 								"uidString" : "aSo4v/bfDQCnGbzzC+Z0VA=="
 							},
-							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: AWSCardDemo copyBookDirectories;\r\t\t\timportDirectory: AWSCardDemo rootDirectory;\r\t\t\tmodel).\rAWSCardDemo model"
+							"code" : "AWSCardDemo\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: {\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'};\r\t\t\timportDirectory: 'aws-carddemo' asFileReference;\r\t\t\tmodel).\rAWSCardDemo model"
 						}
 					]
 				},
