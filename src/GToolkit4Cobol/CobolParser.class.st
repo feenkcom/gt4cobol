@@ -3035,7 +3035,9 @@ CobolParser class >> cobolStylerWithExpanders: aParserClass [
 			GtSmaCCNodeStylerRule
 				nodeClassName: #CobolIdentifierNode
 				styleBlock: [ :styler :node :text | 
-					(node parentOfType: CobolProcedureDivisionNode)
+					(node
+						parentOfType: {CobolProcedureDivisionNode.
+								CobolEnvironmentDivisionNode})
 						ifNotNil: [ variables
 								at: node name source asUppercase
 								ifPresent: [ :vars | 

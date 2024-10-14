@@ -13,7 +13,10 @@ Class {
 		'maps',
 		'mapSets',
 		'jobs',
-		'cicsFiles'
+		'cicsFiles',
+		'jclSourceLanguage',
+		'bmsSourceLanguage',
+		'csdSourceLanguage'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -132,6 +135,7 @@ GtCobolImporter >> ensureVariable: node [
 			node isRedefines
 				ifTrue: [ node redefined
 						ifNotNil: [ :redef | var redefinesVariable: (self ensureVariable: redef) ] ].
+			currentFile addEntity: var.
 			var ]
 ]
 
@@ -152,7 +156,7 @@ GtCobolImporter >> hasImportDirectory [
 GtCobolImporter >> importBMSFile: aFileReference [
 	| currentMap currentMapSet |
 	currentFile := self ensureFile: aFileReference.
-	currentFile declaredSourceLanguage: GtBMSSourceLanguage new.
+	currentFile declaredSourceLanguage: bmsSourceLanguage.
 	(BMSParser parseFile: aFileReference) macros
 		do: [ :each | 
 			(each macro value sameAs: 'DFHMSD')
@@ -161,7 +165,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 							mapSetName := each name value.
 							currentMapSet := self ensureMapSet: mapSetName.
 							currentMapSet
-								declaredSourceLanguage: GtBMSSourceLanguage new;
+								declaredSourceLanguage: bmsSourceLanguage;
 								sourceAnchor: (FAMIXIndexedFileEntityAnchor
 										file: currentFile
 										startPos: each startPosition
@@ -185,7 +189,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 								startPos: each startPosition
 								endPos: each stopPosition
 								model: model);
-						declaredSourceLanguage: GtBMSSourceLanguage new;
+						declaredSourceLanguage: bmsSourceLanguage;
 						mooseModel: model ].
 			(each macro value sameAs: 'DFHMDF')
 				ifTrue: [ GtBMSField new
@@ -200,7 +204,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 								startPos: each startPosition
 								endPos: each stopPosition
 								model: model);
-						declaredSourceLanguage: GtBMSSourceLanguage new;
+						declaredSourceLanguage: bmsSourceLanguage;
 						mooseModel: model;
 						map: currentMap ] ].
 	^ currentMap
@@ -216,7 +220,7 @@ GtCobolImporter >> importCSDDefineFile: aDefineNode [
 		ifNotNil: [ :name | cicsFile datasetName: name ].
 	(aDefineNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :name | cicsFile description: name ].
-	cicsFile declaredSourceLanguage: GtCSDSourceLanguage new.
+	cicsFile declaredSourceLanguage: csdSourceLanguage.
 	cicsFile
 		sourceAnchor: (FAMIXIndexedFileEntityAnchor
 				file: currentFile
@@ -231,7 +235,7 @@ GtCobolImporter >> importCSDDefineFile: aDefineNode [
 GtCobolImporter >> importCSDFile: aFileReference [
 	| groups |
 	currentFile := self ensureFile: aFileReference.
-	currentFile declaredSourceLanguage: GtCSDSourceLanguage new.
+	currentFile declaredSourceLanguage: csdSourceLanguage.
 	groups := (CSDParser parseFileWithErrors: aFileReference) groups.
 	(groups at: 'FILE' ifAbsent: [ #() ])
 		do: [ :each | self importCSDDefineFile: each ].
@@ -265,7 +269,7 @@ GtCobolImporter >> importCSDTransaction: aNode [
 		ifNotNil: [ :name | transaction program: (self ensureProgram: name) ].
 	(aNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :name | transaction description: name ].
-	transaction declaredSourceLanguage: GtCSDSourceLanguage new.
+	transaction declaredSourceLanguage: csdSourceLanguage.
 	transaction
 		sourceAnchor: (FAMIXIndexedFileEntityAnchor
 				file: currentFile
@@ -303,7 +307,9 @@ GtCobolImporter >> importDataReferencesIn: ast [
 	ast
 		withAllNodesOfType: CobolIdentifierNode
 		do: [ :each | 
-			(each parentOfType: CobolProcedureDivisionNode)
+			(each
+				parentOfType: {CobolProcedureDivisionNode.
+						CobolEnvironmentDivisionNode})
 				ifNotNil: [ self importVariableReference: each ] ]
 ]
 
@@ -353,7 +359,8 @@ GtCobolImporter >> importFileDescriptorsIn: ast [
 					sourceAnchor: (self sourceAnchorFor: node).
 			descriptors at: descriptor name put: descriptor.
 			(node entries first attributeNamed: #entity)
-				ifNotNil: [ :entity | descriptor variables add: entity ] ].
+				ifNotNil: [ :entity | descriptor variables add: entity ].
+			currentFile addEntity: descriptor ].
 	ast
 		withAllNodesOfType: CobolFileControlEntryNode
 		do: [ :node | 
@@ -389,23 +396,24 @@ GtCobolImporter >> importFileReadWritesIn: ast [
 	ast
 		withAllNodesOfType: CobolExecCicsStatementNode
 		do: [ :node | 
-			| isRead access |
+			| isRead |
 			((isRead := node isRead) or: [ node isWrite ])
 				ifTrue: [ (node potentialValuesFor: 'DATASET')
 						do: [ :each | 
-							access := GtCICSFileAccess new
-									cicsFile: (cicsFiles
-											detect: [ :e | e name = each trim ]
-											ifNone: [ cicsFiles
-													add: (GtCICSFile new
-															name: each trim;
-															isStub: true;
-															mooseModel: model) ]);
-									paragraph: (self entityFor: node);
-									variable: (self
-											variableForNode: (node argumentFor: (isRead ifTrue: [ 'INTO' ] ifFalse: [ 'FROM' ])));
-									mooseModel: model;
-									sourceAnchor: (self sourceAnchorFor: node) ] ] ]
+							currentFile
+								addEntity: (GtCICSFileAccess new
+										cicsFile: (cicsFiles
+												detect: [ :e | e name = each trim ]
+												ifNone: [ cicsFiles
+														add: (GtCICSFile new
+																name: each trim;
+																isStub: true;
+																mooseModel: model) ]);
+										paragraph: (self entityFor: node);
+										variable: (self
+												variableForNode: (node argumentFor: (isRead ifTrue: [ 'INTO' ] ifFalse: [ 'FROM' ])));
+										mooseModel: model;
+										sourceAnchor: (self sourceAnchorFor: node)) ] ] ]
 ]
 
 { #category : #'importing-jcl' }
@@ -418,7 +426,7 @@ GtCobolImporter >> importJCLDD: aNode into: step [
 					startPos: aNode startPosition
 					endPos: aNode stopPosition
 					model: model);
-			declaredSourceLanguage: GtJCLSourceLanguage new;
+			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
 	aNode name
 		ifNotNil: [ :token | 
@@ -462,7 +470,7 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 					model: model)
 					sourceText: aNode topParent completeSource;
 					yourself);
-			declaredSourceLanguage: GtJCLSourceLanguage new;
+			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
 	aNode name ifNotNil: [ :token | step name: token source ].
 	(aNode namedParameterValueOf: 'PGM')
@@ -475,7 +483,7 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 GtCobolImporter >> importJCLFile: aFileReference [
 	| ast |
 	currentFile := self ensureFile: aFileReference.
-	currentFile declaredSourceLanguage: GtJCLSourceLanguage new.
+	currentFile declaredSourceLanguage: jclSourceLanguage.
 	ast := JCLParser parseFileWithErrors: aFileReference.
 	(ast isErrorNode or: [ ast statements anySatisfy: #isErrorNode ])
 		ifTrue: [ ^ self ].
@@ -487,7 +495,7 @@ GtCobolImporter >> importJCLFile: aFileReference [
 GtCobolImporter >> importJCLJob: aNode [
 	| job |
 	job := self ensureJCLJob: aNode name source.
-	job declaredSourceLanguage: GtJCLSourceLanguage new.
+	job declaredSourceLanguage: jclSourceLanguage.
 	job
 		sourceAnchor: (FAMIXIndexedFileEntityAnchor
 				file: currentFile
@@ -510,19 +518,22 @@ GtCobolImporter >> importMapCallsIn: ast [
 			((isReceive := each isReceiveMapSet) or: [ each isSendMapSet ])
 				ifTrue: [ targets := each potentialValuesFor: 'MAP'.
 					targets isEmpty
-						ifTrue: [ GtBMSMapExpression new
-								isReceive: isReceive;
-								program: currentProgram;
-								sourceAnchor: (self sourceAnchorFor: each);
-								mooseModel: model ]
-						ifFalse: [ targets
-								do: [ :map | 
-									GtBMSMapExpression new
+						ifTrue: [ currentFile
+								addEntity: (GtBMSMapExpression new
 										isReceive: isReceive;
 										program: currentProgram;
-										map: (self ensureMap: map);
 										sourceAnchor: (self sourceAnchorFor: each);
-										mooseModel: model ] ] ] ]
+										mooseModel: model) ]
+						ifFalse: [ targets
+								do: [ :map | 
+									currentFile
+										addEntity: (GtBMSMapExpression new
+												isReceive: isReceive;
+												program: currentProgram;
+												map: (self ensureMap: map);
+												sourceAnchor: (self sourceAnchorFor: each);
+												propertyNamed: #ast put: each;
+												mooseModel: model) ] ] ] ]
 ]
 
 { #category : #'importing-cobol' }
@@ -533,29 +544,31 @@ GtCobolImporter >> importParagraphsIn: ast [
 		withAllNodesOfType: CobolProcedureDivisionNode
 		do: [ :node | 
 			node sentences notEmpty
-				ifTrue: [ node
-						attributeNamed: #entity
-						put: (GtCobolParagraph new
-								name: ast topParent filename basenameWithoutExtension;
-								isInitial: initial;
-								container: currentProgram;
-								sourceAnchor: (self sourceAnchorFor: node);
-								mooseModel: model).
+				ifTrue: [ currentFile
+						addEntity: (node
+								attributeNamed: #entity
+								put: (GtCobolParagraph new
+										name: ast topParent filename basenameWithoutExtension;
+										isInitial: initial;
+										container: currentProgram;
+										sourceAnchor: (self sourceAnchorFor: node);
+										mooseModel: model)).
 					initial := false ] ].
 	labels := Dictionary new.
 	ast
 		withAllNodesOfType: CobolParagraphNode
 		do: [ :node | 
-			node
-				attributeNamed: #entity
-				put: (labels
-						at: node name source
-						put: (GtCobolParagraph new
-								name: node name source;
-								isInitial: initial;
-								container: currentProgram;
-								sourceAnchor: (self sourceAnchorFor: node);
-								mooseModel: model)).
+			currentFile
+				addEntity: (node
+						attributeNamed: #entity
+						put: (labels
+								at: node name source
+								put: (GtCobolParagraph new
+										name: node name source;
+										isInitial: initial;
+										container: currentProgram;
+										sourceAnchor: (self sourceAnchorFor: node);
+										mooseModel: model))).
 			initial := false ].
 	ast
 		withAllNodesOfType: CobolGoToStatementNode
@@ -570,7 +583,8 @@ GtCobolImporter >> importParagraphsIn: ast [
 						ifPresent: [ :candidate | invocation addCandidate: candidate ].
 					invocation signature: name source.
 					invocation mooseModel: model.
-					invocation sourceAnchor: (self sourceAnchorFor: goto) ] ].
+					invocation sourceAnchor: (self sourceAnchorFor: goto).
+					currentFile addEntity: invocation ] ].
 	ast
 		withAllNodesOfType: CobolPerformStatementNode
 		do: [ :perform | 
@@ -584,7 +598,8 @@ GtCobolImporter >> importParagraphsIn: ast [
 						ifPresent: [ :candidate | invocation addCandidate: candidate ].
 					invocation signature: name source.
 					invocation mooseModel: model.
-					invocation sourceAnchor: (self sourceAnchorFor: perform) ] ]
+					invocation sourceAnchor: (self sourceAnchorFor: perform).
+					currentFile addEntity: invocation ] ]
 				value: perform procedureName;
 				value: perform thru ]
 ]
@@ -603,12 +618,13 @@ GtCobolImporter >> importVariableReference: idNode [
 							ifNone: [  ] ] ].
 	var ifNil: [ ^ self ].
 	idNode attributeNamed: #referenceTo put: var.
-	FAMIXAccess new
-		from: ((self entityFor: idNode)
-				ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
-		to: var;
-		sourceAnchor: (self sourceAnchorFor: idNode);
-		mooseModel: model
+	currentFile
+		addEntity: (FAMIXAccess new
+				from: ((self entityFor: idNode)
+						ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
+				to: var;
+				sourceAnchor: (self sourceAnchorFor: idNode);
+				mooseModel: model)
 ]
 
 { #category : #'importing-cobol' }
@@ -617,16 +633,18 @@ GtCobolImporter >> importXctlCallsIn: ast [
 		do: [ :each | 
 			| targets |
 			targets := each xctlPrograms.
-			targets isEmpty
-				ifTrue: [ GtCobolCicsXctlExpression new
-						fromProgram: currentProgram;
-						sourceAnchor: (self sourceAnchorFor: each);
-						mooseModel: model ]
-				ifFalse: [ GtCobolCicsXctlExpression new
-						fromProgram: currentProgram;
-						toPrograms: (targets collect: [ :program | self ensureProgram: program ]);
-						sourceAnchor: (self sourceAnchorFor: each);
-						mooseModel: model ] ]
+			currentFile
+				addEntity: (targets isEmpty
+						ifTrue: [ GtCobolCicsXctlExpression new
+								fromProgram: currentProgram;
+								sourceAnchor: (self sourceAnchorFor: each);
+								mooseModel: model ]
+						ifFalse: [ GtCobolCicsXctlExpression new
+								fromProgram: currentProgram;
+								toPrograms: (targets collect: [ :program | self ensureProgram: program ]);
+								sourceAnchor: (self sourceAnchorFor: each);
+								propertyNamed: #ast put: each;
+								mooseModel: model ]) ]
 ]
 
 { #category : #'initialize-release' }
@@ -636,7 +654,10 @@ GtCobolImporter >> initialize [
 	files := Dictionary new.
 	copyBookDirectories := #().
 	model := MooseModel new.
-	model sourceLanguage: GtCobolSourceLanguage new.
+	model sourceLanguage: (GtCobolSourceLanguage new mooseModel: model).
+	jclSourceLanguage := GtJCLSourceLanguage new mooseModel: model.
+	bmsSourceLanguage := GtBMSSourceLanguage new mooseModel: model.
+	csdSourceLanguage := GtCSDSourceLanguage new mooseModel: model.
 	programs := Dictionary new.
 	variables := Dictionary new.
 	maps := Dictionary new.
