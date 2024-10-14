@@ -122,6 +122,7 @@ GtCobolImporter >> ensureVariable: node [
 			(variables at: var name asUppercase ifAbsentPut: [ OrderedCollection new ])
 				add: var.
 			currentProgram addGlobalVariable: var.
+			var gtInspectButtonPosition: node stopPosition.
 			end := var sourceAnchor endPos.
 			components
 				do: [ :each | 
@@ -357,6 +358,7 @@ GtCobolImporter >> importFileDescriptorsIn: ast [
 					program: currentProgram;
 					mooseModel: model;
 					sourceAnchor: (self sourceAnchorFor: node).
+			descriptor gtInspectButtonPosition: node fileName stopPosition.
 			descriptors at: descriptor name put: descriptor.
 			(node entries first attributeNamed: #entity)
 				ifNotNil: [ :entity | descriptor variables add: entity ].
@@ -544,31 +546,32 @@ GtCobolImporter >> importParagraphsIn: ast [
 		withAllNodesOfType: CobolProcedureDivisionNode
 		do: [ :node | 
 			node sentences notEmpty
-				ifTrue: [ currentFile
-						addEntity: (node
-								attributeNamed: #entity
-								put: (GtCobolParagraph new
-										name: ast topParent filename basenameWithoutExtension;
-										isInitial: initial;
-										container: currentProgram;
-										sourceAnchor: (self sourceAnchorFor: node);
-										mooseModel: model)).
+				ifTrue: [ | paragraph |
+					paragraph := GtCobolParagraph new
+							name: ast topParent filename basenameWithoutExtension;
+							isInitial: initial;
+							container: currentProgram;
+							sourceAnchor: (self sourceAnchorFor: node);
+							mooseModel: model.
+					paragraph gtInspectButtonPosition: node keywords second stopPosition.
+					node attributeNamed: #entity put: paragraph.
+					currentFile addEntity: paragraph.
 					initial := false ] ].
 	labels := Dictionary new.
 	ast
 		withAllNodesOfType: CobolParagraphNode
 		do: [ :node | 
-			currentFile
-				addEntity: (node
-						attributeNamed: #entity
-						put: (labels
-								at: node name source
-								put: (GtCobolParagraph new
-										name: node name source;
-										isInitial: initial;
-										container: currentProgram;
-										sourceAnchor: (self sourceAnchorFor: node);
-										mooseModel: model))).
+			| paragraph |
+			paragraph := GtCobolParagraph new
+					name: node name source;
+					isInitial: initial;
+					container: currentProgram;
+					sourceAnchor: (self sourceAnchorFor: node);
+					mooseModel: model.
+			paragraph gtInspectButtonPosition: node name stopPosition.
+			labels at: node name source put: paragraph.
+			node attributeNamed: #entity put: paragraph.
+			currentFile addEntity: paragraph.
 			initial := false ].
 	ast
 		withAllNodesOfType: CobolGoToStatementNode

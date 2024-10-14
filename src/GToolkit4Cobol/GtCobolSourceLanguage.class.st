@@ -7,6 +7,7 @@ Class {
 { #category : #private }
 GtCobolSourceLanguage >> addExpanderFor: association in: text [
 	| to |
+	(association isKindOf: FAMIXAssociation) ifFalse: [ ^ self ].
 	to := (association isKindOf: GtBMSMapExpression)
 			ifTrue: [ association map ]
 			ifFalse: [ association to ].
@@ -38,6 +39,28 @@ GtCobolSourceLanguage >> addExpanderFor: association in: text [
 							pane addChild: view asElement matchParent ] ])
 ]
 
+{ #category : #private }
+GtCobolSourceLanguage >> addInspectButtonFor: anEntity in: text [
+	| pos |
+	((anEntity isKindOf: FAMIXSourcedEntity) and: [ anEntity sourceAnchor notNil ])
+		ifFalse: [ ^ self ].
+	pos := anEntity gtInspectButtonPosition.
+	(text from: pos to: pos)
+		attribute: (GtButtonAttribute new
+				beAppend;
+				stencil: [ | button |
+					button := BrButton new.
+					button
+						aptitude: (BrLazyStyleCommonAptitude new
+								default: [ :aStyle | aStyle background: BrGlamorousColors defaultButtonBorderColor ];
+								hovered: [ :aStyle | aStyle background: BrGlamorousColors hoveredButtonBorderColor ]);
+						size: 8 @ 8;
+						geometry: BlEllipseGeometry new;
+						margin: (BlInsets left: 2 right: 2);
+						action: [ :aButtonElement :aButtonModel :anEvent | button phlow spawnObject: anEntity ];
+						yourself ])
+]
+
 { #category : #accessing }
 GtCobolSourceLanguage >> gtParserClass [
 	^ CobolParser
@@ -49,10 +72,13 @@ GtCobolSourceLanguage >> gtStylerFor: anEntity [
 	(anEntity mooseModel isNil or: [ anEntity containerFiles size ~= 1 ])
 		ifTrue: [ ^ super gtStyler ].
 	rules := {GtSmaCCNodeStylerRule
-				nodeClassName: #CobolFileNode
+				nodeClassName: #SmaCCParseNode
 				styleBlock: [ :styler :node :text | 
-					anEntity containerFiles first entities
-						do: [ :each | (each isKindOf: FAMIXAssociation) ifTrue: [ self addExpanderFor: each in: text ] ] ]}.
+					node parent
+						ifNil: [ anEntity containerFiles first entities
+								do: [ :each | 
+									self addInspectButtonFor: each in: text.
+									self addExpanderFor: each in: text ] ] ]}.
 	rules do: [ :each | each continueOnMatch: true ].
 	^ (GtCompositeSmaCCASTStyler forParser: CobolParser)
 		stylers: {CobolParser cobolStyler: CobolParser.
