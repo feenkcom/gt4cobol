@@ -11,7 +11,8 @@ Class {
 		'redefinedByVariables',
 		'maxOccurrences',
 		'fileDescriptors',
-		'cicsFileAccesses'
+		'cicsFileAccesses',
+		'conditions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -57,6 +58,18 @@ GtCobolVariable >> components: anObject [
 ]
 
 { #category : #accessing }
+GtCobolVariable >> conditions [
+	<MSEProperty: #conditions type: #GtCobolCondition opposite: #variable>
+	<multivalued>
+	^ conditions
+]
+
+{ #category : #accessing }
+GtCobolVariable >> conditions: anObject [
+	conditions value: anObject
+]
+
+{ #category : #accessing }
 GtCobolVariable >> container [
 	<MSEProperty: #container type: #GtCobolVariable opposite: #components>
 	<container>
@@ -84,7 +97,7 @@ GtCobolVariable >> fileDescriptors: anObject [
 	fileDescriptors value: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtCobolVariable >> gtComponentsFor: aView [
 	<gtView>
 	^ aView list
@@ -148,7 +161,11 @@ GtCobolVariable >> initialize [
 			on: self
 			opposite: #variable:
 			selector: #cicsFileAccesses.
-	potentialValues := Set new
+	potentialValues := Set new.
+	conditions := FMNullMultivalueLink
+			on: self
+			opposite: #variable:
+			selector: #conditions
 ]
 
 { #category : #accessing }
@@ -220,7 +237,12 @@ GtCobolVariable >> overlappingVariables [
 
 { #category : #accessing }
 GtCobolVariable >> potentialAccesses [
-	^ self overlappingVariables flatCollect: [ :each | each incomingAccesses ]
+	| vars accesses |
+	vars := self overlappingVariables.
+	accesses := vars flatCollect: #incomingAccesses.
+	accesses
+		addAll: (vars flatCollect: [ :each | each conditions flatCollect: #incomingAccesses ]).
+	^ accesses
 ]
 
 { #category : #accessing }

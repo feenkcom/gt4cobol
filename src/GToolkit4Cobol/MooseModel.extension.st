@@ -25,6 +25,12 @@ MooseModel >> allCICSTransactions [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allCobolConditions [
+	<navigation: 'All Cobol Conditions'>
+	^ self allWithType: GtCobolCondition
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allCobolPrograms [
 	<navigation: 'All Cobol Programs'>
 	^ self allWithType: GtCobolProgram

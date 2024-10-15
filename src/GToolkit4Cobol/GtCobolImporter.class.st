@@ -31,6 +31,28 @@ GtCobolImporter >> copyBookDirectories: anObject [
 	copyBookDirectories := anObject
 ]
 
+{ #category : #'importing-cobol' }
+GtCobolImporter >> ensureCondition: node [
+	^ node
+		attributeNamed: #entity
+		ifAbsentPut: [ | cond index |
+			index := node parent entries identityIndexOf: node.
+			[ index := index - 1.
+			(node parent entries at: index) isKindOf: CobolDataDescriptionEntryNode ]
+				whileFalse.
+			cond := GtCobolCondition new
+					name: node dataName;
+					variable: ((node parent entries at: index) attributeNamed: #entity);
+					sourceAnchor: (self sourceAnchorFor: node);
+					mooseModel: model.
+			node attributeNamed: #entity put: cond.
+			(variables at: cond name asUppercase ifAbsentPut: [ OrderedCollection new ])
+				add: cond.
+			currentProgram addGlobalVariable: cond.
+			currentFile addEntity: cond.
+			cond ]
+]
+
 { #category : #private }
 GtCobolImporter >> ensureFile: aFileReference [
 	| filename |
@@ -294,6 +316,9 @@ GtCobolImporter >> importDataIn: ast [
 				ifNil: [ var isRedefines
 						ifFalse: [ var addOffset: index.
 							index := index + var totalByteSize ] ] ].
+	ast
+		withAllNodesOfType: CobolDataDescription88EntryNode
+		do: [ :node | self ensureCondition: node ].
 	ast
 		withAllNodesOfType: CobolDataDescriptionEntryNode
 		do: [ :node | 
