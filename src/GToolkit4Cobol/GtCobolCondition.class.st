@@ -17,6 +17,15 @@ GtCobolCondition >> gtPotentialAccessesFor: aView [
 ]
 
 { #category : #'as yet unclassified' }
+GtCobolCondition >> gtPotentialWriteAccessesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Write accesses';
+		object: [ self potentialAccesses select: #isWrite ];
+		view: #gtItemsFor:
+]
+
+{ #category : #'as yet unclassified' }
 GtCobolCondition >> potentialAccesses [
 	^ variable potentialAccesses
 ]

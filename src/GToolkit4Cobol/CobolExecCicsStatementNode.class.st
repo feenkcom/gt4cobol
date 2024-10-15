@@ -118,6 +118,18 @@ CobolExecCicsStatementNode >> potentialValuesFor: aString [
 	^ #()
 ]
 
+{ #category : #testing }
+CobolExecCicsStatementNode >> writesIdentifier: anIdentifierNode [
+	self isReceiveMapSet
+		ifTrue: [ #('INTO' 'RESP' 'RESP2')
+				do: [ :each | 
+					((self argumentFor: each)
+						ifNil: [ false ]
+						ifNotNil: [ :node | anIdentifierNode isDescendantFrom: node ])
+						ifTrue: [ ^ true ] ] ].
+	^ super writesIdentifier: anIdentifierNode
+]
+
 { #category : #accessing }
 CobolExecCicsStatementNode >> xctlPrograms [
 	^ self potentialValuesFor: 'PROGRAM'
