@@ -142,6 +142,15 @@ GtCobolVariable >> gtPotentialAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
+{ #category : #accessing }
+GtCobolVariable >> gtPotentialWriteAccessesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Write accesses';
+		object: [ self potentialAccesses select: [ :each | each isWrite ] ];
+		view: #gtItemsFor:
+]
+
 { #category : #initialization }
 GtCobolVariable >> initialize [
 	super initialize.

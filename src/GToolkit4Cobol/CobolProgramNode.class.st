@@ -45,6 +45,11 @@ CobolProgramNode >> hasKeyword: aString [
 	^ self keywords anySatisfy: [ :each | each value sameAs: aString ]
 ]
 
+{ #category : #testing }
+CobolProgramNode >> isVariableWritten: idNode [
+	^ parent ifNil: [ false ] ifNotNil: [ parent isVariableWritten: idNode ]
+]
+
 { #category : #accessing }
 CobolProgramNode >> variables [
 	^ self topParent

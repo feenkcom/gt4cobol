@@ -626,7 +626,7 @@ GtCobolImporter >> importParagraphsIn: ast [
 						ifPresent: [ :candidate | invocation addCandidate: candidate ].
 					invocation signature: name source.
 					invocation mooseModel: model.
-					invocation sourceAnchor: (self sourceAnchorFor: perform).
+					invocation sourceAnchor: (self sourceAnchorFor: name).
 					currentFile addEntity: invocation ] ]
 				value: perform procedureName;
 				value: perform thru ]
@@ -652,7 +652,13 @@ GtCobolImporter >> importVariableReference: idNode [
 						ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
 				to: var;
 				isWrite: idNode isWritten;
-				sourceAnchor: (self sourceAnchorFor: idNode);
+				sourceAnchor: ((GtCobolSourceFileAnchor
+						file: currentFile
+						startPos: idNode name startPosition
+						endPos: idNode name stopPosition
+						model: model)
+						sourceText: idNode topParent completeSource;
+						yourself);
 				mooseModel: model)
 ]
 

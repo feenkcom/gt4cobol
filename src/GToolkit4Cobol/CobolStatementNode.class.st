@@ -10,6 +10,11 @@ CobolStatementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #testing }
+CobolStatementNode >> isVariableWritten: idNode [
+	^ self writesIdentifier: idNode
+]
+
+{ #category : #testing }
 CobolStatementNode >> writesIdentifier: anIdentifierNode [
 	^ false
 ]

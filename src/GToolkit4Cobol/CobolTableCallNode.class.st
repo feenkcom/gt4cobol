@@ -39,6 +39,11 @@ CobolTableCallNode >> initialize [
 	subscripts := OrderedCollection new: 2.
 ]
 
+{ #category : #'as yet unclassified' }
+CobolTableCallNode >> isVariableWritten: idNode [
+	^ (idNode isDescendantFrom: name) and: [ super isVariableWritten: idNode ]
+]
+
 { #category : #generated }
 CobolTableCallNode >> left [
 	^ left

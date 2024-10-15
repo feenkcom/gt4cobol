@@ -14,9 +14,7 @@ CobolIdentifierNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #testing }
 CobolIdentifierNode >> isWritten [
-	^ (self parentOfType: CobolStatementNode)
-		ifNil: [ false ]
-		ifNotNil: [ :statement | statement writesIdentifier: self ]
+	^ self isVariableWritten: self
 ]
 
 { #category : #generated }
