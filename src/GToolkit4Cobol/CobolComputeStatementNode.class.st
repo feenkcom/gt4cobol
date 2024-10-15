@@ -111,3 +111,8 @@ CobolComputeStatementNode >> value: aCobolExpressionNode [
 	value := aCobolExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
+
+{ #category : #testing }
+CobolComputeStatementNode >> writesIdentifier: anIdentifierNode [
+	^ lhses anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

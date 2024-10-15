@@ -651,6 +651,7 @@ GtCobolImporter >> importVariableReference: idNode [
 				from: ((self entityFor: idNode)
 						ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
 				to: var;
+				isWrite: idNode isWritten;
 				sourceAnchor: (self sourceAnchorFor: idNode);
 				mooseModel: model)
 ]

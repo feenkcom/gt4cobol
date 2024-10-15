@@ -130,3 +130,8 @@ CobolReadStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 	self notInvalidKeyPhrase notNil
 		ifTrue: [ self notInvalidKeyPhrase parent: self ]
 ]
+
+{ #category : #testing }
+CobolReadStatementNode >> writesIdentifier: anIdentifierNode [
+	^ into notNil and: [ anIdentifierNode isDescendantFrom: into ]
+]

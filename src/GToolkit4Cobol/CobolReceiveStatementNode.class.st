@@ -78,3 +78,9 @@ CobolReceiveStatementNode >> statement: aCobolProgramNode [
 	statement := aCobolProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
+
+{ #category : #'as yet unclassified' }
+CobolReceiveStatementNode >> writesIdentifier: anIdentifierNode [
+	^ (statement isKindOf: CobolReceiveIntoStatementNode)
+		and: [ anIdentifierNode isDescendantFrom: statement ]
+]

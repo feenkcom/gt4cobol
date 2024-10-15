@@ -91,3 +91,8 @@ CobolAcceptStatementNode >> onExceptionClause: aCobolHandlerNode [
 	onExceptionClause := aCobolHandlerNode.
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: self ]
 ]
+
+{ #category : #'as yet unclassified' }
+CobolAcceptStatementNode >> writesIdentifier: anIdentifierNode [
+	^ anIdentifierNode isDescendantFrom: accept
+]

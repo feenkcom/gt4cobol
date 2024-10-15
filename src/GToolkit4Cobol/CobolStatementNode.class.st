@@ -8,3 +8,8 @@ Class {
 CobolStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatement: self
 ]
+
+{ #category : #testing }
+CobolStatementNode >> writesIdentifier: anIdentifierNode [
+	^ false
+]

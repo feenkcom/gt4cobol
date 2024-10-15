@@ -135,3 +135,8 @@ CobolSubtractStatementNode >> vars: anOrderedCollection [
 	vars := anOrderedCollection.
 	self setParents: self vars to: self
 ]
+
+{ #category : #testing }
+CobolSubtractStatementNode >> writesIdentifier: anIdentifierNode [
+	^ vars anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

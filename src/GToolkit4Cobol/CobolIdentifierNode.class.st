@@ -12,6 +12,13 @@ CobolIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]
 
+{ #category : #testing }
+CobolIdentifierNode >> isWritten [
+	^ (self parentOfType: CobolStatementNode)
+		ifNil: [ false ]
+		ifNotNil: [ :statement | statement writesIdentifier: self ]
+]
+
 { #category : #generated }
 CobolIdentifierNode >> name [
 	^ name

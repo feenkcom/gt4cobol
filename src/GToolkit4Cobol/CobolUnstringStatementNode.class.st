@@ -165,3 +165,8 @@ CobolUnstringStatementNode >> unstring: aCobolExpressionNode [
 	unstring := aCobolExpressionNode.
 	self unstring notNil ifTrue: [ self unstring parent: self ]
 ]
+
+{ #category : #testing }
+CobolUnstringStatementNode >> writesIdentifier: anIdentifierNode [
+	^ intos anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

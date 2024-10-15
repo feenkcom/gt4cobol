@@ -65,3 +65,8 @@ CobolSetStatementNode >> values: anOrderedCollection [
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
+
+{ #category : #testing }
+CobolSetStatementNode >> writesIdentifier: anIdentifierNode [
+	^ sets anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

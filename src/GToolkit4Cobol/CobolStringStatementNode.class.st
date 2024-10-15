@@ -150,3 +150,8 @@ CobolStringStatementNode >> strings: anOrderedCollection [
 	strings := anOrderedCollection.
 	self setParents: self strings to: self
 ]
+
+{ #category : #testing }
+CobolStringStatementNode >> writesIdentifier: anIdentifierNode [
+	^ into notNil and: [ anIdentifierNode isDescendantFrom: into ]
+]

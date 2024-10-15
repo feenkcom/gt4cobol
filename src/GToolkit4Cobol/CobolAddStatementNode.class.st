@@ -110,3 +110,8 @@ CobolAddStatementNode >> tos: anOrderedCollection [
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
 ]
+
+{ #category : #testing }
+CobolAddStatementNode >> writesIdentifier: anIdentifierNode [
+	^ tos anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

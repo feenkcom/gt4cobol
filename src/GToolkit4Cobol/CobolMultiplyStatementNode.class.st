@@ -108,3 +108,8 @@ CobolMultiplyStatementNode >> vars: anOrderedCollection [
 	vars := anOrderedCollection.
 	self setParents: self vars to: self
 ]
+
+{ #category : #testing }
+CobolMultiplyStatementNode >> writesIdentifier: anIdentifierNode [
+	^ vars anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

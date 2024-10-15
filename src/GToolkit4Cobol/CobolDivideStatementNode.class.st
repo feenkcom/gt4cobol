@@ -135,3 +135,8 @@ CobolDivideStatementNode >> remainder: aCobolExpressionNode [
 	remainder := aCobolExpressionNode.
 	self remainder notNil ifTrue: [ self remainder parent: self ]
 ]
+
+{ #category : #testing }
+CobolDivideStatementNode >> writesIdentifier: anIdentifierNode [
+	^ intos anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]

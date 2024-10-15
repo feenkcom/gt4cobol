@@ -151,3 +151,8 @@ CobolInspectStatementNode >> tallyings: anOrderedCollection [
 	tallyings := anOrderedCollection.
 	self setParents: self tallyings to: self
 ]
+
+{ #category : #testing }
+CobolInspectStatementNode >> writesIdentifier: anIdentifierNode [
+	^ anIdentifierNode isDescendantFrom: _inspect
+]

@@ -65,3 +65,8 @@ CobolInitializeStatementNode >> replacings: anOrderedCollection [
 	replacings := anOrderedCollection.
 	self setParents: self replacings to: self
 ]
+
+{ #category : #testing }
+CobolInitializeStatementNode >> writesIdentifier: anIdentifierNode [
+	^ initializes anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
+]
