@@ -4,63 +4,6 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
-{ #category : #private }
-GtCobolSourceLanguage >> addExpanderFor: association in: text [
-	| to |
-	(association isKindOf: FAMIXAssociation) ifFalse: [ ^ self ].
-	to := (association isKindOf: GtBMSMapExpression)
-			ifTrue: [ association map ]
-			ifFalse: [ association to ].
-	((to isKindOf: Collection) and: [ to size = 1 ]) ifTrue: [ to := to anyOne ].
-	(to isNil or: [ association sourceAnchor isNil ]) ifTrue: [ ^ self ].
-	(text from: association sourceAnchor endPos to: association sourceAnchor endPos)
-		attribute: (BrGlamorousTriangleExpanderTextAttribute new
-				attributesCreatingBlock: [ BrTextAdornmentDynamicAttribute new
-						beAppend;
-						stencil: [ | pane view |
-							pane := BrVerticalPane new
-									height: 300;
-									aptitude: BrShadowAptitude
-											+ (BrGlamorousWithVerticalResizerAptitude new
-													beBottom;
-													yourself);
-									background: Color white;
-									margin: (BlInsets all: 10);
-									constraintsDo: [ :c | 
-										c textFlow pushLine.
-										c horizontal matchParent ].
-							view := (to isKindOf: GtBMSMap)
-									ifTrue: [ to gtScreenFor: GtPhlowProtoView new ]
-									ifFalse: [ (to isKindOf: FAMIXSourcedEntity)
-											ifTrue: [ to gtSourceFor: GtPhlowProtoView new ]
-											ifFalse: [ (to isKindOf: Collection)
-													ifTrue: [ to gtItemsFor: GtPhlowProtoView new ]
-													ifFalse: [ to gtRawFor: GtPhlowProtoView new ] ] ].
-							pane addChild: view asElement matchParent ] ])
-]
-
-{ #category : #private }
-GtCobolSourceLanguage >> addInspectButtonFor: anEntity in: text [
-	| pos |
-	((anEntity isKindOf: FAMIXSourcedEntity) and: [ anEntity sourceAnchor notNil ])
-		ifFalse: [ ^ self ].
-	pos := anEntity gtInspectButtonPosition.
-	(text from: pos to: pos)
-		attribute: (GtButtonAttribute new
-				beAppend;
-				stencil: [ | button |
-					button := BrButton new.
-					button
-						aptitude: (BrLazyStyleCommonAptitude new
-								default: [ :aStyle | aStyle background: BrGlamorousColors defaultButtonBorderColor ];
-								hovered: [ :aStyle | aStyle background: BrGlamorousColors hoveredButtonBorderColor ]);
-						size: 8 @ 8;
-						geometry: BlEllipseGeometry new;
-						margin: (BlInsets left: 2 right: 2);
-						action: [ :aButtonElement :aButtonModel :anEvent | button phlow spawnObject: anEntity ];
-						yourself ])
-]
-
 { #category : #accessing }
 GtCobolSourceLanguage >> gtParserClass [
 	^ CobolParser
@@ -80,7 +23,7 @@ GtCobolSourceLanguage >> gtStylerFor: anEntity [
 									self addInspectButtonFor: each in: text.
 									self addExpanderFor: each in: text ] ] ]}.
 	rules do: [ :each | each continueOnMatch: true ].
-	^ (GtCompositeSmaCCASTStyler forParser: CobolParser)
-		stylers: {CobolParser cobolStyler: CobolParser.
-				(GtSmaCCParserStyler forParser: CobolParser) stylerRules: rules}
+	^ (GtCompositeSmaCCASTStyler forParser: self gtParserClass)
+		stylers: {self gtParserClass cobolStyler: self gtParserClass.
+				(GtSmaCCParserStyler forParser: self gtParserClass) stylerRules: rules}
 ]

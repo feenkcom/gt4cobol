@@ -13,7 +13,7 @@ Class {
 	#category : #'GToolkit4Cobol-Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtBMSMap >> asElement [
 	| editor |
 	editor := BrEditor new
@@ -61,7 +61,12 @@ GtBMSMap >> fields: anObject [
 	fields value: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
+GtBMSMap >> gtCobolExpanderView [
+	^ self gtScreenFor: GtPhlowProtoView new
+]
+
+{ #category : #views }
 GtBMSMap >> gtFieldsFor: aView [
 	<gtView>
 	^ aView columnedList 
@@ -72,7 +77,7 @@ GtBMSMap >> gtFieldsFor: aView [
 		column: 'Y' text: #y
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtBMSMap >> gtMapExpressionsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -82,7 +87,7 @@ GtBMSMap >> gtMapExpressionsFor: aView [
 		column: 'To' text: #to
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtBMSMap >> gtProgramsAndScreenFor: aView [
 	<gtView>
 	^ aView mondrian
@@ -90,7 +95,7 @@ GtBMSMap >> gtProgramsAndScreenFor: aView [
 		painting: [ :m | GtCobolProgram paintProgramDependenciesWith: m from: {self} ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #views }
 GtBMSMap >> gtScreenFor: aView [
 	<gtView>
 	^ aView explicit

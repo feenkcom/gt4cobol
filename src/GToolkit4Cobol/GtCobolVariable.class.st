@@ -143,6 +143,15 @@ GtCobolVariable >> gtPotentialAccessesFor: aView [
 ]
 
 { #category : #accessing }
+GtCobolVariable >> gtPotentialReadAccessesFor: aView [
+	<gtView>
+	^ aView forward
+		title: 'Read accesses';
+		object: [ self potentialAccesses reject: [ :each | each isWrite ] ];
+		view: #gtItemsFor:
+]
+
+{ #category : #accessing }
 GtCobolVariable >> gtPotentialWriteAccessesFor: aView [
 	<gtView>
 	^ aView forward

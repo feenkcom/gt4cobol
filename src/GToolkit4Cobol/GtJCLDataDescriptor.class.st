@@ -3,42 +3,37 @@ Class {
 	#superclass : #FAMIXNamedEntity,
 	#instVars : [
 		'step',
-		'fileDescriptors',
 		'cicsFiles',
-		'input'
+		'input',
+		'assigns',
+		'jclFileReferences'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
 
 { #category : #accessing }
-GtJCLDataDescriptor >> cicsFiles [
-	<MSEProperty: #cicsFiles type: #GtCICSFile opposite: #jclDataDescriptors>
+GtJCLDataDescriptor >> assigns [
+	<MSEProperty: #assigns type: #GtCobolAssignFile opposite: #jclDataDescriptor>
 	<multivalued>
-	^ cicsFiles
+	^ assigns
 ]
 
 { #category : #accessing }
-GtJCLDataDescriptor >> cicsFiles: anObject [
-	cicsFiles value: anObject
-]
-
-{ #category : #accessing }
-GtJCLDataDescriptor >> fileDescriptors [
-	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #jclDataDescriptors>
-	<multivalued>
-	^ fileDescriptors
-]
-
-{ #category : #accessing }
-GtJCLDataDescriptor >> fileDescriptors: anObject [
-	fileDescriptors value: anObject
+GtJCLDataDescriptor >> assigns: anObject [
+	assigns value: anObject
 ]
 
 { #category : #initialization }
 GtJCLDataDescriptor >> initialize [
 	super initialize.
-	fileDescriptors := FMMultiMultivalueLink on: self opposite: #jclDataDescriptors.
-	cicsFiles := FMMultiMultivalueLink on: self opposite: #jclDataDescriptors
+	assigns := FMNullMultivalueLink
+			on: self
+			opposite: #jclDataDescriptor:
+			selector: #assigns.
+	jclFileReferences := FMNullMultivalueLink
+			on: self
+			opposite: #jclDataDescriptor:
+			selector: #jclFileReferences
 ]
 
 { #category : #accessing }
@@ -49,6 +44,18 @@ GtJCLDataDescriptor >> input [
 { #category : #accessing }
 GtJCLDataDescriptor >> input: aString [
 	input := aString
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> jclFileReferences [
+	<MSEProperty: #jclFileReferences type: #GtJCLFileReference opposite: #jclDataDescriptor>
+	<multivalued>
+	^ jclFileReferences
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> jclFileReferences: anObject [
+	jclFileReferences value: anObject
 ]
 
 { #category : #accessing }

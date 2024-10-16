@@ -63,6 +63,11 @@ CobolExecCicsStatementNode >> isReceiveMapSet [
 ]
 
 { #category : #testing }
+CobolExecCicsStatementNode >> isRewrite [
+	^ self is: 'REWRITE'
+]
+
+{ #category : #testing }
 CobolExecCicsStatementNode >> isSend [
 	^ self is: 'SEND'
 ]
@@ -120,13 +125,12 @@ CobolExecCicsStatementNode >> potentialValuesFor: aString [
 
 { #category : #testing }
 CobolExecCicsStatementNode >> writesIdentifier: anIdentifierNode [
-	self isReceiveMapSet
-		ifTrue: [ #('INTO' 'RESP' 'RESP2')
-				do: [ :each | 
-					((self argumentFor: each)
-						ifNil: [ false ]
-						ifNotNil: [ :node | anIdentifierNode isDescendantFrom: node ])
-						ifTrue: [ ^ true ] ] ].
+	#('INTO' 'RESP' 'RESP2')
+		do: [ :each | 
+			((self argumentFor: each)
+				ifNil: [ false ]
+				ifNotNil: [ :node | anIdentifierNode isDescendantFrom: node ])
+				ifTrue: [ ^ true ] ].
 	^ super writesIdentifier: anIdentifierNode
 ]
 

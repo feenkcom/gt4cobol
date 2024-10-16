@@ -3,41 +3,32 @@ Class {
 	#superclass : #FAMIXNamedEntity,
 	#instVars : [
 		'program',
-		'dataSetNames',
 		'variables',
-		'jclDataDescriptors'
+		'assigns'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
 
 { #category : #accessing }
-GtCobolFileDescriptor >> dataSetNames [
-	^ dataSetNames
+GtCobolFileDescriptor >> assigns [
+	<MSEProperty: #assigns type: #GtCobolAssignFile opposite: #fileDescriptor>
+	<multivalued>
+	^ assigns
 ]
 
 { #category : #accessing }
-GtCobolFileDescriptor >> dataSetNames: anObject [
-	dataSetNames := anObject
+GtCobolFileDescriptor >> assigns: anObject [
+	assigns value: anObject
 ]
 
 { #category : #'as yet unclassified' }
 GtCobolFileDescriptor >> initialize [
 	super initialize.
-	dataSetNames := Set new.
 	variables := FMMultiMultivalueLink on: self opposite: #fileDescriptors.
-	jclDataDescriptors := FMMultiMultivalueLink on: self opposite: #fileDescriptors
-]
-
-{ #category : #accessing }
-GtCobolFileDescriptor >> jclDataDescriptors [
-	<MSEProperty: #jclDataDescriptors type: #GtJCLDataDescriptor opposite: #fileDescriptors>
-	<multivalued>
-	^ jclDataDescriptors
-]
-
-{ #category : #accessing }
-GtCobolFileDescriptor >> jclDataDescriptors: anObject [
-	jclDataDescriptors value: anObject
+	assigns := FMNullMultivalueLink
+			on: self
+			opposite: #fileDescriptor:
+			selector: #assigns
 ]
 
 { #category : #accessing }

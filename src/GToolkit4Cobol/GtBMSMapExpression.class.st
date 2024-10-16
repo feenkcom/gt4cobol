@@ -10,11 +10,16 @@ Class {
 }
 
 { #category : #accessing }
+GtBMSMapExpression >> expandTo [
+	^ map
+]
+
+{ #category : #accessing }
 GtBMSMapExpression >> from [
 	^ isReceive ifTrue: [ self map ] ifFalse: [ self program ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #view }
 GtBMSMapExpression >> gtScreenFor: aView [
 	<gtView>
 	map ifNil: [ ^ aView empty ].

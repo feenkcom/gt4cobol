@@ -1,6 +1,11 @@
 Extension { #name : #FAMIXSourcedEntity }
 
 { #category : #'*GToolkit4Cobol' }
+FAMIXSourcedEntity >> gtCobolExpanderView [
+	^ self gtSourceFor: GtPhlowProtoView new
+]
+
+{ #category : #'*GToolkit4Cobol' }
 FAMIXSourcedEntity >> gtInspectButtonPosition [
 	^ self privateState
 		attributeAt: #inspectButtonPosition

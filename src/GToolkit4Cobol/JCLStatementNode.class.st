@@ -82,6 +82,12 @@ JCLStatementNode >> name: aSmaCCToken [
 ]
 
 { #category : #'as yet unclassified' }
+JCLStatementNode >> namedParameterNodeOf: aString [
+	parameters do: [ :each | each key source = aString ifTrue: [ ^ each value ] ].
+	^ nil
+]
+
+{ #category : #'as yet unclassified' }
 JCLStatementNode >> namedParameterValueOf: aString [
 	parameters
 		do: [ :each | each key source = aString ifTrue: [ ^ each value literalValue ] ].

@@ -16,7 +16,8 @@ Class {
 		'cicsFiles',
 		'jclSourceLanguage',
 		'bmsSourceLanguage',
-		'csdSourceLanguage'
+		'csdSourceLanguage',
+		'finishActions'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -168,6 +169,11 @@ GtCobolImporter >> entityFor: aNode [
 		detect: [ :each | (each attributeNamed: #entity) notNil ]
 		ifFound: [ :each | each attributeNamed: #entity ]
 		ifNone: [  ]
+]
+
+{ #category : #importing }
+GtCobolImporter >> finishImport [
+	finishActions do: [ :each | each value ]
 ]
 
 { #category : #testing }
@@ -345,7 +351,8 @@ GtCobolImporter >> importDirectory: aDirectory [
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
 	(CSDParser sourceFilesIn: aDirectory) do: [ :each | self importCSDFile: each ].
 	(CobolParser sourceFilesIn: aDirectory) do: [ :each | self importFile: each ].
-	(JCLParser sourceFilesIn: aDirectory) do: [ :each | self importJCLFile: each ]
+	(JCLParser sourceFilesIn: aDirectory) do: [ :each | self importJCLFile: each ].
+	self finishImport
 ]
 
 { #category : #'importing-cobol' }
@@ -396,7 +403,9 @@ GtCobolImporter >> importFileDescriptorsIn: ast [
 				ifPresent: [ :d | 
 					node
 						allNodesOfType: CobolAssignClauseNode
-						do: [ :each | each assignment ifNotNil: [ d dataSetNames add: each assignment source ] ] ] ]
+						do: [ :each | 
+							each assignment
+								ifNotNil: [ finishActions add: [ self linkFileDescriptor: d toJCLDD: each ] ] ] ] ]
 ]
 
 { #category : #'importing-cobol' }
@@ -455,33 +464,54 @@ GtCobolImporter >> importJCLDD: aNode into: step [
 					model: model);
 			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
+	currentFile addEntity: dd.
 	aNode name
+		ifNil: [ dd gtInspectButtonPosition: aNode operation stopPosition ]
 		ifNotNil: [ :token | 
 			dd name: token source.
-			step program
-				ifNotNil: [ :program | 
-					dd
-						fileDescriptors: (program fileDescriptors select: [ :each | each dataSetNames includes: dd name ]) ] ].
+			dd gtInspectButtonPosition: token stopPosition ].
 	(aNode values at: 1 ifAbsent: [  ])
 		ifNotNil: [ :each | (each isKindOf: JCLInlinedValueNode) ifTrue: [ dd input: each literalValue ] ].
-	(aNode namedParameterValueOf: 'DSN')
-		ifNotNil: [ :dsn | 
-			| found |
-			found := false.
-			cicsFiles
-				do: [ :each | 
-					each datasetName = dsn
-						ifTrue: [ found := true.
-							each jclDataDescriptors add: dd ] ].
-			found
-				ifFalse: [ | cicsFile |
-					cicsFile := GtCICSFile new
-							name: dsn;
-							datasetName: dsn;
-							isStub: true;
-							mooseModel: model.
-					cicsFile jclDataDescriptors add: dd.
-					cicsFiles add: cicsFile ] ]
+	(aNode namedParameterNodeOf: 'DSN')
+		ifNotNil: [ :dsnNode | 
+			dsnNode literalValue
+				ifNotNil: [ :dsn | 
+					| found |
+					found := false.
+					cicsFiles
+						do: [ :each | 
+							each datasetName = dsn
+								ifTrue: [ found := true.
+									currentFile
+										addEntity: (GtJCLFileReference new
+												cicsFile: each;
+												jclDataDescriptor: dd;
+												sourceAnchor: (FAMIXIndexedFileEntityAnchor
+														file: currentFile
+														startPos: dsnNode startPosition
+														endPos: dsnNode stopPosition
+														model: model);
+												declaredSourceLanguage: jclSourceLanguage;
+												mooseModel: model) ] ].
+					found
+						ifFalse: [ | cicsFile |
+							cicsFile := GtCICSFile new
+									name: dsn;
+									datasetName: dsn;
+									isStub: true;
+									mooseModel: model.
+							currentFile
+								addEntity: (GtJCLFileReference new
+										cicsFile: cicsFile;
+										jclDataDescriptor: dd;
+										sourceAnchor: (FAMIXIndexedFileEntityAnchor
+												file: currentFile
+												startPos: dsnNode startPosition
+												endPos: dsnNode stopPosition
+												model: model);
+										declaredSourceLanguage: jclSourceLanguage;
+										mooseModel: model).
+							cicsFiles add: cicsFile ] ] ]
 ]
 
 { #category : #'importing-jcl' }
@@ -499,7 +529,12 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 					yourself);
 			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
-	aNode name ifNotNil: [ :token | step name: token source ].
+	currentFile addEntity: step.
+	aNode name
+		ifNil: [ step gtInspectButtonPosition: aNode operation stopPosition ]
+		ifNotNil: [ :token | 
+			step name: token source.
+			step gtInspectButtonPosition: token stopPosition ].
 	(aNode namedParameterValueOf: 'PGM')
 		ifNotNil: [ :program | step program: (self ensureProgram: program) ].
 	aNode components
@@ -530,6 +565,8 @@ GtCobolImporter >> importJCLJob: aNode [
 				endPos: aNode stopPosition
 				model: model).
 	job mooseModel: model.
+	job gtInspectButtonPosition: aNode name stopPosition.
+	currentFile addEntity: job.
 	aNode components
 		do: [ :each | each isEXEC ifTrue: [ self importJCLExec: each into: job ] ].
 	(aNode positionalParameterValueOf: 1)
@@ -698,7 +735,8 @@ GtCobolImporter >> initialize [
 	maps := Dictionary new.
 	mapSets := Dictionary new.
 	jobs := Dictionary new.
-	cicsFiles := OrderedCollection new
+	cicsFiles := OrderedCollection new.
+	finishActions := OrderedCollection new
 ]
 
 { #category : #testing }
@@ -711,6 +749,22 @@ GtCobolImporter >> is: var inContainers: aCollection [
 				ifTrue: [ index := index + 1 ].
 			current := current container ].
 	^ index > aCollection size
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> linkFileDescriptor: fileDescriptor toJCLDD: assignmentNode [
+	fileDescriptor program jclSteps
+		do: [ :step | 
+			step dataDescriptors
+				do: [ :dd | 
+					dd name = assignmentNode assignment source
+						ifTrue: [ currentFile := fileDescriptor containerFiles first.
+							currentFile
+								addEntity: (GtCobolAssignFile new
+										fileDescriptor: fileDescriptor;
+										jclDataDescriptor: dd;
+										sourceAnchor: (self sourceAnchorFor: assignmentNode);
+										mooseModel: model) ] ] ]
 ]
 
 { #category : #accessing }

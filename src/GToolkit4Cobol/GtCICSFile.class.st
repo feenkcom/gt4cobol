@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'datasetName',
 		'jclDataDescriptors',
-		'cicsFileAccesses'
+		'cicsFileAccesses',
+		'jclFileReferences'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -41,7 +42,10 @@ GtCICSFile >> gtVariablesFor: aView [
 { #category : #'as yet unclassified' }
 GtCICSFile >> initialize [
 	super initialize.
-	jclDataDescriptors := FMMultiMultivalueLink on: self opposite: #cicsFiles.
+	jclFileReferences := FMNullMultivalueLink
+			on: self
+			opposite: #cicsFile:
+			selector: #jclFileReferences.
 	cicsFileAccesses := FMNullMultivalueLink
 			on: self
 			opposite: #cicsFile:
@@ -49,15 +53,15 @@ GtCICSFile >> initialize [
 ]
 
 { #category : #accessing }
-GtCICSFile >> jclDataDescriptors [
-	<MSEProperty: #jclDataDescriptors type: #GtJCLDataDescriptor opposite: #cicsFiles>
+GtCICSFile >> jclFileReferences [
+	<MSEProperty: #jclFileReferences type: #GtJCLFileReference opposite: #cicsFile>
 	<multivalued>
-	^ jclDataDescriptors
+	^ jclFileReferences
 ]
 
 { #category : #accessing }
-GtCICSFile >> jclDataDescriptors: anObject [
-	jclDataDescriptors := anObject
+GtCICSFile >> jclFileReferences: anObject [
+	jclFileReferences value: anObject
 ]
 
 { #category : #'as yet unclassified' }
@@ -73,8 +77,10 @@ GtCICSFile >> variables [
 	<MSEProperty: #variables type: #GtCobolVariable>
 	<derived>
 	| vars |
-	vars := self jclDataDescriptors
-			flatCollectAsSet: [ :each | each fileDescriptors flatCollect: #variables ].
+	vars := self jclFileReferences
+			flatCollectAsSet: [ :each | 
+				each jclDataDescriptor assigns
+					flatCollect: [ :assign | assign fileDescriptor variables ] ].
 	self cicsFileAccesses
 		do: [ :each | each variable ifNotNil: [ vars add: each variable ] ].
 	^ vars
