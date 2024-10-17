@@ -4,9 +4,20 @@ Class {
 	#category : #'GToolkit4Cobol-JCL-Parser'
 }
 
+{ #category : #'generated-initialization' }
+JCLScanner class >> initializeKeywordMap [
+	keywordMap := Dictionary new.
+	#(#(7 'PEND' 6) #(7 'PROC' 5) #(8 'PEND' 6) #(8 'PROC' 5))
+		do: [ :each | 
+			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
+				at: (each at: 2)
+				put: each last ].
+	^ keywordMap
+]
+
 { #category : #generated }
 JCLScanner >> emptySymbolTokenId [
-	^ 34
+	^ 39
 ]
 
 { #category : #private }
@@ -21,7 +32,7 @@ JCLScanner >> endOfInput [
 
 { #category : #generated }
 JCLScanner >> errorTokenId [
-	^ 35
+	^ 40
 ]
 
 { #category : #'initialize-release' }
@@ -55,7 +66,7 @@ JCLScanner >> inputCharacter [
 
 { #category : #generated }
 JCLScanner >> inputId [
-	^ 33
+	^ 38
 ]
 
 { #category : #generated }
@@ -65,7 +76,7 @@ JCLScanner >> keywordFor: aString [
 
 { #category : #generated }
 JCLScanner >> nameId [
-	^ 6
+	^ 8
 ]
 
 { #category : #'initialize-release' }
@@ -80,21 +91,21 @@ JCLScanner >> scan1 [
 	currentCharacter == Character cr ifTrue: [ ^ self scan1X10 ].
 	currentCharacter == $& ifTrue: [ ^ self scan1X4 ].
 	currentCharacter == $' ifTrue: [ ^ self scan2 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(12) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(13) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(14) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(15) ].
 	^ self scan1X11
 ]
 
 { #category : #generated }
 JCLScanner >> scan1X1 [
-	[ self recordMatch: #(6 7).
+	[ self recordMatch: #(8 9).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	((currentCharacter between: $# and: $$)
 		or: [ currentCharacter == $.
 				or: [ (currentCharacter between: $@ and: $Z)
 						or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(6).
+		ifTrue: [ [ self recordMatch: #(8).
 			self step.
 			(currentCharacter between: $# and: $$)
 				or: [ currentCharacter == $.
@@ -117,7 +128,7 @@ JCLScanner >> scan1X11 [
 	currentCharacter == $* ifTrue: [ ^ self scan1X3 ].
 	currentCharacter == $, ifTrue: [ ^ self scan1X7 ].
 	currentCharacter == $. ifTrue: [ ^ self scan1X5 ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(10) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(12) ].
 	currentCharacter isDigit ifTrue: [ ^ self scan1X2 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
 		ifTrue: [ ^ self scan1X9 ].
@@ -130,14 +141,14 @@ JCLScanner >> scan1X11 [
 
 { #category : #generated }
 JCLScanner >> scan1X2 [
-	[ self recordMatch: #(6 7).
+	[ self recordMatch: #(8 9).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan1X1 ].
 	currentCharacter isDigit ] whileTrue.
 	((currentCharacter between: $# and: $$)
 		or: [ (currentCharacter between: $@ and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ [ self recordMatch: #(6).
+		ifTrue: [ [ self recordMatch: #(8).
 			self step.
 			(currentCharacter between: $# and: $$)
 				or: [ currentCharacter == $.
@@ -149,7 +160,7 @@ JCLScanner >> scan1X2 [
 
 { #category : #generated }
 JCLScanner >> scan1X3 [
-	self recordMatch: #(9).
+	self recordMatch: #(11).
 	self step.
 	currentCharacter == $.
 		ifTrue: [ self step.
@@ -158,7 +169,7 @@ JCLScanner >> scan1X3 [
 						or: [ (currentCharacter between: $0 and: $9)
 								or: [ (currentCharacter between: $@ and: $Z)
 										or: [ currentCharacter between: $a and: $z ] ] ] ])
-				ifTrue: [ [ self recordMatch: #(15).
+				ifTrue: [ [ self recordMatch: #(17).
 					self step.
 					(currentCharacter between: $# and: $$)
 						or: [ currentCharacter == $.
@@ -176,7 +187,7 @@ JCLScanner >> scan1X4 [
 				or: [ (currentCharacter between: $0 and: $9)
 						or: [ (currentCharacter between: $@ and: $Z)
 								or: [ currentCharacter between: $a and: $z ] ] ] ])
-		ifTrue: [ [ self recordMatch: #(14).
+		ifTrue: [ [ self recordMatch: #(16).
 			self step.
 			(currentCharacter between: $# and: $$)
 				or: [ currentCharacter == $.
@@ -188,7 +199,7 @@ JCLScanner >> scan1X4 [
 
 { #category : #generated }
 JCLScanner >> scan1X5 [
-	[ self recordMatch: #(6).
+	[ self recordMatch: #(8).
 	self step.
 	(currentCharacter between: $# and: $$)
 		or: [ currentCharacter == $.
@@ -200,7 +211,7 @@ JCLScanner >> scan1X5 [
 
 { #category : #generated }
 JCLScanner >> scan1X6 [
-	[ self recordMatch: #(5 6).
+	[ self recordMatch: #(7 8).
 	self step.
 	(currentCharacter between: $# and: $$)
 		or: [ currentCharacter == $.
@@ -211,7 +222,7 @@ JCLScanner >> scan1X6 [
 
 { #category : #generated }
 JCLScanner >> scan1X7 [
-	self recordMatch: #(11).
+	self recordMatch: #(13).
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self scan3 ].
 	currentCharacter == Character cr ifTrue: [ ^ self scan5 ].
@@ -227,10 +238,10 @@ JCLScanner >> scan1X7 [
 JCLScanner >> scan1X8 [
 	self step.
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(7).
+		ifTrue: [ [ self recordMatch: #(9).
 			self step.
 			currentCharacter == $.
-				ifTrue: [ [ self recordMatch: #(7).
+				ifTrue: [ [ self recordMatch: #(9).
 					self step.
 					currentCharacter isDigit ] whileTrue.
 					^ self reportLastMatch ].
@@ -251,7 +262,7 @@ JCLScanner >> scan1X9 [
 JCLScanner >> scan2 [
 	[ self step.
 	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(8).
+		ifTrue: [ self recordMatch: #(10).
 			self step.
 			currentCharacter == $' ifTrue: [ ^ self scan2 ].
 			^ self reportLastMatch ].
@@ -271,7 +282,7 @@ JCLScanner >> scan4 [
 	currentCharacter == $/
 		ifTrue: [ self step.
 			currentCharacter == Character space
-				ifTrue: [ [ self recordMatch: #(11).
+				ifTrue: [ [ self recordMatch: #(13).
 					self step.
 					currentCharacter == Character space ] whileTrue ] ].
 	^ self reportLastMatch
@@ -289,21 +300,21 @@ JCLScanner >> scan5 [
 JCLScanner >> scanForToken [
 	scope == #star
 		ifTrue: [ self step.
-			^ self recordAndReportMatch: #(16) ].
+			^ self recordAndReportMatch: #(18) ].
 	scope == #startOfLine
 		ifTrue: [ self step.
 			currentCharacter == $/
 				ifTrue: [ self step.
 					currentCharacter == $*
-						ifTrue: [ [ self recordMatch: #(18).
+						ifTrue: [ [ self recordMatch: #(20).
 							self step.
 							currentCharacter == Character lf
-								ifTrue: [ ^ self recordAndReportMatch: #(18) ].
+								ifTrue: [ ^ self recordAndReportMatch: #(20) ].
 							currentCharacter == Character cr
-								ifTrue: [ self recordMatch: #(18).
+								ifTrue: [ self recordMatch: #(20).
 									self step.
 									currentCharacter == Character lf
-										ifTrue: [ ^ self recordAndReportMatch: #(18) ].
+										ifTrue: [ ^ self recordAndReportMatch: #(20) ].
 									^ self reportLastMatch ].
 							currentCharacter == Character space ] whileTrue.
 							^ self reportLastMatch ].
@@ -315,7 +326,7 @@ JCLScanner >> scanForToken [
 									currentCharacter == Character space ] whileTrue.
 									(currentCharacter == Character lf
 										or: [ currentCharacter == Character cr ])
-										ifTrue: [ [ self recordMatch: #(17).
+										ifTrue: [ [ self recordMatch: #(19).
 											self step.
 											true ] whileTrue ].
 									^ self reportLastMatch ].
@@ -333,7 +344,7 @@ JCLScanner >> scanForToken [
 									true ] whileTrue ].
 							(currentCharacter == Character lf
 								or: [ currentCharacter == Character cr ])
-								ifTrue: [ [ self recordMatch: #(17).
+								ifTrue: [ [ self recordMatch: #(19).
 									self step.
 									true ] whileTrue ] ] ].
 			^ self reportLastMatch ].
@@ -353,12 +364,12 @@ JCLScanner >> statementName [
 
 { #category : #generated }
 JCLScanner >> statementNameId [
-	^ 5
+	^ 7
 ]
 
 { #category : #generated }
 JCLScanner >> tokenActions [
-	^ #(nil nil #whitespace #comment #statementName nil nil nil nil nil nil nil nil nil nil #inputCharacter #endOfFile #endOfInput)
+	^ #(nil nil #whitespace #comment nil nil #statementName nil nil nil nil nil nil nil nil nil nil #inputCharacter #endOfFile #endOfInput)
 ]
 
 { #category : #generated }

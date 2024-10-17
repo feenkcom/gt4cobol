@@ -36,6 +36,11 @@ TJCLProgramNodeVisitor >> visitNumber: aNumber [
 ]
 
 { #category : #generated }
+TJCLProgramNodeVisitor >> visitProcStatement: aProcStatement [
+	^ self visitStatement: aProcStatement
+]
+
+{ #category : #generated }
 TJCLProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]

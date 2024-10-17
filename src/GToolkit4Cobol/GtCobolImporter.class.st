@@ -637,8 +637,9 @@ GtCobolImporter >> importJCLJob: aNode [
 	currentFile addEntity: job.
 	aNode components
 		do: [ :each | each isEXEC ifTrue: [ self importJCLExec: each into: job ] ].
-	(aNode positionalParameterValueOf: 1)
-		ifNotNil: [ :name | job description: name ]
+	aNode values notEmpty
+		ifTrue: [ (aNode positionalParameterValueOf: aNode values size)
+				ifNotNil: [ :name | job description: name ] ]
 ]
 
 { #category : #'importing-cobol' }

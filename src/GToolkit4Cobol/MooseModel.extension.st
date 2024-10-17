@@ -45,11 +45,11 @@ MooseModel >> allCobolVariables [
 { #category : #'*GToolkit4Cobol' }
 MooseModel >> allJCLJobs [
 	<navigation: 'All JCL Jobs'>
-	^ self allWithType: GtJCLJob
+	^ GtJCLJobGroup withAll: (self allWithType: GtJCLJob)
 ]
 
 { #category : #'*GToolkit4Cobol' }
 MooseModel >> allJCLSteps [
 	<navigation: 'All JCL Steps'>
-	^ self allWithType: GtJCLStep
+	^ GtJCLStepGroup withAll: (self allWithType: GtJCLStep)
 ]

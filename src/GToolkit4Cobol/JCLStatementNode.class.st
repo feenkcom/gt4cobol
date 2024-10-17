@@ -71,6 +71,11 @@ JCLStatementNode >> isJOB [
 	^ self operationName = 'JOB'
 ]
 
+{ #category : #testing }
+JCLStatementNode >> isPROC [
+	^ self operationName = 'PROC'
+]
+
 { #category : #generated }
 JCLStatementNode >> name [
 	^ name
@@ -81,13 +86,13 @@ JCLStatementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 JCLStatementNode >> namedParameterNodeOf: aString [
 	parameters do: [ :each | each key source = aString ifTrue: [ ^ each value ] ].
 	^ nil
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 JCLStatementNode >> namedParameterValueOf: aString [
 	parameters
 		do: [ :each | each key source = aString ifTrue: [ ^ each value literalValue ] ].
@@ -137,7 +142,7 @@ JCLStatementNode >> parameters: anOrderedCollection [
 	self setParent: self parameters to: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #accessing }
 JCLStatementNode >> positionalParameterValueOf: anInteger [
 	^ values size >= anInteger ifTrue: [ (values at: anInteger) literalValue ]
 ]

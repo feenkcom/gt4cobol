@@ -7,13 +7,13 @@ Class {
 { #category : #generated }
 JCLParser class >> ambiguousTransitions [
 ^#(
-#[ 0 30 0 121]
+#[ 0 38 0 157]
 	).
 ]
 
 { #category : #'generated-accessing' }
 JCLParser class >> cacheId [
-	^'2024-10-09T12:43:41.925357-05:00'
+	^'2024-10-17T14:28:00.593095-05:00'
 ]
 
 { #category : #generated }
@@ -22,12 +22,12 @@ JCLParser class >> definitionComment [
 
 %glr;
 
-
 %id <statementName> <input> <name>;
 %root Program;
 %prefix JCL;
 %suffix Node;
 %hierarchy Value (InlinedValue List Name Number String);
+%hierarchy Statement (ProcStatement);
 startOfLine <slashSlash>
 	: \/\/
 	;
@@ -42,6 +42,12 @@ startOfLine <comment>
 	;
 <id>
 	: [a-z\#\$\@] [a-z\#\$\@0-9\.]*
+	;
+default <proc>
+	: proc
+	;
+default <pend>
+	: pend
 	;
 default <statementName>
 	: <id>
@@ -84,17 +90,28 @@ startOfLine <endOfFile>
 	;
 startOfLine <endOfInput>
 	: \/ \* [\ ]* <eol>?
-	;File 
+	;
+File 
 	: Statement 'statement'+ {{}}
 	;
 Statement
-	: StatementWithoutEOL SwitchToStartOfLine <eol> {{}}
+	: StatementWithoutEOL SwitchToStartOfLine <eol> ['1']
 	;
 SwitchToStartOfLine
 	: [self scope: #startOfLine. nil]
 	;
 StatementWithoutEOL	# currently just a limited subset of statements supported
-	: SwitchToDefault <slashSlash> 'slashes' <statementName> 'name'? <name> 'operation' Parameters
+	: SwitchToDefault <slashSlash> 'slashes' <statementName> 'name'? <name> 'operation' Parameters {{Statement}}
+	| ProcStatement
+	;
+ProcStatement
+	: ProcHeader Statement 'statement'+ ProcEnd 'statement' {{ProcStatement}}
+	;
+ProcEnd
+	: SwitchToDefault <slashSlash> 'slashes' <pend> 'operation' Parameters {{Statement}}
+	;
+ProcHeader
+	: SwitchToDefault <slashSlash> 'slashes' <statementName> 'name'? <proc> 'operation' Parameters SwitchToStartOfLine<eol>
 	;
 Parameters
 	: PositionalParameters
@@ -140,6 +157,11 @@ JCLParser class >> fileExtension [
 ]
 
 { #category : #accessing }
+JCLParser class >> fileExtensions [
+	^ #('.jcl' '.prc')
+]
+
+{ #category : #accessing }
 JCLParser class >> jclStyler: aParserClass [
 	<smaccStyler: #JCLParser priority: 10>
 	| rules variables |
@@ -172,34 +194,39 @@ JCLParser class >> jclStyler: aParserClass [
 { #category : #generated }
 JCLParser class >> reduceTable [
 ^#(
-	#(32 0 #reduceActionForSwitchToDefault1: 2110465 true) 
-	#(20 1 #reduceActionForFile1: 913409 false) 
-	#(21 1 #reduceActionForStatement__statement__1: 922625 false) 
-	#(23 0 #reduceActionForSwitchToStartOfLine1: 1022977 true) 
-	#(21 2 #reduceActionForStatement__statement__2: 922626 false) 
-	#(22 3 #reduceActionForStatement1: 954369 false) 
-	#(25 0 #reduceActionForParameters4: 1263620 false) 
-	#(30 0 #reduceActionForSwitchToStar1: 1991681 true) 
-	#(29 1 #reduceActionForValue3: 1696771 false) 
-	#(29 1 #reduceActionForValue1: 1696769 false) 
-	#(29 1 #reduceActionForValue2: 1696770 false) 
-	#(29 1 #reduceActionForValue3: 1696773 false) 
-	#(29 1 #reduceActionForValue3: 1696774 false) 
-	#(24 4 #reduceActionForStatementWithoutEOL1: 1082369 false) 
-	#(25 1 #reduceActionForParameters3: 1263619 false) 
-	#(26 1 #reduceActionForKeywordParameters1: 1382401 false) 
-	#(25 1 #reduceActionForParameters1: 1263617 false) 
-	#(28 1 #reduceActionForPositionalParameters1: 1595393 false) 
-	#(29 1 #liftFirstValue: 1696775 false) 
-	#(24 5 #reduceActionForStatementWithoutEOL2: 1082370 false) 
-	#(29 2 #reduceActionForValue4: 1696772 false) 
-	#(31 2 #reduceActionForList1: 2036737 false) 
-	#(27 3 #reduceActionForKeywordParameter1: 1520641 false) 
-	#(31 3 #reduceActionForList2: 2036738 false) 
-	#(26 3 #reduceActionForKeywordParameters2: 1382402 false) 
-	#(25 3 #reduceActionForParameters2: 1263618 false) 
-	#(28 3 #reduceActionForPositionalParameters2: 1595394 false) 
-	#(29 4 #reduceActionForValue8: 1696776 false)
+	#(37 0 #reduceActionForSwitchToDefault1: 2567169 true) 
+	#(22 1 #reduceActionForFile1: 1005569 false) 
+	#(23 1 #reduceActionForStatement__statement__1: 1014785 false) 
+	#(25 0 #reduceActionForSwitchToStartOfLine1: 1116161 true) 
+	#(26 1 #liftFirstValue: 1175555 false) 
+	#(23 2 #reduceActionForStatement__statement__2: 1014786 false) 
+	#(24 3 #liftFirstValue: 1046529 true) 
+	#(27 3 #reduceActionForProcStatement1: 1388545 false) 
+	#(30 0 #reduceActionForParameters4: 1720324 false) 
+	#(35 0 #reduceActionForSwitchToStar1: 2448385 true) 
+	#(34 1 #reduceActionForValue3: 2153475 false) 
+	#(34 1 #reduceActionForValue1: 2153473 false) 
+	#(34 1 #reduceActionForValue2: 2153474 false) 
+	#(34 1 #reduceActionForValue3: 2153477 false) 
+	#(34 1 #reduceActionForValue3: 2153478 false) 
+	#(30 1 #reduceActionForParameters3: 1720323 false) 
+	#(31 1 #reduceActionForKeywordParameters1: 1839105 false) 
+	#(30 1 #reduceActionForParameters1: 1720321 false) 
+	#(33 1 #reduceActionForPositionalParameters1: 2052097 false) 
+	#(34 1 #liftFirstValue: 2153479 false) 
+	#(26 4 #reduceActionForStatementWithoutEOL1: 1175553 false) 
+	#(34 2 #reduceActionForValue4: 2153476 false) 
+	#(36 2 #reduceActionForList1: 2493441 false) 
+	#(26 5 #reduceActionForStatementWithoutEOL2: 1175554 false) 
+	#(28 4 #reduceActionForStatementWithoutEOL1: 1482753 false) 
+	#(32 3 #reduceActionForKeywordParameter1: 1977345 false) 
+	#(36 3 #reduceActionForList2: 2493442 false) 
+	#(29 6 #reduceActionForProcHeader1: 1582081 false) 
+	#(31 3 #reduceActionForKeywordParameters2: 1839106 false) 
+	#(30 3 #reduceActionForParameters2: 1720322 false) 
+	#(33 3 #reduceActionForPositionalParameters2: 2052098 false) 
+	#(34 4 #reduceActionForValue8: 2153480 false) 
+	#(29 7 #reduceActionForProcHeader2: 1582082 false)
 	).
 ]
 
@@ -215,60 +242,76 @@ JCLParser class >> startingStateForFile [
 
 { #category : #generated }
 JCLParser class >> symbolNames [
-	^ #('<slashSlash>' '<eol>' '<whitespace>' '<comment>' '<statementName>' '<name>' '<number>' '<string>' '<star>' '<equals>' '<separator>' '<leftParen>' '<rightParen>' '<symbolicName>' '<starName>' '<inputCharacter>' '<endOfFile>' '<endOfInput>' 'B e g i n' 'File' 'Statement ''statement''+' 'Statement' 'SwitchToStartOfLine' 'StatementWithoutEOL' 'Parameters' 'KeywordParameters' 'KeywordParameter' 'PositionalParameters' 'Value' 'SwitchToStar' 'List' 'SwitchToDefault' '<input>' 'E O F' 'error')
+	^ #('<slashSlash>' '<eol>' '<whitespace>' '<comment>' '<proc>' '<pend>' '<statementName>' '<name>' '<number>' '<string>' '<star>' '<equals>' '<separator>' '<leftParen>' '<rightParen>' '<symbolicName>' '<starName>' '<inputCharacter>' '<endOfFile>' '<endOfInput>' 'B e g i n' 'File' 'Statement ''statement''+' 'Statement' 'SwitchToStartOfLine' 'StatementWithoutEOL' 'ProcStatement' 'ProcEnd' 'ProcHeader' 'Parameters' 'KeywordParameters' 'KeywordParameter' 'PositionalParameters' 'Value' 'SwitchToStar' 'List' 'SwitchToDefault' '<input>' 'E O F' 'error')
 ]
 
 { #category : #generated }
 JCLParser class >> symbolTypes [
-	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JCLFileNode #JCLFileNode #OrderedCollection #JCLStatementNode nil #OrderedCollection #OrderedCollection #OrderedCollection #JCLKeywordParameterNode #OrderedCollection #JCLValueNode nil #JCLListNode nil #SmaCCToken #SmaCCToken #SmaCCErrorNode)
+	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JCLFileNode #JCLFileNode #OrderedCollection #JCLStatementNode nil #JCLStatementNode #JCLProcStatementNode #JCLStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #JCLKeywordParameterNode #OrderedCollection #JCLValueNode nil #JCLListNode nil #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
 { #category : #generated }
 JCLParser class >> transitionTable [
 ^#(
-#[1 0 6 0 1 0 9 0 20 0 13 0 21 0 17 0 22 0 21 0 24 0 25 0 32] 
-#[0 0 0 0 34] 
-#[1 0 6 0 1 0 29 0 22 0 21 0 24 0 25 0 32 0 10 0 34] 
-#[0 0 14 0 1 0 34] 
-#[1 0 18 0 2 0 33 0 23] 
-#[0 0 37 0 1] 
-#[0 0 22 0 1 0 34] 
-#[0 0 41 0 2] 
-#[1 0 45 0 5 0 49 0 6] 
-#[0 0 26 0 1 0 34] 
-#[0 0 53 0 6] 
-#[1 0 30 0 2 0 57 0 6 0 61 0 7 0 65 0 8 0 34 0 9 0 69 0 12 0 73 0 14 0 77 0 15 0 81 0 25 0 85 0 26 0 89 0 27 0 93 0 28 0 97 0 29 0 101 0 30 0 97 0 31] 
-#[1 0 30 0 2 0 57 0 6 0 61 0 7 0 65 0 8 0 34 0 9 0 69 0 12 0 73 0 14 0 77 0 15 0 109 0 25 0 85 0 26 0 89 0 27 0 93 0 28 0 97 0 29 0 101 0 30 0 97 0 31] 
-#[1 0 38 0 2 0 113 0 10 0 38 0 11 0 69 0 12 0 38 0 13 0 117 0 31] 
-#[0 0 42 0 2 0 11 0 13] 
-#[0 0 46 0 2 0 11 0 13] 
-#[1 0 57 0 6 0 61 0 7 0 65 0 8 0 34 0 9 0 69 0 12 0 7 0 13 0 73 0 14 0 77 0 15 0 125 0 25 0 85 0 26 0 89 0 27 0 93 0 28 0 97 0 29 0 101 0 30 0 97 0 31] 
-#[0 0 50 0 2 0 11 0 13] 
-#[0 0 54 0 2 0 11 0 13] 
-#[0 0 58 0 2] 
-#[1 0 62 0 2 0 129 0 11 0 62 0 13] 
-#[0 0 66 0 2 0 11 0 13] 
-#[1 0 70 0 2 0 133 0 11 0 70 0 13] 
-#[0 0 74 0 2 0 11 0 13] 
-#[0 0 137 0 9] 
-#[0 0 78 0 2 0 11 0 13] 
-#[0 0 82 0 2] 
-#[1 0 141 0 6 0 61 0 7 0 65 0 8 0 34 0 9 0 69 0 12 0 73 0 14 0 77 0 15 0 145 0 29 0 101 0 30 0 145 0 31] 
-#[0 0 86 0 2 0 11 0 13] 
-#[0 0 90 0 2 0 11 0 13] 
-#[0 0 149 0 13] 
-#[1 0 153 0 6 0 157 0 27] 
-#[1 0 57 0 6 0 61 0 7 0 65 0 8 0 34 0 9 0 69 0 12 0 73 0 14 0 77 0 15 0 161 0 26 0 89 0 27 0 165 0 29 0 101 0 30 0 165 0 31] 
-#[1 0 169 0 32 0 6 0 33] 
-#[1 0 38 0 2 0 38 0 11 0 69 0 12 0 38 0 13 0 117 0 31] 
-#[0 0 94 0 2 0 11 0 13] 
-#[0 0 98 0 2 0 11 0 13] 
-#[0 0 113 0 10] 
-#[0 0 102 0 2 0 11 0 13] 
-#[1 0 106 0 2 0 129 0 11 0 106 0 13] 
-#[0 0 110 0 2 0 11 0 13] 
-#[0 0 173 0 33] 
-#[0 0 114 0 2 0 11 0 13]
+#[1 0 6 0 1 0 9 0 22 0 13 0 23 0 17 0 24 0 21 0 26 0 21 0 27 0 29 0 29 0 33 0 37] 
+#[0 0 0 0 39] 
+#[1 0 6 0 1 0 37 0 24 0 21 0 26 0 21 0 27 0 29 0 29 0 33 0 37 0 10 0 39] 
+#[0 0 14 0 1 0 39] 
+#[1 0 18 0 2 0 41 0 25] 
+#[0 0 22 0 2] 
+#[1 0 6 0 1 0 45 0 23 0 17 0 24 0 21 0 26 0 21 0 27 0 29 0 29 0 33 0 37] 
+#[0 0 49 0 1] 
+#[0 0 26 0 1 0 39] 
+#[0 0 53 0 2] 
+#[1 0 6 0 1 0 37 0 24 0 21 0 26 0 21 0 27 0 57 0 28 0 29 0 29 0 61 0 37] 
+#[1 0 65 0 5 0 69 0 7 0 73 0 8] 
+#[0 0 30 0 1 0 39] 
+#[0 0 34 0 2] 
+#[0 0 77 0 1] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 105 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 133 0 5 0 137 0 8] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 141 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 65 0 5 0 145 0 6 0 69 0 7 0 73 0 8] 
+#[1 0 46 0 2 0 149 0 12 0 46 0 13 0 93 0 14 0 46 0 15 0 153 0 36] 
+#[0 0 50 0 2 0 13 0 15] 
+#[0 0 54 0 2 0 13 0 15] 
+#[1 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 7 0 15 0 97 0 16 0 101 0 17 0 161 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[0 0 58 0 2 0 13 0 15] 
+#[0 0 62 0 2 0 13 0 15] 
+#[1 0 18 0 2 0 165 0 25] 
+#[1 0 66 0 2 0 169 0 13 0 66 0 15] 
+#[0 0 70 0 2 0 13 0 15] 
+#[1 0 74 0 2 0 173 0 13 0 74 0 15] 
+#[0 0 78 0 2 0 13 0 15] 
+#[0 0 177 0 11] 
+#[0 0 82 0 2 0 13 0 15] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 181 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 185 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[0 0 86 0 2] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 189 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 193 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 197 0 34 0 125 0 35 0 197 0 36] 
+#[0 0 90 0 2 0 13 0 15] 
+#[0 0 94 0 2 0 13 0 15] 
+#[0 0 201 0 15] 
+#[0 0 205 0 2] 
+#[1 0 209 0 8 0 213 0 32] 
+#[1 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 217 0 31 0 113 0 32 0 221 0 34 0 125 0 35 0 221 0 36] 
+#[1 0 225 0 37 0 6 0 38] 
+#[1 0 18 0 2 0 229 0 25] 
+#[0 0 98 0 2] 
+#[0 0 102 0 2] 
+#[1 0 46 0 2 0 46 0 13 0 93 0 14 0 46 0 15 0 153 0 36] 
+#[0 0 106 0 2 0 13 0 15] 
+#[0 0 110 0 2 0 13 0 15] 
+#[0 0 114 0 1] 
+#[0 0 149 0 12] 
+#[0 0 118 0 2 0 13 0 15] 
+#[1 0 122 0 2 0 169 0 13 0 122 0 15] 
+#[0 0 126 0 2 0 13 0 15] 
+#[0 0 233 0 38] 
+#[0 0 237 0 2] 
+#[0 0 130 0 2 0 13 0 15] 
+#[0 0 134 0 1]
 	).
 ]
 
@@ -397,20 +440,7 @@ JCLParser >> reduceActionForPositionalParameters2: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-JCLParser >> reduceActionForStatement1: nodes [
-	| result |
-	result := JCLStatementNode new.
-	result slashes: ((nodes at: 1) at: 1).
-	result operation: ((nodes at: 1) at: 2).
-	result addNodes: ((nodes at: 1) at: 3) to: result values.
-	result addTokens: ((nodes at: 1) at: 4) to: result commas.
-	result addObjects: ((nodes at: 1) at: 5) to: result parameters.
-	result name: ((nodes at: 1) at: 6).
-	^ result
-]
-
-{ #category : #'generated-reduction actions' }
-JCLParser >> reduceActionForStatementWithoutEOL1: nodes [
+JCLParser >> reduceActionForProcHeader1: nodes [
 	| result |
 	result := Array new: 6.
 	result at: 3 put: (OrderedCollection new: 2).
@@ -425,7 +455,7 @@ JCLParser >> reduceActionForStatementWithoutEOL1: nodes [
 ]
 
 { #category : #'generated-reduction actions' }
-JCLParser >> reduceActionForStatementWithoutEOL2: nodes [
+JCLParser >> reduceActionForProcHeader2: nodes [
 	| result |
 	result := Array new: 6.
 	result at: 3 put: (OrderedCollection new: 2).
@@ -437,6 +467,46 @@ JCLParser >> reduceActionForStatementWithoutEOL2: nodes [
 	self addAll: ((nodes at: 5) at: 1) to: (result at: 3).
 	self addAll: ((nodes at: 5) at: 2) to: (result at: 4).
 	self addAll: ((nodes at: 5) at: 3) to: (result at: 5).
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+JCLParser >> reduceActionForProcStatement1: nodes [
+	| result |
+	result := JCLProcStatementNode new.
+	result slashes: ((nodes at: 1) at: 1).
+	result operation: ((nodes at: 1) at: 2).
+	result addNodes: ((nodes at: 1) at: 3) to: result values.
+	result addTokens: ((nodes at: 1) at: 4) to: result commas.
+	result addObjects: ((nodes at: 1) at: 5) to: result parameters.
+	result name: ((nodes at: 1) at: 6).
+	result addNodes: (nodes at: 2) to: result statements.
+	result addNode: (nodes at: 3) to: result statements.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+JCLParser >> reduceActionForStatementWithoutEOL1: nodes [
+	| result |
+	result := JCLStatementNode new.
+	result slashes: (nodes at: 2).
+	result operation: (nodes at: 3).
+	result addNodes: ((nodes at: 4) at: 1) to: result values.
+	result addTokens: ((nodes at: 4) at: 2) to: result commas.
+	result addObjects: ((nodes at: 4) at: 3) to: result parameters.
+	^ result
+]
+
+{ #category : #'generated-reduction actions' }
+JCLParser >> reduceActionForStatementWithoutEOL2: nodes [
+	| result |
+	result := JCLStatementNode new.
+	result slashes: (nodes at: 2).
+	result name: (nodes at: 3).
+	result operation: (nodes at: 4).
+	result addNodes: ((nodes at: 5) at: 1) to: result values.
+	result addTokens: ((nodes at: 5) at: 2) to: result commas.
+	result addObjects: ((nodes at: 5) at: 3) to: result parameters.
 	^ result
 ]
 
