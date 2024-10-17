@@ -24,7 +24,19 @@ FAMIXSourceLanguage >> addExpanderFor: association in: text [
 										c textFlow pushLine.
 										c horizontal matchParent ].
 							view := to gtCobolExpanderView.
-							pane addChild: view asElement matchParent ] ])
+							((to isKindOf: FAMIXSourcedEntity) and: [ to containerFiles notEmpty ])
+								ifTrue: [ pane
+										addChild: (BrButton new
+												aptitude: BrGlamorousButtonRectangularAptitude
+														+ (BrGlamorousButtonLabelAptitude new selectedColor: Color black);
+												action: [ pane phlow spawnObject: to containerFiles first ];
+												alignCenterLeft;
+												label: to containerFiles first fullName) ].
+							pane
+								addChild: (view asElement
+										constraintsDo: [ :c | 
+											c horizontal matchParent.
+											c vertical matchParent ]) ] ])
 ]
 
 { #category : #'*GToolkit4Cobol' }

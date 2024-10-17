@@ -7,7 +7,9 @@ Class {
 		'xctlFromExpressions',
 		'transaction',
 		'jclSteps',
-		'fileDescriptors'
+		'fileDescriptors',
+		'returnToExpressions',
+		'returnFromExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -156,7 +158,12 @@ GtCobolProgram >> initialize [
 	fileDescriptors := FMNullMultivalueLink
 			on: self
 			opposite: #program:
-			selector: #fileDescriptors
+			selector: #fileDescriptors.
+	returnFromExpressions := FMMultiMultivalueLink on: self opposite: #toPrograms.
+	returnToExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #fromProgram:
+			selector: #returnToExpressions
 ]
 
 { #category : #accessing }
@@ -181,6 +188,30 @@ GtCobolProgram >> mapExpressions [
 { #category : #accessing }
 GtCobolProgram >> mapExpressions: anObject [
 	mapExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtCobolProgram >> returnFromExpressions [
+	<MSEProperty: #returnFromExpressions type: #GtCobolCicsReturnExpression opposite: #toPrograms>
+	<multivalued>
+	^ returnFromExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> returnFromExpressions: anObject [
+	returnFromExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtCobolProgram >> returnToExpressions [
+	<MSEProperty: #returnToExpressions type: #GtCobolCicsReturnExpression opposite: #fromProgram>
+	<multivalued>
+	^ returnToExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> returnToExpressions: anObject [
+	returnToExpressions value: anObject
 ]
 
 { #category : #accessing }

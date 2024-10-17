@@ -12,7 +12,8 @@ Class {
 		'maxOccurrences',
 		'fileDescriptors',
 		'cicsFileAccesses',
-		'conditions'
+		'conditions',
+		'xctlExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -183,7 +184,11 @@ GtCobolVariable >> initialize [
 	conditions := FMNullMultivalueLink
 			on: self
 			opposite: #variable:
-			selector: #conditions
+			selector: #conditions.
+	xctlExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #commonAreaVariable:
+			selector: #xctlExpressions
 ]
 
 { #category : #accessing }
@@ -294,4 +299,16 @@ GtCobolVariable >> redefinesVariable: anObject [
 { #category : #accessing }
 GtCobolVariable >> totalByteSize [
 	^ length * maxOccurrences
+]
+
+{ #category : #accessing }
+GtCobolVariable >> xctlExpressions [
+	<MSEProperty: #xctlExpressions type: #GtCobolCicsXctlExpression opposite: #commonAreaVariable>
+	<multivalued>
+	^ xctlExpressions
+]
+
+{ #category : #accessing }
+GtCobolVariable >> xctlExpressions: anObject [
+	xctlExpressions value: anObject
 ]

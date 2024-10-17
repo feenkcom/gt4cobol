@@ -22,6 +22,73 @@ Class {
 	#category : #'GToolkit4Cobol-Importer'
 }
 
+{ #category : #'importing-cobol' }
+GtCobolImporter >> addCommonAreaAssignmentFor: targets from: aNode in: aFile [
+	targets
+		do: [ :program | 
+			(self ensureProgram: program) globalVariables
+				detect: [ :each | each name sameAs: 'DFHCOMMAREA' ]
+				ifFound: [ :var | 
+					aFile
+						addEntity: (FAMIXAccess new
+								from: ((self entityFor: aNode)
+										ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
+								to: var;
+								isWrite: true;
+								sourceAnchor: ((GtCobolSourceFileAnchor
+										file: aFile
+										startPos: aNode startPosition
+										endPos: aNode stopPosition
+										model: model)
+										sourceText: (self completeSourceFor: aNode);
+										yourself);
+								mooseModel: model) ] ]
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> addReturnAssignmentsFor: program from: aNode [
+	| file |
+	file := program containerFiles first.
+	file
+		addEntity: (GtCobolCicsReturnExpression new
+				fromProgram: program;
+				toPrograms: (program xctlFromExpressions collectAsSet: [ :each | each fromProgram ]);
+				sourceAnchor: ((GtCobolSourceFileAnchor
+						file: file
+						startPos: aNode startPosition
+						endPos: aNode stopPosition
+						model: model)
+						sourceText: (self completeSourceFor: aNode);
+						yourself);
+				mooseModel: model).
+	(aNode argumentFor: 'COMMAREA')
+		ifNotNil: [ program xctlFromExpressions
+				do: [ :each | 
+					each commonAreaVariable
+						ifNotNil: [ :var | 
+							file
+								addEntity: (FAMIXAccess new
+										from: ((self entityFor: aNode)
+												ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
+										to: var;
+										isWrite: true;
+										sourceAnchor: ((GtCobolSourceFileAnchor
+												file: file
+												startPos: aNode startPosition
+												endPos: aNode stopPosition
+												model: model)
+												sourceText: (self completeSourceFor: aNode);
+												yourself);
+										mooseModel: model) ] ] ]
+]
+
+{ #category : #'importing-jcl' }
+GtCobolImporter >> completeSourceFor: aNode [
+	^ aNode topParent
+		attributeNamed: #completeSourceString
+		ifAbsentPut: [ aNode topParent completeSource ]
+]
+
 { #category : #accessing }
 GtCobolImporter >> copyBookDirectories [
 	^ copyBookDirectories
@@ -372,10 +439,11 @@ GtCobolImporter >> importFile: aFileReference [
 		importDataIn: ast;
 		importFileDescriptorsIn: ast;
 		importParagraphsIn: ast;
-		importXctlCallsIn: ast;
+		importReturnsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast;
-		importFileReadWritesIn: ast
+		importFileReadWritesIn: ast;
+		importXctlCallsIn: ast
 ]
 
 { #category : #'importing-cobol' }
@@ -525,7 +593,7 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 					endPos: (aNode components ifEmpty: [ aNode ] ifNotEmpty: [ :c | c last ])
 							stopPosition
 					model: model)
-					sourceText: aNode topParent completeSource;
+					sourceText: (self completeSourceFor: aNode);
 					yourself);
 			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
@@ -670,6 +738,17 @@ GtCobolImporter >> importParagraphsIn: ast [
 ]
 
 { #category : #'importing-cobol' }
+GtCobolImporter >> importReturnsIn: ast [
+	| program |
+	program := currentProgram.
+	ast
+		allNodesOfType: CobolExecCicsStatementNode
+		do: [ :node | 
+			(node is: 'RETURN')
+				ifTrue: [ finishActions add: [ self addReturnAssignmentsFor: program from: node ] ] ]
+]
+
+{ #category : #'importing-cobol' }
 GtCobolImporter >> importVariableReference: idNode [
 	| var vars |
 	(idNode parent isKindOf: CobolInExpressionNode)
@@ -694,7 +773,7 @@ GtCobolImporter >> importVariableReference: idNode [
 						startPos: idNode name startPosition
 						endPos: idNode name stopPosition
 						model: model)
-						sourceText: idNode topParent completeSource;
+						sourceText: (self completeSourceFor: idNode);
 						yourself);
 				mooseModel: model)
 ]
@@ -703,20 +782,22 @@ GtCobolImporter >> importVariableReference: idNode [
 GtCobolImporter >> importXctlCallsIn: ast [
 	ast xctlNodes
 		do: [ :each | 
-			| targets |
+			| targets file expr |
 			targets := each xctlPrograms.
-			currentFile
-				addEntity: (targets isEmpty
-						ifTrue: [ GtCobolCicsXctlExpression new
-								fromProgram: currentProgram;
-								sourceAnchor: (self sourceAnchorFor: each);
-								mooseModel: model ]
-						ifFalse: [ GtCobolCicsXctlExpression new
-								fromProgram: currentProgram;
-								toPrograms: (targets collect: [ :program | self ensureProgram: program ]);
-								sourceAnchor: (self sourceAnchorFor: each);
-								propertyNamed: #ast put: each;
-								mooseModel: model ]) ]
+			expr := GtCobolCicsXctlExpression new
+					fromProgram: currentProgram;
+					commonAreaVariable: (self variableForNode: (each argumentFor: 'COMMAREA'));
+					sourceAnchor: (self sourceAnchorFor: each);
+					mooseModel: model.
+			targets notEmpty
+				ifTrue: [ expr toPrograms: (targets collect: [ :program | self ensureProgram: program ]).
+					file := currentFile.
+					finishActions
+						add: [ self
+								addCommonAreaAssignmentFor: targets
+								from: each
+								in: file ] ].
+			currentFile addEntity: expr ]
 ]
 
 { #category : #'initialize-release' }
@@ -784,13 +865,14 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 		startPos: aNode startPosition
 		endPos: aNode stopPosition
 		model: model)
-		sourceText: aNode topParent completeSource;
+		sourceText: (self completeSourceFor: aNode);
 		yourself
 ]
 
 { #category : #'importing-cobol' }
 GtCobolImporter >> variableForNode: aNode [
 	| current |
+	aNode ifNil: [ ^ nil ].
 	current := aNode.
 	[ current isKindOf: CobolInExpressionNode ]
 		whileTrue: [ current := current name ].

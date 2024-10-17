@@ -65,9 +65,7 @@ CobolProgramNode >> xctlNodes [
 	xctl := OrderedCollection new.
 	self
 		allNodesOfType: CobolExecCicsStatementNode
-		do: [ :node | 
-			(node source includesSubstring: 'XCTL' caseSensitive: false)
-				ifTrue: [ xctl add: node ] ].
+		do: [ :node | (node is: 'XCTL') ifTrue: [ xctl add: node ] ].
 	^ xctl
 ]
 
