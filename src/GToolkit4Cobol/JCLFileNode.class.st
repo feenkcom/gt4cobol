@@ -23,7 +23,8 @@ JCLFileNode >> buildComponents [
 				ifTrue: [ [ current contains: each ] whileFalse: [ current := current owner ].
 					each owner: current.
 					current := each ].
-			index := index + 1 ]
+			index := index + 1 ].
+	statements do: #buildComponents
 ]
 
 { #category : #generated }

@@ -12,6 +12,21 @@ JCLProcStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcStatement: self
 ]
 
+{ #category : #'as yet unclassified' }
+JCLProcStatementNode >> buildComponents [
+	| index current each |
+	current := self.
+	index := 1.
+	[ index < statements size ]
+		whileTrue: [ each := statements at: index.
+			(each isKindOf: JCLStatementNode)
+				ifTrue: [ [ current contains: each ] whileFalse: [ current := current owner ].
+					each owner: current.
+					current := each ].
+			index := index + 1 ].
+	statements do: #buildComponents
+]
+
 { #category : #generated }
 JCLProcStatementNode >> compositeNodeVariables [
 	^ #(#statements #values)

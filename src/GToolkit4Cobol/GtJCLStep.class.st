@@ -4,10 +4,28 @@ Class {
 	#instVars : [
 		'job',
 		'program',
-		'dataDescriptors'
+		'dataDescriptors',
+		'proc',
+		'calledProc'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
+
+{ #category : #accessing }
+GtJCLStep >> calledProc [
+	<MSEProperty: #calledProc type: #GtJCLProc opposite: #calledBySteps>
+	<container>
+	^ calledProc
+]
+
+{ #category : #accessing }
+GtJCLStep >> calledProc: anObject [
+	calledProc := FMMultivalueLink
+			on: self
+			update: #calledBySteps
+			from: self calledProc
+			to: anObject
+]
 
 { #category : #accessing }
 GtJCLStep >> dataDescriptors [
@@ -43,6 +61,22 @@ GtJCLStep >> job: anObject [
 			on: self
 			update: #steps
 			from: self job
+			to: anObject
+]
+
+{ #category : #accessing }
+GtJCLStep >> proc [
+	<MSEProperty: #proc type: #GtJCLProc opposite: #steps>
+	<container>
+	^ proc
+]
+
+{ #category : #accessing }
+GtJCLStep >> proc: anObject [
+	proc := FMMultivalueLink
+			on: self
+			update: #steps
+			from: self proc
 			to: anObject
 ]
 

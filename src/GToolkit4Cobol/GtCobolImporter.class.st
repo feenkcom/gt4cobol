@@ -583,10 +583,9 @@ GtCobolImporter >> importJCLDD: aNode into: step [
 ]
 
 { #category : #'importing-jcl' }
-GtCobolImporter >> importJCLExec: aNode into: job [
+GtCobolImporter >> importJCLExec: aNode into: owner [
 	| step |
 	step := GtJCLStep new
-			job: job;
 			sourceAnchor: ((GtCobolSourceFileAnchor
 					file: currentFile
 					startPos: aNode startPosition
@@ -597,6 +596,7 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 					yourself);
 			declaredSourceLanguage: jclSourceLanguage;
 			mooseModel: model.
+	owner steps add: step.
 	currentFile addEntity: step.
 	aNode name
 		ifNil: [ step gtInspectButtonPosition: aNode operation stopPosition ]
@@ -605,6 +605,8 @@ GtCobolImporter >> importJCLExec: aNode into: job [
 			step gtInspectButtonPosition: token stopPosition ].
 	(aNode namedParameterValueOf: 'PGM')
 		ifNotNil: [ :program | step program: (self ensureProgram: program) ].
+	(aNode namedParameterValueOf: 'PROC')
+		ifNotNil: [ :proc | finishActions add: [ self linkStep: step toProc: proc ] ].
 	aNode components
 		do: [ :each | each isDD ifTrue: [ self importJCLDD: each into: step ] ]
 ]
@@ -618,7 +620,10 @@ GtCobolImporter >> importJCLFile: aFileReference [
 	(ast isErrorNode or: [ ast statements anySatisfy: #isErrorNode ])
 		ifTrue: [ ^ self ].
 	ast buildComponents.
-	ast statements do: [ :each | each isJOB ifTrue: [ self importJCLJob: each ] ]
+	ast statements
+		do: [ :each | 
+			each isJOB ifTrue: [ self importJCLJob: each ].
+			each isPROC ifTrue: [ self importJCLProc: each ] ]
 ]
 
 { #category : #'importing-jcl' }
@@ -640,6 +645,27 @@ GtCobolImporter >> importJCLJob: aNode [
 	aNode values notEmpty
 		ifTrue: [ (aNode positionalParameterValueOf: aNode values size)
 				ifNotNil: [ :name | job description: name ] ]
+]
+
+{ #category : #'importing-jcl' }
+GtCobolImporter >> importJCLProc: aNode [
+	| proc |
+	proc := GtJCLProc new name: aNode name source.
+	proc declaredSourceLanguage: jclSourceLanguage.
+	proc
+		sourceAnchor: (FAMIXIndexedFileEntityAnchor
+				file: currentFile
+				startPos: aNode startPosition
+				endPos: aNode stopPosition
+				model: model).
+	proc mooseModel: model.
+	proc gtInspectButtonPosition: aNode name stopPosition.
+	currentFile addEntity: proc.
+	aNode components
+		do: [ :each | each isEXEC ifTrue: [ self importJCLExec: each into: proc ] ].
+	aNode values notEmpty
+		ifTrue: [ (aNode positionalParameterValueOf: aNode values size)
+				ifNotNil: [ :name | proc description: name ] ]
 ]
 
 { #category : #'importing-cobol' }
@@ -847,6 +873,19 @@ GtCobolImporter >> linkFileDescriptor: fileDescriptor toJCLDD: assignmentNode [
 										jclDataDescriptor: dd;
 										sourceAnchor: (self sourceAnchorFor: assignmentNode);
 										mooseModel: model) ] ] ]
+]
+
+{ #category : #'importing-jcl' }
+GtCobolImporter >> linkStep: step toProc: aString [
+	| procs jclProc |
+	procs := (model allWithType: GtJCLProc)
+			select: [ :each | each name sameAs: aString ].
+	jclProc := procs size > 1
+			ifTrue: [ procs
+					detect: [ :each | each containerFiles first fileReference basenameWithoutExtension sameAs: aString ]
+					ifNone: [ procs first ] ]
+			ifFalse: [ procs notEmpty ifTrue: [ procs first ] ].
+	step calledProc: jclProc
 ]
 
 { #category : #accessing }

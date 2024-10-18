@@ -49,6 +49,12 @@ MooseModel >> allJCLJobs [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allJCLProcs [
+	<navigation: 'All JCL Procs'>
+	^ GtJCLProcGroup withAll: (self allWithType: GtJCLProc)
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allJCLSteps [
 	<navigation: 'All JCL Steps'>
 	^ GtJCLStepGroup withAll: (self allWithType: GtJCLStep)

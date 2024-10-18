@@ -8,3 +8,7 @@ Class {
 JCLProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]
+
+{ #category : #'as yet unclassified' }
+JCLProgramNode >> buildComponents [
+]

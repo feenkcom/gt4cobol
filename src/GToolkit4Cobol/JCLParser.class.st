@@ -13,7 +13,7 @@ JCLParser class >> ambiguousTransitions [
 
 { #category : #'generated-accessing' }
 JCLParser class >> cacheId [
-	^'2024-10-17T14:28:00.593095-05:00'
+	^'2024-10-18T09:13:00.407709-05:00'
 ]
 
 { #category : #generated }
@@ -135,7 +135,7 @@ Value
 	| <string> 'value' {{String}}
 	| <name> 'name' {{Name}}
 	| <name> 'name' List 'values' {{Name}}
-	| <symbolicName> 'name' {{Name}}
+	| <symbolicName> 'name' List 'values' {{Name}}
 	| <starName> 'name' {{Name}}
 	| List
 	| SwitchToStar <star> 'star' SwitchToDefault <input> 'input' {{InlinedValue}}
@@ -194,7 +194,7 @@ JCLParser class >> jclStyler: aParserClass [
 { #category : #generated }
 JCLParser class >> reduceTable [
 ^#(
-	#(37 0 #reduceActionForSwitchToDefault1: 2567169 true) 
+	#(37 0 #reduceActionForSwitchToDefault1: 2581505 true) 
 	#(22 1 #reduceActionForFile1: 1005569 false) 
 	#(23 1 #reduceActionForStatement__statement__1: 1014785 false) 
 	#(25 0 #reduceActionForSwitchToStartOfLine1: 1116161 true) 
@@ -203,11 +203,10 @@ JCLParser class >> reduceTable [
 	#(24 3 #liftFirstValue: 1046529 true) 
 	#(27 3 #reduceActionForProcStatement1: 1388545 false) 
 	#(30 0 #reduceActionForParameters4: 1720324 false) 
-	#(35 0 #reduceActionForSwitchToStar1: 2448385 true) 
+	#(35 0 #reduceActionForSwitchToStar1: 2462721 true) 
 	#(34 1 #reduceActionForValue3: 2153475 false) 
 	#(34 1 #reduceActionForValue1: 2153473 false) 
 	#(34 1 #reduceActionForValue2: 2153474 false) 
-	#(34 1 #reduceActionForValue3: 2153477 false) 
 	#(34 1 #reduceActionForValue3: 2153478 false) 
 	#(30 1 #reduceActionForParameters3: 1720323 false) 
 	#(31 1 #reduceActionForKeywordParameters1: 1839105 false) 
@@ -216,11 +215,12 @@ JCLParser class >> reduceTable [
 	#(34 1 #liftFirstValue: 2153479 false) 
 	#(26 4 #reduceActionForStatementWithoutEOL1: 1175553 false) 
 	#(34 2 #reduceActionForValue4: 2153476 false) 
-	#(36 2 #reduceActionForList1: 2493441 false) 
+	#(36 2 #reduceActionForList1: 2507777 false) 
+	#(34 2 #reduceActionForValue4: 2153477 false) 
 	#(26 5 #reduceActionForStatementWithoutEOL2: 1175554 false) 
 	#(28 4 #reduceActionForStatementWithoutEOL1: 1482753 false) 
 	#(32 3 #reduceActionForKeywordParameter1: 1977345 false) 
-	#(36 3 #reduceActionForList2: 2493442 false) 
+	#(36 3 #reduceActionForList2: 2507778 false) 
 	#(29 6 #reduceActionForProcHeader1: 1582081 false) 
 	#(31 3 #reduceActionForKeywordParameters2: 1839106 false) 
 	#(30 3 #reduceActionForParameters2: 1720322 false) 
@@ -276,28 +276,29 @@ JCLParser class >> transitionTable [
 #[0 0 50 0 2 0 13 0 15] 
 #[0 0 54 0 2 0 13 0 15] 
 #[1 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 7 0 15 0 97 0 16 0 101 0 17 0 161 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 93 0 14 0 165 0 36] 
 #[0 0 58 0 2 0 13 0 15] 
-#[0 0 62 0 2 0 13 0 15] 
-#[1 0 18 0 2 0 165 0 25] 
-#[1 0 66 0 2 0 169 0 13 0 66 0 15] 
-#[0 0 70 0 2 0 13 0 15] 
-#[1 0 74 0 2 0 173 0 13 0 74 0 15] 
+#[1 0 18 0 2 0 169 0 25] 
+#[1 0 62 0 2 0 173 0 13 0 62 0 15] 
+#[0 0 66 0 2 0 13 0 15] 
+#[1 0 70 0 2 0 177 0 13 0 70 0 15] 
+#[0 0 74 0 2 0 13 0 15] 
+#[0 0 181 0 11] 
 #[0 0 78 0 2 0 13 0 15] 
-#[0 0 177 0 11] 
-#[0 0 82 0 2 0 13 0 15] 
-#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 181 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
 #[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 185 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
-#[0 0 86 0 2] 
 #[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 189 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
-#[1 0 193 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 197 0 34 0 125 0 35 0 197 0 36] 
+#[0 0 82 0 2] 
+#[1 0 38 0 2 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 193 0 30 0 109 0 31 0 113 0 32 0 117 0 33 0 121 0 34 0 125 0 35 0 121 0 36] 
+#[1 0 197 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 201 0 34 0 125 0 35 0 201 0 36] 
+#[0 0 86 0 2 0 13 0 15] 
 #[0 0 90 0 2 0 13 0 15] 
+#[0 0 205 0 15] 
 #[0 0 94 0 2 0 13 0 15] 
-#[0 0 201 0 15] 
-#[0 0 205 0 2] 
-#[1 0 209 0 8 0 213 0 32] 
-#[1 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 217 0 31 0 113 0 32 0 221 0 34 0 125 0 35 0 221 0 36] 
-#[1 0 225 0 37 0 6 0 38] 
-#[1 0 18 0 2 0 229 0 25] 
+#[0 0 209 0 2] 
+#[1 0 213 0 8 0 217 0 32] 
+#[1 0 81 0 8 0 85 0 9 0 89 0 10 0 42 0 11 0 93 0 14 0 97 0 16 0 101 0 17 0 221 0 31 0 113 0 32 0 225 0 34 0 125 0 35 0 225 0 36] 
+#[1 0 229 0 37 0 6 0 38] 
+#[1 0 18 0 2 0 233 0 25] 
 #[0 0 98 0 2] 
 #[0 0 102 0 2] 
 #[1 0 46 0 2 0 46 0 13 0 93 0 14 0 46 0 15 0 153 0 36] 
@@ -306,10 +307,10 @@ JCLParser class >> transitionTable [
 #[0 0 114 0 1] 
 #[0 0 149 0 12] 
 #[0 0 118 0 2 0 13 0 15] 
-#[1 0 122 0 2 0 169 0 13 0 122 0 15] 
+#[1 0 122 0 2 0 173 0 13 0 122 0 15] 
 #[0 0 126 0 2 0 13 0 15] 
-#[0 0 233 0 38] 
-#[0 0 237 0 2] 
+#[0 0 237 0 38] 
+#[0 0 241 0 2] 
 #[0 0 130 0 2 0 13 0 15] 
 #[0 0 134 0 1]
 	).

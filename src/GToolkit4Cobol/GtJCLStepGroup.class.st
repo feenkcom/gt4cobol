@@ -15,8 +15,11 @@ GtJCLStepGroup >> gtItemsFor: aView [
 			iconName: [ :each | each gtIconName ]
 			width: 36;
 		column: 'Name' translated text: [ :each | each gtDisplayString ];
-		column: 'Program' translated
-			text: [ :each | each program ifNil: [ '' ] ifNotNil: [ :program | program gtDisplayString ] ];
+		column: 'Program/Proc' translated
+			text: [ :each | 
+				(each program ifNil: [ each calledProc ])
+					ifNil: [ '' ]
+					ifNotNil: [ :program | program gtDisplayString ] ];
 		column: 'Data descriptors' translated
 			text: [ :each | each dataDescriptors size printString ]
 ]
