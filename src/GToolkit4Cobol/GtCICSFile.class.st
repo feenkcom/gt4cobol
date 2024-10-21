@@ -32,11 +32,23 @@ GtCICSFile >> datasetName: anObject [
 ]
 
 { #category : #'as yet unclassified' }
+GtCICSFile >> fileDescriptors [
+	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor>
+	<derived>
+	| vars |
+	vars := self jclFileReferences
+			flatCollectAsSet: [ :each | each jclDataDescriptor assigns collect: [ :assign | assign fileDescriptor ] ].
+	^ vars
+]
+
+{ #category : #'as yet unclassified' }
 GtCICSFile >> gtVariablesFor: aView [
 	<gtView>
-	^ aView list 
+	^ aView columnedList
 		title: 'Variables';
-		items: [ self variables sorted: [:a :b | a mooseName < b mooseName ] ]
+		items: [ self variables sorted: [ :a :b | a mooseName < b mooseName ] ];
+		column: 'Name' text: [ :each | each mooseName ];
+		column: 'Fields' text: [ :each | each components size ]
 ]
 
 { #category : #'as yet unclassified' }

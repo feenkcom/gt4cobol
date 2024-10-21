@@ -13,7 +13,9 @@ Class {
 		'fileDescriptors',
 		'cicsFileAccesses',
 		'conditions',
-		'xctlExpressions'
+		'xctlExpressions',
+		'fileStatusInDescriptors',
+		'recordKeyInDescriptors'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -98,12 +100,32 @@ GtCobolVariable >> fileDescriptors: anObject [
 	fileDescriptors value: anObject
 ]
 
+{ #category : #accessing }
+GtCobolVariable >> fileStatusInDescriptors [
+	<MSEProperty: #fileStatusInDescriptors type: #GtCobolFileDescriptor opposite: #fileStatusVariables>
+	<multivalued>
+	^ fileStatusInDescriptors
+]
+
+{ #category : #accessing }
+GtCobolVariable >> fileStatusInDescriptors: anObject [
+	fileStatusInDescriptors value: anObject
+]
+
 { #category : #views }
 GtCobolVariable >> gtComponentsFor: aView [
 	<gtView>
-	^ aView list
+	^ aView columnedTree
 		title: 'Components';
-		items: [ self components sorted: [:a :b | a mooseName < b mooseName ] ]
+		items: [ self components sorted: [ :a :b | a offsets first < b offsets first ] ];
+		children: [ :each | each components ];
+		column: 'Name' text: [ :each | each name ];
+		column: 'Offset'
+			text: [ :each | (each offsets first - self offsets first) printString ]
+			width: 100;
+		column: 'Length'
+			text: [ :each | each length printString ]
+			width: 100
 ]
 
 { #category : #accessing }
@@ -188,7 +210,14 @@ GtCobolVariable >> initialize [
 	xctlExpressions := FMNullMultivalueLink
 			on: self
 			opposite: #commonAreaVariable:
-			selector: #xctlExpressions
+			selector: #xctlExpressions.
+	fileStatusInDescriptors := FMMultiMultivalueLink
+			on: self
+			opposite: #fileStatusVariables.
+	recordKeyInDescriptors := FMNullMultivalueLink
+			on: self
+			opposite: #recordKey:
+			selector: #recordKeyInDescriptors
 ]
 
 { #category : #accessing }
@@ -266,6 +295,18 @@ GtCobolVariable >> potentialAccesses [
 	accesses
 		addAll: (vars flatCollect: [ :each | each conditions flatCollect: #incomingAccesses ]).
 	^ accesses
+]
+
+{ #category : #accessing }
+GtCobolVariable >> recordKeyInDescriptors [
+	<MSEProperty: #recordKeyInDescriptors type: #GtCobolFileDescriptor opposite: #recordKey>
+	<multivalued>
+	^ recordKeyInDescriptors
+]
+
+{ #category : #accessing }
+GtCobolVariable >> recordKeyInDescriptors: anObject [
+	recordKeyInDescriptors value: anObject
 ]
 
 { #category : #accessing }

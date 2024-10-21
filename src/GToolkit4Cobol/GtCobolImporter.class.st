@@ -437,11 +437,11 @@ GtCobolImporter >> importFile: aFileReference [
 	currentProgram sourceAnchor: (self sourceAnchorFor: ast).
 	self
 		importDataIn: ast;
-		importFileDescriptorsIn: ast;
 		importParagraphsIn: ast;
 		importReturnsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast;
+		importFileDescriptorsIn: ast;
 		importFileReadWritesIn: ast;
 		importXctlCallsIn: ast
 ]
@@ -469,6 +469,15 @@ GtCobolImporter >> importFileDescriptorsIn: ast [
 			descriptors
 				at: node selectClause fileName source
 				ifPresent: [ :d | 
+					node
+						allNodesOfType: CobolFileStatusClauseNode
+						do: [ :each | 
+							d
+								fileStatusVariables: ((each fileStatusNames collect: [ :e | e attributeNamed: #referenceTo ])
+										reject: #isNil) ].
+					node
+						allNodesOfType: CobolRecordKeyClauseNode
+						do: [ :each | d recordKey: (each keyName attributeNamed: #referenceTo) ].
 					node
 						allNodesOfType: CobolAssignClauseNode
 						do: [ :each | 

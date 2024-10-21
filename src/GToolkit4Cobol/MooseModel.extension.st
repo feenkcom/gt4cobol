@@ -38,8 +38,8 @@ MooseModel >> allCobolPrograms [
 
 { #category : #'*GToolkit4Cobol' }
 MooseModel >> allCobolVariables [
-	<navigation: 'All Cobol Variables'>
-	^ self allWithType: GtCobolVariable
+	<navigation: 'All Cobol File Descriptors'>
+	^ self allWithType: GtCobolFileDescriptor
 ]
 
 { #category : #'*GToolkit4Cobol' }

@@ -4,7 +4,9 @@ Class {
 	#instVars : [
 		'program',
 		'variables',
-		'assigns'
+		'assigns',
+		'fileStatusVariables',
+		'recordKey'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -21,6 +23,18 @@ GtCobolFileDescriptor >> assigns: anObject [
 	assigns value: anObject
 ]
 
+{ #category : #accessing }
+GtCobolFileDescriptor >> fileStatusVariables [
+	<MSEProperty: #fileStatusVariables type: #GtCobolVariable opposite: #fileStatusInDescriptors>
+	<multivalued>
+	^ fileStatusVariables
+]
+
+{ #category : #accessing }
+GtCobolFileDescriptor >> fileStatusVariables: anObject [
+	fileStatusVariables value: anObject
+]
+
 { #category : #'as yet unclassified' }
 GtCobolFileDescriptor >> initialize [
 	super initialize.
@@ -28,7 +42,10 @@ GtCobolFileDescriptor >> initialize [
 	assigns := FMNullMultivalueLink
 			on: self
 			opposite: #fileDescriptor:
-			selector: #assigns
+			selector: #assigns.
+	fileStatusVariables := FMMultiMultivalueLink
+			on: self
+			opposite: #fileStatusInDescriptors
 ]
 
 { #category : #accessing }
@@ -44,6 +61,22 @@ GtCobolFileDescriptor >> program: anObject [
 			on: self
 			update: #fileDescriptors
 			from: self program
+			to: anObject
+]
+
+{ #category : #accessing }
+GtCobolFileDescriptor >> recordKey [
+	<MSEProperty: #recordKey type: #GtCobolVariable opposite: #recordKeyInDescriptors>
+	<multivalued>
+	^ recordKey
+]
+
+{ #category : #accessing }
+GtCobolFileDescriptor >> recordKey: anObject [
+	recordKey := FMMultivalueLink
+			on: self
+			update: #recordKeyInDescriptors
+			from: self recordKey
 			to: anObject
 ]
 
