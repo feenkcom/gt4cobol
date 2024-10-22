@@ -525,6 +525,7 @@ GtCobolImporter >> importFileReadWritesIn: ast [
 										paragraph: (self entityFor: node);
 										variable: (self
 												variableForNode: (node argumentFor: (isRead ifTrue: [ 'INTO' ] ifFalse: [ 'FROM' ])));
+										ridfld: (self variableForNode: (node argumentFor: 'RIDFLD'));
 										mooseModel: model;
 										sourceAnchor: (self sourceAnchorFor: node)) ] ] ]
 ]

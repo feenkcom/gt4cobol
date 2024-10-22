@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'cicsFile',
 		'paragraph',
-		'variable'
+		'variable',
+		'ridfld'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -43,6 +44,22 @@ GtCICSFileAccess >> paragraph: anObject [
 			on: self
 			update: #cicsFileAccesses
 			from: self paragraph
+			to: anObject
+]
+
+{ #category : #accessing }
+GtCICSFileAccess >> ridfld [
+	<MSEProperty: #ridfld type: #GtCobolVariable opposite: #ridfldFileAccesses>
+	<container>
+	^ ridfld
+]
+
+{ #category : #accessing }
+GtCICSFileAccess >> ridfld: anObject [
+	ridfld := FMMultivalueLink
+			on: self
+			update: #ridfldFileAccesses
+			from: self ridfld
 			to: anObject
 ]
 

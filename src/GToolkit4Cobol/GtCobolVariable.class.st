@@ -15,7 +15,8 @@ Class {
 		'conditions',
 		'xctlExpressions',
 		'fileStatusInDescriptors',
-		'recordKeyInDescriptors'
+		'recordKeyInDescriptors',
+		'ridfldFileAccesses'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -217,7 +218,11 @@ GtCobolVariable >> initialize [
 	recordKeyInDescriptors := FMNullMultivalueLink
 			on: self
 			opposite: #recordKey:
-			selector: #recordKeyInDescriptors
+			selector: #recordKeyInDescriptors.
+	ridfldFileAccesses := FMNullMultivalueLink
+			on: self
+			opposite: #ridfld:
+			selector: #ridfldFileAccesses.
 ]
 
 { #category : #accessing }
@@ -335,6 +340,17 @@ GtCobolVariable >> redefinesVariable: anObject [
 			update: #redefinedByVariables
 			from: self redefinesVariable
 			to: anObject
+]
+
+{ #category : #accessing }
+GtCobolVariable >> ridfldFileAccesses [
+	<MSEProperty: #ridfldFileAccesses type: #GtCICSFileAccess opposite: #ridfld>
+	^ ridfldFileAccesses
+]
+
+{ #category : #accessing }
+GtCobolVariable >> ridfldFileAccesses: anObject [
+	ridfldFileAccesses value: anObject
 ]
 
 { #category : #accessing }
