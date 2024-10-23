@@ -33,7 +33,7 @@ GtJCLProc >> initialize [
 	super initialize.
 	steps := FMNullMultivalueLink
 			on: self
-			opposite: #job:
+			opposite: #proc:
 			selector: #steps.
 	calledBySteps := FMNullMultivalueLink
 			on: self

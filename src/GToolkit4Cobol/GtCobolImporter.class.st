@@ -240,6 +240,7 @@ GtCobolImporter >> entityFor: aNode [
 
 { #category : #importing }
 GtCobolImporter >> finishImport [
+	self importDataSetIndices.
 	finishActions do: [ :each | each value ]
 ]
 
@@ -413,6 +414,18 @@ GtCobolImporter >> importDataReferencesIn: ast [
 ]
 
 { #category : #importing }
+GtCobolImporter >> importDataSetIndices [
+	model allCobolPrograms
+		detect: [ :each | each name = 'IDCAMS' ]
+		ifFound: [ :program | 
+			program jclSteps
+				do: [ :step | 
+					step dataDescriptors
+						detect: [ :dd | dd name = 'SYSIN' ]
+						ifFound: [ :dd | dd input ifNotNil: [ :input | self importIDCAMS: input ] ] ] ]
+]
+
+{ #category : #importing }
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
@@ -530,6 +543,33 @@ GtCobolImporter >> importFileReadWritesIn: ast [
 										sourceAnchor: (self sourceAnchorFor: node)) ] ] ]
 ]
 
+{ #category : #importing }
+GtCobolImporter >> importIDCAMS: input [
+	| ast |
+	ast := IDCAMSParser parse: input.
+	ast steps
+		do: [ :each | 
+			each name value = 'DEFINE'
+				ifTrue: [ each arguments
+						do: [ :arg | 
+							| keys name file |
+							arg name value = 'CLUSTER'
+								ifTrue: [ name := arg findNode: 'NAME'.
+									keys := arg findNode: 'KEYS'.
+									(name notNil and: [ keys notNil ])
+										ifTrue: [ file := cicsFiles
+													detect: [ :e | e datasetName = name parameters arguments first source ]
+													ifNone: [ cicsFiles
+															add: (GtCICSFile new
+																	name: name parameters arguments first source;
+																	datasetName: name parameters arguments first source;
+																	isStub: true;
+																	mooseModel: model) ].
+											file
+												keys: (keys parameters arguments
+														pairsCollect: [ :a :b | b source asInteger to: b source asInteger + a source asInteger ]) ] ] ] ] ]
+]
+
 { #category : #'importing-jcl' }
 GtCobolImporter >> importJCLDD: aNode into: step [
 	| dd |
@@ -549,7 +589,11 @@ GtCobolImporter >> importJCLDD: aNode into: step [
 			dd name: token source.
 			dd gtInspectButtonPosition: token stopPosition ].
 	(aNode values at: 1 ifAbsent: [  ])
-		ifNotNil: [ :each | (each isKindOf: JCLInlinedValueNode) ifTrue: [ dd input: each literalValue ] ].
+		ifNotNil: [ :each | 
+			(each isKindOf: JCLInlinedValueNode)
+				ifTrue: [ dd
+						input: each literalValue;
+						inputOffset: each startPosition ] ].
 	(aNode namedParameterNodeOf: 'DSN')
 		ifNotNil: [ :dsnNode | 
 			dsnNode literalValue

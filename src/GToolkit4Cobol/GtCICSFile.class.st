@@ -5,7 +5,8 @@ Class {
 		'datasetName',
 		'jclDataDescriptors',
 		'cicsFileAccesses',
-		'jclFileReferences'
+		'jclFileReferences',
+		'keys'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -42,6 +43,29 @@ GtCICSFile >> fileDescriptors [
 ]
 
 { #category : #'as yet unclassified' }
+GtCICSFile >> gtFieldsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Fields';
+		items: [ | variables |
+			variables := self variables
+					asSortedCollection: [ :a :b | a components size > b components size ].
+			variables isEmpty ifTrue: [ #() ] ifFalse: [ variables first components ] ];
+		column: 'Name'
+			text: [ :each | 
+				| text |
+				text := each name asRopedText.
+				(self keys anySatisfy: [ :key | each overlaps: key ]) ifTrue: [ text bold ].
+				text ];
+		column: 'Offset'
+			text: [ :each | (each offsets first - each container offsets first) printString ]
+			width: 100;
+		column: 'Length'
+			text: [ :each | each length asString ]
+			width: 100
+]
+
+{ #category : #'as yet unclassified' }
 GtCICSFile >> gtVariablesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -74,6 +98,16 @@ GtCICSFile >> jclFileReferences [
 { #category : #accessing }
 GtCICSFile >> jclFileReferences: anObject [
 	jclFileReferences value: anObject
+]
+
+{ #category : #accessing }
+GtCICSFile >> keys [
+	^ keys ifNil: [ #() ]
+]
+
+{ #category : #accessing }
+GtCICSFile >> keys: anObject [
+	keys := anObject
 ]
 
 { #category : #'as yet unclassified' }

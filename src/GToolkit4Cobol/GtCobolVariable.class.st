@@ -292,6 +292,16 @@ GtCobolVariable >> overlappingVariables [
 														or: [ eachOffset + each length - 1 < selfOffset ]) not ] ] ] ] ] ]
 ]
 
+{ #category : #testing }
+GtCobolVariable >> overlaps: anInterval [
+	| parentOffset |
+	parentOffset := self container ifNil: [ 0 ] ifNotNil: [ :c | c offsets first ].
+	^ self offsets
+		anySatisfy: [ :each | 
+			(each - parentOffset + length <= anInterval first
+				or: [ each - parentOffset >= anInterval last ]) not ]
+]
+
 { #category : #accessing }
 GtCobolVariable >> potentialAccesses [
 	| vars accesses |

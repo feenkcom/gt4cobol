@@ -6,7 +6,8 @@ Class {
 		'cicsFiles',
 		'input',
 		'assigns',
-		'jclFileReferences'
+		'jclFileReferences',
+		'inputOffset'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -44,6 +45,16 @@ GtJCLDataDescriptor >> input [
 { #category : #accessing }
 GtJCLDataDescriptor >> input: aString [
 	input := aString
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> inputOffset [
+	^ inputOffset
+]
+
+{ #category : #accessing }
+GtJCLDataDescriptor >> inputOffset: anObject [
+	inputOffset := anObject
 ]
 
 { #category : #accessing }
