@@ -62,7 +62,7 @@ GtBMSMap >> fields: anObject [
 ]
 
 { #category : #views }
-GtBMSMap >> gtCobolExpanderView [
+GtBMSMap >> gtFamixExpanderView [
 	^ self gtScreenFor: GtPhlowProtoView new
 ]
 
