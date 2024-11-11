@@ -20,7 +20,7 @@ AWSCardDemo class >> asts: anObject [
 	asts := anObject
 ]
 
-{ #category : #initialization }
+{ #category : #cleanup }
 AWSCardDemo class >> cleanup [
 	self rootDirectory ensureDeleteAll.
 	^ self rootDirectory
