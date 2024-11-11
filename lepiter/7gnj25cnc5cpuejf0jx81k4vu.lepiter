@@ -66,14 +66,85 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-30T13:41:57.916982-05:00"
+						"dateAndTimeString" : "2024-11-11T17:17:16.78485+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "hgPQCGzfDQCC7YBtBmINfg=="
 				},
-				"code" : "repository := IceRepositoryCreator\r\t\tfromUrl: 'https://github.com/aws-samples/aws-mainframe-modernization-carddemo.git'\r\t\tto: AWSCardDemo rootDirectory.\rAWSCardDemo\r\tcopyBookDirectories: {AWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'}.\rAWSCardDemo rootDirectory"
+				"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference.\rrepository := IceRepositoryCreator\r\t\tfromUrl: 'https://github.com/aws-samples/aws-mainframe-modernization-carddemo.git'\r\t\tto: AWSCardDemo rootDirectory.\rAWSCardDemo\r\tcopyBookDirectories: {AWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'}.\rAWSCardDemo rootDirectory"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-11T17:22:27.353015+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-11T17:22:30.028545+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "dDdWPgfjDQCC5QrCBNzNHA=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Or:"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-11T17:22:31.661385+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-11-11T17:22:36.160885+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "Q/SXPgfjDQCC+U+OBNzNHA=="
+				},
+				"code" : "AWSCardDemo initializeDownload"
 			},
 			{
 				"__type" : "textSnippet",
@@ -137,14 +208,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-30T13:42:00.429424-05:00"
+						"dateAndTimeString" : "2024-11-11T17:17:34.659464+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "uHduBmzfDQCBSZFJBmINfg=="
 				},
-				"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference"
+				"code" : "AWSCardDemo rootDirectory"
 			},
 			{
 				"__type" : "textSnippet",
