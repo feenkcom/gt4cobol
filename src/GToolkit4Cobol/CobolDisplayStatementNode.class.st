@@ -4,6 +4,7 @@ Class {
 	#instVars : [
 		'keywords',
 		'displaies',
+		'commas',
 		'upon',
 		'_at'
 	],
@@ -28,13 +29,23 @@ CobolDisplayStatementNode >> acceptVisitor: aProgramVisitor [
 ]
 
 { #category : #generated }
+CobolDisplayStatementNode >> commas [
+	^ commas
+]
+
+{ #category : #generated }
+CobolDisplayStatementNode >> commas: anOrderedCollection [
+	commas := anOrderedCollection
+]
+
+{ #category : #generated }
 CobolDisplayStatementNode >> compositeNodeVariables [
 	^ #(#displaies)
 ]
 
 { #category : #generated }
 CobolDisplayStatementNode >> compositeTokenVariables [
-	^ #(#keywords)
+	^ #(#keywords #commas)
 ]
 
 { #category : #generated }
@@ -54,6 +65,7 @@ CobolDisplayStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	displaies := OrderedCollection new: 2.
+	commas := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

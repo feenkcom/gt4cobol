@@ -7,7 +7,7 @@ Class {
 { #category : #'generated-initialization' }
 CobolPPScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(286 'ADATA' 1) #(286 'ADV' 2) #(286 'ALIAS' 3) #(286 'ANSI' 4) #(286 'ANY' 5) #(286 'APOST' 6) #(286 'AR' 7) #(286 'ARITH' 8) #(286 'AUTO' 9) #(286 'AWO' 10) #(286 'BIN' 11) #(286 'BLOCK0' 12) #(286 'BUF' 13) #(286 'BUFSIZE' 14) #(286 'BY' 15) #(286 'CBL' 16) #(286 'CBLCARD' 17) #(286 'CICS' 18) #(286 'CO' 19) #(286 'COBOL2' 20) #(286 'COBOL3' 21) #(286 'CODEPAGE' 22) #(286 'COMPAT' 23) #(286 'COMPILE' 24) #(286 'COPY' 25) #(286 'CP' 26) #(286 'CPP' 27) #(286 'CPSM' 28) #(286 'CS' 29) #(286 'CURR' 30) #(286 'CURRENCY' 31) #(286 'DATA' 32) #(286 'DATEPROC' 33) #(286 'DBCS' 34) #(286 'DD' 35) #(286 'DEBUG' 36) #(286 'DECK' 37) #(286 'DIAGTRUNC' 38) #(286 'DLI' 39) #(286 'DLL' 40) #(286 'DP' 41) #(286 'DTR' 42) #(286 'DU' 43) #(286 'DUMP' 44) #(286 'DYN' 45) #(286 'DYNAM' 46) #(286 'EDF' 47) #(286 'EJECT' 48) #(286 'EJPD' 49) #(286 'EN' 50) #(286 'END-EXEC' 51) #(286 'ENGLISH' 52) #(286 'EPILOG' 53) #(286 'EXCI' 54) #(286 'EXEC' 55) #(286 'EXIT' 56) #(286 'EXP' 57) #(286 'EXPORTALL' 58) #(286 'EXTEND' 59) #(286 'FASTSRT' 60) #(286 'FEPI' 61) #(286 'FLAG' 62) #(286 'FLAGSTD' 63) #(286 'FSRT' 64) #(286 'FULL' 65) #(286 'GDS' 66) #(286 'GRAPHIC' 67) #(286 'HOOK' 68) #(286 'IN' 69) #(286 'INTDATE' 70) #(286 'JA' 71) #(286 'JP' 72) #(286 'KA' 73) #(286 'LANG' 74) #(286 'LANGUAGE' 75) #(286 'LC' 76) #(286 'LEASM' 77) #(286 'LENGTH' 78) #(286 'LIB' 79) #(286 'LILIAN' 80) #(286 'LIN' 81) #(286 'LINECOUNT' 82) #(286 'LINKAGE' 83) #(286 'LIST' 84) #(286 'LM' 85) #(286 'LONGMIXED' 86) #(286 'LONGUPPER' 87) #(286 'LU' 88) #(286 'MAP' 89) #(286 'MARGINS' 90) #(286 'MAX' 91) #(286 'MD' 92) #(286 'MDECK' 93) #(286 'MIG' 94) #(286 'MIXED' 95) #(286 'NAME' 96) #(286 'NAT' 97) #(286 'NATIONAL' 98) #(286 'NATLANG' 99) #(286 'NN' 100) #(286 'NO' 101) #(286 'NOADATA' 102) #(286 'NOADV' 103) #(286 'NOALIAS' 104) #(286 'NOAWO' 105) #(286 'NOBLOCK0' 106) #(286 'NOC' 107) #(286 'NOCBLCARD' 108) #(286 'NOCICS' 109) #(286 'NOCMPR2' 110) #(286 'NOCOMPILE' 111) #(286 'NOCPSM' 112) #(286 'NOCURR' 113) #(286 'NOCURRENCY' 114) #(286 'NOD' 115) #(286 'NODATEPROC' 116) #(286 'NODBCS' 117) #(286 'NODE' 118) #(286 'NODEBUG' 119) #(286 'NODECK' 120) #(286 'NODIAGTRUNC' 121) #(286 'NODLL' 122) #(286 'NODP' 123) #(286 'NODTR' 124) #(286 'NODU' 125) #(286 'NODUMP' 126) #(286 'NODYN' 127) #(286 'NODYNAM' 128) #(286 'NOEDF' 129) #(286 'NOEJPD' 130) #(286 'NOEPILOG' 131) #(286 'NOEXIT' 132) #(286 'NOEXP' 133) #(286 'NOEXPORTALL' 134) #(286 'NOF' 135) #(286 'NOFASTSRT' 136) #(286 'NOFEPI' 137) #(286 'NOFLAG' 138) #(286 'NOFLAGMIG' 139) #(286 'NOFLAGSTD' 140) #(286 'NOFSRT' 141) #(286 'NOGRAPHIC' 142) #(286 'NOHOOK' 143) #(286 'NOLENGTH' 144) #(286 'NOLIB' 145) #(286 'NOLINKAGE' 146) #(286 'NOLIST' 147) #(286 'NOMAP' 148) #(286 'NOMD' 149) #(286 'NOMDECK' 150) #(286 'NONAME' 151) #(286 'NONUM' 152) #(286 'NONUMBER' 153) #(286 'NOOBJ' 154) #(286 'NOOBJECT' 155) #(286 'NOOFF' 156) #(286 'NOOFFSET' 157) #(286 'NOOPSEQUENCE' 158) #(286 'NOOPT' 159) #(286 'NOOPTIMIZE' 160) #(286 'NOOPTIONS' 161) #(286 'NOP' 162) #(286 'NOPFD' 163) #(286 'NOPROLOG' 164) #(286 'NORENT' 165) #(286 'NOS' 166) #(286 'NOSEP' 167) #(286 'NOSEPARATE' 168) #(286 'NOSEQ' 169) #(286 'NOSEQUENCE' 170) #(286 'NOSOURCE' 171) #(286 'NOSPIE' 172) #(286 'NOSQL' 173) #(286 'NOSQLC' 174) #(286 'NOSQLCCSID' 175) #(286 'NOSSR' 176) #(286 'NOSSRANGE' 177) #(286 'NOSTDTRUNC' 178) #(286 'NOTERM' 179) #(286 'NOTERMINAL' 180) #(286 'NOTEST' 181) #(286 'NOTHREAD' 182) #(286 'NOTRIG' 183) #(286 'NOVBREF' 184) #(286 'NOWD' 185) #(286 'NOWORD' 186) #(286 'NOX' 187) #(286 'NOXREF' 188) #(286 'NOZWB' 189) #(286 'NS' 190) #(286 'NSEQ' 191) #(286 'NSYMBOL' 192) #(286 'NUM' 193) #(286 'NUMBER' 194) #(286 'NUMPROC' 195) #(286 'OBJ' 196) #(286 'OBJECT' 197) #(286 'OF' 198) #(286 'OFF' 199) #(286 'OFFSET' 200) #(286 'ON' 201) #(286 'OP' 202) #(286 'OPMARGINS' 203) #(286 'OPSEQUENCE' 204) #(286 'OPT' 205) #(286 'OPTFILE' 206) #(286 'OPTIMIZE' 207) #(286 'OPTIONS' 208) #(286 'OUT' 209) #(286 'OUTDD' 210) #(286 'PFD' 211) #(286 'PGMN' 212) #(286 'PGMNAME' 213) #(286 'PPTDBG' 214) #(286 'PROCESS' 215) #(286 'PROLOG' 216) #(286 'QUOTE' 217) #(286 'RENT' 218) #(286 'REPLACE' 219) #(286 'REPLACING' 220) #(286 'RMODE' 221) #(286 'SEP' 222) #(286 'SEPARATE' 223) #(286 'SEQ' 224) #(286 'SEQUENCE' 225) #(286 'SHORT' 226) #(286 'SIZE' 227) #(286 'SKIP1' 228) #(286 'SKIP2' 229) #(286 'SKIP3' 230) #(286 'SOURCE' 231) #(286 'SP' 232) #(286 'SPACE' 233) #(286 'SPIE' 234) #(286 'SQL' 235) #(286 'SQLC' 236) #(286 'SQLCCSID' 237) #(286 'SQLIMS' 238) #(286 'SS' 239) #(286 'SSR' 240) #(286 'SSRANGE' 241) #(286 'STD' 242) #(286 'SUPPRESS' 243) #(286 'SYSEIB' 244) #(286 'SZ' 245) #(286 'TERM' 246) #(286 'TERMINAL' 247) #(286 'TEST' 248) #(286 'THREAD' 249) #(286 'TITLE' 250) #(286 'TRIG' 251) #(286 'TRUNC' 252) #(286 'UE' 253) #(286 'UPPER' 254) #(286 'VBREF' 255) #(286 'WD' 256) #(286 'WORD' 257) #(286 'XMLPARSE' 258) #(286 'XMLSS' 259) #(286 'XOPTS' 260) #(286 'XP' 261) #(286 'XREF' 262) #(286 'YEARWINDOW' 263) #(286 'YW' 264) #(286 'ZWB' 265))
+	#(#(289 'ADATA' 4) #(289 'ADV' 5) #(289 'ALIAS' 6) #(289 'ANSI' 7) #(289 'ANY' 8) #(289 'APOST' 9) #(289 'AR' 10) #(289 'ARITH' 11) #(289 'AUTO' 12) #(289 'AWO' 13) #(289 'BIN' 14) #(289 'BLOCK0' 15) #(289 'BUF' 16) #(289 'BUFSIZE' 17) #(289 'BY' 18) #(289 'CBL' 19) #(289 'CBLCARD' 20) #(289 'CICS' 21) #(289 'CO' 22) #(289 'COBOL2' 23) #(289 'COBOL3' 24) #(289 'CODEPAGE' 25) #(289 'COMPAT' 26) #(289 'COMPILE' 27) #(289 'COPY' 28) #(289 'CP' 29) #(289 'CPP' 30) #(289 'CPSM' 31) #(289 'CS' 32) #(289 'CURR' 33) #(289 'CURRENCY' 34) #(289 'DATA' 35) #(289 'DATEPROC' 36) #(289 'DBCS' 37) #(289 'DD' 38) #(289 'DEBUG' 39) #(289 'DECK' 40) #(289 'DIAGTRUNC' 41) #(289 'DLI' 42) #(289 'DLL' 43) #(289 'DP' 44) #(289 'DTR' 45) #(289 'DU' 46) #(289 'DUMP' 47) #(289 'DYN' 48) #(289 'DYNAM' 49) #(289 'EDF' 50) #(289 'EJECT' 51) #(289 'EJPD' 52) #(289 'EN' 53) #(289 'END-EXEC' 54) #(289 'ENGLISH' 55) #(289 'EPILOG' 56) #(289 'EXCI' 57) #(289 'EXEC' 58) #(289 'EXIT' 59) #(289 'EXP' 60) #(289 'EXPORTALL' 61) #(289 'EXTEND' 62) #(289 'FASTSRT' 63) #(289 'FEPI' 64) #(289 'FLAG' 65) #(289 'FLAGSTD' 66) #(289 'FSRT' 67) #(289 'FULL' 68) #(289 'GDS' 69) #(289 'GRAPHIC' 70) #(289 'HOOK' 71) #(289 'IN' 72) #(289 'INTDATE' 73) #(289 'JA' 74) #(289 'JP' 75) #(289 'KA' 76) #(289 'LANG' 77) #(289 'LANGUAGE' 78) #(289 'LC' 79) #(289 'LEASM' 80) #(289 'LENGTH' 81) #(289 'LIB' 82) #(289 'LILIAN' 83) #(289 'LIN' 84) #(289 'LINECOUNT' 85) #(289 'LINKAGE' 86) #(289 'LIST' 87) #(289 'LM' 88) #(289 'LONGMIXED' 89) #(289 'LONGUPPER' 90) #(289 'LU' 91) #(289 'MAP' 92) #(289 'MARGINS' 93) #(289 'MAX' 94) #(289 'MD' 95) #(289 'MDECK' 96) #(289 'MIG' 97) #(289 'MIXED' 98) #(289 'NAME' 99) #(289 'NAT' 100) #(289 'NATIONAL' 101) #(289 'NATLANG' 102) #(289 'NN' 103) #(289 'NO' 104) #(289 'NOADATA' 105) #(289 'NOADV' 106) #(289 'NOALIAS' 107) #(289 'NOAWO' 108) #(289 'NOBLOCK0' 109) #(289 'NOC' 110) #(289 'NOCBLCARD' 111) #(289 'NOCICS' 112) #(289 'NOCMPR2' 113) #(289 'NOCOMPILE' 114) #(289 'NOCPSM' 115) #(289 'NOCURR' 116) #(289 'NOCURRENCY' 117) #(289 'NOD' 118) #(289 'NODATEPROC' 119) #(289 'NODBCS' 120) #(289 'NODE' 121) #(289 'NODEBUG' 122) #(289 'NODECK' 123) #(289 'NODIAGTRUNC' 124) #(289 'NODLL' 125) #(289 'NODP' 126) #(289 'NODTR' 127) #(289 'NODU' 128) #(289 'NODUMP' 129) #(289 'NODYN' 130) #(289 'NODYNAM' 131) #(289 'NOEDF' 132) #(289 'NOEJPD' 133) #(289 'NOEPILOG' 134) #(289 'NOEXIT' 135) #(289 'NOEXP' 136) #(289 'NOEXPORTALL' 137) #(289 'NOF' 138) #(289 'NOFASTSRT' 139) #(289 'NOFEPI' 140) #(289 'NOFLAG' 141) #(289 'NOFLAGMIG' 142) #(289 'NOFLAGSTD' 143) #(289 'NOFSRT' 144) #(289 'NOGRAPHIC' 145) #(289 'NOHOOK' 146) #(289 'NOLENGTH' 147) #(289 'NOLIB' 148) #(289 'NOLINKAGE' 149) #(289 'NOLIST' 150) #(289 'NOMAP' 151) #(289 'NOMD' 152) #(289 'NOMDECK' 153) #(289 'NONAME' 154) #(289 'NONUM' 155) #(289 'NONUMBER' 156) #(289 'NOOBJ' 157) #(289 'NOOBJECT' 158) #(289 'NOOFF' 159) #(289 'NOOFFSET' 160) #(289 'NOOPSEQUENCE' 161) #(289 'NOOPT' 162) #(289 'NOOPTIMIZE' 163) #(289 'NOOPTIONS' 164) #(289 'NOP' 165) #(289 'NOPFD' 166) #(289 'NOPROLOG' 167) #(289 'NORENT' 168) #(289 'NOS' 169) #(289 'NOSEP' 170) #(289 'NOSEPARATE' 171) #(289 'NOSEQ' 172) #(289 'NOSEQUENCE' 173) #(289 'NOSOURCE' 174) #(289 'NOSPIE' 175) #(289 'NOSQL' 176) #(289 'NOSQLC' 177) #(289 'NOSQLCCSID' 178) #(289 'NOSSR' 179) #(289 'NOSSRANGE' 180) #(289 'NOSTDTRUNC' 181) #(289 'NOTERM' 182) #(289 'NOTERMINAL' 183) #(289 'NOTEST' 184) #(289 'NOTHREAD' 185) #(289 'NOTRIG' 186) #(289 'NOVBREF' 187) #(289 'NOWD' 188) #(289 'NOWORD' 189) #(289 'NOX' 190) #(289 'NOXREF' 191) #(289 'NOZWB' 192) #(289 'NS' 193) #(289 'NSEQ' 194) #(289 'NSYMBOL' 195) #(289 'NUM' 196) #(289 'NUMBER' 197) #(289 'NUMPROC' 198) #(289 'OBJ' 199) #(289 'OBJECT' 200) #(289 'OF' 201) #(289 'OFF' 202) #(289 'OFFSET' 203) #(289 'ON' 204) #(289 'OP' 205) #(289 'OPMARGINS' 206) #(289 'OPSEQUENCE' 207) #(289 'OPT' 208) #(289 'OPTFILE' 209) #(289 'OPTIMIZE' 210) #(289 'OPTIONS' 211) #(289 'OUT' 212) #(289 'OUTDD' 213) #(289 'PFD' 214) #(289 'PGMN' 215) #(289 'PGMNAME' 216) #(289 'PPTDBG' 217) #(289 'PROCESS' 218) #(289 'PROLOG' 219) #(289 'QUOTE' 220) #(289 'RENT' 221) #(289 'REPLACE' 222) #(289 'REPLACING' 223) #(289 'RMODE' 224) #(289 'SEP' 225) #(289 'SEPARATE' 226) #(289 'SEQ' 227) #(289 'SEQUENCE' 228) #(289 'SHORT' 229) #(289 'SIZE' 230) #(289 'SKIP1' 231) #(289 'SKIP2' 232) #(289 'SKIP3' 233) #(289 'SOURCE' 234) #(289 'SP' 235) #(289 'SPACE' 236) #(289 'SPIE' 237) #(289 'SQL' 238) #(289 'SQLC' 239) #(289 'SQLCCSID' 240) #(289 'SQLIMS' 241) #(289 'SS' 242) #(289 'SSR' 243) #(289 'SSRANGE' 244) #(289 'STD' 245) #(289 'SUPPRESS' 246) #(289 'SYSEIB' 247) #(289 'SZ' 248) #(289 'TERM' 249) #(289 'TERMINAL' 250) #(289 'TEST' 251) #(289 'THREAD' 252) #(289 'TITLE' 253) #(289 'TRIG' 254) #(289 'TRUNC' 255) #(289 'UE' 256) #(289 'UPPER' 257) #(289 'VBREF' 258) #(289 'WD' 259) #(289 'WORD' 260) #(289 'XMLPARSE' 261) #(289 'XMLSS' 262) #(289 'XOPTS' 263) #(289 'XP' 264) #(289 'XREF' 265) #(289 'YEARWINDOW' 266) #(289 'YW' 267) #(289 'ZWB' 268))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -16,13 +16,23 @@ CobolPPScanner class >> initializeKeywordMap [
 ]
 
 { #category : #generated }
+CobolPPScanner >> NEWLINEId [
+	^ 291
+]
+
+{ #category : #generated }
 CobolPPScanner >> emptySymbolTokenId [
-	^ 355
+	^ 363
 ]
 
 { #category : #generated }
 CobolPPScanner >> errorTokenId [
-	^ 356
+	^ 364
+]
+
+{ #category : #generated }
+CobolPPScanner >> keywordFor: aString [
+	^ aString asUppercase
 ]
 
 { #category : #initialization }
@@ -42,7 +52,7 @@ CobolPPScanner >> scan1 [
 
 { #category : #generated }
 CobolPPScanner >> scan2 [
-	self recordMatch: #(284).
+	self recordMatch: #(287).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan1 ].
 	^ self reportLastMatch
@@ -60,7 +70,7 @@ CobolPPScanner >> scan3 [
 
 { #category : #generated }
 CobolPPScanner >> scan4 [
-	self recordMatch: #(284).
+	self recordMatch: #(287).
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan3 ].
 	^ self reportLastMatch
@@ -73,7 +83,7 @@ CobolPPScanner >> scan5 [
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ [ self recordMatch: #(286).
+		ifTrue: [ [ self recordMatch: #(289).
 			self step.
 			('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
 			(currentCharacter between: $0 and: $9)
@@ -88,7 +98,7 @@ CobolPPScanner >> scan6 [
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ [ self recordMatch: #(287).
+		ifTrue: [ [ self recordMatch: #(290).
 			self step.
 			(currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
@@ -98,7 +108,7 @@ CobolPPScanner >> scan6 [
 
 { #category : #generated }
 CobolPPScanner >> scan7 [
-	[ self recordMatch: #(286).
+	[ self recordMatch: #(289).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -112,32 +122,36 @@ CobolPPScanner >> scan7 [
 CobolPPScanner >> scanForToken [
 	self step.
 	currentCharacter == Character lf
-		ifTrue: [ ^ self recordAndReportMatch: #(288) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(291) ].
 	currentCharacter == Character cr ifTrue: [ ^ self scanForTokenX20 ].
-	currentCharacter == $" ifTrue: [ ^ self scanForTokenX17 ].
-	currentCharacter == $' ifTrue: [ ^ self scanForTokenX16 ].
-	^ self scanForTokenX22
+	^ self scanForTokenX23
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX1 [
-	self recordMatch: #(280 286 290).
+	self recordMatch: #(283 289 293).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ self step.
-			(currentCharacter isDigit or: [ currentCharacter between: $A and: $F ])
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(284) ].
-					currentCharacter isDigit or: [ currentCharacter between: $A and: $F ] ]
-						whileTrue ].
+					currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(287) ].
+					currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter == $'
 		ifTrue: [ self step.
-			(currentCharacter isDigit or: [ currentCharacter between: $A and: $F ])
+			(currentCharacter isDigit
+				or: [ (currentCharacter between: $A and: $F)
+						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(284) ].
-					currentCharacter isDigit or: [ currentCharacter between: $A and: $F ] ]
-						whileTrue ].
+					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(287) ].
+					currentCharacter isDigit
+						or: [ (currentCharacter between: $A and: $F)
+								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -149,7 +163,7 @@ CobolPPScanner >> scanForTokenX1 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX10 [
-	self recordMatch: #(273 286 290).
+	self recordMatch: #(275 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -161,7 +175,7 @@ CobolPPScanner >> scanForTokenX10 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX11 [
-	self recordMatch: #(272 286 290).
+	self recordMatch: #(274 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -173,7 +187,7 @@ CobolPPScanner >> scanForTokenX11 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX12 [
-	self recordMatch: #(271 286 290).
+	self recordMatch: #(273 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -185,7 +199,7 @@ CobolPPScanner >> scanForTokenX12 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX13 [
-	self recordMatch: #(270 286 290).
+	self recordMatch: #(272 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -197,7 +211,7 @@ CobolPPScanner >> scanForTokenX13 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX14 [
-	self recordMatch: #(269 286 290).
+	self recordMatch: #(271 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -209,19 +223,7 @@ CobolPPScanner >> scanForTokenX14 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX15 [
-	self recordMatch: #(268 286 290).
-	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scanForTokenX16 [
-	self recordMatch: #(290).
+	self recordMatch: #(293).
 	self step.
 	currentCharacter == $' ifTrue: [ ^ self scan4 ].
 	(currentCharacter <= Character tab
@@ -232,8 +234,8 @@ CobolPPScanner >> scanForTokenX16 [
 ]
 
 { #category : #generated }
-CobolPPScanner >> scanForTokenX17 [
-	self recordMatch: #(290).
+CobolPPScanner >> scanForTokenX16 [
+	self recordMatch: #(293).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan2 ].
 	(currentCharacter <= Character tab
@@ -244,13 +246,38 @@ CobolPPScanner >> scanForTokenX17 [
 ]
 
 { #category : #generated }
+CobolPPScanner >> scanForTokenX17 [
+	self recordMatch: #(293).
+	self step.
+	('Ee' includes: currentCharacter)
+		ifTrue: [ self step.
+			('Ll' includes: currentCharacter)
+				ifTrue: [ self step.
+					('Ss' includes: currentCharacter)
+						ifTrue: [ self step.
+							('Ee' includes: currentCharacter)
+								ifTrue: [ ^ self recordAndReportMatch: #(1) ] ].
+					^ self reportLastMatch ].
+			('Nn' includes: currentCharacter)
+				ifTrue: [ self step.
+					('Dd' includes: currentCharacter)
+						ifTrue: [ ^ self recordAndReportMatch: #(2) ] ].
+			^ self reportLastMatch ].
+	('Ii' includes: currentCharacter)
+		ifTrue: [ self step.
+			('Ff' includes: currentCharacter)
+				ifTrue: [ ^ self recordAndReportMatch: #(3) ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
 CobolPPScanner >> scanForTokenX18 [
-	self recordMatch: #(289 290).
+	self recordMatch: #(292 293).
 	self step.
 	(currentCharacter == Character tab
 		or: [ currentCharacter == Character newPage
 				or: [ currentCharacter == Character space or: [ currentCharacter == $; ] ] ])
-		ifTrue: [ [ self recordMatch: #(289).
+		ifTrue: [ [ self recordMatch: #(292).
 			self step.
 			currentCharacter == Character tab
 				or: [ currentCharacter == Character newPage
@@ -261,19 +288,19 @@ CobolPPScanner >> scanForTokenX18 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX19 [
-	self recordMatch: #(290).
+	self recordMatch: #(293).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(283) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(286) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX2 [
-	self recordMatch: #(285 286 290).
+	self recordMatch: #(288 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(285 286).
+		ifTrue: [ [ self recordMatch: #(288 289).
 			self step.
 			currentCharacter == $. ifTrue: [ ^ self scan6 ].
 			currentCharacter isDigit ] whileTrue ].
@@ -287,47 +314,63 @@ CobolPPScanner >> scanForTokenX2 [
 CobolPPScanner >> scanForTokenX20 [
 	self step.
 	currentCharacter == Character lf
-		ifTrue: [ ^ self recordAndReportMatch: #(288) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(291) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX21 [
-	currentCharacter == $N ifTrue: [ ^ self scanForTokenX8 ].
-	currentCharacter == $Q ifTrue: [ ^ self scanForTokenX7 ].
-	currentCharacter == $S ifTrue: [ ^ self scanForTokenX6 ].
-	currentCharacter == $U ifTrue: [ ^ self scanForTokenX5 ].
-	currentCharacter == $W ifTrue: [ ^ self scanForTokenX4 ].
-	currentCharacter == $X ifTrue: [ ^ self scanForTokenX1 ].
-	currentCharacter isDigit ifTrue: [ ^ self scanForTokenX2 ].
-	(currentCharacter isSeparator or: [ currentCharacter == $; ])
-		ifTrue: [ ^ self scanForTokenX18 ].
-	((currentCharacter between: $A and: $Z)
-		or: [ currentCharacter between: $a and: $z ])
-		ifTrue: [ ^ self scanForTokenX3 ].
-	^ self recordAndReportMatch: #(290)
+	(currentCharacter <= $@
+		or: [ (currentCharacter between: $[ and: $`) or: [ currentCharacter >= ${ ] ])
+		ifTrue: [ ^ self recordAndReportMatch: #(293) ].
+	true
+		ifTrue: [ self recordMatch: #(289 293).
+			self step.
+			currentCharacter == $. ifTrue: [ ^ self scan6 ].
+			('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+			((currentCharacter between: $0 and: $9)
+				or: [ (currentCharacter between: $A and: $Z)
+						or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ] ].
+	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX22 [
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(266 290) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(267 290) ].
-	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(281 290) ].
-	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(282 290) ].
-	currentCharacter == $= ifTrue: [ ^ self scanForTokenX19 ].
-	currentCharacter == $C ifTrue: [ ^ self scanForTokenX15 ].
-	currentCharacter == $D ifTrue: [ ^ self scanForTokenX14 ].
-	currentCharacter == $E ifTrue: [ ^ self scanForTokenX13 ].
-	currentCharacter == $F ifTrue: [ ^ self scanForTokenX12 ].
-	currentCharacter == $H ifTrue: [ ^ self scanForTokenX11 ].
-	currentCharacter == $I ifTrue: [ ^ self scanForTokenX10 ].
-	currentCharacter == $M ifTrue: [ ^ self scanForTokenX9 ].
+	('Ff' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX11 ].
+	('Hh' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX10 ].
+	('Ii' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX9 ].
+	('Mm' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX8 ].
+	('Nn' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX7 ].
+	('Qq' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX6 ].
+	('Ss' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX5 ].
+	('Uu' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX4 ].
+	('Ww' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX3 ].
+	('Xx' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX1 ].
+	(currentCharacter isSeparator or: [ currentCharacter == $; ])
+		ifTrue: [ ^ self scanForTokenX18 ].
 	^ self scanForTokenX21
 ]
 
 { #category : #generated }
+CobolPPScanner >> scanForTokenX23 [
+	currentCharacter == $" ifTrue: [ ^ self scanForTokenX16 ].
+	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX17 ].
+	currentCharacter == $' ifTrue: [ ^ self scanForTokenX15 ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(269 293) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(270 293) ].
+	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(284 293) ].
+	currentCharacter == $. ifTrue: [ ^ self recordAndReportMatch: #(285 293) ].
+	currentCharacter == $= ifTrue: [ ^ self scanForTokenX19 ].
+	currentCharacter isDigit ifTrue: [ ^ self scanForTokenX2 ].
+	('Cc' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX14 ].
+	('Dd' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX13 ].
+	('Ee' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX12 ].
+	^ self scanForTokenX22
+]
+
+{ #category : #generated }
 CobolPPScanner >> scanForTokenX3 [
-	self recordMatch: #(286 290).
+	self recordMatch: #(282 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -339,7 +382,7 @@ CobolPPScanner >> scanForTokenX3 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX4 [
-	self recordMatch: #(279 286 290).
+	self recordMatch: #(281 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -351,7 +394,7 @@ CobolPPScanner >> scanForTokenX4 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX5 [
-	self recordMatch: #(278 286 290).
+	self recordMatch: #(280 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -363,7 +406,7 @@ CobolPPScanner >> scanForTokenX5 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX6 [
-	self recordMatch: #(277 286 290).
+	self recordMatch: #(279 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -375,7 +418,7 @@ CobolPPScanner >> scanForTokenX6 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX7 [
-	self recordMatch: #(276 286 290).
+	self recordMatch: #(278 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -387,7 +430,7 @@ CobolPPScanner >> scanForTokenX7 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX8 [
-	self recordMatch: #(275 286 290).
+	self recordMatch: #(277 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -399,7 +442,7 @@ CobolPPScanner >> scanForTokenX8 [
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX9 [
-	self recordMatch: #(274 286 290).
+	self recordMatch: #(276 289 293).
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan6 ].
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
@@ -428,5 +471,10 @@ CobolPPScanner >> step [
 
 { #category : #generated }
 CobolPPScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #whitespace)
+]
+
+{ #category : #generated }
+CobolPPScanner >> tokenClass [
+	^SmaCCCaseInsensitiveToken
 ]

@@ -45,17 +45,17 @@ CobolScanner >> SEPARATOR [
 
 { #category : #generated }
 CobolScanner >> emptySymbolTokenId [
-	^ 1338
-]
-
-{ #category : #generated }
-CobolScanner >> errorTokenId [
 	^ 1339
 ]
 
 { #category : #generated }
+CobolScanner >> errorTokenId [
+	^ 1340
+]
+
+{ #category : #generated }
 CobolScanner >> execCodeId [
-	^ 1337
+	^ 1338
 ]
 
 { #category : #accessing }

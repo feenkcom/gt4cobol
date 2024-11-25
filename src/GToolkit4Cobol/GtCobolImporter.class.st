@@ -770,6 +770,21 @@ GtCobolImporter >> importParagraphsIn: ast [
 					initial := false ] ].
 	labels := Dictionary new.
 	ast
+		withAllNodesOfType: CobolProcedureSectionNode
+		do: [ :node | 
+			node sentences notEmpty
+				ifTrue: [ | paragraph |
+					paragraph := GtCobolParagraph new
+							name: ast topParent filename basenameWithoutExtension;
+							isInitial: initial;
+							container: currentProgram;
+							sourceAnchor: (self sourceAnchorFor: node);
+							mooseModel: model.
+					paragraph gtInspectButtonPosition: node header name stopPosition.
+					node attributeNamed: #entity put: paragraph.
+					currentFile addEntity: paragraph.
+					initial := false ] ].
+	ast
 		withAllNodesOfType: CobolParagraphNode
 		do: [ :node | 
 			| paragraph |
