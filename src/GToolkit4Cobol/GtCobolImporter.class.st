@@ -378,6 +378,20 @@ GtCobolImporter >> importCSDTransaction: aNode [
 ]
 
 { #category : #'importing-cobol' }
+GtCobolImporter >> importCallsIn: ast [
+	ast
+		withAllNodesOfType: CobolCallStatementNode
+		do: [ :each | 
+			| call |
+			call := GtCobolCallExpression new fromProgram: currentProgram.
+			(each call isKindOf: CobolLiteralNode)
+				ifTrue: [ each call literalString
+						ifNotNil: [ :name | call toProgram: (self ensureProgram: name) ] ].
+			call sourceAnchor: (self sourceAnchorFor: each).
+			call mooseModel: model ]
+]
+
+{ #category : #'importing-cobol' }
 GtCobolImporter >> importDataIn: ast [
 	| index |
 	index := 1.
@@ -456,7 +470,8 @@ GtCobolImporter >> importFile: aFileReference [
 		importDataReferencesIn: ast;
 		importFileDescriptorsIn: ast;
 		importFileReadWritesIn: ast;
-		importXctlCallsIn: ast
+		importXctlCallsIn: ast;
+		importCallsIn: ast
 ]
 
 { #category : #'importing-cobol' }
@@ -775,12 +790,13 @@ GtCobolImporter >> importParagraphsIn: ast [
 			node sentences notEmpty
 				ifTrue: [ | paragraph |
 					paragraph := GtCobolParagraph new
-							name: ast topParent filename basenameWithoutExtension;
+							name: node header name source;
 							isInitial: initial;
 							container: currentProgram;
 							sourceAnchor: (self sourceAnchorFor: node);
 							mooseModel: model.
 					paragraph gtInspectButtonPosition: node header name stopPosition.
+					labels at: node header name source put: paragraph.
 					node attributeNamed: #entity put: paragraph.
 					currentFile addEntity: paragraph.
 					initial := false ] ].

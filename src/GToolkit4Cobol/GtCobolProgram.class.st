@@ -9,7 +9,9 @@ Class {
 		'jclSteps',
 		'fileDescriptors',
 		'returnToExpressions',
-		'returnFromExpressions'
+		'returnFromExpressions',
+		'calledExpressions',
+		'callingExpressions'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -102,6 +104,30 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 ]
 
 { #category : #accessing }
+GtCobolProgram >> calledExpressions [
+	<MSEProperty: #calledExpressions type: #GtCobolCallExpression opposite: #toProgram>
+	<multivalued>
+	^ calledExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> calledExpressions: anObject [
+	calledExpressions value: anObject
+]
+
+{ #category : #accessing }
+GtCobolProgram >> callingExpressions [
+	<MSEProperty: #callingExpressions type: #GtCobolCallExpression opposite: #fromProgram>
+	<multivalued>
+	^ callingExpressions
+]
+
+{ #category : #accessing }
+GtCobolProgram >> callingExpressions: anObject [
+	callingExpressions value: anObject
+]
+
+{ #category : #accessing }
 GtCobolProgram >> fileDescriptors [
 	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #program>
 	<multivalued>
@@ -163,7 +189,15 @@ GtCobolProgram >> initialize [
 	returnToExpressions := FMNullMultivalueLink
 			on: self
 			opposite: #fromProgram:
-			selector: #returnToExpressions
+			selector: #returnToExpressions.
+	calledExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #toProgram:
+			selector: #calledPrograms.
+	callingExpressions := FMNullMultivalueLink
+			on: self
+			opposite: #fromProgram:
+			selector: #callingPrograms
 ]
 
 { #category : #accessing }
