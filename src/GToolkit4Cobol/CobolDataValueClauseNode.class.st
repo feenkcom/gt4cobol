@@ -37,8 +37,8 @@ CobolDataValueClauseNode >> compositeTokenVariables [
 { #category : #'generated-initialize-release' }
 CobolDataValueClauseNode >> initialize [
 	super initialize.
-	values := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
+	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
