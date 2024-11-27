@@ -18,7 +18,10 @@ GtCobolProgramGroup >> gtItemsFor: aView [
 		column: 'Description' translated
 			text: [ :each | 
 				(each privateState attributeAt: #privateDescription ifAbsent: [ '' ])
-					gtDisplayString ]
+					gtDisplayString ];
+		column: 'Stub?'
+			text: [ :each | each isStub ifTrue: [ 'X' ] ifFalse: [ '' ] ]
+			width: 45
 ]
 
 { #category : #'as yet unclassified' }

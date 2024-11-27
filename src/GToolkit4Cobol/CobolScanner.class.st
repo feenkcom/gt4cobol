@@ -10,7 +10,7 @@ Class {
 { #category : #'generated-initialization' }
 CobolScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
-	#(#(537 '66' 532) #(537 '77' 533) #(537 '88' 534) #(537 'ABORT' 1) #(537 'ACCEPT' 2) #(537 'ACCESS' 3) #(537 'ADD' 4) #(537 'ADDRESS' 5) #(537 'ADVANCING' 6) #(537 'AFTER' 7) #(537 'ALIGNED' 8) #(537 'ALL' 9) #(537 'ALPHABET' 10) #(537 'ALPHABETIC' 11) #(537 'ALPHABETIC-LOWER' 12) #(537 'ALPHABETIC-UPPER' 13) #(537 'ALPHANUMERIC' 14) #(537 'ALPHANUMERIC-EDITED' 15) #(537 'ALSO' 16) #(537 'ALTER' 17) #(537 'ALTERNATE' 18) #(537 'AND' 19) #(537 'ANY' 20) #(537 'ARE' 21) #(537 'AREA' 22) #(537 'AREAS' 23) #(537 'ASCENDING' 24) #(537 'ASCII' 25) #(537 'ASSIGN' 26) #(537 'ASSOCIATED-DATA' 27) #(537 'ASSOCIATED-DATA-LENGTH' 28) #(537 'AT' 29) #(537 'ATTRIBUTE' 30) #(537 'AUTHOR' 31) #(537 'AUTO' 32) #(537 'AUTO-SKIP' 33) #(537 'BACKGROUND-COLOR' 34) #(537 'BACKGROUND-COLOUR' 35) #(537 'BEEP' 36) #(537 'BEFORE' 37) #(537 'BELL' 38) #(537 'BINARY' 39) #(537 'BIT' 40) #(537 'BLANK' 41) #(537 'BLINK' 42) #(537 'BLOCK' 43) #(537 'BOTTOM' 44) #(537 'BOUNDS' 45) #(537 'BY' 46) #(537 'BYFUNCTION' 47) #(537 'BYTITLE' 48) #(537 'CALL' 49) #(537 'CANCEL' 50) #(537 'CAPABLE' 51) #(537 'CCSVERSION' 52) #(537 'CD' 53) #(537 'CF' 54) #(537 'CH' 55) #(537 'CHAINING' 56) #(537 'CHANGED' 57) #(537 'CHANNEL' 58) #(537 'CHARACTER' 59) #(537 'CHARACTERS' 60) #(537 'CICS' 61) #(537 'CLASS' 62) #(537 'CLOCK-UNITS' 63) #(537 'CLOSE' 64) #(537 'CLOSE-DISPOSITION' 65) #(537 'CODE-SET' 66) #(537 'COL' 67) #(537 'COLLATING' 68) #(537 'COLUMN' 69) #(537 'COMMA' 70) #(537 'COMMITMENT' 71) #(537 'COMMON' 72) #(537 'COMMUNICATION' 73) #(537 'COMP' 74) #(537 'COMP-1' 75) #(537 'COMP-2' 76) #(537 'COMP-3' 77) #(537 'COMP-4' 78) #(537 'COMP-5' 79) #(537 'COMPUTATIONAL' 80) #(537 'COMPUTATIONAL-1' 81) #(537 'COMPUTATIONAL-2' 82) #(537 'COMPUTATIONAL-3' 83) #(537 'COMPUTATIONAL-4' 84) #(537 'COMPUTATIONAL-5' 85) #(537 'COMPUTE' 86) #(537 'CONFIGURATION' 87) #(537 'CONTAINS' 88) #(537 'CONTENT' 89) #(537 'CONTINUE' 90) #(537 'CONTROL' 91) #(537 'CONTROL-POINT' 92) #(537 'CONVENTION' 93) #(537 'CONVERTING' 94) #(537 'CORR' 95) #(537 'CORRESPONDING' 96) #(537 'COUNT' 97) #(537 'CRUNCH' 98) #(537 'CURRENCY' 99) #(537 'CURSOR' 100) #(537 'DATA' 101) #(537 'DATA-BASE' 102) #(537 'DATE' 103) #(537 'DATE-COMPILED' 104) #(537 'DATE-WRITTEN' 105) #(537 'DAY' 106) #(537 'DAY-OF-WEEK' 107) #(537 'DBCS' 108) #(537 'DE' 109) #(537 'DEBUG-CONTENTS' 110) #(537 'DEBUG-ITEM' 111) #(537 'DEBUG-LINE' 112) #(537 'DEBUG-NAME' 113) #(537 'DEBUG-SUB-1' 114) #(537 'DEBUG-SUB-2' 115) #(537 'DEBUG-SUB-3' 116) #(537 'DEBUGGING' 117) #(537 'DECIMAL-POINT' 118) #(537 'DECLARATIVES' 119) #(537 'DEFAULT' 120) #(537 'DEFAULT-DISPLAY' 121) #(537 'DEFINITION' 122) #(537 'DELETE' 123) #(537 'DELIMITED' 124) #(537 'DELIMITER' 125) #(537 'DEPENDING' 126) #(537 'DESCENDING' 127) #(537 'DESTINATION' 128) #(537 'DETAIL' 129) #(537 'DFHRESP' 130) #(537 'DFHVALUE' 131) #(537 'DISABLE' 132) #(537 'DISK' 133) #(537 'DISPLAY' 134) #(537 'DISPLAY-1' 135) #(537 'DIVIDE' 136) #(537 'DIVISION' 137) #(537 'DONTCARE' 138) #(537 'DOUBLE' 139) #(537 'DOWN' 140) #(537 'DUPLICATES' 141) #(537 'DYNAMIC' 142) #(537 'EBCDIC' 143) #(537 'EGCS' 144) #(537 'EGI' 145) #(537 'ELSE' 146) #(537 'EMI' 147) #(537 'EMPTY-CHECK' 148) #(537 'ENABLE' 149) #(537 'END' 150) #(537 'END-ACCEPT' 151) #(537 'END-ADD' 152) #(537 'END-CALL' 153) #(537 'END-COMPUTE' 154) #(537 'END-DELETE' 155) #(537 'END-DIVIDE' 156) #(537 'END-EVALUATE' 157) #(537 'END-EXEC' 158) #(537 'END-IF' 159) #(537 'END-MULTIPLY' 160) #(537 'END-OF-PAGE' 161) #(537 'END-PERFORM' 162) #(537 'END-READ' 163) #(537 'END-RECEIVE' 164) #(537 'END-RETURN' 165) #(537 'END-REWRITE' 166) #(537 'END-SEARCH' 167) #(537 'END-START' 168) #(537 'END-STRING' 169) #(537 'END-SUBTRACT' 170) #(537 'END-UNSTRING' 171) #(537 'END-WRITE' 172) #(537 'ENTRY' 173) #(537 'ENTRY-PROCEDURE' 174) #(537 'ENVIRONMENT' 175) #(537 'EOL' 176) #(537 'EOP' 177) #(537 'EOS' 178) #(537 'EQUAL' 179) #(537 'ERASE' 180) #(537 'ERROR' 181) #(537 'ESCAPE' 182) #(537 'ESI' 183) #(537 'EVALUATE' 184) #(537 'EVENT' 185) #(537 'EVERY' 186) #(537 'EXCEPTION' 187) #(537 'EXCLUSIVE' 188) #(537 'EXEC' 189) #(537 'EXHIBIT' 190) #(537 'EXIT' 191) #(537 'EXPORT' 192) #(537 'EXTEND' 193) #(537 'EXTENDED' 194) #(537 'EXTERNAL' 195) #(537 'FALSE' 196) #(537 'FD' 197) #(537 'FILE' 198) #(537 'FILE-CONTROL' 199) #(537 'FILLER' 200) #(537 'FINAL' 201) #(537 'FIRST' 202) #(537 'FOOTING' 203) #(537 'FOR' 204) #(537 'FOREGROUND-COLOR' 205) #(537 'FOREGROUND-COLOUR' 206) #(537 'FROM' 207) #(537 'FULL' 208) #(537 'FUNCTION' 209) #(537 'FUNCTION-POINTER' 210) #(537 'FUNCTIONNAME' 211) #(537 'GENERATE' 212) #(537 'GIVING' 213) #(537 'GLOBAL' 214) #(537 'GO' 215) #(537 'GOBACK' 216) #(537 'GREATER' 217) #(537 'GRID' 218) #(537 'GROUP' 219) #(537 'HEADING' 220) #(537 'HIGH-VALUE' 221) #(537 'HIGH-VALUES' 222) #(537 'HIGHLIGHT' 223) #(537 'I-O' 224) #(537 'I-O-CONTROL' 225) #(537 'ID' 226) #(537 'IDENTIFICATION' 227) #(537 'IF' 228) #(537 'IMPLICIT' 229) #(537 'IMPORT' 230) #(537 'IN' 231) #(537 'INDEX' 232) #(537 'INDEXED' 233) #(537 'INDICATE' 234) #(537 'INITIAL' 235) #(537 'INITIALIZE' 236) #(537 'INITIATE' 237) #(537 'INPUT' 238) #(537 'INPUT-OUTPUT' 239) #(537 'INSPECT' 240) #(537 'INSTALLATION' 241) #(537 'INTEGER' 242) #(537 'INTO' 243) #(537 'INVALID' 244) #(537 'INVOKE' 245) #(537 'IS' 246) #(537 'JUST' 247) #(537 'JUSTIFIED' 248) #(537 'KANJI' 249) #(537 'KEPT' 250) #(537 'KEY' 251) #(537 'KEYBOARD' 252) #(537 'LABEL' 253) #(537 'LANGUAGE' 254) #(537 'LAST' 255) #(537 'LB' 256) #(537 'LD' 257) #(537 'LEADING' 258) #(537 'LEFT' 259) #(537 'LEFTLINE' 260) #(537 'LENGTH' 261) #(537 'LENGTH-CHECK' 262) #(537 'LESS' 263) #(537 'LIBACCESS' 264) #(537 'LIBPARAMETER' 265) #(537 'LIBRARY' 266) #(537 'LIMIT' 267) #(537 'LIMITS' 268) #(537 'LINAGE' 269) #(537 'LINAGE-COUNTER' 270) #(537 'LINE' 271) #(537 'LINE-COUNTER' 272) #(537 'LINES' 273) #(537 'LINKAGE' 274) #(537 'LIST' 275) #(537 'LOCAL' 276) #(537 'LOCAL-STORAGE' 277) #(537 'LOCK' 278) #(537 'LONG-DATE' 279) #(537 'LONG-TIME' 280) #(537 'LOW-VALUE' 281) #(537 'LOW-VALUES' 282) #(537 'LOWER' 283) #(537 'LOWLIGHT' 284) #(537 'MEMORY' 285) #(537 'MERGE' 286) #(537 'MESSAGE' 287) #(537 'MMDDYYYY' 288) #(537 'MODE' 289) #(537 'MODULES' 290) #(537 'MORE-LABELS' 291) #(537 'MOVE' 292) #(537 'MULTIPLE' 293) #(537 'MULTIPLY' 294) #(537 'NAMED' 295) #(537 'NATIONAL' 296) #(537 'NATIONAL-EDITED' 297) #(537 'NATIVE' 298) #(537 'NEGATIVE' 299) #(537 'NETWORK' 300) #(537 'NEXT' 301) #(537 'NO' 302) #(537 'NO-ECHO' 303) #(537 'NOT' 304) #(537 'NULL' 305) #(537 'NULLS' 306) #(537 'NUMBER' 307) #(537 'NUMERIC' 308) #(537 'NUMERIC-DATE' 309) #(537 'NUMERIC-EDITED' 310) #(537 'NUMERIC-TIME' 311) #(537 'OBJECT-COMPUTER' 312) #(537 'OCCURS' 313) #(537 'ODT' 314) #(537 'OF' 315) #(537 'OFF' 316) #(537 'OMITTED' 317) #(537 'ON' 318) #(537 'OPEN' 319) #(537 'OPTIONAL' 320) #(537 'OR' 321) #(537 'ORDER' 322) #(537 'ORDERLY' 323) #(537 'ORGANIZATION' 324) #(537 'OTHER' 325) #(537 'OUTPUT' 326) #(537 'OVERFLOW' 327) #(537 'OVERLINE' 328) #(537 'OWN' 329) #(537 'PACKED-DECIMAL' 330) #(537 'PADDING' 331) #(537 'PAGE' 332) #(537 'PAGE-COUNTER' 333) #(537 'PASSWORD' 334) #(537 'PERFORM' 335) #(537 'PF' 336) #(537 'PH' 337) #(537 'PIC' 338) #(537 'PICTURE' 339) #(537 'PLUS' 340) #(537 'POINTER' 341) #(537 'PORT' 342) #(537 'POSITION' 343) #(537 'POSITIVE' 344) #(537 'PRINTER' 345) #(537 'PRIVATE' 346) #(537 'PROCEDURE' 347) #(537 'PROCEDURE-POINTER' 348) #(537 'PROCEDURES' 349) #(537 'PROCEED' 350) #(537 'PROGRAM' 351) #(537 'PROGRAM-ID' 352) #(537 'PROGRAM-LIBRARY' 353) #(537 'PROMPT' 354) #(537 'PURGE' 355) #(537 'QUEUE' 356) #(537 'QUOTE' 357) #(537 'QUOTES' 358) #(537 'RANDOM' 359) #(537 'RD' 360) #(537 'READ' 361) #(537 'READER' 362) #(537 'REAL' 363) #(537 'RECEIVE' 364) #(537 'RECEIVED' 365) #(537 'RECORD' 366) #(537 'RECORDING' 367) #(537 'RECORDS' 368) #(537 'RECURSIVE' 369) #(537 'REDEFINES' 370) #(537 'REEL' 371) #(537 'REF' 372) #(537 'REFERENCE' 373) #(537 'REFERENCES' 374) #(537 'RELATIVE' 375) #(537 'RELEASE' 376) #(537 'REMAINDER' 377) #(537 'REMARKS' 378) #(537 'REMOTE' 379) #(537 'REMOVAL' 380) #(537 'REMOVE' 381) #(537 'RENAMES' 382) #(537 'REPLACING' 383) #(537 'REPORT' 384) #(537 'REPORTS' 385) #(537 'REQUIRED' 386) #(537 'RERUN' 387) #(537 'RESERVE' 388) #(537 'RESERVE-VIDEO' 389) #(537 'RESET' 390) #(537 'RETURN' 391) #(537 'RETURN-CODE' 392) #(537 'RETURNING' 393) #(537 'REVERSED' 394) #(537 'REWIND' 395) #(537 'REWRITE' 396) #(537 'RF' 397) #(537 'RH' 398) #(537 'RIGHT' 399) #(537 'ROUNDED' 400) #(537 'RUN' 401) #(537 'SAME' 402) #(537 'SAVE' 403) #(537 'SCREEN' 404) #(537 'SD' 405) #(537 'SEARCH' 406) #(537 'SECTION' 407) #(537 'SECURE' 408) #(537 'SECURITY' 409) #(537 'SEGMENT' 410) #(537 'SEGMENT-LIMIT' 411) #(537 'SELECT' 412) #(537 'SEND' 413) #(537 'SENTENCE' 414) #(537 'SEPARATE' 415) #(537 'SEQUENCE' 416) #(537 'SEQUENTIAL' 417) #(537 'SET' 418) #(537 'SHAREDBYALL' 419) #(537 'SHAREDBYRUNUNIT' 420) #(537 'SHARING' 421) #(537 'SHIFT-IN' 422) #(537 'SHIFT-OUT' 423) #(537 'SHORT-DATE' 424) #(537 'SIGN' 425) #(537 'SIZE' 426) #(537 'SORT' 427) #(537 'SORT-CONTROL' 428) #(537 'SORT-CORE-SIZE' 429) #(537 'SORT-FILE-SIZE' 430) #(537 'SORT-MERGE' 431) #(537 'SORT-MESSAGE' 432) #(537 'SORT-MODE-SIZE' 433) #(537 'SORT-RETURN' 434) #(537 'SOURCE' 435) #(537 'SOURCE-COMPUTER' 436) #(537 'SPACE' 437) #(537 'SPACES' 438) #(537 'SPECIAL-NAMES' 439) #(537 'SQL' 440) #(537 'SQLIMS' 441) #(537 'STANDARD' 442) #(537 'STANDARD-1' 443) #(537 'STANDARD-2' 444) #(537 'START' 445) #(537 'STATUS' 446) #(537 'STOP' 447) #(537 'STRING' 448) #(537 'SUB-QUEUE-1' 449) #(537 'SUB-QUEUE-2' 450) #(537 'SUB-QUEUE-3' 451) #(537 'SUBTRACT' 452) #(537 'SUM' 453) #(537 'SYMBOL' 454) #(537 'SYMBOLIC' 455) #(537 'SYNC' 456) #(537 'SYNCHRONIZED' 457) #(537 'TABLE' 458) #(537 'TALLY' 459) #(537 'TALLYING' 460) #(537 'TAPE' 461) #(537 'TASK' 462) #(537 'TERMINAL' 463) #(537 'TERMINATE' 464) #(537 'TEST' 465) #(537 'TEXT' 466) #(537 'THAN' 467) #(537 'THEN' 468) #(537 'THREAD' 469) #(537 'THREAD-LOCAL' 470) #(537 'THROUGH' 471) #(537 'THRU' 472) #(537 'TIME' 473) #(537 'TIMER' 474) #(537 'TIMES' 475) #(537 'TITLE' 476) #(537 'TO' 477) #(537 'TODAYS-DATE' 478) #(537 'TODAYS-NAME' 479) #(537 'TOP' 480) #(537 'TRAILING' 481) #(537 'TRUE' 482) #(537 'TRUNCATED' 483) #(537 'TYPE' 484) #(537 'TYPEDEF' 485) #(537 'UNDERLINE' 486) #(537 'UNIT' 487) #(537 'UNSTRING' 488) #(537 'UNTIL' 489) #(537 'UP' 490) #(537 'UPON' 491) #(537 'USAGE' 492) #(537 'USE' 493) #(537 'USING' 494) #(537 'VALUE' 495) #(537 'VALUES' 496) #(537 'VARYING' 497) #(537 'VIRTUAL' 498) #(537 'WAIT' 499) #(537 'WHEN' 500) #(537 'WHEN-COMPILED' 501) #(537 'WITH' 502) #(537 'WORDS' 503) #(537 'WORKING-STORAGE' 504) #(537 'WRITE' 505) #(537 'YEAR' 506) #(537 'YYYYDDD' 507) #(537 'YYYYMMDD' 508) #(537 'ZERO' 509) #(537 'ZERO-FILL' 510) #(537 'ZEROES' 511) #(537 'ZEROS' 512) #(535 '66' 532) #(535 '77' 533) #(535 '88' 534))
+	#(#(540 '66' 535) #(540 '77' 536) #(540 '88' 537) #(540 'ABORT' 1) #(540 'ACCEPT' 2) #(540 'ACCESS' 3) #(540 'ADD' 4) #(540 'ADDRESS' 5) #(540 'ADVANCING' 6) #(540 'AFTER' 7) #(540 'ALIGNED' 8) #(540 'ALL' 9) #(540 'ALPHABET' 10) #(540 'ALPHABETIC' 11) #(540 'ALPHABETIC-LOWER' 12) #(540 'ALPHABETIC-UPPER' 13) #(540 'ALPHANUMERIC' 14) #(540 'ALPHANUMERIC-EDITED' 15) #(540 'ALSO' 16) #(540 'ALTER' 17) #(540 'ALTERNATE' 18) #(540 'AND' 19) #(540 'ANY' 20) #(540 'ARE' 21) #(540 'AREA' 22) #(540 'AREAS' 23) #(540 'ASCENDING' 24) #(540 'ASCII' 25) #(540 'ASSIGN' 26) #(540 'ASSOCIATED-DATA' 27) #(540 'ASSOCIATED-DATA-LENGTH' 28) #(540 'AT' 29) #(540 'ATTRIBUTE' 30) #(540 'AUTHOR' 31) #(540 'AUTO' 32) #(540 'AUTO-SKIP' 33) #(540 'BACKGROUND-COLOR' 34) #(540 'BACKGROUND-COLOUR' 35) #(540 'BEEP' 36) #(540 'BEFORE' 37) #(540 'BELL' 38) #(540 'BINARY' 39) #(540 'BIT' 40) #(540 'BLANK' 41) #(540 'BLINK' 42) #(540 'BLOCK' 43) #(540 'BOTTOM' 44) #(540 'BOUNDS' 45) #(540 'BY' 46) #(540 'BYFUNCTION' 47) #(540 'BYTITLE' 48) #(540 'CALL' 49) #(540 'CANCEL' 50) #(540 'CAPABLE' 51) #(540 'CCSVERSION' 52) #(540 'CD' 53) #(540 'CF' 54) #(540 'CH' 55) #(540 'CHAINING' 56) #(540 'CHANGED' 57) #(540 'CHANNEL' 58) #(540 'CHARACTER' 59) #(540 'CHARACTERS' 60) #(540 'CICS' 61) #(540 'CLASS' 62) #(540 'CLOB' 63) #(540 'CLOB-FILE' 64) #(540 'CLOB-LOCATOR' 65) #(540 'CLOCK-UNITS' 66) #(540 'CLOSE' 67) #(540 'CLOSE-DISPOSITION' 68) #(540 'CODE-SET' 69) #(540 'COL' 70) #(540 'COLLATING' 71) #(540 'COLUMN' 72) #(540 'COMMA' 73) #(540 'COMMITMENT' 74) #(540 'COMMON' 75) #(540 'COMMUNICATION' 76) #(540 'COMP' 77) #(540 'COMP-1' 78) #(540 'COMP-2' 79) #(540 'COMP-3' 80) #(540 'COMP-4' 81) #(540 'COMP-5' 82) #(540 'COMPUTATIONAL' 83) #(540 'COMPUTATIONAL-1' 84) #(540 'COMPUTATIONAL-2' 85) #(540 'COMPUTATIONAL-3' 86) #(540 'COMPUTATIONAL-4' 87) #(540 'COMPUTATIONAL-5' 88) #(540 'COMPUTE' 89) #(540 'CONFIGURATION' 90) #(540 'CONTAINS' 91) #(540 'CONTENT' 92) #(540 'CONTINUE' 93) #(540 'CONTROL' 94) #(540 'CONTROL-POINT' 95) #(540 'CONVENTION' 96) #(540 'CONVERTING' 97) #(540 'CORR' 98) #(540 'CORRESPONDING' 99) #(540 'COUNT' 100) #(540 'CRUNCH' 101) #(540 'CURRENCY' 102) #(540 'CURSOR' 103) #(540 'DATA' 104) #(540 'DATA-BASE' 105) #(540 'DATE' 106) #(540 'DATE-COMPILED' 107) #(540 'DATE-WRITTEN' 108) #(540 'DAY' 109) #(540 'DAY-OF-WEEK' 110) #(540 'DBCS' 111) #(540 'DE' 112) #(540 'DEBUG-CONTENTS' 113) #(540 'DEBUG-ITEM' 114) #(540 'DEBUG-LINE' 115) #(540 'DEBUG-NAME' 116) #(540 'DEBUG-SUB-1' 117) #(540 'DEBUG-SUB-2' 118) #(540 'DEBUG-SUB-3' 119) #(540 'DEBUGGING' 120) #(540 'DECIMAL-POINT' 121) #(540 'DECLARATIVES' 122) #(540 'DEFAULT' 123) #(540 'DEFAULT-DISPLAY' 124) #(540 'DEFINITION' 125) #(540 'DELETE' 126) #(540 'DELIMITED' 127) #(540 'DELIMITER' 128) #(540 'DEPENDING' 129) #(540 'DESCENDING' 130) #(540 'DESTINATION' 131) #(540 'DETAIL' 132) #(540 'DFHRESP' 133) #(540 'DFHVALUE' 134) #(540 'DISABLE' 135) #(540 'DISK' 136) #(540 'DISPLAY' 137) #(540 'DISPLAY-1' 138) #(540 'DIVIDE' 139) #(540 'DIVISION' 140) #(540 'DONTCARE' 141) #(540 'DOUBLE' 142) #(540 'DOWN' 143) #(540 'DUPLICATES' 144) #(540 'DYNAMIC' 145) #(540 'EBCDIC' 146) #(540 'EGCS' 147) #(540 'EGI' 148) #(540 'ELSE' 149) #(540 'EMI' 150) #(540 'EMPTY-CHECK' 151) #(540 'ENABLE' 152) #(540 'END' 153) #(540 'END-ACCEPT' 154) #(540 'END-ADD' 155) #(540 'END-CALL' 156) #(540 'END-COMPUTE' 157) #(540 'END-DELETE' 158) #(540 'END-DIVIDE' 159) #(540 'END-EVALUATE' 160) #(540 'END-EXEC' 161) #(540 'END-IF' 162) #(540 'END-MULTIPLY' 163) #(540 'END-OF-PAGE' 164) #(540 'END-PERFORM' 165) #(540 'END-READ' 166) #(540 'END-RECEIVE' 167) #(540 'END-RETURN' 168) #(540 'END-REWRITE' 169) #(540 'END-SEARCH' 170) #(540 'END-START' 171) #(540 'END-STRING' 172) #(540 'END-SUBTRACT' 173) #(540 'END-UNSTRING' 174) #(540 'END-WRITE' 175) #(540 'ENTRY' 176) #(540 'ENTRY-PROCEDURE' 177) #(540 'ENVIRONMENT' 178) #(540 'EOL' 179) #(540 'EOP' 180) #(540 'EOS' 181) #(540 'EQUAL' 182) #(540 'ERASE' 183) #(540 'ERROR' 184) #(540 'ESCAPE' 185) #(540 'ESI' 186) #(540 'EVALUATE' 187) #(540 'EVENT' 188) #(540 'EVERY' 189) #(540 'EXCEPTION' 190) #(540 'EXCLUSIVE' 191) #(540 'EXEC' 192) #(540 'EXHIBIT' 193) #(540 'EXIT' 194) #(540 'EXPORT' 195) #(540 'EXTEND' 196) #(540 'EXTENDED' 197) #(540 'EXTERNAL' 198) #(540 'FALSE' 199) #(540 'FD' 200) #(540 'FILE' 201) #(540 'FILE-CONTROL' 202) #(540 'FILLER' 203) #(540 'FINAL' 204) #(540 'FIRST' 205) #(540 'FOOTING' 206) #(540 'FOR' 207) #(540 'FOREGROUND-COLOR' 208) #(540 'FOREGROUND-COLOUR' 209) #(540 'FROM' 210) #(540 'FULL' 211) #(540 'FUNCTION' 212) #(540 'FUNCTION-POINTER' 213) #(540 'FUNCTIONNAME' 214) #(540 'GENERATE' 215) #(540 'GIVING' 216) #(540 'GLOBAL' 217) #(540 'GO' 218) #(540 'GOBACK' 219) #(540 'GREATER' 220) #(540 'GRID' 221) #(540 'GROUP' 222) #(540 'HEADING' 223) #(540 'HIGH-VALUE' 224) #(540 'HIGH-VALUES' 225) #(540 'HIGHLIGHT' 226) #(540 'I-O' 227) #(540 'I-O-CONTROL' 228) #(540 'ID' 229) #(540 'IDENTIFICATION' 230) #(540 'IF' 231) #(540 'IMPLICIT' 232) #(540 'IMPORT' 233) #(540 'IN' 234) #(540 'INDEX' 235) #(540 'INDEXED' 236) #(540 'INDICATE' 237) #(540 'INITIAL' 238) #(540 'INITIALIZE' 239) #(540 'INITIATE' 240) #(540 'INPUT' 241) #(540 'INPUT-OUTPUT' 242) #(540 'INSPECT' 243) #(540 'INSTALLATION' 244) #(540 'INTEGER' 245) #(540 'INTO' 246) #(540 'INVALID' 247) #(540 'INVOKE' 248) #(540 'IS' 249) #(540 'JUST' 250) #(540 'JUSTIFIED' 251) #(540 'KANJI' 252) #(540 'KEPT' 253) #(540 'KEY' 254) #(540 'KEYBOARD' 255) #(540 'LABEL' 256) #(540 'LANGUAGE' 257) #(540 'LAST' 258) #(540 'LB' 259) #(540 'LD' 260) #(540 'LEADING' 261) #(540 'LEFT' 262) #(540 'LEFTLINE' 263) #(540 'LENGTH' 264) #(540 'LENGTH-CHECK' 265) #(540 'LESS' 266) #(540 'LIBACCESS' 267) #(540 'LIBPARAMETER' 268) #(540 'LIBRARY' 269) #(540 'LIMIT' 270) #(540 'LIMITS' 271) #(540 'LINAGE' 272) #(540 'LINAGE-COUNTER' 273) #(540 'LINE' 274) #(540 'LINE-COUNTER' 275) #(540 'LINES' 276) #(540 'LINKAGE' 277) #(540 'LIST' 278) #(540 'LOCAL' 279) #(540 'LOCAL-STORAGE' 280) #(540 'LOCK' 281) #(540 'LONG-DATE' 282) #(540 'LONG-TIME' 283) #(540 'LOW-VALUE' 284) #(540 'LOW-VALUES' 285) #(540 'LOWER' 286) #(540 'LOWLIGHT' 287) #(540 'MEMORY' 288) #(540 'MERGE' 289) #(540 'MESSAGE' 290) #(540 'MMDDYYYY' 291) #(540 'MODE' 292) #(540 'MODULES' 293) #(540 'MORE-LABELS' 294) #(540 'MOVE' 295) #(540 'MULTIPLE' 296) #(540 'MULTIPLY' 297) #(540 'NAMED' 298) #(540 'NATIONAL' 299) #(540 'NATIONAL-EDITED' 300) #(540 'NATIVE' 301) #(540 'NEGATIVE' 302) #(540 'NETWORK' 303) #(540 'NEXT' 304) #(540 'NO' 305) #(540 'NO-ECHO' 306) #(540 'NOT' 307) #(540 'NULL' 308) #(540 'NULLS' 309) #(540 'NUMBER' 310) #(540 'NUMERIC' 311) #(540 'NUMERIC-DATE' 312) #(540 'NUMERIC-EDITED' 313) #(540 'NUMERIC-TIME' 314) #(540 'OBJECT-COMPUTER' 315) #(540 'OCCURS' 316) #(540 'ODT' 317) #(540 'OF' 318) #(540 'OFF' 319) #(540 'OMITTED' 320) #(540 'ON' 321) #(540 'OPEN' 322) #(540 'OPTIONAL' 323) #(540 'OR' 324) #(540 'ORDER' 325) #(540 'ORDERLY' 326) #(540 'ORGANIZATION' 327) #(540 'OTHER' 328) #(540 'OUTPUT' 329) #(540 'OVERFLOW' 330) #(540 'OVERLINE' 331) #(540 'OWN' 332) #(540 'PACKED-DECIMAL' 333) #(540 'PADDING' 334) #(540 'PAGE' 335) #(540 'PAGE-COUNTER' 336) #(540 'PASSWORD' 337) #(540 'PERFORM' 338) #(540 'PF' 339) #(540 'PH' 340) #(540 'PIC' 341) #(540 'PICTURE' 342) #(540 'PLUS' 343) #(540 'POINTER' 344) #(540 'PORT' 345) #(540 'POSITION' 346) #(540 'POSITIVE' 347) #(540 'PRINTER' 348) #(540 'PRIVATE' 349) #(540 'PROCEDURE' 350) #(540 'PROCEDURE-POINTER' 351) #(540 'PROCEDURES' 352) #(540 'PROCEED' 353) #(540 'PROGRAM' 354) #(540 'PROGRAM-ID' 355) #(540 'PROGRAM-LIBRARY' 356) #(540 'PROMPT' 357) #(540 'PURGE' 358) #(540 'QUEUE' 359) #(540 'QUOTE' 360) #(540 'QUOTES' 361) #(540 'RANDOM' 362) #(540 'RD' 363) #(540 'READ' 364) #(540 'READER' 365) #(540 'REAL' 366) #(540 'RECEIVE' 367) #(540 'RECEIVED' 368) #(540 'RECORD' 369) #(540 'RECORDING' 370) #(540 'RECORDS' 371) #(540 'RECURSIVE' 372) #(540 'REDEFINES' 373) #(540 'REEL' 374) #(540 'REF' 375) #(540 'REFERENCE' 376) #(540 'REFERENCES' 377) #(540 'RELATIVE' 378) #(540 'RELEASE' 379) #(540 'REMAINDER' 380) #(540 'REMARKS' 381) #(540 'REMOTE' 382) #(540 'REMOVAL' 383) #(540 'REMOVE' 384) #(540 'RENAMES' 385) #(540 'REPLACING' 386) #(540 'REPORT' 387) #(540 'REPORTS' 388) #(540 'REQUIRED' 389) #(540 'RERUN' 390) #(540 'RESERVE' 391) #(540 'RESERVE-VIDEO' 392) #(540 'RESET' 393) #(540 'RETURN' 394) #(540 'RETURN-CODE' 395) #(540 'RETURNING' 396) #(540 'REVERSED' 397) #(540 'REWIND' 398) #(540 'REWRITE' 399) #(540 'RF' 400) #(540 'RH' 401) #(540 'RIGHT' 402) #(540 'ROUNDED' 403) #(540 'RUN' 404) #(540 'SAME' 405) #(540 'SAVE' 406) #(540 'SCREEN' 407) #(540 'SD' 408) #(540 'SEARCH' 409) #(540 'SECTION' 410) #(540 'SECURE' 411) #(540 'SECURITY' 412) #(540 'SEGMENT' 413) #(540 'SEGMENT-LIMIT' 414) #(540 'SELECT' 415) #(540 'SEND' 416) #(540 'SENTENCE' 417) #(540 'SEPARATE' 418) #(540 'SEQUENCE' 419) #(540 'SEQUENTIAL' 420) #(540 'SET' 421) #(540 'SHAREDBYALL' 422) #(540 'SHAREDBYRUNUNIT' 423) #(540 'SHARING' 424) #(540 'SHIFT-IN' 425) #(540 'SHIFT-OUT' 426) #(540 'SHORT-DATE' 427) #(540 'SIGN' 428) #(540 'SIZE' 429) #(540 'SORT' 430) #(540 'SORT-CONTROL' 431) #(540 'SORT-CORE-SIZE' 432) #(540 'SORT-FILE-SIZE' 433) #(540 'SORT-MERGE' 434) #(540 'SORT-MESSAGE' 435) #(540 'SORT-MODE-SIZE' 436) #(540 'SORT-RETURN' 437) #(540 'SOURCE' 438) #(540 'SOURCE-COMPUTER' 439) #(540 'SPACE' 440) #(540 'SPACES' 441) #(540 'SPECIAL-NAMES' 442) #(540 'SQL' 443) #(540 'SQLIMS' 444) #(540 'STANDARD' 445) #(540 'STANDARD-1' 446) #(540 'STANDARD-2' 447) #(540 'START' 448) #(540 'STATUS' 449) #(540 'STOP' 450) #(540 'STRING' 451) #(540 'SUB-QUEUE-1' 452) #(540 'SUB-QUEUE-2' 453) #(540 'SUB-QUEUE-3' 454) #(540 'SUBTRACT' 455) #(540 'SUM' 456) #(540 'SYMBOL' 457) #(540 'SYMBOLIC' 458) #(540 'SYNC' 459) #(540 'SYNCHRONIZED' 460) #(540 'TABLE' 461) #(540 'TALLY' 462) #(540 'TALLYING' 463) #(540 'TAPE' 464) #(540 'TASK' 465) #(540 'TERMINAL' 466) #(540 'TERMINATE' 467) #(540 'TEST' 468) #(540 'TEXT' 469) #(540 'THAN' 470) #(540 'THEN' 471) #(540 'THREAD' 472) #(540 'THREAD-LOCAL' 473) #(540 'THROUGH' 474) #(540 'THRU' 475) #(540 'TIME' 476) #(540 'TIMER' 477) #(540 'TIMES' 478) #(540 'TITLE' 479) #(540 'TO' 480) #(540 'TODAYS-DATE' 481) #(540 'TODAYS-NAME' 482) #(540 'TOP' 483) #(540 'TRAILING' 484) #(540 'TRUE' 485) #(540 'TRUNCATED' 486) #(540 'TYPE' 487) #(540 'TYPEDEF' 488) #(540 'UNDERLINE' 489) #(540 'UNIT' 490) #(540 'UNSTRING' 491) #(540 'UNTIL' 492) #(540 'UP' 493) #(540 'UPON' 494) #(540 'USAGE' 495) #(540 'USE' 496) #(540 'USING' 497) #(540 'VALUE' 498) #(540 'VALUES' 499) #(540 'VARYING' 500) #(540 'VIRTUAL' 501) #(540 'WAIT' 502) #(540 'WHEN' 503) #(540 'WHEN-COMPILED' 504) #(540 'WITH' 505) #(540 'WORDS' 506) #(540 'WORKING-STORAGE' 507) #(540 'WRITE' 508) #(540 'YEAR' 509) #(540 'YYYYDDD' 510) #(540 'YYYYMMDD' 511) #(540 'ZERO' 512) #(540 'ZERO-FILL' 513) #(540 'ZEROES' 514) #(540 'ZEROS' 515) #(538 '66' 535) #(538 '77' 536) #(538 '88' 537))
 		do: [ :each | 
 			(keywordMap at: each first ifAbsentPut: [ Dictionary new ])
 				at: (each at: 2)
@@ -20,7 +20,7 @@ CobolScanner class >> initializeKeywordMap [
 
 { #category : #generated }
 CobolScanner >> COMMENTENTRYLINEId [
-	^ 539
+	^ 542
 ]
 
 { #category : #private }
@@ -30,7 +30,7 @@ CobolScanner >> COMMENTLINE [
 
 { #category : #generated }
 CobolScanner >> INTEGERLITERALId [
-	^ 535
+	^ 538
 ]
 
 { #category : #private }
@@ -45,17 +45,17 @@ CobolScanner >> SEPARATOR [
 
 { #category : #generated }
 CobolScanner >> emptySymbolTokenId [
-	^ 1340
+	^ 1343
 ]
 
 { #category : #generated }
 CobolScanner >> errorTokenId [
-	^ 1341
+	^ 1344
 ]
 
 { #category : #generated }
 CobolScanner >> execCodeId [
-	^ 1339
+	^ 1342
 ]
 
 { #category : #accessing }
@@ -117,13 +117,13 @@ CobolScanner >> on: aStream [
 CobolScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf
-		ifTrue: [ ^ self recordAndReportMatch: #(538) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(541) ].
 	^ self scan1X14
 ]
 
 { #category : #generated }
 CobolScanner >> scan10 [
-	[ self recordMatch: #(537).
+	[ self recordMatch: #(540).
 	self step.
 	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	(currentCharacter between: $0 and: $9)
@@ -136,7 +136,7 @@ CobolScanner >> scan10 [
 CobolScanner >> scan11 [
 	[ self step.
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(531).
+		ifTrue: [ self recordMatch: #(534).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan11 ].
 			^ self reportLastMatch ].
@@ -150,7 +150,7 @@ CobolScanner >> scan11 [
 CobolScanner >> scan12 [
 	[ self step.
 	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(531).
+		ifTrue: [ self recordMatch: #(534).
 			self step.
 			currentCharacter == $' ifTrue: [ ^ self scan12 ].
 			^ self reportLastMatch ].
@@ -162,7 +162,7 @@ CobolScanner >> scan12 [
 
 { #category : #generated }
 CobolScanner >> scan13 [
-	[ self recordMatch: #(543).
+	[ self recordMatch: #(546).
 	self step.
 	currentCharacter == $, ifTrue: [ ^ self scan14 ].
 	currentCharacter == $. ifTrue: [ ^ self scan15 ].
@@ -177,7 +177,7 @@ CobolScanner >> scan13 [
 
 { #category : #generated }
 CobolScanner >> scan14 [
-	[ self recordMatch: #(543).
+	[ self recordMatch: #(546).
 	self step.
 	currentCharacter == $, ] whileTrue.
 	currentCharacter == $. ifTrue: [ ^ self scan15 ].
@@ -206,7 +206,7 @@ CobolScanner >> scan15 [
 
 { #category : #generated }
 CobolScanner >> scan16 [
-	[ self recordMatch: #(543).
+	[ self recordMatch: #(546).
 	self step.
 	currentCharacter == $, ifTrue: [ ^ self scan14 ].
 	currentCharacter == $. ifTrue: [ ^ self scan15 ].
@@ -223,7 +223,7 @@ CobolScanner >> scan16 [
 
 { #category : #generated }
 CobolScanner >> scan17 [
-	[ self recordMatch: #(543).
+	[ self recordMatch: #(546).
 	self step.
 	currentCharacter == $, ifTrue: [ ^ self scan14 ].
 	currentCharacter == $. ifTrue: [ ^ self scan15 ].
@@ -257,9 +257,9 @@ CobolScanner >> scan19 [
 
 { #category : #generated }
 CobolScanner >> scan1X1 [
-	self recordMatch: #(513).
+	self recordMatch: #(516).
 	self step.
-	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(514) ].
+	currentCharacter == $* ifTrue: [ ^ self recordAndReportMatch: #(517) ].
 	currentCharacter == $>
 		ifTrue: [ self step.
 			('Cc' includes: currentCharacter)
@@ -269,7 +269,7 @@ CobolScanner >> scan1X1 [
 							(currentCharacter == Character tab
 								or: [ currentCharacter == Character newPage
 										or: [ currentCharacter == Character space or: [ currentCharacter == $; ] ] ])
-								ifTrue: [ [ self recordMatch: #(539).
+								ifTrue: [ [ self recordMatch: #(542).
 									self step.
 									currentCharacter == Character tab
 										or: [ currentCharacter == Character newPage
@@ -278,7 +278,7 @@ CobolScanner >> scan1X1 [
 									(currentCharacter <= Character backspace
 										or: [ currentCharacter == Character pageUp
 												or: [ currentCharacter >= (Character value: 14) ] ])
-										ifTrue: [ [ self recordMatch: #(539).
+										ifTrue: [ [ self recordMatch: #(542).
 											self step.
 											currentCharacter <= Character tab
 												or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -287,7 +287,7 @@ CobolScanner >> scan1X1 [
 			(currentCharacter == Character tab
 				or: [ currentCharacter == Character newPage
 						or: [ currentCharacter == Character space or: [ currentCharacter == $; ] ] ])
-				ifTrue: [ [ self recordMatch: #(540).
+				ifTrue: [ [ self recordMatch: #(543).
 					self step.
 					currentCharacter == Character tab
 						or: [ currentCharacter == Character newPage
@@ -296,7 +296,7 @@ CobolScanner >> scan1X1 [
 					(currentCharacter <= Character backspace
 						or: [ currentCharacter == Character pageUp
 								or: [ currentCharacter >= (Character value: 14) ] ])
-						ifTrue: [ [ self recordMatch: #(540).
+						ifTrue: [ [ self recordMatch: #(543).
 							self step.
 							currentCharacter <= Character tab
 								or: [ (currentCharacter between: Character pageUp and: Character newPage)
@@ -306,15 +306,15 @@ CobolScanner >> scan1X1 [
 
 { #category : #generated }
 CobolScanner >> scan1X10 [
-	self recordMatch: #(525).
+	self recordMatch: #(528).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(526) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(529) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolScanner >> scan1X11 [
-	self recordMatch: #(518 519).
+	self recordMatch: #(521 522).
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch
@@ -324,15 +324,15 @@ CobolScanner >> scan1X11 [
 CobolScanner >> scan1X12 [
 	self step.
 	currentCharacter == Character lf
-		ifTrue: [ ^ self recordAndReportMatch: #(538) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(541) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolScanner >> scan1X13 [
-	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(515) ].
+	currentCharacter == $: ifTrue: [ ^ self recordAndReportMatch: #(518) ].
 	currentCharacter == $< ifTrue: [ ^ self scan1X6 ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(520) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(523) ].
 	currentCharacter == $> ifTrue: [ ^ self scan1X10 ].
 	currentCharacter isDigit ifTrue: [ ^ self scan1X4 ].
 	('Xx' includes: currentCharacter) ifTrue: [ ^ self scan1X2 ].
@@ -348,22 +348,22 @@ CobolScanner >> scan1X13 [
 CobolScanner >> scan1X14 [
 	currentCharacter == Character cr ifTrue: [ ^ self scan1X12 ].
 	currentCharacter == $" ifTrue: [ ^ self scan2 ].
-	currentCharacter == $$ ifTrue: [ ^ self recordAndReportMatch: #(517) ].
+	currentCharacter == $$ ifTrue: [ ^ self recordAndReportMatch: #(520) ].
 	currentCharacter == $' ifTrue: [ ^ self scan4 ].
-	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(523) ].
-	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(529) ].
+	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(526) ].
+	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(532) ].
 	currentCharacter == $* ifTrue: [ ^ self scan1X1 ].
 	currentCharacter == $+ ifTrue: [ ^ self scan1X9 ].
 	currentCharacter == $, ifTrue: [ ^ self scan1X7 ].
 	currentCharacter == $- ifTrue: [ ^ self scan1X8 ].
 	currentCharacter == $. ifTrue: [ ^ self scan1X11 ].
-	currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(530) ].
+	currentCharacter == $/ ifTrue: [ ^ self recordAndReportMatch: #(533) ].
 	^ self scan1X13
 ]
 
 { #category : #generated }
 CobolScanner >> scan1X2 [
-	self recordMatch: #(537).
+	self recordMatch: #(540).
 	self step.
 	currentCharacter == $"
 		ifTrue: [ self step.
@@ -371,7 +371,7 @@ CobolScanner >> scan1X2 [
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(531) ].
+					currentCharacter == $" ifTrue: [ ^ self recordAndReportMatch: #(534) ].
 					currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
@@ -382,7 +382,7 @@ CobolScanner >> scan1X2 [
 				or: [ (currentCharacter between: $A and: $F)
 						or: [ currentCharacter between: $a and: $f ] ])
 				ifTrue: [ [ self step.
-					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(531) ].
+					currentCharacter == $' ifTrue: [ ^ self recordAndReportMatch: #(534) ].
 					currentCharacter isDigit
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
@@ -396,7 +396,7 @@ CobolScanner >> scan1X2 [
 
 { #category : #generated }
 CobolScanner >> scan1X3 [
-	self recordMatch: #(537).
+	self recordMatch: #(540).
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan11 ].
 	currentCharacter == $' ifTrue: [ ^ self scan12 ].
@@ -409,7 +409,7 @@ CobolScanner >> scan1X3 [
 
 { #category : #generated }
 CobolScanner >> scan1X4 [
-	[ self recordMatch: #(535 537).
+	[ self recordMatch: #(538 540).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	(',.' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
@@ -421,7 +421,7 @@ CobolScanner >> scan1X4 [
 
 { #category : #generated }
 CobolScanner >> scan1X5 [
-	[ self recordMatch: #(541).
+	[ self recordMatch: #(544).
 	self step.
 	currentCharacter == Character tab
 		or: [ currentCharacter == Character newPage
@@ -432,26 +432,26 @@ CobolScanner >> scan1X5 [
 
 { #category : #generated }
 CobolScanner >> scan1X6 [
-	self recordMatch: #(521).
+	self recordMatch: #(524).
 	self step.
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(522) ].
-	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(527) ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(525) ].
+	currentCharacter == $> ifTrue: [ ^ self recordAndReportMatch: #(530) ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolScanner >> scan1X7 [
-	self recordMatch: #(516).
+	self recordMatch: #(519).
 	self step.
 	currentCharacter == Character space
-		ifTrue: [ ^ self recordAndReportMatch: #(542) ].
+		ifTrue: [ ^ self recordAndReportMatch: #(545) ].
 	currentCharacter isDigit ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolScanner >> scan1X8 [
-	self recordMatch: #(524).
+	self recordMatch: #(527).
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan8 ].
 	(',.' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
@@ -460,7 +460,7 @@ CobolScanner >> scan1X8 [
 
 { #category : #generated }
 CobolScanner >> scan1X9 [
-	self recordMatch: #(528).
+	self recordMatch: #(531).
 	self step.
 	currentCharacter isDigit ifTrue: [ ^ self scan8 ].
 	(',.' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
@@ -476,7 +476,7 @@ CobolScanner >> scan2 [
 			currentCharacter == Character lf ifTrue: [ ^ self scan3 ].
 			^ self reportLastMatch ].
 	currentCharacter == $"
-		ifTrue: [ self recordMatch: #(531).
+		ifTrue: [ self recordMatch: #(534).
 			self step.
 			currentCharacter == $" ifTrue: [ ^ self scan2 ].
 			^ self reportLastMatch ].
@@ -515,7 +515,7 @@ CobolScanner >> scan4 [
 			currentCharacter == Character lf ifTrue: [ ^ self scan5 ].
 			^ self reportLastMatch ].
 	currentCharacter == $'
-		ifTrue: [ self recordMatch: #(531).
+		ifTrue: [ self recordMatch: #(534).
 			self step.
 			currentCharacter == $' ifTrue: [ ^ self scan4 ].
 			^ self reportLastMatch ].
@@ -554,20 +554,20 @@ CobolScanner >> scan6 [
 
 { #category : #generated }
 CobolScanner >> scan7 [
-	[ self recordMatch: #(536).
+	[ self recordMatch: #(539).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	('Ee' includes: currentCharacter)
 		ifTrue: [ self step.
 			currentCharacter isDigit
-				ifTrue: [ [ self recordMatch: #(536).
+				ifTrue: [ [ self recordMatch: #(539).
 					self step.
 					currentCharacter isDigit ] whileTrue.
 					^ self reportLastMatch ].
 			('+-' includes: currentCharacter)
 				ifTrue: [ self step.
 					currentCharacter isDigit
-						ifTrue: [ [ self recordMatch: #(536).
+						ifTrue: [ [ self recordMatch: #(539).
 							self step.
 							currentCharacter isDigit ] whileTrue ] ] ].
 	^ self reportLastMatch
@@ -575,7 +575,7 @@ CobolScanner >> scan7 [
 
 { #category : #generated }
 CobolScanner >> scan8 [
-	[ self recordMatch: #(535).
+	[ self recordMatch: #(538).
 	self step.
 	currentCharacter isDigit ] whileTrue.
 	(',.' includes: currentCharacter) ifTrue: [ ^ self scan6 ].
@@ -610,7 +610,7 @@ CobolScanner >> scanForTokenX1 [
 	(currentCharacter == Character tab
 		or: [ currentCharacter == Character newPage
 				or: [ currentCharacter == Character space or: [ currentCharacter == $; ] ] ])
-		ifTrue: [ [ self recordMatch: #(541).
+		ifTrue: [ [ self recordMatch: #(544).
 			self step.
 			currentCharacter == Character tab
 				or: [ currentCharacter == Character newPage
@@ -643,7 +643,7 @@ CobolScanner >> step [
 
 { #category : #generated }
 CobolScanner >> tokenActions [
-	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #NEWLINE nil #COMMENTLINE #whitespace #SEPARATOR)
+	^ #(nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil nil #NEWLINE nil #COMMENTLINE #whitespace #SEPARATOR)
 ]
 
 { #category : #generated }

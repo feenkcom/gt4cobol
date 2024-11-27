@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'period',
-		'entries'
+		'entries',
+		'execSqls'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -16,7 +17,7 @@ CobolCommunicationSectionNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 CobolCommunicationSectionNode >> compositeNodeVariables [
-	^ #(#entries)
+	^ #(#entries #execSqls)
 ]
 
 { #category : #generated }
@@ -36,11 +37,24 @@ CobolCommunicationSectionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: self
 ]
 
+{ #category : #generated }
+CobolCommunicationSectionNode >> execSqls [
+	^ execSqls
+]
+
+{ #category : #generated }
+CobolCommunicationSectionNode >> execSqls: anOrderedCollection [
+	self setParents: self execSqls to: nil.
+	execSqls := anOrderedCollection.
+	self setParents: self execSqls to: self
+]
+
 { #category : #'generated-initialize-release' }
 CobolCommunicationSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	entries := OrderedCollection new: 2.
+	execSqls := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

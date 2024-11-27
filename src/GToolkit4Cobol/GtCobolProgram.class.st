@@ -10,8 +10,8 @@ Class {
 		'fileDescriptors',
 		'returnToExpressions',
 		'returnFromExpressions',
-		'calledExpressions',
-		'callingExpressions'
+		'callTargets',
+		'callSources'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -44,6 +44,14 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 											(done includes: to)
 												ifTrue: [ (backEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ]
 												ifFalse: [ todo add: to.
+													(forwardEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ] ] ].
+							item callSources
+								do: [ :each | 
+									each toProgram
+										ifNotNil: [ :to | 
+											(done includes: to)
+												ifTrue: [ (backEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ]
+												ifFalse: [ todo add: to.
 													(forwardEdges at: each ifAbsentPut: [ IdentitySet new ]) add: to ] ] ] ]
 						ifFalse: [ screens add: item.
 							item mapExpressions
@@ -56,15 +64,16 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		stencil: [ :program | 
 			BrLabel new
 				fitContent;
-				background: ((startItems includes: program) ifTrue: [Color blue muchLighter] ifFalse: [ Color white ]);
+				background: ((startItems includes: program)
+						ifTrue: [ Color blue muchLighter ]
+						ifFalse: [ Color white ]);
 				margin: (BlInsets all: 10);
 				padding: (BlInsets all: 10);
 				aptitude: BrShadowAptitude new + BrGlamorousLabelAptitude new glamorousCodeFontAndSize;
 				text: program name asRopedText ];
 		with: programs.
 	mondrian nodes
-		stencil: [ :each | 
-			each asElement preventMouseEvents asScalableElement size: 120 @ 80 ];
+		stencil: [ :each | each asElement preventMouseEvents asScalableElement size: 120 @ 80 ];
 		with: screens.
 	mondrian edges
 		fromCenterBottom;
@@ -73,10 +82,10 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 			BlParabollaArcElement new
 				zIndex: -1;
 				curvatureFraction: 0.1;
-				border: (BlBorder paint: (Color blue muchLighter) width: 2);
+				border: (BlBorder paint: Color blue muchLighter width: 2);
 				toHead: (BlArrowheadSimpleArrow new
 						border: (BlBorder builder
-								paint: (Color blue muchLighter);
+								paint: Color blue muchLighter;
 								width: 2;
 								build)) ];
 		connect: forwardEdges keys
@@ -89,10 +98,10 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 			BlParabollaArcElement new
 				zIndex: -1;
 				curvatureFraction: 0.1;
-				border: (BlBorder paint: (Color veryVeryLightGray) width: 1);
+				border: (BlBorder paint: Color veryVeryLightGray width: 1);
 				toHead: (BlArrowheadSimpleArrow new
 						border: (BlBorder builder
-								paint: (Color veryVeryLightGray);
+								paint: Color veryVeryLightGray;
 								width: 1;
 								build)) ];
 		connect: backEdges keys
@@ -104,27 +113,27 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 ]
 
 { #category : #accessing }
-GtCobolProgram >> calledExpressions [
-	<MSEProperty: #calledExpressions type: #GtCobolCallExpression opposite: #toProgram>
+GtCobolProgram >> callSources [
+	<MSEProperty: #callSources type: #GtCobolCallExpression opposite: #fromProgram>
 	<multivalued>
-	^ calledExpressions
+	^ callSources
 ]
 
 { #category : #accessing }
-GtCobolProgram >> calledExpressions: anObject [
-	calledExpressions value: anObject
+GtCobolProgram >> callSources: anObject [
+	callSources value: anObject
 ]
 
 { #category : #accessing }
-GtCobolProgram >> callingExpressions [
-	<MSEProperty: #callingExpressions type: #GtCobolCallExpression opposite: #fromProgram>
+GtCobolProgram >> callTargets [
+	<MSEProperty: #callTargets type: #GtCobolCallExpression opposite: #toProgram>
 	<multivalued>
-	^ callingExpressions
+	^ callTargets
 ]
 
 { #category : #accessing }
-GtCobolProgram >> callingExpressions: anObject [
-	callingExpressions value: anObject
+GtCobolProgram >> callTargets: anObject [
+	callTargets value: anObject
 ]
 
 { #category : #accessing }
@@ -190,14 +199,14 @@ GtCobolProgram >> initialize [
 			on: self
 			opposite: #fromProgram:
 			selector: #returnToExpressions.
-	calledExpressions := FMNullMultivalueLink
+	callTargets := FMNullMultivalueLink
 			on: self
 			opposite: #toProgram:
-			selector: #calledPrograms.
-	callingExpressions := FMNullMultivalueLink
+			selector: #callTargets.
+	callSources := FMNullMultivalueLink
 			on: self
 			opposite: #fromProgram:
-			selector: #callingPrograms
+			selector: #callSources
 ]
 
 { #category : #accessing }

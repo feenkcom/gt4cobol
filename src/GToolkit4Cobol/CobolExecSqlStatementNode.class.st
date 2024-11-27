@@ -3,7 +3,8 @@ Class {
 	#superclass : #CobolStatementNode,
 	#instVars : [
 		'keywords',
-		'_source'
+		'_source',
+		'period'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -45,6 +46,16 @@ CobolExecSqlStatementNode >> keywords: anOrderedCollection [
 ]
 
 { #category : #generated }
+CobolExecSqlStatementNode >> period [
+	^ period
+]
+
+{ #category : #generated }
+CobolExecSqlStatementNode >> period: aSmaCCToken [
+	period := aSmaCCToken
+]
+
+{ #category : #generated }
 CobolExecSqlStatementNode >> tokenVariables [
-	^ #(#_source)
+	^ #(#_source #period)
 ]

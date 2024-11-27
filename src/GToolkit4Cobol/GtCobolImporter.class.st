@@ -388,6 +388,8 @@ GtCobolImporter >> importCallsIn: ast [
 				ifTrue: [ each call literalString
 						ifNotNil: [ :name | call toProgram: (self ensureProgram: name) ] ].
 			call sourceAnchor: (self sourceAnchorFor: each).
+			currentFile addEntity: call.
+			call gtInspectButtonPosition: each call stopPosition.
 			call mooseModel: model ]
 ]
 
@@ -454,9 +456,9 @@ GtCobolImporter >> importFile: aFileReference [
 	| ast |
 	variables := Dictionary new.
 	currentFile := self ensureFile: aFileReference.
-	ast := CobolParser
+	ast := [ CobolParser
 			loadSource: aFileReference
-			withLibraries: copyBookDirectories.
+			withLibraries: copyBookDirectories ] on: Error do: [ :ex | ^ self ].
 	currentProgram := self ensureProgram: aFileReference basenameWithoutExtension.
 	currentProgram isStub: false.
 	ast attributeNamed: #entity put: currentProgram.

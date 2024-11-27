@@ -6,7 +6,8 @@ Class {
 		'fileName',
 		'clauses',
 		'periods',
-		'entries'
+		'entries',
+		'execSqls'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -30,7 +31,7 @@ CobolFileDescriptionEntryNode >> clauses: anOrderedCollection [
 
 { #category : #generated }
 CobolFileDescriptionEntryNode >> compositeNodeVariables [
-	^ #(#clauses #entries)
+	^ #(#clauses #entries #execSqls)
 ]
 
 { #category : #generated }
@@ -51,6 +52,18 @@ CobolFileDescriptionEntryNode >> entries: anOrderedCollection [
 ]
 
 { #category : #generated }
+CobolFileDescriptionEntryNode >> execSqls [
+	^ execSqls
+]
+
+{ #category : #generated }
+CobolFileDescriptionEntryNode >> execSqls: anOrderedCollection [
+	self setParents: self execSqls to: nil.
+	execSqls := anOrderedCollection.
+	self setParents: self execSqls to: self
+]
+
+{ #category : #generated }
 CobolFileDescriptionEntryNode >> fileName [
 	^ fileName
 ]
@@ -68,6 +81,7 @@ CobolFileDescriptionEntryNode >> initialize [
 	clauses := OrderedCollection new: 2.
 	periods := OrderedCollection new: 2.
 	entries := OrderedCollection new: 2.
+	execSqls := OrderedCollection new: 2.
 ]
 
 { #category : #generated }

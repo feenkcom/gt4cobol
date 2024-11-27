@@ -2,7 +2,10 @@ Class {
 	#name : #CobolDataTypeClauseNode,
 	#superclass : #CobolProgramNode,
 	#instVars : [
-		'keywords'
+		'keywords',
+		'leftParen',
+		'cardinality',
+		'rightParen'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -10,6 +13,18 @@ Class {
 { #category : #generated }
 CobolDataTypeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataTypeClause: self
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> cardinality [
+	^ cardinality
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> cardinality: aCobolExpressionNode [
+	self cardinality notNil ifTrue: [ self cardinality parent: nil ].
+	cardinality := aCobolExpressionNode.
+	self cardinality notNil ifTrue: [ self cardinality parent: self ]
 ]
 
 { #category : #generated }
@@ -31,4 +46,34 @@ CobolDataTypeClauseNode >> keywords [
 { #category : #generated }
 CobolDataTypeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> leftParen [
+	^ leftParen
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> leftParen: aSmaCCToken [
+	leftParen := aSmaCCToken
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> nodeVariables [
+	^ #(#cardinality)
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> rightParen [
+	^ rightParen
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> rightParen: aSmaCCToken [
+	rightParen := aSmaCCToken
+]
+
+{ #category : #generated }
+CobolDataTypeClauseNode >> tokenVariables [
+	^ #(#leftParen #rightParen)
 ]

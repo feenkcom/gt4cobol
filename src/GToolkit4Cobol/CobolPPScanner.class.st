@@ -43,57 +43,14 @@ CobolPPScanner >> on: aStream [
 { #category : #generated }
 CobolPPScanner >> scan1 [
 	[ self step.
-	currentCharacter == $" ifTrue: [ ^ self scan2 ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
+	currentCharacter == Character lf ifTrue: [ ^ self scan2 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan3 ].
+	currentCharacter == $" ifTrue: [ ^ self scan4 ].
+	true ] whileTrue
 ]
 
 { #category : #generated }
-CobolPPScanner >> scan2 [
-	self recordMatch: #(287).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan1 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scan3 [
-	[ self step.
-	currentCharacter == $' ifTrue: [ ^ self scan4 ].
-	currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scan4 [
-	self recordMatch: #(287).
-	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan3 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scan5 [
-	[ self step.
-	'-_' includes: currentCharacter ] whileTrue.
-	((currentCharacter between: $0 and: $9)
-		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ [ self recordMatch: #(289).
-			self step.
-			('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
-			(currentCharacter between: $0 and: $9)
-				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter between: $a and: $z ] ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scan6 [
+CobolPPScanner >> scan10 [
 	self step.
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
@@ -107,14 +64,115 @@ CobolPPScanner >> scan6 [
 ]
 
 { #category : #generated }
-CobolPPScanner >> scan7 [
+CobolPPScanner >> scan11 [
 	[ self recordMatch: #(289).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	(currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
 				or: [ currentCharacter between: $a and: $z ] ] ] whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan2 [
+	self step.
+	currentCharacter == Character space
+		ifTrue: [ self step.
+			currentCharacter == Character space
+				ifTrue: [ self step.
+					currentCharacter == Character space
+						ifTrue: [ self step.
+							currentCharacter == Character space
+								ifTrue: [ self step.
+									currentCharacter == Character space
+										ifTrue: [ self step.
+											currentCharacter == Character space
+												ifTrue: [ self step.
+													currentCharacter == $-
+														ifTrue: [ [ self step.
+															currentCharacter == $" ifTrue: [ ^ self scan1 ].
+															currentCharacter == Character tab
+																or: [ currentCharacter == Character space ] ] whileTrue ] ] ] ] ] ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan3 [
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan2 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan4 [
+	self recordMatch: #(287).
+	self step.
+	currentCharacter == $" ifTrue: [ ^ self scan1 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan5 [
+	[ self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan6 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan7 ].
+	currentCharacter == $' ifTrue: [ ^ self scan8 ].
+	true ] whileTrue
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan6 [
+	self step.
+	currentCharacter == Character space
+		ifTrue: [ self step.
+			currentCharacter == Character space
+				ifTrue: [ self step.
+					currentCharacter == Character space
+						ifTrue: [ self step.
+							currentCharacter == Character space
+								ifTrue: [ self step.
+									currentCharacter == Character space
+										ifTrue: [ self step.
+											currentCharacter == Character space
+												ifTrue: [ self step.
+													currentCharacter == $-
+														ifTrue: [ [ self step.
+															currentCharacter == $' ifTrue: [ ^ self scan5 ].
+															currentCharacter == Character tab
+																or: [ currentCharacter == Character space ] ] whileTrue ] ] ] ] ] ] ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan7 [
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan6 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan8 [
+	self recordMatch: #(287).
+	self step.
+	currentCharacter == $' ifTrue: [ ^ self scan5 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+CobolPPScanner >> scan9 [
+	[ self step.
+	'-_' includes: currentCharacter ] whileTrue.
+	((currentCharacter between: $0 and: $9)
+		or: [ (currentCharacter between: $A and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ])
+		ifTrue: [ [ self recordMatch: #(289).
+			self step.
+			('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
+			(currentCharacter between: $0 and: $9)
+				or: [ (currentCharacter between: $A and: $Z)
+						or: [ currentCharacter between: $a and: $z ] ] ] whileTrue ].
 	^ self reportLastMatch
 ]
 
@@ -153,11 +211,11 @@ CobolPPScanner >> scanForTokenX1 [
 						or: [ (currentCharacter between: $A and: $F)
 								or: [ currentCharacter between: $a and: $f ] ] ] whileTrue ].
 			^ self reportLastMatch ].
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -165,11 +223,11 @@ CobolPPScanner >> scanForTokenX1 [
 CobolPPScanner >> scanForTokenX10 [
 	self recordMatch: #(275 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -177,11 +235,11 @@ CobolPPScanner >> scanForTokenX10 [
 CobolPPScanner >> scanForTokenX11 [
 	self recordMatch: #(274 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -189,11 +247,11 @@ CobolPPScanner >> scanForTokenX11 [
 CobolPPScanner >> scanForTokenX12 [
 	self recordMatch: #(273 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -201,11 +259,11 @@ CobolPPScanner >> scanForTokenX12 [
 CobolPPScanner >> scanForTokenX13 [
 	self recordMatch: #(272 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -213,40 +271,16 @@ CobolPPScanner >> scanForTokenX13 [
 CobolPPScanner >> scanForTokenX14 [
 	self recordMatch: #(271 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX15 [
-	self recordMatch: #(293).
-	self step.
-	currentCharacter == $' ifTrue: [ ^ self scan4 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan3 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scanForTokenX16 [
-	self recordMatch: #(293).
-	self step.
-	currentCharacter == $" ifTrue: [ ^ self scan2 ].
-	(currentCharacter <= Character tab
-		or: [ (currentCharacter between: Character pageUp and: Character newPage)
-				or: [ currentCharacter >= (Character value: 14) ] ])
-		ifTrue: [ ^ self scan1 ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-CobolPPScanner >> scanForTokenX17 [
 	self recordMatch: #(293).
 	self step.
 	('Ee' includes: currentCharacter)
@@ -271,7 +305,7 @@ CobolPPScanner >> scanForTokenX17 [
 ]
 
 { #category : #generated }
-CobolPPScanner >> scanForTokenX18 [
+CobolPPScanner >> scanForTokenX16 [
 	self recordMatch: #(292 293).
 	self step.
 	(currentCharacter == Character tab
@@ -287,6 +321,26 @@ CobolPPScanner >> scanForTokenX18 [
 ]
 
 { #category : #generated }
+CobolPPScanner >> scanForTokenX17 [
+	self recordMatch: #(293).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan6 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan7 ].
+	currentCharacter == $' ifTrue: [ ^ self scan8 ].
+	^ self scan5
+]
+
+{ #category : #generated }
+CobolPPScanner >> scanForTokenX18 [
+	self recordMatch: #(293).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan2 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan3 ].
+	currentCharacter == $" ifTrue: [ ^ self scan4 ].
+	^ self scan1
+]
+
+{ #category : #generated }
 CobolPPScanner >> scanForTokenX19 [
 	self recordMatch: #(293).
 	self step.
@@ -298,15 +352,15 @@ CobolPPScanner >> scanForTokenX19 [
 CobolPPScanner >> scanForTokenX2 [
 	self recordMatch: #(288 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
 	currentCharacter isDigit
 		ifTrue: [ [ self recordMatch: #(288 289).
 			self step.
-			currentCharacter == $. ifTrue: [ ^ self scan6 ].
+			currentCharacter == $. ifTrue: [ ^ self scan10 ].
 			currentCharacter isDigit ] whileTrue ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $A and: $Z)
-		or: [ currentCharacter between: $a and: $z ]) ifTrue: [ ^ self scan7 ].
+		or: [ currentCharacter between: $a and: $z ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -326,11 +380,11 @@ CobolPPScanner >> scanForTokenX21 [
 	true
 		ifTrue: [ self recordMatch: #(289 293).
 			self step.
-			currentCharacter == $. ifTrue: [ ^ self scan6 ].
-			('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+			currentCharacter == $. ifTrue: [ ^ self scan10 ].
+			('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 			((currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)
-						or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ] ].
+						or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ] ].
 	^ self reportLastMatch
 ]
 
@@ -347,15 +401,15 @@ CobolPPScanner >> scanForTokenX22 [
 	('Ww' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX3 ].
 	('Xx' includes: currentCharacter) ifTrue: [ ^ self scanForTokenX1 ].
 	(currentCharacter isSeparator or: [ currentCharacter == $; ])
-		ifTrue: [ ^ self scanForTokenX18 ].
+		ifTrue: [ ^ self scanForTokenX16 ].
 	^ self scanForTokenX21
 ]
 
 { #category : #generated }
 CobolPPScanner >> scanForTokenX23 [
-	currentCharacter == $" ifTrue: [ ^ self scanForTokenX16 ].
-	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX17 ].
-	currentCharacter == $' ifTrue: [ ^ self scanForTokenX15 ].
+	currentCharacter == $" ifTrue: [ ^ self scanForTokenX18 ].
+	currentCharacter == $$ ifTrue: [ ^ self scanForTokenX15 ].
+	currentCharacter == $' ifTrue: [ ^ self scanForTokenX17 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(269 293) ].
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(270 293) ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(284 293) ].
@@ -372,11 +426,11 @@ CobolPPScanner >> scanForTokenX23 [
 CobolPPScanner >> scanForTokenX3 [
 	self recordMatch: #(282 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -384,11 +438,11 @@ CobolPPScanner >> scanForTokenX3 [
 CobolPPScanner >> scanForTokenX4 [
 	self recordMatch: #(281 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -396,11 +450,11 @@ CobolPPScanner >> scanForTokenX4 [
 CobolPPScanner >> scanForTokenX5 [
 	self recordMatch: #(280 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -408,11 +462,11 @@ CobolPPScanner >> scanForTokenX5 [
 CobolPPScanner >> scanForTokenX6 [
 	self recordMatch: #(279 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -420,11 +474,11 @@ CobolPPScanner >> scanForTokenX6 [
 CobolPPScanner >> scanForTokenX7 [
 	self recordMatch: #(278 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -432,11 +486,11 @@ CobolPPScanner >> scanForTokenX7 [
 CobolPPScanner >> scanForTokenX8 [
 	self recordMatch: #(277 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 
@@ -444,11 +498,11 @@ CobolPPScanner >> scanForTokenX8 [
 CobolPPScanner >> scanForTokenX9 [
 	self recordMatch: #(276 289 293).
 	self step.
-	currentCharacter == $. ifTrue: [ ^ self scan6 ].
-	('-_' includes: currentCharacter) ifTrue: [ ^ self scan5 ].
+	currentCharacter == $. ifTrue: [ ^ self scan10 ].
+	('-_' includes: currentCharacter) ifTrue: [ ^ self scan9 ].
 	((currentCharacter between: $0 and: $9)
 		or: [ (currentCharacter between: $A and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan11 ].
 	^ self reportLastMatch
 ]
 

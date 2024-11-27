@@ -4,7 +4,8 @@ Class {
 	#instVars : [
 		'keywords',
 		'period',
-		'entries'
+		'entries',
+		'execSqls'
 	],
 	#category : #'GToolkit4Cobol-Parser'
 }
@@ -16,7 +17,7 @@ CobolLinkageSectionNode >> acceptVisitor: aProgramVisitor [
 
 { #category : #generated }
 CobolLinkageSectionNode >> compositeNodeVariables [
-	^ #(#entries)
+	^ #(#entries #execSqls)
 ]
 
 { #category : #generated }
@@ -36,11 +37,24 @@ CobolLinkageSectionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: self
 ]
 
+{ #category : #generated }
+CobolLinkageSectionNode >> execSqls [
+	^ execSqls
+]
+
+{ #category : #generated }
+CobolLinkageSectionNode >> execSqls: anOrderedCollection [
+	self setParents: self execSqls to: nil.
+	execSqls := anOrderedCollection.
+	self setParents: self execSqls to: self
+]
+
 { #category : #'generated-initialize-release' }
 CobolLinkageSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	entries := OrderedCollection new: 2.
+	execSqls := OrderedCollection new: 2.
 ]
 
 { #category : #generated }
