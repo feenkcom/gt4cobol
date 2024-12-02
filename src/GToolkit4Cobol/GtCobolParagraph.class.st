@@ -2,7 +2,8 @@ Class {
 	#name : #GtCobolParagraph,
 	#superclass : #FAMIXFunction,
 	#instVars : [
-		'cicsFileAccesses'
+		'cicsFileAccesses',
+		'execSqlStatements'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
@@ -18,13 +19,29 @@ GtCobolParagraph >> cicsFileAccesses: anObject [
 	cicsFileAccesses value: anObject
 ]
 
+{ #category : #accessing }
+GtCobolParagraph >> execSqlStatements [
+	<MSEProperty: #execSqlStatements type: #GtCobolExecSqlStatement opposite: #paragraph>
+	<multivalued>
+	^ execSqlStatements
+]
+
+{ #category : #accessing }
+GtCobolParagraph >> execSqlStatements: anObject [
+	execSqlStatements value: anObject
+]
+
 { #category : #initialization }
 GtCobolParagraph >> initialize [
 	super initialize.
 	cicsFileAccesses := FMNullMultivalueLink
 			on: self
 			opposite: #cicsFile:
-			selector: #cicsFileAccesses
+			selector: #cicsFileAccesses.
+	execSqlStatements := FMNullMultivalueLink
+			on: self
+			opposite: #paragraph:
+			selector: #execSqlStatements
 ]
 
 { #category : #accessing }

@@ -470,6 +470,7 @@ GtCobolImporter >> importFile: aFileReference [
 		importReturnsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast;
+		importSqlIn: ast;
 		importFileDescriptorsIn: ast;
 		importFileReadWritesIn: ast;
 		importXctlCallsIn: ast;
@@ -863,6 +864,50 @@ GtCobolImporter >> importReturnsIn: ast [
 ]
 
 { #category : #'importing-cobol' }
+GtCobolImporter >> importSqlIn: ast [
+	ast
+		withAllNodesOfType: CobolExecSqlStatementNode
+		do: [ :each | 
+			each _source
+				ifNotNil: [ :token | 
+					| inStream varStream char vars |
+					currentFile
+						addEntity: (GtCobolExecSqlStatement new
+								source: token source;
+								sourceAnchor: (self sourceAnchorFor: each);
+								paragraph: (self paragraphFor: each);
+								mooseModel: model;
+								yourself).
+					inStream := token source readStream.
+					[ inStream atEnd ]
+						whileFalse: [ char := inStream next.
+							char = $'
+								ifTrue: [ inStream upTo: $' ]
+								ifFalse: [ char = $:
+										ifTrue: [ varStream := WriteStream on: String new.
+											[ inStream atEnd not
+												and: [ (char := inStream peek) isAlphaNumeric or: [ '-_' includes: char ] ] ]
+												whileTrue: [ varStream nextPut: inStream next ].
+											varStream position > 0
+												ifTrue: [ vars := variables at: varStream contents asUppercase ifAbsent: [ #() ].
+													vars size = 1
+														ifTrue: [ currentFile
+																addEntity: (FAMIXAccess new
+																		from: ((self entityFor: each)
+																				ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
+																		to: vars first;
+																		sourceAnchor: ((GtCobolSourceFileAnchor
+																				file: currentFile
+																				startPos: inStream position + token startPosition
+																						- vars first name size
+																				endPos: inStream position + token startPosition - 1
+																				model: model)
+																				sourceText: (self completeSourceFor: each);
+																				yourself);
+																		mooseModel: model) ] ] ] ] ] ] ]
+]
+
+{ #category : #'importing-cobol' }
 GtCobolImporter >> importVariableReference: idNode [
 	| var vars |
 	(idNode parent isKindOf: CobolInExpressionNode)
@@ -983,6 +1028,12 @@ GtCobolImporter >> model [
 { #category : #accessing }
 GtCobolImporter >> model: anObject [
 	model := anObject
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> paragraphFor: aNode [
+	^ (self entityFor: aNode)
+		ifNotNil: [ :ent | (ent isKindOf: GtCobolParagraph) ifTrue: [ ent ] ]
 ]
 
 { #category : #importing }
