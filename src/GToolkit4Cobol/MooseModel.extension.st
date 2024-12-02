@@ -49,6 +49,12 @@ MooseModel >> allCobolVariables [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allDB2Tables [
+	<navigation: 'All DB2 Tables'>
+	^ self allWithType: GtTable
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allExecSqlCobolStatements [
 	<navigation: 'All Cobol Exec Sql Statements'>
 	^ self allWithType: GtCobolExecSqlStatement

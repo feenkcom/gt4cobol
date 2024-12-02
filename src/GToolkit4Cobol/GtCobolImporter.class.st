@@ -17,7 +17,8 @@ Class {
 		'jclSourceLanguage',
 		'bmsSourceLanguage',
 		'csdSourceLanguage',
-		'finishActions'
+		'finishActions',
+		'tables'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -870,7 +871,7 @@ GtCobolImporter >> importSqlIn: ast [
 		do: [ :each | 
 			each _source
 				ifNotNil: [ :token | 
-					| inStream varStream char vars |
+					| inStream varStream char vars modelTable |
 					currentFile
 						addEntity: (GtCobolExecSqlStatement new
 								source: token source;
@@ -878,6 +879,29 @@ GtCobolImporter >> importSqlIn: ast [
 								paragraph: (self paragraphFor: each);
 								mooseModel: model;
 								yourself).
+					(self tableReferencedIn: token source)
+						ifNotNil: [ :tbl | 
+							modelTable := tables
+									at: tbl
+									ifAbsentPut: [ | mt |
+										mt := GtTable new
+												name: tbl;
+												mooseModel: model.
+										currentFile addEntity: mt.
+										mt ].
+							"currentFile
+								addEntity: (FAMIXAccess new
+										from: (self entityFor: each);
+										to: modelTable;
+										sourceAnchor: ((GtCobolSourceFileAnchor
+												file: currentFile
+												startPos: inStream position + token startPosition
+														- vars first name size
+												endPos: inStream position + token startPosition - 1
+												model: model)
+												sourceText: (self completeSourceFor: each);
+												yourself);
+										mooseModel: model)" ].
 					inStream := token source readStream.
 					[ inStream atEnd ]
 						whileFalse: [ char := inStream next.
@@ -976,7 +1000,8 @@ GtCobolImporter >> initialize [
 	mapSets := Dictionary new.
 	jobs := Dictionary new.
 	cicsFiles := OrderedCollection new.
-	finishActions := OrderedCollection new
+	finishActions := OrderedCollection new.
+	tables := Dictionary new
 ]
 
 { #category : #testing }
@@ -1045,6 +1070,20 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 		model: model)
 		sourceText: (self completeSourceFor: aNode);
 		yourself
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> tableReferencedIn: aSqlString [
+	| select table tableName |
+	table := (#letter asPParser / $_ asPParser) , 
+			( #letter asPParser 
+			/ #digit asPParser
+			/ $_ asPParser) star.
+	select := ('SELECT' asPParser trim , #any asPParser starLazy
+			, ('FROM' asPParser trim) , (table trim flatten)
+			==> [ :n | n last ]).
+	tableName := select parse: aSqlString asUppercase.
+	^tableName isPetit2Failure ifTrue: [ nil ] ifFalse: [ tableName trimmed ]
 ]
 
 { #category : #'importing-cobol' }
