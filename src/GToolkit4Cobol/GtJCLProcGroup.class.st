@@ -1,5 +1,5 @@
 Class {
 	#name : #GtJCLProcGroup,
 	#superclass : #MooseGroup,
-	#category : #GToolkit4Cobol
+	#category : #'GToolkit4Cobol-Model'
 }

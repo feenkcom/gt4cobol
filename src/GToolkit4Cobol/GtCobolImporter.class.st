@@ -470,6 +470,7 @@ GtCobolImporter >> importFile: aFileReference [
 		importReturnsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast;
+		importSqlDataReferencesIn: ast;
 		importFileDescriptorsIn: ast;
 		importFileReadWritesIn: ast;
 		importXctlCallsIn: ast;
@@ -860,6 +861,43 @@ GtCobolImporter >> importReturnsIn: ast [
 		do: [ :node | 
 			(node is: 'RETURN')
 				ifTrue: [ finishActions add: [ self addReturnAssignmentsFor: program from: node ] ] ]
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> importSqlDataReferencesIn: ast [
+	ast
+		withAllNodesOfType: CobolExecSqlStatementNode
+		do: [ :each | 
+			each _source
+				ifNotNil: [ :token | 
+					| inStream varStream char vars |
+					inStream := token source readStream.
+					[ inStream atEnd ]
+						whileFalse: [ char := inStream next.
+							char = $'
+								ifTrue: [ inStream upTo: $' ]
+								ifFalse: [ char = $:
+										ifTrue: [ varStream := WriteStream on: String new.
+											[ inStream atEnd not
+												and: [ (char := inStream peek) isAlphaNumeric or: [ '-_' includes: char ] ] ]
+												whileTrue: [ varStream nextPut: inStream next ].
+											varStream position > 0
+												ifTrue: [ vars := variables at: varStream contents asUppercase ifAbsent: [ #() ].
+													vars size = 1
+														ifTrue: [ currentFile
+																addEntity: (FAMIXAccess new
+																		from: ((self entityFor: each)
+																				ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
+																		to: vars first;
+																		sourceAnchor: ((GtCobolSourceFileAnchor
+																				file: currentFile
+																				startPos: inStream position + token startPosition
+																						- vars first name size
+																				endPos: inStream position + token startPosition - 1
+																				model: model)
+																				sourceText: (self completeSourceFor: each);
+																				yourself);
+																		mooseModel: model) ] ] ] ] ] ] ]
 ]
 
 { #category : #'importing-cobol' }
