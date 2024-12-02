@@ -470,7 +470,7 @@ GtCobolImporter >> importFile: aFileReference [
 		importReturnsIn: ast;
 		importMapCallsIn: ast;
 		importDataReferencesIn: ast;
-		importSqlDataReferencesIn: ast;
+		importSqlIn: ast;
 		importFileDescriptorsIn: ast;
 		importFileReadWritesIn: ast;
 		importXctlCallsIn: ast;
@@ -864,13 +864,20 @@ GtCobolImporter >> importReturnsIn: ast [
 ]
 
 { #category : #'importing-cobol' }
-GtCobolImporter >> importSqlDataReferencesIn: ast [
+GtCobolImporter >> importSqlIn: ast [
 	ast
 		withAllNodesOfType: CobolExecSqlStatementNode
 		do: [ :each | 
 			each _source
 				ifNotNil: [ :token | 
 					| inStream varStream char vars |
+					currentFile
+						addEntity: (GtCobolExecSqlStatement new
+								source: token source;
+								sourceAnchor: (self sourceAnchorFor: each);
+								paragraph: (self paragraphFor: each);
+								mooseModel: model;
+								yourself).
 					inStream := token source readStream.
 					[ inStream atEnd ]
 						whileFalse: [ char := inStream next.
@@ -1021,6 +1028,12 @@ GtCobolImporter >> model [
 { #category : #accessing }
 GtCobolImporter >> model: anObject [
 	model := anObject
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> paragraphFor: aNode [
+	^ (self entityFor: aNode)
+		ifNotNil: [ :ent | (ent isKindOf: GtCobolParagraph) ifTrue: [ ent ] ]
 ]
 
 { #category : #importing }

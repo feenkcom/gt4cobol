@@ -49,6 +49,12 @@ MooseModel >> allCobolVariables [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allExecSqlCobolStatements [
+	<navigation: 'All Cobol Exec Sql Statements'>
+	^ self allWithType: GtCobolExecSqlStatement
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allJCLJobs [
 	<navigation: 'All JCL Jobs'>
 	^ GtJCLJobGroup withAll: (self allWithType: GtJCLJob)
