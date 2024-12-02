@@ -65,6 +65,16 @@ GtCICSFile >> gtFieldsFor: aView [
 			width: 100
 ]
 
+{ #category : #views }
+GtCICSFile >> gtReferencesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'References';
+		items: [ self jclFileReferences ];
+		column: 'From' text: [ :each | each from ];
+		column: 'To' text: [ :each | each to ]
+]
+
 { #category : #'as yet unclassified' }
 GtCICSFile >> gtVariablesFor: aView [
 	<gtView>
