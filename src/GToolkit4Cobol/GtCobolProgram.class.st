@@ -107,7 +107,7 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		connect: backEdges keys
 			from: #from
 			toAll: [ :each | backEdges at: each ].
-	mondrian layout tree
+	mondrian layout horizontalDominanceTree
 		nodeDistance: 10;
 		levelDistance: 30
 ]

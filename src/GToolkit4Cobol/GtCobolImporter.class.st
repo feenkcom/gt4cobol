@@ -212,6 +212,15 @@ GtCobolImporter >> ensureStubVariable: aString [
 ]
 
 { #category : #'importing-cobol' }
+GtCobolImporter >> ensureTableNamed: tbl [
+	^ tables
+		at: tbl
+		ifAbsentPut: [ GtTable new
+				name: tbl;
+				mooseModel: model ]
+]
+
+{ #category : #'importing-cobol' }
 GtCobolImporter >> ensureVariable: node [
 	^ node
 		attributeNamed: #entity
@@ -880,37 +889,18 @@ GtCobolImporter >> importReturnsIn: ast [
 GtCobolImporter >> importSqlIn: ast [
 	ast
 		withAllNodesOfType: CobolExecSqlStatementNode
-		do: [ :each | 
-			each _source
+		do: [ :execSqlNode | 
+			execSqlNode _source
 				ifNotNil: [ :token | 
-					| inStream varStream char vars modelTable |
+					| inStream varStream char vars modelTable paragraph |
+					paragraph := self paragraphFor: execSqlNode.
 					currentFile
 						addEntity: (GtCobolExecSqlStatement new
 								source: token source;
-								sourceAnchor: (self sourceAnchorFor: each);
-								paragraph: (self paragraphFor: each);
+								sourceAnchor: (self sourceAnchorFor: execSqlNode);
+								paragraph: paragraph;
 								mooseModel: model;
 								yourself).
-					(self tableReferencedIn: token source)
-						ifNotNil: [ :tbl | 
-							modelTable := tables
-									at: tbl
-									ifAbsentPut: [ GtTable new
-											name: tbl;
-											mooseModel: model ].
-							"currentFile
-								addEntity: (FAMIXAccess new
-										from: (self entityFor: each);
-										to: modelTable;
-										sourceAnchor: ((GtCobolSourceFileAnchor
-												file: currentFile
-												startPos: inStream position + token startPosition
-														- vars first name size
-												endPos: inStream position + token startPosition - 1
-												model: model)
-												sourceText: (self completeSourceFor: each);
-												yourself);
-										mooseModel: model)" ].
 					inStream := token source readStream.
 					[ inStream atEnd ]
 						whileFalse: [ char := inStream next.
@@ -926,7 +916,7 @@ GtCobolImporter >> importSqlIn: ast [
 													vars size = 1
 														ifTrue: [ currentFile
 																addEntity: (FAMIXAccess new
-																		from: ((self entityFor: each)
+																		from: ((self entityFor: execSqlNode)
 																				ifNotNil: [ :entity | (entity isKindOf: FAMIXBehaviouralEntity) ifTrue: [ entity ] ]);
 																		to: vars first;
 																		sourceAnchor: ((GtCobolSourceFileAnchor
@@ -935,9 +925,24 @@ GtCobolImporter >> importSqlIn: ast [
 																						- vars first name size
 																				endPos: inStream position + token startPosition - 1
 																				model: model)
-																				sourceText: (self completeSourceFor: each);
+																				sourceText: (self completeSourceFor: execSqlNode);
 																				yourself);
-																		mooseModel: model) ] ] ] ] ] ] ]
+																		mooseModel: model) ] ] ] ] ].
+					(self tableReferencedIn: token source)
+						ifNotNil: [ :tbl | 
+							modelTable := self ensureTableNamed: tbl.
+							FAMIXReference new
+								from: "(self entityFor: execSqlNode)"paragraph;
+								to: modelTable;
+								sourceAnchor: ((GtCobolSourceFileAnchor
+										file: currentFile
+										startPos: inStream position + token startPosition
+												"- vars first name size"
+										endPos: inStream position + token startPosition - 1
+										model: model)
+										sourceText: (self completeSourceFor: execSqlNode);
+										yourself);
+								mooseModel: model ] ] ]
 ]
 
 { #category : #'importing-cobol' }
@@ -1089,16 +1094,6 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 
 { #category : #'importing-cobol' }
 GtCobolImporter >> tableReferencedIn: aSqlString [
-	"| select table tableName |
-	table := (#letter asPParser / $_ asPParser) , 
-			( #letter asPParser 
-			/ #digit asPParser
-			/ $_ asPParser) star.
-	select := ('SELECT' asPParser trim , #any asPParser starLazy
-			, ('FROM' asPParser trim) , (table trim flatten)
-			==> [ :n | n last ]).
-	tableName := select parse: aSqlString asUppercase.
-	^tableName isPetit2Failure ifTrue: [ nil ] ifFalse: [ tableName trimmed ]"
 	| select tableName |
 	select := ('SELECT' asPParser
 		, 'FROM' asPParser negate star flatten
