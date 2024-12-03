@@ -934,13 +934,13 @@ GtCobolImporter >> importSqlIn: ast [
 							FAMIXReference new
 								from: execSql;
 								to: modelTable;
-								sourceAnchor: ((GtCobolSourceFileAnchor
+								sourceAnchor: (self sourceAnchorFor: execSqlNode"(GtCobolSourceFileAnchor
 										file: currentFile
 										startPos: inStream position + token startPosition
 										endPos: inStream position + token startPosition - 1
 										model: model)
 										sourceText: (self completeSourceFor: execSqlNode);
-										yourself);
+										yourself");
 								mooseModel: model	"(self entityFor: execSqlNode)"	"- vars first name size" ] ] ]
 ]
 
