@@ -1093,7 +1093,7 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 
 { #category : #'importing-cobol' }
 GtCobolImporter >> tablesReferencedIn: aSqlString [
-	| select insert delete tableNames tableParser tablesParser |
+	| select insert delete update tableNames tableParser tablesParser |
 	tableParser := ((#word asPParser | '_' asPParser) plus token
 			, ('AS' asPParser trim optional , #word asPParser plus trim) optional)
 			==> #first.
@@ -1102,12 +1102,19 @@ GtCobolImporter >> tablesReferencedIn: aSqlString [
 	select := (('SELECT' asPParser , 'FROM' asPParser negate star flatten
 			, 'FROM' asPParser trim , tablesParser
 			, 'SELECT' asPParser negate star flatten) ==> #fourth) plus
-			==> [ :e | e collect: #first ].
+			==> [ :e | e flatten ].
 	delete := ('DELETE' asPParser , 'FROM' asPParser negate star flatten
-			, 'FROM' asPParser trim , tablesParser) ==> #fourth.
+			, 'FROM' asPParser trim , tablesParser
+			, ('SELECT' asPParser negate star , select) optional)
+			==> [ :e | e fourth , (e fifth ifNil: [ #() ] ifNotNil: [ :f | f last ]) ].
 	insert := ('INSERT' asPParser , 'INTO' asPParser negate star flatten
-			, 'INTO' asPParser trim , tablesParser) ==> #fourth.
-	tableNames := (select | delete | insert) sea ==> #second
+			, 'INTO' asPParser trim , tablesParser
+			, ('SELECT' asPParser negate star , select) optional)
+			==> [ :e | e fourth , (e fifth ifNil: [ #() ] ifNotNil: [ :f | f last ]) ].
+	update := ('UPDATE' asPParser trim , tablesParser
+			, ('SELECT' asPParser negate star , select) optional)
+			==> [ :e | e second , (e third ifNil: [ #() ] ifNotNil: [ :f | f last ]) ].
+	tableNames := (select | delete | insert) sea ==> #second / update
 			parse: aSqlString asUppercase.
 	^ tableNames isPetit2Failure ifTrue: [ #() ] ifFalse: [ tableNames ]
 ]
