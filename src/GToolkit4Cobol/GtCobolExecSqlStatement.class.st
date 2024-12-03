@@ -1,12 +1,21 @@
 Class {
 	#name : #GtCobolExecSqlStatement,
-	#superclass : #FAMIXNamedEntity,
+	#superclass : #FAMIXBehaviouralEntity,
 	#instVars : [
 		'source',
 		'paragraph'
 	],
 	#category : #'GToolkit4Cobol-Model'
 }
+
+{ #category : #views }
+GtCobolExecSqlStatement >> gtOutgoingReferencesFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'Outgoing references';
+		items: [ self outgoingReferences ];
+		column: 'Reference' text: [ :each | each gtDisplayString ]
+]
 
 { #category : #'as yet unclassified' }
 GtCobolExecSqlStatement >> mooseNameOn: stream [

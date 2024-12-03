@@ -892,15 +892,15 @@ GtCobolImporter >> importSqlIn: ast [
 		do: [ :execSqlNode | 
 			execSqlNode _source
 				ifNotNil: [ :token | 
-					| inStream varStream char vars modelTable paragraph |
+					| inStream varStream char vars modelTable paragraph execSql |
 					paragraph := self paragraphFor: execSqlNode.
-					currentFile
-						addEntity: (GtCobolExecSqlStatement new
-								source: token source;
-								sourceAnchor: (self sourceAnchorFor: execSqlNode);
-								paragraph: paragraph;
-								mooseModel: model;
-								yourself).
+					execSql := GtCobolExecSqlStatement new
+							source: token source;
+							sourceAnchor: (self sourceAnchorFor: execSqlNode);
+							paragraph: paragraph;
+							mooseModel: model;
+							yourself.
+					currentFile addEntity: execSql.
 					inStream := token source readStream.
 					[ inStream atEnd ]
 						whileFalse: [ char := inStream next.
@@ -932,17 +932,16 @@ GtCobolImporter >> importSqlIn: ast [
 						ifNotNil: [ :tbl | 
 							modelTable := self ensureTableNamed: tbl.
 							FAMIXReference new
-								from: "(self entityFor: execSqlNode)"paragraph;
+								from: execSql;
 								to: modelTable;
 								sourceAnchor: ((GtCobolSourceFileAnchor
 										file: currentFile
 										startPos: inStream position + token startPosition
-												"- vars first name size"
 										endPos: inStream position + token startPosition - 1
 										model: model)
 										sourceText: (self completeSourceFor: execSqlNode);
 										yourself);
-								mooseModel: model ] ] ]
+								mooseModel: model	"(self entityFor: execSqlNode)"	"- vars first name size" ] ] ]
 ]
 
 { #category : #'importing-cobol' }

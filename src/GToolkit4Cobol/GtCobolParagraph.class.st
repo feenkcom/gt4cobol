@@ -31,6 +31,15 @@ GtCobolParagraph >> execSqlStatements: anObject [
 	execSqlStatements value: anObject
 ]
 
+{ #category : #views }
+GtCobolParagraph >> gtExecSqlsFor: aView [
+	<gtView>
+	^ aView columnedList
+		title: 'SQLs';
+		items: [ self execSqlStatements ];
+		column: 'Statement' text: [ :each | each source ]
+]
+
 { #category : #initialization }
 GtCobolParagraph >> initialize [
 	super initialize.
