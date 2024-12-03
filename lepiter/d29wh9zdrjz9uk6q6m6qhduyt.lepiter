@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-25T09:04:00.761251-06:00"
+						"dateAndTimeString" : "2024-12-03T12:49:01.498193+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : ""
+				"string" : "The [db2 samples](https://github.com/IBM/db2-samples) are produced by IBM to show how to work with DB2 from languages. In this example, we explore the COBOL sources:"
 			},
 			{
 				"__type" : "pharoSnippet",
