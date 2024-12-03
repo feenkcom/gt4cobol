@@ -928,20 +928,20 @@ GtCobolImporter >> importSqlIn: ast [
 																				sourceText: (self completeSourceFor: execSqlNode);
 																				yourself);
 																		mooseModel: model) ] ] ] ] ].
-					(self tableReferencedIn: token source)
-						ifNotNil: [ :tbl | 
-							modelTable := self ensureTableNamed: tbl.
+					(self tablesReferencedIn: token source)
+						do: [ :tbl | 
+							modelTable := self ensureTableNamed: tbl value.
 							FAMIXReference new
 								from: execSql;
 								to: modelTable;
-								sourceAnchor: (self sourceAnchorFor: execSqlNode"(GtCobolSourceFileAnchor
+								sourceAnchor: ((GtCobolSourceFileAnchor
 										file: currentFile
-										startPos: inStream position + token startPosition
-										endPos: inStream position + token startPosition - 1
+										startPos: tbl start + execSqlNode _source startPosition - 1
+										endPos: tbl stop + execSqlNode _source startPosition - 1
 										model: model)
 										sourceText: (self completeSourceFor: execSqlNode);
-										yourself");
-								mooseModel: model	"(self entityFor: execSqlNode)"	"- vars first name size" ] ] ]
+										yourself);
+								mooseModel: model ] ] ]
 ]
 
 { #category : #'importing-cobol' }
@@ -1092,15 +1092,24 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 ]
 
 { #category : #'importing-cobol' }
-GtCobolImporter >> tableReferencedIn: aSqlString [
-	| select tableName |
-	select := ('SELECT' asPParser
-		, 'FROM' asPParser negate star flatten
-		, 'FROM' asPParser trim 
-		, #word asPParser plus flatten)
-		==> [ :t | "{t second. "t fourth"}" ].
-	tableName := (select sea ==> #second) parse: aSqlString asUppercase.
-	^tableName isPetit2Failure ifTrue: [ ^ nil ] ifFalse: [ tableName trimmed ]
+GtCobolImporter >> tablesReferencedIn: aSqlString [
+	| select insert delete tableNames tableParser tablesParser |
+	tableParser := ((#word asPParser | '_' asPParser) plus token
+			, ('AS' asPParser trim optional , #word asPParser plus trim) optional)
+			==> #first.
+	tablesParser := (tableParser , (',' asPParser trim , tableParser) star)
+			==> [ :e | {e first} , (e last collect: #last) ].
+	select := (('SELECT' asPParser , 'FROM' asPParser negate star flatten
+			, 'FROM' asPParser trim , tablesParser
+			, 'SELECT' asPParser negate star flatten) ==> #fourth) plus
+			==> [ :e | e collect: #first ].
+	delete := ('DELETE' asPParser , 'FROM' asPParser negate star flatten
+			, 'FROM' asPParser trim , tablesParser) ==> #fourth.
+	insert := ('INSERT' asPParser , 'INTO' asPParser negate star flatten
+			, 'INTO' asPParser trim , tablesParser) ==> #fourth.
+	tableNames := (select | delete | insert) sea ==> #second
+			parse: aSqlString asUppercase.
+	^ tableNames isPetit2Failure ifTrue: [ #() ] ifFalse: [ tableNames ]
 ]
 
 { #category : #'importing-cobol' }
