@@ -37,6 +37,12 @@ MooseModel >> allCobolConditions [
 ]
 
 { #category : #'*GToolkit4Cobol' }
+MooseModel >> allCobolParagraphs [
+	<navigation: 'All Cobol Paragraphs'>
+	^ GtCobolParagraphGroup withAll: (self allWithType: GtCobolParagraph)
+]
+
+{ #category : #'*GToolkit4Cobol' }
 MooseModel >> allCobolPrograms [
 	<navigation: 'All Cobol Programs'>
 	^ self allWithType: GtCobolProgram
@@ -57,7 +63,8 @@ MooseModel >> allDB2Tables [
 { #category : #'*GToolkit4Cobol' }
 MooseModel >> allExecSqlCobolStatements [
 	<navigation: 'All Cobol Exec Sql Statements'>
-	^ self allWithType: GtCobolExecSqlStatement
+	^ GtCobolExecSqlStatementGroup
+		withAll: (self allWithType: GtCobolExecSqlStatement)
 ]
 
 { #category : #'*GToolkit4Cobol' }

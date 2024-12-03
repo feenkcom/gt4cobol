@@ -18,7 +18,8 @@ Class {
 		'bmsSourceLanguage',
 		'csdSourceLanguage',
 		'finishActions',
-		'tables'
+		'tables',
+		'stubbedVariables'
 	],
 	#category : #'GToolkit4Cobol-Importer'
 }
@@ -197,6 +198,17 @@ GtCobolImporter >> ensureProgram: aString [
 				isStub: true;
 				name: aString;
 				mooseModel: model ]
+]
+
+{ #category : #'importing-cobol' }
+GtCobolImporter >> ensureStubVariable: aString [
+	stubbedVariables ifNil: [ stubbedVariables := Dictionary new ].
+	^ stubbedVariables
+		at: aString
+		ifAbsentPut: [ GtCobolVariable new
+				name: aString;
+				mooseModel: model;
+				isStub: true ]
 ]
 
 { #category : #'importing-cobol' }
@@ -883,12 +895,9 @@ GtCobolImporter >> importSqlIn: ast [
 						ifNotNil: [ :tbl | 
 							modelTable := tables
 									at: tbl
-									ifAbsentPut: [ | mt |
-										mt := GtTable new
-												name: tbl;
-												mooseModel: model.
-										currentFile addEntity: mt.
-										mt ].
+									ifAbsentPut: [ GtTable new
+											name: tbl;
+											mooseModel: model ].
 							"currentFile
 								addEntity: (FAMIXAccess new
 										from: (self entityFor: each);
@@ -943,7 +952,13 @@ GtCobolImporter >> importVariableReference: idNode [
 				ifTrue: [ var := vars
 							detect: [ :v | self is: v inContainers: idNode parent inValues ]
 							ifNone: [  ] ] ].
-	var ifNil: [ ^ self ].
+	var
+		ifNil: [ (idNode parentOfType: CobolStatementNode)
+				ifNotNil: [ :statement | 
+					((statement isKindOf: CobolGoToStatementNode)
+						or: [ statement isKindOf: CobolPerformStatementNode ])
+						ifFalse: [ var := self ensureStubVariable: idNode name source ] ].
+			var ifNil: [ ^ self ] ].
 	idNode attributeNamed: #referenceTo put: var.
 	currentFile
 		addEntity: (FAMIXAccess new
