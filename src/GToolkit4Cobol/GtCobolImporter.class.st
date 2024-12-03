@@ -1089,7 +1089,7 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 
 { #category : #'importing-cobol' }
 GtCobolImporter >> tableReferencedIn: aSqlString [
-	| select table tableName |
+	"| select table tableName |
 	table := (#letter asPParser / $_ asPParser) , 
 			( #letter asPParser 
 			/ #digit asPParser
@@ -1098,7 +1098,15 @@ GtCobolImporter >> tableReferencedIn: aSqlString [
 			, ('FROM' asPParser trim) , (table trim flatten)
 			==> [ :n | n last ]).
 	tableName := select parse: aSqlString asUppercase.
-	^tableName isPetit2Failure ifTrue: [ nil ] ifFalse: [ tableName trimmed ]
+	^tableName isPetit2Failure ifTrue: [ nil ] ifFalse: [ tableName trimmed ]"
+	| select tableName |
+	select := ('SELECT' asPParser
+		, 'FROM' asPParser negate star flatten
+		, 'FROM' asPParser trim 
+		, #word asPParser plus flatten)
+		==> [ :t | "{t second. "t fourth"}" ].
+	tableName := (select sea ==> #second) parse: aSqlString asUppercase.
+	^tableName isPetit2Failure ifTrue: [ ^ nil ] ifFalse: [ tableName trimmed ]
 ]
 
 { #category : #'importing-cobol' }
