@@ -63,7 +63,7 @@ GtBMSMap >> fields: anObject [
 
 { #category : #views }
 GtBMSMap >> gtFamixExpanderView [
-	^ self gtScreenFor: GtPhlowProtoView new
+	^ self gtScreenFor: GtPhlowView new
 ]
 
 { #category : #views }
