@@ -26,7 +26,7 @@ CobolParser class >> addExpanderFor: node in: text to: var [
 										c textFlow pushLine.
 										c horizontal matchParent ].
 							pane
-								addChild: (var gtSourceFor: GtPhlowProtoView new) asElement matchParent ] ])
+								addChild: (var gtSourceFor: GtPhlowView new) asElement matchParent ] ])
 ]
 
 { #category : #generated }
