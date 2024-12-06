@@ -173,7 +173,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-10-03T18:26:09.81191+02:00"
+						"dateAndTimeString" : "2024-12-03T12:51:14.43682+01:00"
 					}
 				},
 				"uid" : {
@@ -183,7 +183,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "Import the code:"
+				"string" : "But let's explore a higher level model of the code:"
 			}
 		]
 	},

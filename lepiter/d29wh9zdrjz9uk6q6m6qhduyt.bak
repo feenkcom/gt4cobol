@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-12-03T12:48:52.611573+01:00"
+						"dateAndTimeString" : "2024-12-03T12:51:21.434264+01:00"
 					}
 				},
 				"uid" : {
@@ -39,7 +39,78 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "The [db2 samples](https://github.com/IBM/db2-samples) are produced by IBM to show how to work with DB2 from languages. In this example "
+				"string" : "The [db2 samples](https://github.com/IBM/db2-samples) are produced by IBM to show how to work with DB2 from languages. In this example, we explore the COBOL sources:"
+			},
+			{
+				"__type" : "pharoSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-12-03T12:50:02.437608+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-12-03T12:50:05.904412+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "h9icAL7kDQCK7qeKAXQQrQ=="
+				},
+				"code" : "DB2Samples rootDirectory"
+			},
+			{
+				"__type" : "textSnippet",
+				"children" : {
+					"__type" : "snippets",
+					"items" : [ ]
+				},
+				"createEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"createTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-12-03T12:51:18.462365+01:00"
+					}
+				},
+				"editEmail" : {
+					"__type" : "email",
+					"emailString" : "<unknown>"
+				},
+				"editTime" : {
+					"__type" : "time",
+					"time" : {
+						"__type" : "dateAndTime",
+						"dateAndTimeString" : "2024-12-03T12:51:25.890616+01:00"
+					}
+				},
+				"uid" : {
+					"__type" : "uid",
+					"uidString" : "3+UkBb7kDQCMdPvfAXQQrQ=="
+				},
+				"paragraphStyle" : {
+					"__type" : "textStyle"
+				},
+				"string" : "Let's explore a higher level model of the code:"
 			},
 			{
 				"__type" : "pharoSnippet",
@@ -66,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-25T09:04:50.323143-06:00"
+						"dateAndTimeString" : "2024-12-03T15:30:22.688552+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jHTXxx/kDQCumCYgBTCn3A=="
 				},
-				"code" : "DB2Samples\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: DB2Samples copyBookDirectories;\r\t\t\timportDirectory: DB2Samples rootDirectory;\r\t\t\tmodel).\rDB2Samples model"
+				"code" : "DB2Samples\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: DB2Samples copyBookDirectories;\r\t\t\timportDirectory: DB2Samples rootDirectory;\r\t\t\tmodel).\r"
 			}
 		]
 	},
