@@ -12,7 +12,7 @@ GtBMSMapGroup >> gtScreensFor: aView [
 		priority: -1;
 		items: [ self ];
 		itemStencil: [ :each | BrVerticalPane new fitContent];
-		itemDataBinder: [ :pane :each | pane removeChildren; addChild: (each asElement) ]
+		itemDataBinder: [ :pane :each | pane removeChildren; addChild: (each asElement asScalableElement size: 400@250) ]
 ]
 
 { #category : #'as yet unclassified' }
