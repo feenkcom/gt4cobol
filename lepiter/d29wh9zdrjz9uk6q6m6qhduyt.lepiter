@@ -137,14 +137,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-12-03T15:30:32.934444+01:00"
+						"dateAndTimeString" : "2025-02-20T11:21:46.794133+01:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "jHTXxx/kDQCumCYgBTCn3A=="
 				},
-				"code" : "DB2Samples\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: DB2Samples copyBookDirectories;\r\t\t\timportDirectory: DB2Samples rootDirectory;\r\t\t\tmodel).\rDB2Samples model"
+				"code" : "MooseModel resetMeta.\rDB2Samples\r\tmodel: (GtCobolImporter new\r\t\t\tcopyBookDirectories: DB2Samples copyBookDirectories;\r\t\t\timportDirectory: DB2Samples rootDirectory;\r\t\t\tmodel).\rDB2Samples model"
 			}
 		]
 	},
