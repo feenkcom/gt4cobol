@@ -9,12 +9,12 @@ Class {
 }
 
 { #category : #views }
-GtCobolExecSqlStatement >> gtOutgoingReferencesFor: aView [
+GtCobolExecSqlStatement >> gtReferencedTablesFor: aView [
 	<gtView>
 	^ aView columnedList
-		title: 'Outgoing references';
-		items: [ self outgoingReferences ];
-		column: 'Reference' text: [ :each | each gtDisplayString ]
+		title: 'Referenced tables';
+		items: [ self referencedTables ];
+		column: 'Table' text: [ :each | each gtDisplayString ]
 ]
 
 { #category : #'as yet unclassified' }
@@ -47,6 +47,11 @@ GtCobolExecSqlStatement >> paragraph: anObject [
 			update: #execSqlStatements
 			from: self paragraph
 			to: anObject
+]
+
+{ #category : #'as yet unclassified' }
+GtCobolExecSqlStatement >> referencedTables [
+	^ self outgoingReferences collect: #to
 ]
 
 { #category : #accessing }
