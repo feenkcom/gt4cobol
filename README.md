@@ -14,7 +14,7 @@ Download [Glamorous Toolkit](https://gtoolkit.com) and load the code by executin
 Metacello new
 	repository: 'github://feenkcom/gt4cobol:main/src';
 	baseline: 'GToolkit4Cobol';
-	load
+	load.
 #BaselineOfGToolkit4Cobol asClass loadLepiter
 ```
 # License
