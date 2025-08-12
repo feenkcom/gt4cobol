@@ -1,6 +1,6 @@
-# gt4cobol
+# gt4cobol: Glamorous Toolkit for COBOL
 
-Offers multiple static analyses for COBOL.
+A component to be loaded in Glamorous Toolkit that offers multiple static analyses for COBOL.
 
 Includes:
 - Parsers for COBOL, JCL and BMS sources
