@@ -28,7 +28,7 @@ GtBMSField >> applyInitialValueOn: aSmaCCString [
 	| index value |
 	value := self initialValueString.
 	value isEmpty ifTrue: [ ^ self ].
-	value size > length ifTrue: [ self error: 'initial value too large' ].
+	value size > length ifTrue: [ value := value first: length ].
 	index := self map indexForRow: self y andColumn: self x.
 	aSmaCCString
 		replaceFrom: index

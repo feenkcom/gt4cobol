@@ -15,6 +15,11 @@ JCLScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
+{ #category : #private }
+JCLScanner >> columnPosition [
+	^ stream columnNumber
+]
+
 { #category : #generated }
 JCLScanner >> emptySymbolTokenId [
 	^ 39
@@ -88,54 +93,28 @@ JCLScanner >> on: aStream [
 JCLScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan1X10 ].
-	currentCharacter == $& ifTrue: [ ^ self scan1X4 ].
-	currentCharacter == $' ifTrue: [ ^ self scan2 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan1X7 ].
+	currentCharacter == $& ifTrue: [ ^ self scan2 ].
+	currentCharacter == $' ifTrue: [ ^ self scan3 ].
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(14) ].
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(15) ].
-	^ self scan1X11
+	currentCharacter == $* ifTrue: [ ^ self scan1X3 ].
+	currentCharacter == $, ifTrue: [ ^ self scan1X4 ].
+	currentCharacter == $. ifTrue: [ ^ self scan7 ].
+	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(12) ].
+	^ self scan1X8
 ]
 
 { #category : #generated }
 JCLScanner >> scan1X1 [
 	[ self recordMatch: #(8 9).
 	self step.
+	currentCharacter == $& ifTrue: [ ^ self scan2 ].
 	currentCharacter isDigit ] whileTrue.
 	((currentCharacter between: $# and: $$)
 		or: [ currentCharacter == $.
 				or: [ (currentCharacter between: $@ and: $Z)
-						or: [ currentCharacter between: $a and: $z ] ] ])
-		ifTrue: [ [ self recordMatch: #(8).
-			self step.
-			(currentCharacter between: $# and: $$)
-				or: [ currentCharacter == $.
-						or: [ (currentCharacter between: $0 and: $9)
-								or: [ (currentCharacter between: $@ and: $Z)
-										or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X10 [
-	self recordMatch: #(2).
-	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(2) ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X11 [
-	currentCharacter == $* ifTrue: [ ^ self scan1X3 ].
-	currentCharacter == $, ifTrue: [ ^ self scan1X7 ].
-	currentCharacter == $. ifTrue: [ ^ self scan1X5 ].
-	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(12) ].
-	currentCharacter isDigit ifTrue: [ ^ self scan1X2 ].
-	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scan1X9 ].
-	(currentCharacter between: $+ and: $-) ifTrue: [ ^ self scan1X8 ].
-	((currentCharacter between: $# and: $$)
-		or: [ (currentCharacter between: $@ and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ self scan1X6 ].
+						or: [ currentCharacter between: $a and: $z ] ] ]) ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch
 ]
 
@@ -143,18 +122,12 @@ JCLScanner >> scan1X11 [
 JCLScanner >> scan1X2 [
 	[ self recordMatch: #(8 9).
 	self step.
+	currentCharacter == $& ifTrue: [ ^ self scan2 ].
 	currentCharacter == $. ifTrue: [ ^ self scan1X1 ].
 	currentCharacter isDigit ] whileTrue.
 	((currentCharacter between: $# and: $$)
 		or: [ (currentCharacter between: $@ and: $Z)
-				or: [ currentCharacter between: $a and: $z ] ])
-		ifTrue: [ [ self recordMatch: #(8).
-			self step.
-			(currentCharacter between: $# and: $$)
-				or: [ currentCharacter == $.
-						or: [ (currentCharacter between: $0 and: $9)
-								or: [ (currentCharacter between: $@ and: $Z)
-										or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue ].
+				or: [ currentCharacter between: $a and: $z ] ]) ifTrue: [ ^ self scan7 ].
 	^ self reportLastMatch
 ]
 
@@ -181,6 +154,72 @@ JCLScanner >> scan1X3 [
 
 { #category : #generated }
 JCLScanner >> scan1X4 [
+	self recordMatch: #(13).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self scan4 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan6 ].
+	currentCharacter == Character space
+		ifTrue: [ [ self step.
+			currentCharacter == Character lf ifTrue: [ ^ self scan4 ].
+			currentCharacter == Character cr ifTrue: [ ^ self scan6 ].
+			currentCharacter == Character space ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan1X5 [
+	self step.
+	currentCharacter isDigit
+		ifTrue: [ [ self recordMatch: #(9).
+			self step.
+			currentCharacter == $.
+				ifTrue: [ [ self recordMatch: #(9).
+					self step.
+					currentCharacter isDigit ] whileTrue.
+					^ self reportLastMatch ].
+			currentCharacter isDigit ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan1X6 [
+	[ self recordMatch: #(3).
+	self step.
+	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
+		whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan1X7 [
+	self recordMatch: #(2).
+	self step.
+	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(2) ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan1X8 [
+	currentCharacter isDigit ifTrue: [ ^ self scan1X2 ].
+	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
+		ifTrue: [ ^ self scan1X6 ].
+	(currentCharacter between: $+ and: $-) ifTrue: [ ^ self scan1X5 ].
+	((currentCharacter between: $# and: $$)
+		or: [ (currentCharacter between: $@ and: $Z)
+				or: [ currentCharacter between: $a and: $z ] ])
+		ifTrue: [ [ self recordMatch: #(7 8).
+			self step.
+			currentCharacter == $& ifTrue: [ ^ self scan2 ].
+			(currentCharacter between: $# and: $$)
+				or: [ currentCharacter == $.
+						or: [ (currentCharacter between: $0 and: $9)
+								or: [ (currentCharacter between: $@ and: $Z)
+										or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan2 [
 	self step.
 	((currentCharacter between: $# and: $$)
 		or: [ currentCharacter == $.
@@ -198,86 +237,25 @@ JCLScanner >> scan1X4 [
 ]
 
 { #category : #generated }
-JCLScanner >> scan1X5 [
-	[ self recordMatch: #(8).
-	self step.
-	(currentCharacter between: $# and: $$)
-		or: [ currentCharacter == $.
-				or: [ (currentCharacter between: $0 and: $9)
-						or: [ (currentCharacter between: $@ and: $Z)
-								or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X6 [
-	[ self recordMatch: #(7 8).
-	self step.
-	(currentCharacter between: $# and: $$)
-		or: [ currentCharacter == $.
-				or: [ (currentCharacter between: $0 and: $9)
-						or: [ (currentCharacter between: $@ and: $Z)
-								or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X7 [
-	self recordMatch: #(13).
-	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self scan3 ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan5 ].
-	currentCharacter == Character space
-		ifTrue: [ [ self step.
-			currentCharacter == Character lf ifTrue: [ ^ self scan3 ].
-			currentCharacter == Character cr ifTrue: [ ^ self scan5 ].
-			currentCharacter == Character space ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X8 [
-	self step.
-	currentCharacter isDigit
-		ifTrue: [ [ self recordMatch: #(9).
-			self step.
-			currentCharacter == $.
-				ifTrue: [ [ self recordMatch: #(9).
-					self step.
-					currentCharacter isDigit ] whileTrue.
-					^ self reportLastMatch ].
-			currentCharacter isDigit ] whileTrue ].
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan1X9 [
-	[ self recordMatch: #(3).
-	self step.
-	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
-		whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : #generated }
-JCLScanner >> scan2 [
+JCLScanner >> scan3 [
 	[ self step.
 	currentCharacter == $'
 		ifTrue: [ self recordMatch: #(10).
 			self step.
-			currentCharacter == $' ifTrue: [ ^ self scan2 ].
+			currentCharacter == $' ifTrue: [ ^ self scan3 ].
 			^ self reportLastMatch ].
 	true ] whileTrue
 ]
 
 { #category : #generated }
-JCLScanner >> scan3 [
+JCLScanner >> scan4 [
 	self step.
-	currentCharacter == $/ ifTrue: [ ^ self scan4 ].
+	currentCharacter == $/ ifTrue: [ ^ self scan5 ].
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
-JCLScanner >> scan4 [
+JCLScanner >> scan5 [
 	self step.
 	currentCharacter == $/
 		ifTrue: [ self step.
@@ -289,15 +267,29 @@ JCLScanner >> scan4 [
 ]
 
 { #category : #generated }
-JCLScanner >> scan5 [
+JCLScanner >> scan6 [
 	self step.
-	currentCharacter == Character lf ifTrue: [ ^ self scan3 ].
-	currentCharacter == $/ ifTrue: [ ^ self scan4 ].
+	currentCharacter == Character lf ifTrue: [ ^ self scan4 ].
+	currentCharacter == $/ ifTrue: [ ^ self scan5 ].
+	^ self reportLastMatch
+]
+
+{ #category : #generated }
+JCLScanner >> scan7 [
+	[ self recordMatch: #(8).
+	self step.
+	currentCharacter == $& ifTrue: [ ^ self scan2 ].
+	(currentCharacter between: $# and: $$)
+		or: [ currentCharacter == $.
+				or: [ (currentCharacter between: $0 and: $9)
+						or: [ (currentCharacter between: $@ and: $Z)
+								or: [ currentCharacter between: $a and: $z ] ] ] ] ] whileTrue.
 	^ self reportLastMatch
 ]
 
 { #category : #generated }
 JCLScanner >> scanForToken [
+	scope == #default ifTrue: [ ^ self scan1 ].
 	scope == #star
 		ifTrue: [ self step.
 			^ self recordAndReportMatch: #(18) ].
@@ -346,9 +338,7 @@ JCLScanner >> scanForToken [
 								or: [ currentCharacter == Character cr ])
 								ifTrue: [ [ self recordMatch: #(19).
 									self step.
-									true ] whileTrue ] ] ].
-			^ self reportLastMatch ].
-	scope == #default ifTrue: [ ^ self scan1 ].
+									true ] whileTrue ] ] ] ].
 	^ self reportLastMatch
 ]
 
@@ -365,6 +355,15 @@ JCLScanner >> statementName [
 { #category : #generated }
 JCLScanner >> statementNameId [
 	^ 7
+]
+
+{ #category : #private }
+JCLScanner >> step [
+	[ super step.
+	self columnPosition >= 74
+		and: [ currentCharacter ~= $ 
+				and: [ currentCharacter ~= Character cr and: [ currentCharacter ~= Character lf ] ] ] ]
+		whileTrue
 ]
 
 { #category : #generated }

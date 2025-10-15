@@ -142,8 +142,9 @@ CobolDataDescriptionEntryNode >> currentValues [
 	bytes := self dataStructure.
 	self dataIndices
 		do: [ :i | 
-			(bytes at: i) = 0
-				ifFalse: [ values add: (bytes copyFrom: i to: i + self byteSize - 1) asString ] ].
+			i <= bytes size
+				ifTrue: [ (bytes at: i) = 0
+						ifFalse: [ values add: (bytes copyFrom: i to: i + self byteSize - 1) asString ] ] ].
 	^ values
 ]
 
