@@ -1,26 +1,28 @@
 Class {
-	#name : #GtJCLProc,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtJCLProc',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'steps',
 		'calledBySteps'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLProc >> calledBySteps [
 	<MSEProperty: #calledBySteps type: #GtJCLStep opposite: #calledProc>
 	<multivalued>
 	^ calledBySteps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLProc >> calledBySteps: anObject [
 	calledBySteps value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLProc >> gtStepsFor: aView [
 	<gtView>
 	^ aView list
@@ -28,7 +30,7 @@ GtJCLProc >> gtStepsFor: aView [
 		items: [ self steps ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtJCLProc >> initialize [
 	super initialize.
 	steps := FMNullMultivalueLink
@@ -41,14 +43,14 @@ GtJCLProc >> initialize [
 			selector: #calledBySteps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLProc >> steps [
 	<MSEProperty: #steps type: #GtJCLStep opposite: #proc>
 	<multivalued>
 	^ steps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLProc >> steps: anObject [
 	steps value: anObject
 ]

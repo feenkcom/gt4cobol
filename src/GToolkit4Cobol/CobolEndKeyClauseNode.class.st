@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolEndKeyClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolEndKeyClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEndKeyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolEndKeyClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEndKeyClauseNode >> nodeVariables [
 	^ #(#dataName)
 ]

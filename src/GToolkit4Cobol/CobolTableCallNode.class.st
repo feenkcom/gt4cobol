@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolTableCallNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolTableCallNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'name',
 		'subscripts',
@@ -10,114 +10,116 @@ Class {
 		'right',
 		'length'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTableCall: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> compositeNodeVariables [
 	^ #(#subscripts)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolTableCallNode >> initialize [
 	super initialize.
 	subscripts := OrderedCollection new: 2.
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CobolTableCallNode >> isVariableWritten: idNode [
 	^ (idNode isDescendantFrom: name) and: [ super isVariableWritten: idNode ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> length [
 	^ length
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> length: aCobolExpressionNode [
 	self length notNil ifTrue: [ self length parent: nil ].
 	length := aCobolExpressionNode.
 	self length notNil ifTrue: [ self length parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> name: aCobolExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> nodeVariables [
 	^ #(#name #position #length)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> position [
 	^ position
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> position: aCobolExpressionNode [
 	self position notNil ifTrue: [ self position parent: nil ].
 	position := aCobolExpressionNode.
 	self position notNil ifTrue: [ self position parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> subscripts [
 	^ subscripts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> subscripts: anOrderedCollection [
 	self setParents: self subscripts to: nil.
 	subscripts := anOrderedCollection.
 	self setParents: self subscripts to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTableCallNode >> tokenVariables [
 	^ #(#left #colon #right)
 ]

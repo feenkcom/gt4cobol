@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolLibraryIsCommonClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLibraryIsCommonClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryIsCommonClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLibraryIsCommonClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryIsCommonClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLibraryIsCommonClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryIsCommonClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryIsCommonClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

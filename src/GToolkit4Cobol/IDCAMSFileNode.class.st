@@ -1,34 +1,36 @@
 Class {
-	#name : #IDCAMSFileNode,
-	#superclass : #IDCAMSProgramNode,
+	#name : 'IDCAMSFileNode',
+	#superclass : 'IDCAMSProgramNode',
 	#instVars : [
 		'steps'
 	],
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSFileNode >> compositeNodeVariables [
 	^ #(#steps)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 IDCAMSFileNode >> initialize [
 	super initialize.
 	steps := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSFileNode >> steps [
 	^ steps
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSFileNode >> steps: anOrderedCollection [
 	self setParents: self steps to: nil.
 	steps := anOrderedCollection.

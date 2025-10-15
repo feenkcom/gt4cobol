@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolScreenDescriptionUnderlineClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionUnderlineClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUnderlineClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionUnderlineClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUnderlineClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUnderlineClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUnderlineClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

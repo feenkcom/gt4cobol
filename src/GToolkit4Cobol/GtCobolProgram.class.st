@@ -1,6 +1,6 @@
 Class {
-	#name : #GtCobolProgram,
-	#superclass : #FAMIXScopingEntity,
+	#name : 'GtCobolProgram',
+	#superclass : 'FAMIXScopingEntity',
 	#instVars : [
 		'mapExpressions',
 		'xctlToExpressions',
@@ -13,10 +13,12 @@ Class {
 		'callTargets',
 		'callSources'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #graphing }
+{ #category : 'graphing' }
 GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems [
 	| todo done item programs screens forwardEdges backEdges |
 	done := IdentitySet new.
@@ -112,43 +114,43 @@ GtCobolProgram class >> paintProgramDependenciesWith: mondrian from: startItems 
 		levelDistance: 30
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> callSources [
 	<MSEProperty: #callSources type: #GtCobolCallExpression opposite: #fromProgram>
 	<multivalued>
 	^ callSources
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> callSources: anObject [
 	callSources value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> callTargets [
 	<MSEProperty: #callTargets type: #GtCobolCallExpression opposite: #toProgram>
 	<multivalued>
 	^ callTargets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> callTargets: anObject [
 	callTargets value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> fileDescriptors [
 	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #program>
 	<multivalued>
 	^ fileDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> fileDescriptors: anObject [
 	fileDescriptors value: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolProgram >> gtDependenciesFor: aView [
 	<gtView>
 	^ aView forward
@@ -158,7 +160,7 @@ GtCobolProgram >> gtDependenciesFor: aView [
 		view: #gtProgramDependenciesFor:
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolProgram >> gtFunctionsFor: aView [
 	<gtView>
 	^ aView list
@@ -166,7 +168,7 @@ GtCobolProgram >> gtFunctionsFor: aView [
 		items: [ functions ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolProgram >> gtVariablesFor: aView [
 	<gtView>
 	^ aView list 
@@ -174,7 +176,7 @@ GtCobolProgram >> gtVariablesFor: aView [
 		items: [ self globalVariables ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCobolProgram >> initialize [
 	super initialize.
 	xctlFromExpressions := FMMultiMultivalueLink on: self opposite: #toPrograms.
@@ -209,61 +211,61 @@ GtCobolProgram >> initialize [
 			selector: #callSources
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> jclSteps [
 	<MSEProperty: #jclSteps type: #GtJCLStep opposite: #program>
 	<multivalued>
 	^ jclSteps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> jclSteps: aCollection [
 	jclSteps value: aCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> mapExpressions [
 	<MSEProperty: #mapExpressions type: #GtBMSMapExpression opposite: #program>
 	<multivalued>
 	^ mapExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> mapExpressions: anObject [
 	mapExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> returnFromExpressions [
 	<MSEProperty: #returnFromExpressions type: #GtCobolCicsReturnExpression opposite: #toPrograms>
 	<multivalued>
 	^ returnFromExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> returnFromExpressions: anObject [
 	returnFromExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> returnToExpressions [
 	<MSEProperty: #returnToExpressions type: #GtCobolCicsReturnExpression opposite: #fromProgram>
 	<multivalued>
 	^ returnToExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> returnToExpressions: anObject [
 	returnToExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> transaction [
 	<MSEProperty: #transaction type: #GtCICSTransaction opposite: #program>
 	^ transaction
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> transaction: anObject [
 	| oldValue |
 	anObject == transaction ifTrue: [ ^ self ].
@@ -273,36 +275,36 @@ GtCobolProgram >> transaction: anObject [
 		ifTrue: [ oldValue program: nil ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlFromExpressions [
 	<MSEProperty: #xctlFromExpressions type: #GtCobolCicsXctlExpression opposite: #toPrograms>
 	<multivalued>
 	^ xctlFromExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlFromExpressions: anObject [
 	xctlFromExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlFromPrograms [
 	^ xctlFromExpressions collectAsSet: [ :each | each fromProgram ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlToExpressions [
 	<MSEProperty: #xctlToExpressions type: #GtCobolCicsXctlExpression opposite: #fromProgram>
 	<multivalued>
 	^ xctlToExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlToExpressions: anObject [
 	xctlToExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgram >> xctlToPrograms [
 	^ xctlToExpressions flatCollectAsSet: [ :each | each toPrograms ]
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #GtBMSMap,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtBMSMap',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'width',
 		'height',
@@ -10,10 +10,12 @@ Class {
 		'mapExpressions',
 		'mapSet'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> asElement [
 	| editor |
 	editor := BrEditor new
@@ -24,7 +26,7 @@ GtBMSMap >> asElement [
 	^ editor
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSMap >> buildScreenString [
 	| screen |
 	screen := SmaCCString
@@ -38,7 +40,7 @@ GtBMSMap >> buildScreenString [
 	^ screen asString
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSMap >> buildScreenText [
 	| text |
 	text := self buildScreenString asRopedText.
@@ -49,24 +51,24 @@ GtBMSMap >> buildScreenText [
 	^ text
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> fields [
 	<MSEProperty: #fields type: #GtBMSField opposite: #map>
 	<multivalued>
 	^ fields
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> fields: anObject [
 	fields value: anObject
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> gtFamixExpanderView [
 	^ self gtScreenFor: GtPhlowView new
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> gtFieldsFor: aView [
 	<gtView>
 	^ aView columnedList 
@@ -77,7 +79,7 @@ GtBMSMap >> gtFieldsFor: aView [
 		column: 'Y' text: #y
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> gtMapExpressionsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -87,7 +89,7 @@ GtBMSMap >> gtMapExpressionsFor: aView [
 		column: 'To' text: #to
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> gtProgramsAndScreenFor: aView [
 	<gtView>
 	^ aView mondrian
@@ -95,7 +97,7 @@ GtBMSMap >> gtProgramsAndScreenFor: aView [
 		painting: [ :m | GtCobolProgram paintProgramDependenciesWith: m from: {self} ]
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtBMSMap >> gtScreenFor: aView [
 	<gtView>
 	^ aView explicit
@@ -104,22 +106,22 @@ GtBMSMap >> gtScreenFor: aView [
 		stencil: [ self asElement ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> height [
 	^ height
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> height: anObject [
 	height := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSMap >> indexForRow: row andColumn: column [
 	^ (row - 1) * (width + 1) + column
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBMSMap >> initialize [
 	super initialize.
 	fields := FMNullMultivalueLink
@@ -132,26 +134,26 @@ GtBMSMap >> initialize [
 			selector: #mapExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> mapExpressions [
 	<MSEProperty: #mapExpressions type: #GtBMSMapExpression opposite: #map>
 	<multivalued>
 	^ mapExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> mapExpressions: anObject [
 	mapExpressions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> mapSet [
 	<MSEProperty: #mapSet type: #GtBMSMapSet opposite: #maps>
 	<container>
 	^ mapSet
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> mapSet: anObject [
 	mapSet := FMMultivalueLink
 			on: self
@@ -160,32 +162,32 @@ GtBMSMap >> mapSet: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> width [
 	^ width
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> width: anObject [
 	width := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> x: anObject [
 	x := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMap >> y: anObject [
 	y := anObject
 ]

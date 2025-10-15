@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolProcedureDivisionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolProcedureDivisionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
@@ -10,37 +10,39 @@ Class {
 		'procedureDeclaratives',
 		'clauses'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcedureDivision: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> compositeNodeVariables [
 	^ #(#sentences #paragraphs #sections #clauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolProcedureDivisionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -50,49 +52,49 @@ CobolProcedureDivisionNode >> initialize [
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> nodeVariables [
 	^ #(#procedureDeclaratives)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> paragraphs [
 	^ paragraphs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> paragraphs: anOrderedCollection [
 	self setParents: self paragraphs to: nil.
 	paragraphs := anOrderedCollection.
 	self setParents: self paragraphs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> procedureDeclaratives [
 	^ procedureDeclaratives
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> procedureDeclaratives: aCobolProcedureDeclarativesNode [
 	self procedureDeclaratives notNil
 		ifTrue: [ self procedureDeclaratives parent: nil ].
@@ -101,31 +103,31 @@ CobolProcedureDivisionNode >> procedureDeclaratives: aCobolProcedureDeclaratives
 		ifTrue: [ self procedureDeclaratives parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> sections [
 	^ sections
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> sections: anOrderedCollection [
 	self setParents: self sections to: nil.
 	sections := anOrderedCollection.
 	self setParents: self sections to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> sentences [
 	^ sentences
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> sentences: anOrderedCollection [
 	self setParents: self sentences to: nil.
 	sentences := anOrderedCollection.
 	self setParents: self sentences to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionNode >> tokenVariables [
 	^ #(#period)
 ]

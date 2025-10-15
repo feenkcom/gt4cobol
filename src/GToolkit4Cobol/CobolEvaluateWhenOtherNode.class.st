@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolEvaluateWhenOtherNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolEvaluateWhenOtherNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'statements'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEvaluateWhenOther: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolEvaluateWhenOtherNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateWhenOtherNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

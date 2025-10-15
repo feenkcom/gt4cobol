@@ -1,42 +1,44 @@
 Class {
-	#name : #CobolUseDebugClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolUseDebugClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'allReferencesOfs',
 		'names'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUseDebugClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> allReferencesOfs [
 	^ allReferencesOfs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> allReferencesOfs: anOrderedCollection [
 	self setParents: self allReferencesOfs to: nil.
 	allReferencesOfs := anOrderedCollection.
 	self setParents: self allReferencesOfs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> compositeNodeVariables [
 	^ #(#allReferencesOfs #names)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolUseDebugClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -44,22 +46,22 @@ CobolUseDebugClauseNode >> initialize [
 	names := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseDebugClauseNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.

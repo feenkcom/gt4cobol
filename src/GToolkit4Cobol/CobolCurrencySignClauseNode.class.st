@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolCurrencySignClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolCurrencySignClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'values'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCurrencySignClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolCurrencySignClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCurrencySignClauseNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolRelativeKeyClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRelativeKeyClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'relativeKeyName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRelativeKeyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRelativeKeyClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> nodeVariables [
 	^ #(#relativeKeyName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> relativeKeyName [
 	^ relativeKeyName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRelativeKeyClauseNode >> relativeKeyName: aCobolExpressionNode [
 	self relativeKeyName notNil ifTrue: [ self relativeKeyName parent: nil ].
 	relativeKeyName := aCobolExpressionNode.

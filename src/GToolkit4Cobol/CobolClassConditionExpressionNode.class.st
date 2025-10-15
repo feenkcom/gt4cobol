@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolClassConditionExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolClassConditionExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'value',
 		'keywords',
 		'_className'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> _className [
 	^ _className
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> _className: aCobolIdentifierNode [
 	self _className notNil ifTrue: [ self _className parent: nil ].
 	_className := aCobolIdentifierNode.
 	self _className notNil ifTrue: [ self _className parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassConditionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolClassConditionExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> nodeVariables [
 	^ #(#value #_className)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassConditionExpressionNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

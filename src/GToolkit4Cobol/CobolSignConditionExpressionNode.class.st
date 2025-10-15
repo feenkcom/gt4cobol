@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolSignConditionExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolSignConditionExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'value',
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSignConditionExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSignConditionExpressionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSignConditionExpressionNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

@@ -1,44 +1,46 @@
 Class {
-	#name : #CobolFigurativeConstantNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolFigurativeConstantNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'keyword',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFigurativeConstant: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> tokenVariables [
 	^ #(#keyword)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFigurativeConstantNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolGlobalClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolGlobalClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGlobalClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGlobalClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGlobalClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolGlobalClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGlobalClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGlobalClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

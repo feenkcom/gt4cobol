@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolSegmentLimitClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSegmentLimitClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSegmentLimitClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSegmentLimitClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSegmentLimitClauseNode >> value: aCobolLiteralNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolLiteralNode.

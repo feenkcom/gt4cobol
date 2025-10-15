@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolFileControlEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolFileControlEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'selectClause',
 		'clauses'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFileControlEntry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFileControlEntryNode >> initialize [
 	super initialize.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> nodeVariables [
 	^ #(#selectClause)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> selectClause [
 	^ selectClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlEntryNode >> selectClause: aCobolSelectClauseNode [
 	self selectClause notNil ifTrue: [ self selectClause parent: nil ].
 	selectClause := aCobolSelectClauseNode.

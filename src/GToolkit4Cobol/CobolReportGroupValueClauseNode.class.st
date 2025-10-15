@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolReportGroupValueClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupValueClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupValueClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupValueClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupValueClauseNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

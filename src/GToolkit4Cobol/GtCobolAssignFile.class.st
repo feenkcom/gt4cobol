@@ -1,21 +1,23 @@
 Class {
-	#name : #GtCobolAssignFile,
-	#superclass : #FAMIXAssociation,
+	#name : 'GtCobolAssignFile',
+	#superclass : 'FAMIXAssociation',
 	#instVars : [
 		'fileDescriptor',
 		'jclDataDescriptor'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> fileDescriptor [
 	<MSEProperty: #fileDescriptor type: #GtCobolFileDescriptor opposite: #assigns>
 	<container>
 	^ fileDescriptor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> fileDescriptor: anObject [
 	fileDescriptor := FMMultivalueLink
 			on: self
@@ -24,19 +26,19 @@ GtCobolAssignFile >> fileDescriptor: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> from [
 	^ fileDescriptor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> jclDataDescriptor [
 	<MSEProperty: #jclDataDescriptor type: #GtJCLDataDescriptor opposite: #assigns>
 	<container>
 	^ jclDataDescriptor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> jclDataDescriptor: anObject [
 	jclDataDescriptor := FMMultivalueLink
 			on: self
@@ -45,7 +47,7 @@ GtCobolAssignFile >> jclDataDescriptor: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolAssignFile >> to [
 	^ jclDataDescriptor
 ]

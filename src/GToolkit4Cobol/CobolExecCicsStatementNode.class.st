@@ -1,19 +1,21 @@
 Class {
-	#name : #CobolExecCicsStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolExecCicsStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'items'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExecCicsStatement: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolExecCicsStatementNode >> argumentFor: aString [
 	| index token |
 	index := 1.
@@ -25,91 +27,91 @@ CobolExecCicsStatementNode >> argumentFor: aString [
 	^ nil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolExecCicsStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> is: aString [
 	^ items
 		anySatisfy: [ :each | (each isKindOf: SmaCCToken) and: [ each value sameAs: aString ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isProgram [
 	^ self is: 'PROGRAM'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isRead [
 	^ self is: 'READ'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isReceive [
 	^ self is: 'RECEIVE'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isReceiveMapSet [
 	^ self isReceive and: [ self is: 'MAPSET' ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isRewrite [
 	^ self is: 'REWRITE'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isSend [
 	^ self is: 'SEND'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isSendMapSet [
 	^ self isSend and: [ self is: 'MAPSET' ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> isWrite [
 	^ self is: 'WRITE'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> items [
 	^ items
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> items: anObject [
 	self setParent: self items to: nil.
 	items := anObject.
 	self setParent: self items to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecCicsStatementNode >> otherVariables [
 	^ #(#items)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolExecCicsStatementNode >> potentialValuesFor: aString [
 	| node |
 	node := self argumentFor: aString.
@@ -123,7 +125,7 @@ CobolExecCicsStatementNode >> potentialValuesFor: aString [
 	^ #()
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolExecCicsStatementNode >> writesIdentifier: anIdentifierNode [
 	#('INTO' 'RESP' 'RESP2')
 		do: [ :each | 
@@ -134,7 +136,7 @@ CobolExecCicsStatementNode >> writesIdentifier: anIdentifierNode [
 	^ super writesIdentifier: anIdentifierNode
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolExecCicsStatementNode >> xctlPrograms [
 	^ self potentialValuesFor: 'PROGRAM'
 ]

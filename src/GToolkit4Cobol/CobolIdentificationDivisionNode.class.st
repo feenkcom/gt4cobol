@@ -1,87 +1,89 @@
 Class {
-	#name : #CobolIdentificationDivisionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolIdentificationDivisionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'programId',
 		'paragraphs'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentificationDivision: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> compositeNodeVariables [
 	^ #(#paragraphs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolIdentificationDivisionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	paragraphs := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> nodeVariables [
 	^ #(#programId)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> paragraphs [
 	^ paragraphs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> paragraphs: anOrderedCollection [
 	self setParents: self paragraphs to: nil.
 	paragraphs := anOrderedCollection.
 	self setParents: self paragraphs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> programId [
 	^ programId
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> programId: aCobolProgramIdParagraphNode [
 	self programId notNil ifTrue: [ self programId parent: nil ].
 	programId := aCobolProgramIdParagraphNode.
 	self programId notNil ifTrue: [ self programId parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentificationDivisionNode >> tokenVariables [
 	^ #(#period)
 ]

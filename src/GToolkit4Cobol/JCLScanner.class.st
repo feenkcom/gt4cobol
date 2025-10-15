@@ -1,10 +1,12 @@
 Class {
-	#name : #JCLScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#name : 'JCLScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 JCLScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(7 'PEND' 6) #(7 'PROC' 5) #(8 'PEND' 6) #(8 'PROC' 5))
@@ -15,38 +17,38 @@ JCLScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> columnPosition [
 	^ stream columnNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> emptySymbolTokenId [
 	^ 39
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> endOfFile [
 	^ self comment
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> endOfInput [
 	^ self comment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> errorTokenId [
 	^ 40
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 JCLScanner >> initialize [
 	super initialize.
 	self scope: #startOfLine
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> inputCharacter [
 	| eol position |
 	matchActions := nil.
@@ -69,27 +71,27 @@ JCLScanner >> inputCharacter [
 			^ self recordAndReportMatch: {self inputId} ] ] repeat
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> inputId [
 	^ 38
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> keywordFor: aString [
 	^ aString asUppercase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> nameId [
 	^ 8
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 JCLScanner >> on: aStream [
 	super on: (SmaCCLineNumberStream on: aStream)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(2) ].
@@ -105,7 +107,7 @@ JCLScanner >> scan1 [
 	^ self scan1X8
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X1 [
 	[ self recordMatch: #(8 9).
 	self step.
@@ -118,7 +120,7 @@ JCLScanner >> scan1X1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X2 [
 	[ self recordMatch: #(8 9).
 	self step.
@@ -131,7 +133,7 @@ JCLScanner >> scan1X2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X3 [
 	self recordMatch: #(11).
 	self step.
@@ -152,7 +154,7 @@ JCLScanner >> scan1X3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X4 [
 	self recordMatch: #(13).
 	self step.
@@ -166,7 +168,7 @@ JCLScanner >> scan1X4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X5 [
 	self step.
 	currentCharacter isDigit
@@ -181,7 +183,7 @@ JCLScanner >> scan1X5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X6 [
 	[ self recordMatch: #(3).
 	self step.
@@ -190,7 +192,7 @@ JCLScanner >> scan1X6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X7 [
 	self recordMatch: #(2).
 	self step.
@@ -198,7 +200,7 @@ JCLScanner >> scan1X7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan1X8 [
 	currentCharacter isDigit ifTrue: [ ^ self scan1X2 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
@@ -218,7 +220,7 @@ JCLScanner >> scan1X8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan2 [
 	self step.
 	((currentCharacter between: $# and: $$)
@@ -236,7 +238,7 @@ JCLScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan3 [
 	[ self step.
 	currentCharacter == $'
@@ -247,14 +249,14 @@ JCLScanner >> scan3 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan4 [
 	self step.
 	currentCharacter == $/ ifTrue: [ ^ self scan5 ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan5 [
 	self step.
 	currentCharacter == $/
@@ -266,7 +268,7 @@ JCLScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan6 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self scan4 ].
@@ -274,7 +276,7 @@ JCLScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scan7 [
 	[ self recordMatch: #(8).
 	self step.
@@ -287,7 +289,7 @@ JCLScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> scanForToken [
 	scope == #default ifTrue: [ ^ self scan1 ].
 	scope == #star
@@ -342,7 +344,7 @@ JCLScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> statementName [
 	| column |
 	column := stream columnNumberFor: start.
@@ -352,12 +354,12 @@ JCLScanner >> statementName [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> statementNameId [
 	^ 7
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 JCLScanner >> step [
 	[ super step.
 	self columnPosition >= 74
@@ -366,12 +368,12 @@ JCLScanner >> step [
 		whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> tokenActions [
 	^ #(nil nil #whitespace #comment nil nil #statementName nil nil nil nil nil nil nil nil nil nil #inputCharacter #endOfFile #endOfInput)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLScanner >> tokenClass [
 	^SmaCCCaseInsensitiveToken
 ]

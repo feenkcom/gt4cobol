@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolScreenDescriptionUsageClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionUsageClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsageClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionUsageClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsageClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionUsageClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsageClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsageClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

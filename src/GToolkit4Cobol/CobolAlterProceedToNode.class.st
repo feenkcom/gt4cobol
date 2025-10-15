@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolAlterProceedToNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolAlterProceedToNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'fromSection',
 		'keywords',
 		'toSection'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAlterProceedTo: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> fromSection [
 	^ fromSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> fromSection: aCobolProgramNode [
 	self fromSection notNil ifTrue: [ self fromSection parent: nil ].
 	fromSection := aCobolProgramNode.
 	self fromSection notNil ifTrue: [ self fromSection parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAlterProceedToNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> nodeVariables [
 	^ #(#fromSection #toSection)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> toSection [
 	^ toSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterProceedToNode >> toSection: aCobolProgramNode [
 	self toSection notNil ifTrue: [ self toSection parent: nil ].
 	toSection := aCobolProgramNode.

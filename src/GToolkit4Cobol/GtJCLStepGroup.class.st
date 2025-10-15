@@ -1,10 +1,12 @@
 Class {
-	#name : #GtJCLStepGroup,
-	#superclass : #MooseGroup,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtJCLStepGroup',
+	#superclass : 'MooseGroup',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtJCLStepGroup >> gtItemsFor: aView [
 	<gtView>
 	^ aView columnedList

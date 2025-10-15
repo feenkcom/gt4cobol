@@ -1,76 +1,78 @@
 Class {
-	#name : #CobolDeleteStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolDeleteStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'fileName',
 		'notInvalidKeyPhrase',
 		'invalidKeyPhrase'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDeleteStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> fileName [
 	^ fileName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> fileName: aCobolIdentifierNode [
 	self fileName notNil ifTrue: [ self fileName parent: nil ].
 	fileName := aCobolIdentifierNode.
 	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDeleteStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> invalidKeyPhrase [
 	^ invalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> invalidKeyPhrase: aCobolHandlerNode [
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: nil ].
 	invalidKeyPhrase := aCobolHandlerNode.
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> nodeVariables [
 	^ #(#fileName #notInvalidKeyPhrase #invalidKeyPhrase)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> notInvalidKeyPhrase [
 	^ notInvalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDeleteStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 	self notInvalidKeyPhrase notNil
 		ifTrue: [ self notInvalidKeyPhrase parent: nil ].

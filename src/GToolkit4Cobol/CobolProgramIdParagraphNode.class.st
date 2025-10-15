@@ -1,36 +1,38 @@
 Class {
-	#name : #CobolProgramIdParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolProgramIdParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'periods',
 		'programName',
 		'descriptions'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgramIdParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> compositeTokenVariables [
 	^ #(#keywords #periods #descriptions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> descriptions [
 	^ descriptions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> descriptions: anOrderedCollection [
 	descriptions := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolProgramIdParagraphNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -38,37 +40,37 @@ CobolProgramIdParagraphNode >> initialize [
 	descriptions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> otherVariables [
 	^ #(#programName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> programName [
 	^ programName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramIdParagraphNode >> programName: anObject [
 	self setParent: self programName to: nil.
 	programName := anObject.

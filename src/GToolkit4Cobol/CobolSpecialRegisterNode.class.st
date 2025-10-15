@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolSpecialRegisterNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolSpecialRegisterNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'keywords',
 		'identifier'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSpecialRegister: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> compositeTokenVariables [
 	^ #(#keywords #leftParens #rightParens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> identifier [
 	^ identifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> identifier: aCobolExpressionNode [
 	self identifier notNil ifTrue: [ self identifier parent: nil ].
 	identifier := aCobolExpressionNode.
 	self identifier notNil ifTrue: [ self identifier parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSpecialRegisterNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSpecialRegisterNode >> nodeVariables [
 	^ #(#identifier)
 ]

@@ -1,18 +1,20 @@
 Class {
-	#name : #JCLFileNode,
-	#superclass : #JCLProgramNode,
+	#name : 'JCLFileNode',
+	#superclass : 'JCLProgramNode',
 	#instVars : [
 		'statements'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLFileNode >> buildComponents [
 	| index current each |
 	current := statements first.
@@ -27,23 +29,23 @@ JCLFileNode >> buildComponents [
 	statements do: #buildComponents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLFileNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JCLFileNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLFileNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLFileNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

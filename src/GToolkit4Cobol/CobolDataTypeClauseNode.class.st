@@ -1,79 +1,81 @@
 Class {
-	#name : #CobolDataTypeClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataTypeClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'leftParen',
 		'cardinality',
 		'rightParen'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataTypeClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> cardinality [
 	^ cardinality
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> cardinality: aCobolExpressionNode [
 	self cardinality notNil ifTrue: [ self cardinality parent: nil ].
 	cardinality := aCobolExpressionNode.
 	self cardinality notNil ifTrue: [ self cardinality parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataTypeClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> nodeVariables [
 	^ #(#cardinality)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataTypeClauseNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

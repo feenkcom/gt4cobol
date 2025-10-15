@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolIfThenNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolIfThenNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'statements'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfThen: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolIfThenNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfThenNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

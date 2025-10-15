@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolUseAfterClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolUseAfterClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'fileNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUseAfterClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> compositeNodeVariables [
 	^ #(#fileNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> fileNames [
 	^ fileNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> fileNames: anOrderedCollection [
 	self setParents: self fileNames to: nil.
 	fileNames := anOrderedCollection.
 	self setParents: self fileNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolUseAfterClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fileNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseAfterClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

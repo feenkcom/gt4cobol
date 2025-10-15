@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReportGroupResetClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupResetClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupResetClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupResetClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupResetClauseNode >> nodeVariables [
 	^ #(#dataName)
 ]

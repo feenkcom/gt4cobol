@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolFileStatusClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolFileStatusClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'fileStatusNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFileStatusClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> compositeNodeVariables [
 	^ #(#fileStatusNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> fileStatusNames [
 	^ fileStatusNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> fileStatusNames: anOrderedCollection [
 	self setParents: self fileStatusNames to: nil.
 	fileStatusNames := anOrderedCollection.
 	self setParents: self fileStatusNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFileStatusClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fileStatusNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileStatusClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

@@ -1,15 +1,17 @@
 Class {
-	#name : #CobolProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'GToolkit4Cobol-Parser'
+	#name : 'CobolProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolProgramNode >> buildDataStructures [
 	| data variables |
 	data := OrderedCollection new.
@@ -40,17 +42,17 @@ CobolProgramNode >> buildDataStructures [
 										ifPresent: [ :vars | vars do: [ :var | var literalValues addAll: values ] ] ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolProgramNode >> hasKeyword: aString [
 	^ self keywords anySatisfy: [ :each | each value sameAs: aString ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolProgramNode >> isVariableWritten: idNode [
 	^ parent ifNil: [ false ] ifNotNil: [ parent isVariableWritten: idNode ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolProgramNode >> variables [
 	^ self topParent
 		attributeNamed: #variables
@@ -59,7 +61,7 @@ CobolProgramNode >> variables [
 				attributeNamed: #variables ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolProgramNode >> xctlNodes [
 	| xctl |
 	xctl := OrderedCollection new.
@@ -69,7 +71,7 @@ CobolProgramNode >> xctlNodes [
 	^ xctl
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolProgramNode >> xctlProgramNames [
 	^ self xctlNodes flatCollect: #xctlPrograms
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolReceiveIntoStatementNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReceiveIntoStatementNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'name',
 		'keywords',
@@ -8,82 +8,84 @@ Class {
 		'receiveWithData',
 		'receiveNoData'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReceiveIntoStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReceiveIntoStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> into [
 	^ into
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> into: aCobolExpressionNode [
 	self into notNil ifTrue: [ self into parent: nil ].
 	into := aCobolExpressionNode.
 	self into notNil ifTrue: [ self into parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> nodeVariables [
 	^ #(#name #into #receiveWithData #receiveNoData)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> receiveNoData [
 	^ receiveNoData
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> receiveNoData: aCobolHandlerNode [
 	self receiveNoData notNil ifTrue: [ self receiveNoData parent: nil ].
 	receiveNoData := aCobolHandlerNode.
 	self receiveNoData notNil ifTrue: [ self receiveNoData parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> receiveWithData [
 	^ receiveWithData
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveIntoStatementNode >> receiveWithData: aCobolHandlerNode [
 	self receiveWithData notNil ifTrue: [ self receiveWithData parent: nil ].
 	receiveWithData := aCobolHandlerNode.

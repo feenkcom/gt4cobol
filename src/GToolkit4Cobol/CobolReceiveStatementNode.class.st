@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReceiveStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolReceiveStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'statement',
 		'notOnExceptionClause',
 		'onExceptionClause'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReceiveStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReceiveStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> nodeVariables [
 	^ #(#statement #notOnExceptionClause #onExceptionClause)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> notOnExceptionClause [
 	^ notOnExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 	self notOnExceptionClause notNil
 		ifTrue: [ self notOnExceptionClause parent: nil ].
@@ -55,31 +57,31 @@ CobolReceiveStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 		ifTrue: [ self notOnExceptionClause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> onExceptionClause [
 	^ onExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> onExceptionClause: aCobolHandlerNode [
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: nil ].
 	onExceptionClause := aCobolHandlerNode.
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> statement [
 	^ statement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatementNode >> statement: aCobolProgramNode [
 	self statement notNil ifTrue: [ self statement parent: nil ].
 	statement := aCobolProgramNode.
 	self statement notNil ifTrue: [ self statement parent: self ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CobolReceiveStatementNode >> writesIdentifier: anIdentifierNode [
 	^ (statement isKindOf: CobolReceiveIntoStatementNode)
 		and: [ anIdentifierNode isDescendantFrom: statement ]

@@ -1,6 +1,6 @@
-Extension { #name : #FAMIXFile }
+Extension { #name : 'FAMIXFile' }
 
-{ #category : #'*GToolkit4Cobol' }
+{ #category : '*GToolkit4Cobol' }
 FAMIXFile >> gtBMSMapFor: aView [
 	<gtView>
 	| screen |

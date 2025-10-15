@@ -1,61 +1,63 @@
 Class {
-	#name : #CobolInstallationParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolInstallationParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'period',
 		'descriptions'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInstallationParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> compositeTokenVariables [
 	^ #(#descriptions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> descriptions [
 	^ descriptions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> descriptions: anOrderedCollection [
 	descriptions := anOrderedCollection
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolInstallationParagraphNode >> initialize [
 	super initialize.
 	descriptions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInstallationParagraphNode >> tokenVariables [
 	^ #(#keyword #period)
 ]

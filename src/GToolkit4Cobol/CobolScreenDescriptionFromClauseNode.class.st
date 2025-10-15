@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolScreenDescriptionFromClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionFromClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'from',
 		'to'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionFromClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> from [
 	^ from
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> from: aCobolExpressionNode [
 	self from notNil ifTrue: [ self from parent: nil ].
 	from := aCobolExpressionNode.
 	self from notNil ifTrue: [ self from parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionFromClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> nodeVariables [
 	^ #(#from #to)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> to [
 	^ to
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionFromClauseNode >> to: aCobolExpressionNode [
 	self to notNil ifTrue: [ self to parent: nil ].
 	to := aCobolExpressionNode.

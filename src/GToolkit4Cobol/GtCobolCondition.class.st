@@ -1,13 +1,15 @@
 Class {
-	#name : #GtCobolCondition,
-	#superclass : #FAMIXGlobalVariable,
+	#name : 'GtCobolCondition',
+	#superclass : 'FAMIXGlobalVariable',
 	#instVars : [
 		'variable'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolCondition >> gtPotentialAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -16,7 +18,7 @@ GtCobolCondition >> gtPotentialAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolCondition >> gtPotentialWriteAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -25,19 +27,19 @@ GtCobolCondition >> gtPotentialWriteAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolCondition >> potentialAccesses [
 	^ variable potentialAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCondition >> variable [
 	<MSEProperty: #variable type: #GtCobolVariable opposite: #conditions>
 	<container>
 	^ variable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCondition >> variable: anObject [
 	variable := FMMultivalueLink
 			on: self

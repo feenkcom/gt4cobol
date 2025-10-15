@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolMemorySizeClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolMemorySizeClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'memorySize'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMemorySizeClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolMemorySizeClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> memorySize [
 	^ memorySize
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> memorySize: aCobolExpressionNode [
 	self memorySize notNil ifTrue: [ self memorySize parent: nil ].
 	memorySize := aCobolExpressionNode.
 	self memorySize notNil ifTrue: [ self memorySize parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMemorySizeClauseNode >> nodeVariables [
 	^ #(#memorySize)
 ]

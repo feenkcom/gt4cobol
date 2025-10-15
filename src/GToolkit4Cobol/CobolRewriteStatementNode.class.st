@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolRewriteStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolRewriteStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'recordName',
@@ -8,58 +8,60 @@ Class {
 		'invalidKeyPhrase',
 		'rewriteFrom'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRewriteStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRewriteStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> invalidKeyPhrase [
 	^ invalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> invalidKeyPhrase: aCobolHandlerNode [
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: nil ].
 	invalidKeyPhrase := aCobolHandlerNode.
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> nodeVariables [
 	^ #(#recordName #notInvalidKeyPhrase #invalidKeyPhrase #rewriteFrom)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> notInvalidKeyPhrase [
 	^ notInvalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 	self notInvalidKeyPhrase notNil
 		ifTrue: [ self notInvalidKeyPhrase parent: nil ].
@@ -68,24 +70,24 @@ CobolRewriteStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 		ifTrue: [ self notInvalidKeyPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> recordName [
 	^ recordName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> recordName: aCobolExpressionNode [
 	self recordName notNil ifTrue: [ self recordName parent: nil ].
 	recordName := aCobolExpressionNode.
 	self recordName notNil ifTrue: [ self recordName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> rewriteFrom [
 	^ rewriteFrom
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRewriteStatementNode >> rewriteFrom: aCobolExpressionNode [
 	self rewriteFrom notNil ifTrue: [ self rewriteFrom parent: nil ].
 	rewriteFrom := aCobolExpressionNode.

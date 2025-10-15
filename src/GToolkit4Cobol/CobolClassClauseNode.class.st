@@ -1,67 +1,69 @@
 Class {
-	#name : #CobolClassClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolClassClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'_className',
 		'classFroms',
 		'classTos'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> _className [
 	^ _className
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> _className: aCobolIdentifierNode [
 	self _className notNil ifTrue: [ self _className parent: nil ].
 	_className := aCobolIdentifierNode.
 	self _className notNil ifTrue: [ self _className parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitClassClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> classFroms [
 	^ classFroms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> classFroms: anOrderedCollection [
 	self setParents: self classFroms to: nil.
 	classFroms := anOrderedCollection.
 	self setParents: self classFroms to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> classTos [
 	^ classTos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> classTos: anOrderedCollection [
 	self setParents: self classTos to: nil.
 	classTos := anOrderedCollection.
 	self setParents: self classTos to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> compositeNodeVariables [
 	^ #(#classFroms #classTos)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolClassClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -69,17 +71,17 @@ CobolClassClauseNode >> initialize [
 	classTos := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolClassClauseNode >> nodeVariables [
 	^ #(#_className)
 ]

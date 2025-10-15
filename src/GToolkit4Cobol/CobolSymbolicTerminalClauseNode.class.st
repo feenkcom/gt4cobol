@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolSymbolicTerminalClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSymbolicTerminalClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSymbolicTerminalClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSymbolicTerminalClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicTerminalClauseNode >> nodeVariables [
 	^ #(#dataName)
 ]

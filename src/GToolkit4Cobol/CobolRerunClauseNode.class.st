@@ -1,78 +1,80 @@
 Class {
-	#name : #CobolRerunClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRerunClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count',
 		'fileName',
 		'name'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRerunClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> fileName [
 	^ fileName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> fileName: aCobolIdentifierNode [
 	self fileName notNil ifTrue: [ self fileName parent: nil ].
 	fileName := aCobolIdentifierNode.
 	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRerunClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRerunClauseNode >> nodeVariables [
 	^ #(#count #fileName #name)
 ]

@@ -1,6 +1,6 @@
 Class {
-	#name : #JCLStatementNode,
-	#superclass : #JCLProgramNode,
+	#name : 'JCLStatementNode',
+	#superclass : 'JCLProgramNode',
 	#instVars : [
 		'slashes',
 		'operation',
@@ -9,46 +9,48 @@ Class {
 		'parameters',
 		'name'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> components [
 	^ self attributeNamed: #components ifAbsentPut: [ OrderedCollection new ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLStatementNode >> contains: aStatementNode [
 	self owner ifNil: [ ^ true ].
 	^ self operationName = 'EXEC' and: [ aStatementNode operationName = 'DD' ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JCLStatementNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -56,118 +58,118 @@ JCLStatementNode >> initialize [
 	parameters := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLStatementNode >> isDD [
 	^ self operationName = 'DD'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLStatementNode >> isEXEC [
 	^ self operationName = 'EXEC'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLStatementNode >> isJOB [
 	^ self operationName = 'JOB'
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLStatementNode >> isPROC [
 	^ self operationName = 'PROC'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> namedParameterNodeOf: aString [
 	parameters do: [ :each | each key source = aString ifTrue: [ ^ each value ] ].
 	^ nil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> namedParameterValueOf: aString [
 	parameters
 		do: [ :each | each key source = aString ifTrue: [ ^ each value literalValue ] ].
 	^ nil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> operation [
 	^ operation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> operation: aSmaCCToken [
 	operation := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> operationName [
 	^ operation source
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> otherVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> owner [
 	^ self attributeNamed: #owner
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> owner: aStatementNode [
 	self attributeNamed: #owner put: aStatementNode.
 	aStatementNode components add: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> parameters: anOrderedCollection [
 	self setParent: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParent: self parameters to: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLStatementNode >> positionalParameterValueOf: anInteger [
 	^ values size >= anInteger ifTrue: [ (values at: anInteger) literalValue ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> slashes [
 	^ slashes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> slashes: aSmaCCToken [
 	slashes := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> tokenVariables [
 	^ #(#slashes #operation #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLStatementNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

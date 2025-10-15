@@ -1,65 +1,67 @@
 Class {
-	#name : #CobolEnableStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolEnableStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'cdName',
 		'enable'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEnableStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> cdName [
 	^ cdName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> cdName: aCobolIdentifierNode [
 	self cdName notNil ifTrue: [ self cdName parent: nil ].
 	cdName := aCobolIdentifierNode.
 	self cdName notNil ifTrue: [ self cdName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> enable [
 	^ enable
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> enable: aCobolExpressionNode [
 	self enable notNil ifTrue: [ self enable parent: nil ].
 	enable := aCobolExpressionNode.
 	self enable notNil ifTrue: [ self enable parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolEnableStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEnableStatementNode >> nodeVariables [
 	^ #(#cdName #enable)
 ]

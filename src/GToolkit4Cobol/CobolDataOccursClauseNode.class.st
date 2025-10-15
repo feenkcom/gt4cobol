@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolDataOccursClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataOccursClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count',
@@ -9,61 +9,63 @@ Class {
 		'dependingOnName',
 		'toCount'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataOccursClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> compositeNodeVariables [
 	^ #(#sortNames #indexNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> dependingOnName [
 	^ dependingOnName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> dependingOnName: aCobolExpressionNode [
 	self dependingOnName notNil ifTrue: [ self dependingOnName parent: nil ].
 	dependingOnName := aCobolExpressionNode.
 	self dependingOnName notNil ifTrue: [ self dependingOnName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> indexNames [
 	^ indexNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> indexNames: anOrderedCollection [
 	self setParents: self indexNames to: nil.
 	indexNames := anOrderedCollection.
 	self setParents: self indexNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataOccursClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -71,44 +73,44 @@ CobolDataOccursClauseNode >> initialize [
 	indexNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataOccursClauseNode >> maxCount [
 	^ (toCount ifNil: [ count ]) source asInteger
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> nodeVariables [
 	^ #(#count #dependingOnName #toCount)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> sortNames [
 	^ sortNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> sortNames: anOrderedCollection [
 	self setParents: self sortNames to: nil.
 	sortNames := anOrderedCollection.
 	self setParents: self sortNames to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> toCount [
 	^ toCount
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataOccursClauseNode >> toCount: aCobolLiteralNode [
 	self toCount notNil ifTrue: [ self toCount parent: nil ].
 	toCount := aCobolLiteralNode.

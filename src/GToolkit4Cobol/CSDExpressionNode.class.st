@@ -1,33 +1,35 @@
 Class {
-	#name : #CSDExpressionNode,
-	#superclass : #CSDProgramNode,
+	#name : 'CSDExpressionNode',
+	#superclass : 'CSDProgramNode',
 	#instVars : [
 		'token'
 	],
-	#category : #'GToolkit4Cobol-CSD-Parser'
+	#category : 'GToolkit4Cobol-CSD-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'CSD-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSDExpressionNode >> literalValue [
 	self subclassResponsibility
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDExpressionNode >> token [
 	^ token
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDExpressionNode >> token: aSmaCCToken [
 	token := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDExpressionNode >> tokenVariables [
 	^ #(#token)
 ]

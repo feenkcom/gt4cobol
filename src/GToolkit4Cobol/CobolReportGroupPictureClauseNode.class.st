@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolReportGroupPictureClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupPictureClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'picture'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupPictureClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupPictureClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> picture [
 	^ picture
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> picture: aSmaCCToken [
 	picture := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupPictureClauseNode >> tokenVariables [
 	^ #(#picture)
 ]

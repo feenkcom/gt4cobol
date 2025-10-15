@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolReportGroupTypeReportHeadingNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupTypeReportHeadingNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeReportHeadingNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupTypeReportHeading: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeReportHeadingNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupTypeReportHeadingNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeReportHeadingNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeReportHeadingNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

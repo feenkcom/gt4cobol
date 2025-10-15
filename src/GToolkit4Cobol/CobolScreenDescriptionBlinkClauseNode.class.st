@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolScreenDescriptionBlinkClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionBlinkClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionBlinkClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionBlinkClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionBlinkClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionBlinkClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionBlinkClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

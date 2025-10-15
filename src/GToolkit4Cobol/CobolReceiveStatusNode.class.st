@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolReceiveStatusNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReceiveStatusNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'status'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReceiveStatus: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReceiveStatusNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> nodeVariables [
 	^ #(#status)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> status [
 	^ status
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveStatusNode >> status: aCobolExpressionNode [
 	self status notNil ifTrue: [ self status parent: nil ].
 	status := aCobolExpressionNode.

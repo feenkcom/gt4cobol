@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolPaddingCharacterClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolPaddingCharacterClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPaddingCharacterClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolPaddingCharacterClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPaddingCharacterClauseNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

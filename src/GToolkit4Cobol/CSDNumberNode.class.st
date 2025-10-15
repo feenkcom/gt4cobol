@@ -1,15 +1,17 @@
 Class {
-	#name : #CSDNumberNode,
-	#superclass : #CSDExpressionNode,
-	#category : #'GToolkit4Cobol-CSD-Parser'
+	#name : 'CSDNumberNode',
+	#superclass : 'CSDExpressionNode',
+	#category : 'GToolkit4Cobol-CSD-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'CSD-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSDNumberNode >> literalValue [
 	^ token value asNumber
 ]

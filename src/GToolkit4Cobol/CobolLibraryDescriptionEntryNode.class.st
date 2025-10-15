@@ -1,71 +1,73 @@
 Class {
-	#name : #CobolLibraryDescriptionEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLibraryDescriptionEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'libraryName',
 		'clauses'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLibraryDescriptionEntry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLibraryDescriptionEntryNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> libraryName [
 	^ libraryName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> libraryName: aCobolIdentifierNode [
 	self libraryName notNil ifTrue: [ self libraryName parent: nil ].
 	libraryName := aCobolIdentifierNode.
 	self libraryName notNil ifTrue: [ self libraryName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryDescriptionEntryNode >> nodeVariables [
 	^ #(#libraryName)
 ]

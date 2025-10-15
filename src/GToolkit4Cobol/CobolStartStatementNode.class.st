@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolStartStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolStartStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'start',
@@ -9,71 +9,73 @@ Class {
 		'ops',
 		'keyName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStartStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> compositeTokenVariables [
 	^ #(#keywords #ops)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolStartStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	ops := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> invalidKeyPhrase [
 	^ invalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> invalidKeyPhrase: aCobolHandlerNode [
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: nil ].
 	invalidKeyPhrase := aCobolHandlerNode.
 	self invalidKeyPhrase notNil ifTrue: [ self invalidKeyPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> keyName [
 	^ keyName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> keyName: aCobolExpressionNode [
 	self keyName notNil ifTrue: [ self keyName parent: nil ].
 	keyName := aCobolExpressionNode.
 	self keyName notNil ifTrue: [ self keyName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> nodeVariables [
 	^ #(#start #notInvalidKeyPhrase #invalidKeyPhrase #keyName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> notInvalidKeyPhrase [
 	^ notInvalidKeyPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 	self notInvalidKeyPhrase notNil
 		ifTrue: [ self notInvalidKeyPhrase parent: nil ].
@@ -82,22 +84,22 @@ CobolStartStatementNode >> notInvalidKeyPhrase: aCobolHandlerNode [
 		ifTrue: [ self notInvalidKeyPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> ops [
 	^ ops
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> ops: anOrderedCollection [
 	ops := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> start [
 	^ start
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStartStatementNode >> start: aCobolIdentifierNode [
 	self start notNil ifTrue: [ self start parent: nil ].
 	start := aCobolIdentifierNode.

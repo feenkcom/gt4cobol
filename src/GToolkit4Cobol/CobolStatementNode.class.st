@@ -1,20 +1,22 @@
 Class {
-	#name : #CobolStatementNode,
-	#superclass : #CobolProgramNode,
-	#category : #'GToolkit4Cobol-Parser'
+	#name : 'CobolStatementNode',
+	#superclass : 'CobolProgramNode',
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatement: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolStatementNode >> isVariableWritten: idNode [
 	^ self writesIdentifier: idNode
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolStatementNode >> writesIdentifier: anIdentifierNode [
 	^ false
 ]

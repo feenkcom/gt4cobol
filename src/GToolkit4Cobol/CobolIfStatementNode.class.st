@@ -1,76 +1,78 @@
 Class {
-	#name : #CobolIfStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolIfStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'if',
 		'then',
 		'else'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIfStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> else [
 	^ else
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> else: aCobolIfElseNode [
 	self else notNil ifTrue: [ self else parent: nil ].
 	else := aCobolIfElseNode.
 	self else notNil ifTrue: [ self else parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> if [
 	^ if
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> if: aCobolExpressionNode [
 	self if notNil ifTrue: [ self if parent: nil ].
 	if := aCobolExpressionNode.
 	self if notNil ifTrue: [ self if parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolIfStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> nodeVariables [
 	^ #(#if #then #else)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> then [
 	^ then
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIfStatementNode >> then: aCobolIfThenNode [
 	self then notNil ifTrue: [ self then parent: nil ].
 	then := aCobolIfThenNode.

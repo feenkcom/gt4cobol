@@ -1,1451 +1,1453 @@
 Trait {
-	#name : #TCobolProgramNodeVisitor,
+	#name : 'TCobolProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAbbreviation: anAbbreviation [
 	^ self visitProgram: anAbbreviation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAcceptStatement: anAcceptStatement [
 	^ self visitStatement: anAcceptStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAccessModeClause: anAccessModeClause [
 	^ self visitProgram: anAccessModeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAddStatement: anAddStatement [
 	^ self visitStatement: anAddStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAllSubscript: anAllSubscript [
 	^ self visitProgram: anAllSubscript
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAlphabetClause: anAlphabetClause [
 	^ self visitProgram: anAlphabetClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAlterProceedTo: anAlterProceedTo [
 	^ self visitProgram: anAlterProceedTo
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAlterStatement: anAlterStatement [
 	^ self visitStatement: anAlterStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAlternateRecordKeyClause: anAlternateRecordKeyClause [
 	^ self visitProgram: anAlternateRecordKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAnyCondition: anAnyCondition [
 	^ self visitProgram: anAnyCondition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAssignClause: anAssignClause [
 	^ self visitProgram: anAssignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitAuthorParagraph: anAuthorParagraph [
 	^ self visitProgram: anAuthorParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitBinaryExpression: aBinaryExpression [
 	^ self visitExpression: aBinaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitBlockContainsClause: aBlockContainsClause [
 	^ self visitProgram: aBlockContainsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCallStatement: aCallStatement [
 	^ self visitStatement: aCallStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCancelStatement: aCancelStatement [
 	^ self visitStatement: aCancelStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitChannelClause: aChannelClause [
 	^ self visitProgram: aChannelClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCharacterSetClause: aCharacterSetClause [
 	^ self visitProgram: aCharacterSetClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCicsDfhRespLiteral: aCicsDfhRespLiteral [
 	^ self visitExpression: aCicsDfhRespLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCicsDfhValueLiteral: aCicsDfhValueLiteral [
 	^ self visitExpression: aCicsDfhValueLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitClassClause: aClassClause [
 	^ self visitProgram: aClassClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitClassConditionExpression: aClassConditionExpression [
 	^ self visitExpression: aClassConditionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCloseFile: aCloseFile [
 	^ self visitProgram: aCloseFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCloseStatement: aCloseStatement [
 	^ self visitStatement: aCloseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCodeSetClause: aCodeSetClause [
 	^ self visitProgram: aCodeSetClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCollatingSequenceClause: aCollatingSequenceClause [
 	^ self visitProgram: aCollatingSequenceClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCombinedComparisonExpression: aCombinedComparisonExpression [
 	^ self visitExpression: aCombinedComparisonExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCommitmentControlClause: aCommitmentControlClause [
 	^ self visitProgram: aCommitmentControlClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCommunicationDescriptionEntry: aCommunicationDescriptionEntry [
 	^ self visitProgram: aCommunicationDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCommunicationSection: aCommunicationSection [
 	^ self visitProgram: aCommunicationSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitComparisonExpression: aComparisonExpression [
 	^ self visitExpression: aComparisonExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitComputeStatement: aComputeStatement [
 	^ self visitStatement: aComputeStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitConfigurationSection: aConfigurationSection [
 	^ self visitProgram: aConfigurationSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitContinueStatement: aContinueStatement [
 	^ self visitStatement: aContinueStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitCurrencySignClause: aCurrencySignClause [
 	^ self visitProgram: aCurrencySignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataAlignedClause: aDataAlignedClause [
 	^ self visitProgram: aDataAlignedClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataBaseSection: aDataBaseSection [
 	^ self visitProgram: aDataBaseSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataBaseSectionEntry: aDataBaseSectionEntry [
 	^ self visitProgram: aDataBaseSectionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataBlankWhenZeroClause: aDataBlankWhenZeroClause [
 	^ self visitProgram: aDataBlankWhenZeroClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataCommonOwnLocalClause: aDataCommonOwnLocalClause [
 	^ self visitProgram: aDataCommonOwnLocalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataDescription66Entry: aDataDescription66Entry [
 	^ self visitProgram: aDataDescription66Entry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataDescription88Entry: aDataDescription88Entry [
 	^ self visitProgram: aDataDescription88Entry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataDescriptionEntry: aDataDescriptionEntry [
 	^ self visitProgram: aDataDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataDivision: aDataDivision [
 	^ self visitProgram: aDataDivision
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataExternalClause: aDataExternalClause [
 	^ self visitProgram: aDataExternalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataGlobalClause: aDataGlobalClause [
 	^ self visitProgram: aDataGlobalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataIntegerStringClause: aDataIntegerStringClause [
 	^ self visitProgram: aDataIntegerStringClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataJustifiedClause: aDataJustifiedClause [
 	^ self visitProgram: aDataJustifiedClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataOccursClause: aDataOccursClause [
 	^ self visitProgram: aDataOccursClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataPictureClause: aDataPictureClause [
 	^ self visitProgram: aDataPictureClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataReceivedByClause: aDataReceivedByClause [
 	^ self visitProgram: aDataReceivedByClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataRecordAreaClause: aDataRecordAreaClause [
 	^ self visitProgram: aDataRecordAreaClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataRecordsClause: aDataRecordsClause [
 	^ self visitProgram: aDataRecordsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataRedefinesClause: aDataRedefinesClause [
 	^ self visitProgram: aDataRedefinesClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataRenamesClause: aDataRenamesClause [
 	^ self visitProgram: aDataRenamesClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataSignClause: aDataSignClause [
 	^ self visitProgram: aDataSignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataSynchronizedClause: aDataSynchronizedClause [
 	^ self visitProgram: aDataSynchronizedClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataThreadLocalClause: aDataThreadLocalClause [
 	^ self visitProgram: aDataThreadLocalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataTypeClause: aDataTypeClause [
 	^ self visitProgram: aDataTypeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataTypeDefClause: aDataTypeDefClause [
 	^ self visitProgram: aDataTypeDefClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataUsageClause: aDataUsageClause [
 	^ self visitProgram: aDataUsageClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataUsingClause: aDataUsingClause [
 	^ self visitProgram: aDataUsingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataValueClause: aDataValueClause [
 	^ self visitProgram: aDataValueClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDataWithLowerBoundsClause: aDataWithLowerBoundsClause [
 	^ self visitProgram: aDataWithLowerBoundsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDateCompiledParagraph: aDateCompiledParagraph [
 	^ self visitProgram: aDateCompiledParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDateWrittenParagraph: aDateWrittenParagraph [
 	^ self visitProgram: aDateWrittenParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDecimalPointClause: aDecimalPointClause [
 	^ self visitProgram: aDecimalPointClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDefaultComputationalSignClause: aDefaultComputationalSignClause [
 	^ self visitProgram: aDefaultComputationalSignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDefaultDisplaySignClause: aDefaultDisplaySignClause [
 	^ self visitProgram: aDefaultDisplaySignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDeleteStatement: aDeleteStatement [
 	^ self visitStatement: aDeleteStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDestinationCountClause: aDestinationCountClause [
 	^ self visitProgram: aDestinationCountClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDestinationTableClause: aDestinationTableClause [
 	^ self visitProgram: aDestinationTableClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDisableStatement: aDisableStatement [
 	^ self visitStatement: aDisableStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDiskSizeClause: aDiskSizeClause [
 	^ self visitProgram: aDiskSizeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDisplayStatement: aDisplayStatement [
 	^ self visitStatement: aDisplayStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitDivideStatement: aDivideStatement [
 	^ self visitStatement: aDivideStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEnableStatement: anEnableStatement [
 	^ self visitStatement: anEnableStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEndKeyClause: anEndKeyClause [
 	^ self visitProgram: anEndKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEndProgramStatement: anEndProgramStatement [
 	^ self visitProgram: anEndProgramStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEntryStatement: anEntryStatement [
 	^ self visitStatement: anEntryStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEnvironmentDivision: anEnvironmentDivision [
 	^ self visitProgram: anEnvironmentDivision
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEnvironmentSwitchNameClause: anEnvironmentSwitchNameClause [
 	^ self visitProgram: anEnvironmentSwitchNameClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitErrorKeyClause: anErrorKeyClause [
 	^ self visitProgram: anErrorKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEvaluateStatement: anEvaluateStatement [
 	^ self visitStatement: anEvaluateStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEvaluateWhen: anEvaluateWhen [
 	^ self visitProgram: anEvaluateWhen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEvaluateWhenOther: anEvaluateWhenOther [
 	^ self visitProgram: anEvaluateWhenOther
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitEvaluateWhenPhrase: anEvaluateWhenPhrase [
 	^ self visitProgram: anEvaluateWhenPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExecCicsStatement: anExecCicsStatement [
 	^ self visitStatement: anExecCicsStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExecSqlImsStatement: anExecSqlImsStatement [
 	^ self visitStatement: anExecSqlImsStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExecSqlStatement: anExecSqlStatement [
 	^ self visitStatement: anExecSqlStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExhibitStatement: anExhibitStatement [
 	^ self visitStatement: anExhibitStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExitStatement: anExitStatement [
 	^ self visitStatement: anExitStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExpression: anExpression [
 	^ self visitProgram: anExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitExternalClause: anExternalClause [
 	^ self visitProgram: anExternalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFigurativeConstant: aFigurativeConstant [
 	^ self visitExpression: aFigurativeConstant
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFile: aFile [
 	^ self visitProgram: aFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFileControlEntry: aFileControlEntry [
 	^ self visitProgram: aFileControlEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFileControlParagraph: aFileControlParagraph [
 	^ self visitProgram: aFileControlParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFileDescriptionEntry: aFileDescriptionEntry [
 	^ self visitProgram: aFileDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFileSection: aFileSection [
 	^ self visitProgram: aFileSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFileStatusClause: aFileStatusClause [
 	^ self visitProgram: aFileStatusClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitFunctionCall: aFunctionCall [
 	^ self visitExpression: aFunctionCall
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitGenerateStatement: aGenerateStatement [
 	^ self visitStatement: aGenerateStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitGlobalClause: aGlobalClause [
 	^ self visitProgram: aGlobalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitGoToStatement: aGoToStatement [
 	^ self visitStatement: aGoToStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitGobackStatement: aGobackStatement [
 	^ self visitStatement: aGobackStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitHandler: aHandler [
 	^ self visitProgram: aHandler
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIdentificationDivision: anIdentificationDivision [
 	^ self visitProgram: anIdentificationDivision
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIdentifier: anIdentifier [
 	^ self visitExpression: anIdentifier
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIfElse: anIfElse [
 	^ self visitProgram: anIfElse
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIfStatement: anIfStatement [
 	^ self visitStatement: anIfStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIfThen: anIfThen [
 	^ self visitProgram: anIfThen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInExpression: anInExpression [
 	^ self visitExpression: anInExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIndexedExpression: anIndexedExpression [
 	^ self visitProgram: anIndexedExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInitializeStatement: anInitializeStatement [
 	^ self visitStatement: anInitializeStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInitiateStatement: anInitiateStatement [
 	^ self visitStatement: anInitiateStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInputOutputSection: anInputOutputSection [
 	^ self visitProgram: anInputOutputSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInspectStatement: anInspectStatement [
 	^ self visitStatement: anInspectStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitInstallationParagraph: anInstallationParagraph [
 	^ self visitProgram: anInstallationParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitIoControlParagraph: anIoControlParagraph [
 	^ self visitProgram: anIoControlParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLabelRecordsClause: aLabelRecordsClause [
 	^ self visitProgram: aLabelRecordsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryAttributeClause: aLibraryAttributeClause [
 	^ self visitProgram: aLibraryAttributeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryDescriptionEntry: aLibraryDescriptionEntry [
 	^ self visitProgram: aLibraryDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryEntryProcedureClause: aLibraryEntryProcedureClause [
 	^ self visitProgram: aLibraryEntryProcedureClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryEntryProcedureForClause: aLibraryEntryProcedureForClause [
 	^ self visitProgram: aLibraryEntryProcedureForClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryEntryProcedureGivingClause: aLibraryEntryProcedureGivingClause [
 	^ self visitProgram: aLibraryEntryProcedureGivingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryEntryProcedureUsingClause: aLibraryEntryProcedureUsingClause [
 	^ self visitProgram: aLibraryEntryProcedureUsingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryEntryProcedureWithClause: aLibraryEntryProcedureWithClause [
 	^ self visitProgram: aLibraryEntryProcedureWithClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryIsCommonClause: aLibraryIsCommonClause [
 	^ self visitProgram: aLibraryIsCommonClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLibraryIsGlobalClause: aLibraryIsGlobalClause [
 	^ self visitProgram: aLibraryIsGlobalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLinageClause: aLinageClause [
 	^ self visitProgram: aLinageClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLinkageSection: aLinkageSection [
 	^ self visitProgram: aLinkageSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLiteral: aLiteral [
 	^ self visitExpression: aLiteral
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitLocalStorageSection: aLocalStorageSection [
 	^ self visitProgram: aLocalStorageSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMemorySizeClause: aMemorySizeClause [
 	^ self visitProgram: aMemorySizeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMergeOnKeyClause: aMergeOnKeyClause [
 	^ self visitProgram: aMergeOnKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMergeStatement: aMergeStatement [
 	^ self visitStatement: aMergeStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMessageCountClause: aMessageCountClause [
 	^ self visitProgram: aMessageCountClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMessageDateClause: aMessageDateClause [
 	^ self visitProgram: aMessageDateClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMessageTimeClause: aMessageTimeClause [
 	^ self visitProgram: aMessageTimeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMoveStatement: aMoveStatement [
 	^ self visitStatement: aMoveStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMultipleFileClause: aMultipleFileClause [
 	^ self visitProgram: aMultipleFileClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitMultiplyStatement: aMultiplyStatement [
 	^ self visitStatement: aMultiplyStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitObjectComputerParagraph: anObjectComputerParagraph [
 	^ self visitProgram: anObjectComputerParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitOdtClause: anOdtClause [
 	^ self visitProgram: anOdtClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitOpenStatement: anOpenStatement [
 	^ self visitStatement: anOpenStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitOrganizationClause: anOrganizationClause [
 	^ self visitProgram: anOrganizationClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitPaddingCharacterClause: aPaddingCharacterClause [
 	^ self visitProgram: aPaddingCharacterClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitParagraph: aParagraph [
 	^ self visitProgram: aParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitPasswordClause: aPasswordClause [
 	^ self visitProgram: aPasswordClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitPerformStatement: aPerformStatement [
 	^ self visitStatement: aPerformStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitPerformVaryingClause: aPerformVaryingClause [
 	^ self visitProgram: aPerformVaryingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureDeclaratives: aProcedureDeclaratives [
 	^ self visitProgram: aProcedureDeclaratives
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureDivision: aProcedureDivision [
 	^ self visitProgram: aProcedureDivision
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureDivisionGivingClause: aProcedureDivisionGivingClause [
 	^ self visitProgram: aProcedureDivisionGivingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureDivisionUsingClause: aProcedureDivisionUsingClause [
 	^ self visitProgram: aProcedureDivisionUsingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureName: aProcedureName [
 	^ self visitProgram: aProcedureName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureSection: aProcedureSection [
 	^ self visitProgram: aProcedureSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProcedureSectionHeader: aProcedureSectionHeader [
 	^ self visitProgram: aProcedureSectionHeader
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProgramIdParagraph: aProgramIdParagraph [
 	^ self visitProgram: aProgramIdParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProgramLibrarySection: aProgramLibrarySection [
 	^ self visitProgram: aProgramLibrarySection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitProgramUnit: aProgramUnit [
 	^ self visitProgram: aProgramUnit
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitPurgeStatement: aPurgeStatement [
 	^ self visitStatement: aPurgeStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRangeCondition: aRangeCondition [
 	^ self visitProgram: aRangeCondition
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReadStatement: aReadStatement [
 	^ self visitStatement: aReadStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveBefore: aReceiveBefore [
 	^ self visitProgram: aReceiveBefore
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveFromStatement: aReceiveFromStatement [
 	^ self visitProgram: aReceiveFromStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveIntoStatement: aReceiveIntoStatement [
 	^ self visitProgram: aReceiveIntoStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveSize: aReceiveSize [
 	^ self visitProgram: aReceiveSize
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveStatement: aReceiveStatement [
 	^ self visitStatement: aReceiveStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveStatus: aReceiveStatus [
 	^ self visitProgram: aReceiveStatus
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveThread: aReceiveThread [
 	^ self visitProgram: aReceiveThread
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReceiveWith: aReceiveWith [
 	^ self visitProgram: aReceiveWith
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRecordContainsClause: aRecordContainsClause [
 	^ self visitProgram: aRecordContainsClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRecordDelimiterClause: aRecordDelimiterClause [
 	^ self visitProgram: aRecordDelimiterClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRecordKeyClause: aRecordKeyClause [
 	^ self visitProgram: aRecordKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRecordingModeClause: aRecordingModeClause [
 	^ self visitProgram: aRecordingModeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRelativeKeyClause: aRelativeKeyClause [
 	^ self visitProgram: aRelativeKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReleaseStatement: aReleaseStatement [
 	^ self visitStatement: aReleaseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRemarksParagraph: aRemarksParagraph [
 	^ self visitProgram: aRemarksParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportClause: aReportClause [
 	^ self visitProgram: aReportClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionEntry: aReportDescriptionEntry [
 	^ self visitProgram: aReportDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionFirstDetailClause: aReportDescriptionFirstDetailClause [
 	^ self visitProgram: aReportDescriptionFirstDetailClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionFootingClause: aReportDescriptionFootingClause [
 	^ self visitProgram: aReportDescriptionFootingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionGlobalClause: aReportDescriptionGlobalClause [
 	^ self visitProgram: aReportDescriptionGlobalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionHeadingClause: aReportDescriptionHeadingClause [
 	^ self visitProgram: aReportDescriptionHeadingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionLastDetailClause: aReportDescriptionLastDetailClause [
 	^ self visitProgram: aReportDescriptionLastDetailClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportDescriptionPageLimitClause: aReportDescriptionPageLimitClause [
 	^ self visitProgram: aReportDescriptionPageLimitClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupBlankWhenZeroClause: aReportGroupBlankWhenZeroClause [
 	^ self visitProgram: aReportGroupBlankWhenZeroClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupColumnNumberClause: aReportGroupColumnNumberClause [
 	^ self visitProgram: aReportGroupColumnNumberClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupDescriptionEntry: aReportGroupDescriptionEntry [
 	^ self visitProgram: aReportGroupDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupIndicateClause: aReportGroupIndicateClause [
 	^ self visitProgram: aReportGroupIndicateClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupJustifiedClause: aReportGroupJustifiedClause [
 	^ self visitProgram: aReportGroupJustifiedClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupLineNumberClause: aReportGroupLineNumberClause [
 	^ self visitProgram: aReportGroupLineNumberClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupNextGroupClause: aReportGroupNextGroupClause [
 	^ self visitProgram: aReportGroupNextGroupClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupPictureClause: aReportGroupPictureClause [
 	^ self visitProgram: aReportGroupPictureClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupResetClause: aReportGroupResetClause [
 	^ self visitProgram: aReportGroupResetClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupSignClause: aReportGroupSignClause [
 	^ self visitProgram: aReportGroupSignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupSourceClause: aReportGroupSourceClause [
 	^ self visitProgram: aReportGroupSourceClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupSumClause: aReportGroupSumClause [
 	^ self visitProgram: aReportGroupSumClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeClause: aReportGroupTypeClause [
 	^ self visitProgram: aReportGroupTypeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeControlFooting: aReportGroupTypeControlFooting [
 	^ self visitProgram: aReportGroupTypeControlFooting
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeControlHeading: aReportGroupTypeControlHeading [
 	^ self visitProgram: aReportGroupTypeControlHeading
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeDetail: aReportGroupTypeDetail [
 	^ self visitProgram: aReportGroupTypeDetail
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypePageFooting: aReportGroupTypePageFooting [
 	^ self visitProgram: aReportGroupTypePageFooting
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypePageHeading: aReportGroupTypePageHeading [
 	^ self visitProgram: aReportGroupTypePageHeading
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeReportFooting: aReportGroupTypeReportFooting [
 	^ self visitProgram: aReportGroupTypeReportFooting
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupTypeReportHeading: aReportGroupTypeReportHeading [
 	^ self visitProgram: aReportGroupTypeReportHeading
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupUsageClause: aReportGroupUsageClause [
 	^ self visitProgram: aReportGroupUsageClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportGroupValueClause: aReportGroupValueClause [
 	^ self visitProgram: aReportGroupValueClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReportSection: aReportSection [
 	^ self visitProgram: aReportSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRerunClause: aRerunClause [
 	^ self visitProgram: aRerunClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReserveClause: aReserveClause [
 	^ self visitProgram: aReserveClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReserveNetworkClause: aReserveNetworkClause [
 	^ self visitProgram: aReserveNetworkClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitReturnStatement: aReturnStatement [
 	^ self visitStatement: aReturnStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitRewriteStatement: aRewriteStatement [
 	^ self visitStatement: aRewriteStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSameClause: aSameClause [
 	^ self visitProgram: aSameClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionAutoClause: aScreenDescriptionAutoClause [
 	^ self visitProgram: aScreenDescriptionAutoClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionBackgroundColorClause: aScreenDescriptionBackgroundColorClause [
 	^ self visitProgram: aScreenDescriptionBackgroundColorClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionBellClause: aScreenDescriptionBellClause [
 	^ self visitProgram: aScreenDescriptionBellClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionBlankClause: aScreenDescriptionBlankClause [
 	^ self visitProgram: aScreenDescriptionBlankClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionBlankWhenZeroClause: aScreenDescriptionBlankWhenZeroClause [
 	^ self visitProgram: aScreenDescriptionBlankWhenZeroClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionBlinkClause: aScreenDescriptionBlinkClause [
 	^ self visitProgram: aScreenDescriptionBlinkClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionColumnClause: aScreenDescriptionColumnClause [
 	^ self visitProgram: aScreenDescriptionColumnClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionControlClause: aScreenDescriptionControlClause [
 	^ self visitProgram: aScreenDescriptionControlClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionEntry: aScreenDescriptionEntry [
 	^ self visitProgram: aScreenDescriptionEntry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionEraseClause: aScreenDescriptionEraseClause [
 	^ self visitProgram: aScreenDescriptionEraseClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionForegroundColorClause: aScreenDescriptionForegroundColorClause [
 	^ self visitProgram: aScreenDescriptionForegroundColorClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionFromClause: aScreenDescriptionFromClause [
 	^ self visitProgram: aScreenDescriptionFromClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionFullClause: aScreenDescriptionFullClause [
 	^ self visitProgram: aScreenDescriptionFullClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionGridClause: aScreenDescriptionGridClause [
 	^ self visitProgram: aScreenDescriptionGridClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionJustifiedClause: aScreenDescriptionJustifiedClause [
 	^ self visitProgram: aScreenDescriptionJustifiedClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionLightClause: aScreenDescriptionLightClause [
 	^ self visitProgram: aScreenDescriptionLightClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionLineClause: aScreenDescriptionLineClause [
 	^ self visitProgram: aScreenDescriptionLineClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionPictureClause: aScreenDescriptionPictureClause [
 	^ self visitProgram: aScreenDescriptionPictureClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionPromptClause: aScreenDescriptionPromptClause [
 	^ self visitProgram: aScreenDescriptionPromptClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionRequiredClause: aScreenDescriptionRequiredClause [
 	^ self visitProgram: aScreenDescriptionRequiredClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionReverseVideoClause: aScreenDescriptionReverseVideoClause [
 	^ self visitProgram: aScreenDescriptionReverseVideoClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionSecureClause: aScreenDescriptionSecureClause [
 	^ self visitProgram: aScreenDescriptionSecureClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionSignClause: aScreenDescriptionSignClause [
 	^ self visitProgram: aScreenDescriptionSignClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionSizeClause: aScreenDescriptionSizeClause [
 	^ self visitProgram: aScreenDescriptionSizeClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionUnderlineClause: aScreenDescriptionUnderlineClause [
 	^ self visitProgram: aScreenDescriptionUnderlineClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionUsageClause: aScreenDescriptionUsageClause [
 	^ self visitProgram: aScreenDescriptionUsageClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionUsingClause: aScreenDescriptionUsingClause [
 	^ self visitProgram: aScreenDescriptionUsingClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionValueClause: aScreenDescriptionValueClause [
 	^ self visitProgram: aScreenDescriptionValueClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenDescriptionZeroFillClause: aScreenDescriptionZeroFillClause [
 	^ self visitProgram: aScreenDescriptionZeroFillClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitScreenSection: aScreenSection [
 	^ self visitProgram: aScreenSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSearchStatement: aSearchStatement [
 	^ self visitStatement: aSearchStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSecurityParagraph: aSecurityParagraph [
 	^ self visitProgram: aSecurityParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSegmentLimitClause: aSegmentLimitClause [
 	^ self visitProgram: aSegmentLimitClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSelectClause: aSelectClause [
 	^ self visitProgram: aSelectClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSendStatement: aSendStatement [
 	^ self visitStatement: aSendStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSendStatementAsync: aSendStatementAsync [
 	^ self visitProgram: aSendStatementAsync
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSendStatementSync: aSendStatementSync [
 	^ self visitProgram: aSendStatementSync
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSentence: aSentence [
 	^ self visitProgram: aSentence
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSetStatement: aSetStatement [
 	^ self visitStatement: aSetStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSetToValue: aSetToValue [
 	^ self visitProgram: aSetToValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSignConditionExpression: aSignConditionExpression [
 	^ self visitExpression: aSignConditionExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSortOnKeyClause: aSortOnKeyClause [
 	^ self visitProgram: aSortOnKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSortStatement: aSortStatement [
 	^ self visitStatement: aSortStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSourceComputerParagraph: aSourceComputerParagraph [
 	^ self visitProgram: aSourceComputerParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSpecialNamesParagraph: aSpecialNamesParagraph [
 	^ self visitProgram: aSpecialNamesParagraph
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSpecialRegister: aSpecialRegister [
 	^ self visitExpression: aSpecialRegister
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitStartStatement: aStartStatement [
 	^ self visitStatement: aStartStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitStatement: aStatement [
 	^ self visitProgram: aStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitStatusKeyClause: aStatusKeyClause [
 	^ self visitProgram: aStatusKeyClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitStopStatement: aStopStatement [
 	^ self visitStatement: aStopStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitStringStatement: aStringStatement [
 	^ self visitStatement: aStringStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSubscriptReferenceExpression: aSubscriptReferenceExpression [
 	^ self visitExpression: aSubscriptReferenceExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSubscripts: aSubscripts [
 	^ self visitProgram: aSubscripts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSubtractStatement: aSubtractStatement [
 	^ self visitStatement: aSubtractStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicCharactersClause: aSymbolicCharactersClause [
 	^ self visitProgram: aSymbolicCharactersClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicDestinationClause: aSymbolicDestinationClause [
 	^ self visitProgram: aSymbolicDestinationClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicQueueClause: aSymbolicQueueClause [
 	^ self visitProgram: aSymbolicQueueClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicSourceClause: aSymbolicSourceClause [
 	^ self visitProgram: aSymbolicSourceClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicSubQueueClause: aSymbolicSubQueueClause [
 	^ self visitProgram: aSymbolicSubQueueClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitSymbolicTerminalClause: aSymbolicTerminalClause [
 	^ self visitProgram: aSymbolicTerminalClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitTableCall: aTableCall [
 	^ self visitExpression: aTableCall
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitTerminateStatement: aTerminateStatement [
 	^ self visitStatement: aTerminateStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitTextLengthClause: aTextLengthClause [
 	^ self visitProgram: aTextLengthClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitUnaryExpression: anUnaryExpression [
 	^ self visitExpression: anUnaryExpression
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitUnstringStatement: anUnstringStatement [
 	^ self visitStatement: anUnstringStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitUseAfterClause: anUseAfterClause [
 	^ self visitProgram: anUseAfterClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitUseDebugClause: anUseDebugClause [
 	^ self visitProgram: anUseDebugClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitUseStatement: anUseStatement [
 	^ self visitProgram: anUseStatement
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitValueOfClause: aValueOfClause [
 	^ self visitProgram: aValueOfClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitWorkingStorageSection: aWorkingStorageSection [
 	^ self visitProgram: aWorkingStorageSection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TCobolProgramNodeVisitor >> visitWriteStatement: aWriteStatement [
 	^ self visitStatement: aWriteStatement
 ]

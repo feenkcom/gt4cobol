@@ -1,10 +1,12 @@
 Class {
-	#name : #GtCobolParagraphGroup,
-	#superclass : #MooseGroup,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtCobolParagraphGroup',
+	#superclass : 'MooseGroup',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #views }
+{ #category : 'views' }
 GtCobolParagraphGroup >> gtPragraphsFor: aView [
 	<gtView>
 	^ aView columnedList

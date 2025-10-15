@@ -1,21 +1,23 @@
 Class {
-	#name : #GtJCLFileReference,
-	#superclass : #FAMIXAssociation,
+	#name : 'GtJCLFileReference',
+	#superclass : 'FAMIXAssociation',
 	#instVars : [
 		'cicsFile',
 		'jclDataDescriptor'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> cicsFile [
 	<MSEProperty: #cicsFile type: #GtCICSFile opposite: #jclFileReferences>
 	<container>
 	^ cicsFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> cicsFile: anObject [
 	cicsFile := FMMultivalueLink
 			on: self
@@ -24,19 +26,19 @@ GtJCLFileReference >> cicsFile: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> from [
 	^ jclDataDescriptor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> jclDataDescriptor [
 	<MSEProperty: #jclDataDescriptor type: #GtJCLDataDescriptor opposite: #jclFileReferences>
 	<container>
 	^ jclDataDescriptor
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> jclDataDescriptor: anObject [
 	jclDataDescriptor := FMMultivalueLink
 			on: self
@@ -45,7 +47,7 @@ GtJCLFileReference >> jclDataDescriptor: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLFileReference >> to [
 	^ cicsFile
 ]

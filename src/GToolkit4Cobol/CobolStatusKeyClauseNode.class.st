@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolStatusKeyClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolStatusKeyClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStatusKeyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolStatusKeyClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolStatusKeyClauseNode >> nodeVariables [
 	^ #(#dataName)
 ]

@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolSentenceNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSentenceNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'statements',
 		'period',
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSentence: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSentenceNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSentenceNode >> tokenVariables [
 	^ #(#period)
 ]

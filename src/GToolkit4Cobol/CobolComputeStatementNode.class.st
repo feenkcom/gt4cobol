@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolComputeStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolComputeStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'lhses',
@@ -9,110 +9,112 @@ Class {
 		'notOnSizeError',
 		'onSizeError'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComputeStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> compositeNodeVariables [
 	^ #(#lhses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolComputeStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	lhses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> lhses [
 	^ lhses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> lhses: anOrderedCollection [
 	self setParents: self lhses to: nil.
 	lhses := anOrderedCollection.
 	self setParents: self lhses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> nodeVariables [
 	^ #(#value #notOnSizeError #onSizeError)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> notOnSizeError [
 	^ notOnSizeError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> notOnSizeError: aCobolHandlerNode [
 	self notOnSizeError notNil ifTrue: [ self notOnSizeError parent: nil ].
 	notOnSizeError := aCobolHandlerNode.
 	self notOnSizeError notNil ifTrue: [ self notOnSizeError parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> onSizeError [
 	^ onSizeError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> onSizeError: aCobolHandlerNode [
 	self onSizeError notNil ifTrue: [ self onSizeError parent: nil ].
 	onSizeError := aCobolHandlerNode.
 	self onSizeError notNil ifTrue: [ self onSizeError parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> tokenVariables [
 	^ #(#op)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComputeStatementNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolComputeStatementNode >> writesIdentifier: anIdentifierNode [
 	^ lhses anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
 ]

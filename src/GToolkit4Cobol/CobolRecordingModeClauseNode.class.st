@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolRecordingModeClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRecordingModeClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'mode'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRecordingModeClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRecordingModeClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> mode [
 	^ mode
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> mode: aCobolIdentifierNode [
 	self mode notNil ifTrue: [ self mode parent: nil ].
 	mode := aCobolIdentifierNode.
 	self mode notNil ifTrue: [ self mode parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordingModeClauseNode >> nodeVariables [
 	^ #(#mode)
 ]

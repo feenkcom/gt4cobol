@@ -1,80 +1,82 @@
 Class {
-	#name : #IDCAMSParametersNode,
-	#superclass : #IDCAMSProgramNode,
+	#name : 'IDCAMSParametersNode',
+	#superclass : 'IDCAMSProgramNode',
 	#instVars : [
 		'leftParen',
 		'arguments',
 		'rightParen',
 		'commas'
 	],
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParameters: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> compositeNodeVariables [
 	^ #(#arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 IDCAMSParametersNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParametersNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]

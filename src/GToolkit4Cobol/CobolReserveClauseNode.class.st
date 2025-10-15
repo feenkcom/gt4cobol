@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReserveClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReserveClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReserveClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReserveClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReserveClauseNode >> nodeVariables [
 	^ #(#count)
 ]

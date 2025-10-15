@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolLabelRecordsClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLabelRecordsClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLabelRecordsClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> compositeNodeVariables [
 	^ #(#dataNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> dataNames [
 	^ dataNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> dataNames: anOrderedCollection [
 	self setParents: self dataNames to: nil.
 	dataNames := anOrderedCollection.
 	self setParents: self dataNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLabelRecordsClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	dataNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLabelRecordsClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

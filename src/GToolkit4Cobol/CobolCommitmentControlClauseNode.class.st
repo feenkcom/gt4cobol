@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolCommitmentControlClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolCommitmentControlClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'fileName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCommitmentControlClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> fileName [
 	^ fileName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> fileName: aCobolIdentifierNode [
 	self fileName notNil ifTrue: [ self fileName parent: nil ].
 	fileName := aCobolIdentifierNode.
 	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolCommitmentControlClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommitmentControlClauseNode >> nodeVariables [
 	^ #(#fileName)
 ]

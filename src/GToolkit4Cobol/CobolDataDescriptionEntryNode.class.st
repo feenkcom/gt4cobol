@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolDataDescriptionEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataDescriptionEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'level',
 		'clauses',
@@ -8,15 +8,17 @@ Class {
 		'keyword',
 		'name'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataDescriptionEntry: self
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> buildComponents [
 	| index children lvl entry nextLevel childLevel |
 	index := parent entries
@@ -40,7 +42,7 @@ CobolDataDescriptionEntryNode >> buildComponents [
 	^ children
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> buildDataStructure [
 	| data indices |
 	self components.
@@ -89,7 +91,7 @@ CobolDataDescriptionEntryNode >> buildDataStructure [
 								startingAt: 1 ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> byteSize [
 	^ self
 		attributeNamed: #byteSize
@@ -108,34 +110,34 @@ CobolDataDescriptionEntryNode >> byteSize [
 			length ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> components [
 	^ self attributeNamed: #components ifAbsentPut: [ self buildComponents ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> container [
 	^ self attributeNamed: #container ifAbsent: [  ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> currentValues [
 	| values bytes |
 	values := Set new.
@@ -148,42 +150,42 @@ CobolDataDescriptionEntryNode >> currentValues [
 	^ values
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataIndex [
 	^ self dataIndices at: 1 ifAbsent: [  ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataIndices [
 	^ self attributeNamed: #dataIndices ifAbsentPut: [ OrderedCollection new ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataIndices: aCollection [
 	^ self attributeNamed: #dataIndices put: aCollection
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataName [
 	^ name ifNotNil: [ name source ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataStructure [
 	^ self attributeNamed: #dataStructure
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> dataStructure: bytes [
 	^ self attributeNamed: #dataStructure put: bytes
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> hasSpecialLevel [
 	^ #(66 77 88) includes: self levelNumber
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> initialValue [
 	^ self clauses
 		detect: [ :each | each isKindOf: CobolDataValueClauseNode ]
@@ -191,18 +193,18 @@ CobolDataDescriptionEntryNode >> initialValue [
 		ifNone: [  ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataDescriptionEntryNode >> initialize [
 	super initialize.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolDataDescriptionEntryNode >> isFiller [
 	^ self dataName ifNil: [ true ] ifNotNil: [ :each | each sameAs: 'FILLER' ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> isInsideOf: aCollection [
 	| index current |
 	index := 1.
@@ -214,43 +216,43 @@ CobolDataDescriptionEntryNode >> isInsideOf: aCollection [
 	^ index > aCollection size
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolDataDescriptionEntryNode >> isRedefines [
 	^ self clauses
 		anySatisfy: [ :each | each isKindOf: CobolDataRedefinesClauseNode ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> level [
 	^ level
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> level: aSmaCCToken [
 	level := aSmaCCToken
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> levelNumber [
 	^ self level value asInteger
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolDataDescriptionEntryNode >> literalValues [
 	^ self attributeNamed: #literalValues ifAbsentPut: [ Set new ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> maxOccurrences [
 	^ self clauses
 		detect: [ :each | each isKindOf: CobolDataOccursClauseNode ]
@@ -258,34 +260,34 @@ CobolDataDescriptionEntryNode >> maxOccurrences [
 		ifNone: [ 1 ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolDataDescriptionEntryNode >> redefined [
 	^ self clauses
 		detect: [ :each | each isKindOf: CobolDataRedefinesClauseNode ]
@@ -296,12 +298,12 @@ CobolDataDescriptionEntryNode >> redefined [
 		ifNone: [  ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescriptionEntryNode >> tokenVariables [
 	^ #(#level #period #keyword)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescriptionEntryNode >> totalByteSize [
 	^ self
 		attributeNamed: #totalByteSize

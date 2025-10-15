@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolScreenDescriptionPromptClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionPromptClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'prompt',
 		'times'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionPromptClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionPromptClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> nodeVariables [
 	^ #(#prompt #times)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> prompt [
 	^ prompt
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> prompt: aCobolExpressionNode [
 	self prompt notNil ifTrue: [ self prompt parent: nil ].
 	prompt := aCobolExpressionNode.
 	self prompt notNil ifTrue: [ self prompt parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> times [
 	^ times
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionPromptClauseNode >> times: aCobolLiteralNode [
 	self times notNil ifTrue: [ self times parent: nil ].
 	times := aCobolLiteralNode.

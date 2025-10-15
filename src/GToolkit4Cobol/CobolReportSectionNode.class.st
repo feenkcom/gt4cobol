@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolReportSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'entries'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> compositeNodeVariables [
 	^ #(#entries)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> entries [
 	^ entries
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: nil.
 	entries := anOrderedCollection.
 	self setParents: self entries to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	entries := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportSectionNode >> tokenVariables [
 	^ #(#period)
 ]

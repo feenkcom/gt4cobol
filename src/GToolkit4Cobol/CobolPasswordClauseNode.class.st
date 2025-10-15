@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolPasswordClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolPasswordClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'password'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPasswordClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolPasswordClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> nodeVariables [
 	^ #(#password)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> password [
 	^ password
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPasswordClauseNode >> password: aCobolIdentifierNode [
 	self password notNil ifTrue: [ self password parent: nil ].
 	password := aCobolIdentifierNode.

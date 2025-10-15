@@ -1,44 +1,46 @@
 Class {
-	#name : #CobolScreenDescriptionUsingClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionUsingClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'using'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionUsingClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> nodeVariables [
 	^ #(#using)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> using [
 	^ using
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionUsingClauseNode >> using: aCobolExpressionNode [
 	self using notNil ifTrue: [ self using parent: nil ].
 	using := aCobolExpressionNode.

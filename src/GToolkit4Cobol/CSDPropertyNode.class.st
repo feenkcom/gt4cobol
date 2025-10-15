@@ -1,71 +1,73 @@
 Class {
-	#name : #CSDPropertyNode,
-	#superclass : #CSDProgramNode,
+	#name : 'CSDPropertyNode',
+	#superclass : 'CSDProgramNode',
 	#instVars : [
 		'name',
 		'leftParen',
 		'value',
 		'rightParen'
 	],
-	#category : #'GToolkit4Cobol-CSD-Parser'
+	#category : 'GToolkit4Cobol-CSD-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'CSD-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProperty: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSDPropertyNode >> propertyName [
 	^ name source
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> tokenVariables [
 	^ #(#name #leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDPropertyNode >> value: aCSDExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCSDExpressionNode.

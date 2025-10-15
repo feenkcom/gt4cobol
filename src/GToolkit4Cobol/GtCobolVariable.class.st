@@ -1,6 +1,6 @@
 Class {
-	#name : #GtCobolVariable,
-	#superclass : #FAMIXGlobalVariable,
+	#name : 'GtCobolVariable',
+	#superclass : 'FAMIXGlobalVariable',
 	#instVars : [
 		'length',
 		'offsets',
@@ -18,10 +18,12 @@ Class {
 		'recordKeyInDescriptors',
 		'ridfldFileAccesses'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> addOffset: anIndex [
 	0
 		to: maxOccurrences - 1
@@ -38,49 +40,49 @@ GtCobolVariable >> addOffset: anIndex [
 							sum + each totalByteSize ] ] ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> cicsFileAccesses [
 	<MSEProperty: #cicsFileAccesses type: #GtCICSFileAccess opposite: #variable>
 	^ cicsFileAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> cicsFileAccesses: anObject [
 	cicsFileAccesses value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> components [
 	<MSEProperty: #components type: #GtCobolVariable opposite: #container>
 	<multivalued>
 	^ components
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> components: anObject [
 	components := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> conditions [
 	<MSEProperty: #conditions type: #GtCobolCondition opposite: #variable>
 	<multivalued>
 	^ conditions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> conditions: anObject [
 	conditions value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> container [
 	<MSEProperty: #container type: #GtCobolVariable opposite: #components>
 	<container>
 	^ container
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> container: anObject [
 	container := FMMultivalueLink
 			on: self
@@ -89,31 +91,31 @@ GtCobolVariable >> container: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> fileDescriptors [
 	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor opposite: #variables>
 	<multivalued>
 	^ fileDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> fileDescriptors: anObject [
 	fileDescriptors value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> fileStatusInDescriptors [
 	<MSEProperty: #fileStatusInDescriptors type: #GtCobolFileDescriptor opposite: #fileStatusVariables>
 	<multivalued>
 	^ fileStatusInDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> fileStatusInDescriptors: anObject [
 	fileStatusInDescriptors value: anObject
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtCobolVariable >> gtComponentsFor: aView [
 	<gtView>
 	^ aView columnedTree
@@ -129,7 +131,7 @@ GtCobolVariable >> gtComponentsFor: aView [
 			width: 100
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> gtOverlappingVariablesFor: aView [
 	<gtView>
 	| overlapping |
@@ -157,7 +159,7 @@ GtCobolVariable >> gtOverlappingVariablesFor: aView [
 		column: 'Length' text: [ :each | each length gtDisplayText ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> gtPotentialAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -166,7 +168,7 @@ GtCobolVariable >> gtPotentialAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> gtPotentialReadAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -175,7 +177,7 @@ GtCobolVariable >> gtPotentialReadAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> gtPotentialWriteAccessesFor: aView [
 	<gtView>
 	^ aView forward
@@ -184,7 +186,7 @@ GtCobolVariable >> gtPotentialWriteAccessesFor: aView [
 		view: #gtItemsFor:
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCobolVariable >> initialize [
 	super initialize.
 	length := 0.
@@ -225,32 +227,32 @@ GtCobolVariable >> initialize [
 			selector: #ridfldFileAccesses.
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> isRedefines [
 	^ redefinesVariable notNil
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> length [
 	^ length
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> length: anObject [
 	length := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> maxOccurrences [
 	^ maxOccurrences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> maxOccurrences: anObject [
 	maxOccurrences := anObject
 ]
 
-{ #category : #printing }
+{ #category : 'printing' }
 GtCobolVariable >> mooseNameOn: stream [
 	parentScope
 		ifNotNil: [ parentScope mooseNameOn: stream.
@@ -258,17 +260,17 @@ GtCobolVariable >> mooseNameOn: stream [
 	super mooseNameOn: stream
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> offsets [
 	^ offsets
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> offsets: anObject [
 	offsets := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> overlappingVariables [
 	<MSEProperty: #overlappingVariables
 		type: #GtCobolVariable
@@ -292,7 +294,7 @@ GtCobolVariable >> overlappingVariables [
 														or: [ eachOffset + each length - 1 < selfOffset ]) not ] ] ] ] ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCobolVariable >> overlaps: anInterval [
 	| parentOffset |
 	parentOffset := self container ifNil: [ 0 ] ifNotNil: [ :c | c offsets first ].
@@ -302,7 +304,7 @@ GtCobolVariable >> overlaps: anInterval [
 				or: [ each - parentOffset >= anInterval last ]) not ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> potentialAccesses [
 	| vars accesses |
 	vars := self overlappingVariables.
@@ -312,38 +314,38 @@ GtCobolVariable >> potentialAccesses [
 	^ accesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> recordKeyInDescriptors [
 	<MSEProperty: #recordKeyInDescriptors type: #GtCobolFileDescriptor opposite: #recordKey>
 	<multivalued>
 	^ recordKeyInDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> recordKeyInDescriptors: anObject [
 	recordKeyInDescriptors value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> redefinedByVariables [
 	<MSEProperty: #redefinedByVariables type: #GtCobolVariable opposite: #redefinesVariable>
 	<multivalued>
 	^ redefinedByVariables
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> redefinedByVariables: anObject [
 	redefinedByVariables := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> redefinesVariable [
 	<MSEProperty: #redefinesVariable type: #GtCobolVariable opposite: #redefinedByVariables>
 	<container>
 	^ redefinesVariable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> redefinesVariable: anObject [
 	redefinesVariable := FMMultivalueLink
 			on: self
@@ -352,30 +354,30 @@ GtCobolVariable >> redefinesVariable: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> ridfldFileAccesses [
 	<MSEProperty: #ridfldFileAccesses type: #GtCICSFileAccess opposite: #ridfld>
 	^ ridfldFileAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> ridfldFileAccesses: anObject [
 	ridfldFileAccesses value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> totalByteSize [
 	^ length * maxOccurrences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> xctlExpressions [
 	<MSEProperty: #xctlExpressions type: #GtCobolCicsXctlExpression opposite: #commonAreaVariable>
 	<multivalued>
 	^ xctlExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolVariable >> xctlExpressions: anObject [
 	xctlExpressions value: anObject
 ]

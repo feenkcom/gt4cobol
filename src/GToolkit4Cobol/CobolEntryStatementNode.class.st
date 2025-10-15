@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolEntryStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolEntryStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'entry',
 		'usings'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEntryStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> compositeNodeVariables [
 	^ #(#usings)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> entry [
 	^ entry
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> entry: aCobolExpressionNode [
 	self entry notNil ifTrue: [ self entry parent: nil ].
 	entry := aCobolExpressionNode.
 	self entry notNil ifTrue: [ self entry parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolEntryStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	usings := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> nodeVariables [
 	^ #(#entry)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> usings [
 	^ usings
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEntryStatementNode >> usings: anOrderedCollection [
 	self setParents: self usings to: nil.
 	usings := anOrderedCollection.

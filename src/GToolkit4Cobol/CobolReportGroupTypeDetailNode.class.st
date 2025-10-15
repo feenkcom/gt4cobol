@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolReportGroupTypeDetailNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupTypeDetailNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeDetailNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupTypeDetail: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeDetailNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeDetailNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeDetailNode >> tokenVariables [
 	^ #(#keyword)
 ]

@@ -1,10 +1,12 @@
 Class {
-	#name : #GtBMSMapGroup,
-	#superclass : #MooseGroup,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtBMSMapGroup',
+	#superclass : 'MooseGroup',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBMSMapGroup >> gtScreensFor: aView [
 	<gtView>
 	^ aView list 
@@ -15,7 +17,7 @@ GtBMSMapGroup >> gtScreensFor: aView [
 		itemDataBinder: [ :pane :each | pane removeChildren; addChild: (each asElement asScalableElement size: 400@250) ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBMSMapGroup >> gtSearchForScreenStringFor: aSearch [
 	<gtSearch>
 	^ aSearch list

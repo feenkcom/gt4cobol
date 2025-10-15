@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolAcceptStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolAcceptStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'accept',
@@ -8,70 +8,72 @@ Class {
 		'onExceptionClause',
 		'mnemonic'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> accept [
 	^ accept
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> accept: aCobolExpressionNode [
 	self accept notNil ifTrue: [ self accept parent: nil ].
 	accept := aCobolExpressionNode.
 	self accept notNil ifTrue: [ self accept parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAcceptStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAcceptStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> mnemonic [
 	^ mnemonic
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> mnemonic: aCobolIdentifierNode [
 	self mnemonic notNil ifTrue: [ self mnemonic parent: nil ].
 	mnemonic := aCobolIdentifierNode.
 	self mnemonic notNil ifTrue: [ self mnemonic parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> nodeVariables [
 	^ #(#accept #notOnExceptionClause #onExceptionClause #mnemonic)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> notOnExceptionClause [
 	^ notOnExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 	self notOnExceptionClause notNil
 		ifTrue: [ self notOnExceptionClause parent: nil ].
@@ -80,19 +82,19 @@ CobolAcceptStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 		ifTrue: [ self notOnExceptionClause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> onExceptionClause [
 	^ onExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAcceptStatementNode >> onExceptionClause: aCobolHandlerNode [
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: nil ].
 	onExceptionClause := aCobolHandlerNode.
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: self ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CobolAcceptStatementNode >> writesIdentifier: anIdentifierNode [
 	^ anIdentifierNode isDescendantFrom: accept
 ]

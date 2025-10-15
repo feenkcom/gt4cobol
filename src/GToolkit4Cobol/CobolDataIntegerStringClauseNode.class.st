@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolDataIntegerStringClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataIntegerStringClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataIntegerStringClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataIntegerStringClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataIntegerStringClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataIntegerStringClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataIntegerStringClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolInitiateStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolInitiateStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keyword',
 		'reportNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitiateStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> compositeNodeVariables [
 	^ #(#reportNames)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolInitiateStatementNode >> initialize [
 	super initialize.
 	reportNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> reportNames [
 	^ reportNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> reportNames: anOrderedCollection [
 	self setParents: self reportNames to: nil.
 	reportNames := anOrderedCollection.
 	self setParents: self reportNames to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitiateStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

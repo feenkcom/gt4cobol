@@ -1,13 +1,15 @@
 Class {
-	#name : #CobolParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'CobolParser',
+	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'isFixedFormat'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser class >> addExpanderFor: node in: text to: var [
 	(text from: node stopPosition to: node stopPosition)
 		attribute: (BrGlamorousTriangleExpanderTextAttribute new
@@ -29,7 +31,7 @@ CobolParser class >> addExpanderFor: node in: text to: var [
 								addChild: (var gtSourceFor: GtPhlowView new) asElement matchParent ] ])
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> ambiguousTransitions [
 ^#(
 #[ 1 10 4 29] 
@@ -2940,12 +2942,12 @@ CobolParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CobolParser class >> cacheId [
 	^'2024-11-27T07:42:31.131792-06:00'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser class >> cobolStyler: aParserClass [
 	<smaccStyler: #CobolParser priority: 10>
 	| rules variables |
@@ -2990,7 +2992,7 @@ CobolParser class >> cobolStyler: aParserClass [
 	^ (GtSmaCCParserStyler forParser: aParserClass) stylerRules: rules
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser class >> cobolStylerWithExpanders: aParserClass [
 	<smaccStyler: #CobolParser priority: 5>
 	| rules variables procedures |
@@ -3063,7 +3065,7 @@ CobolParser class >> cobolStylerWithExpanders: aParserClass [
 				(GtSmaCCParserStyler forParser: self) stylerRules: rules}
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> definitionComment [
 "/*
 * Copyright (C) 2017, Ulrich Wolffgang <ulrich.wolffgang@proleap.io>
@@ -6640,17 +6642,17 @@ pic <pictureString>
 	;"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser class >> fileExtension [
 	^ '.cbl'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser class >> fileExtensions [
 	^ #('.cbl' '.sqb')
 ]
 
-{ #category : #parsing }
+{ #category : 'parsing' }
 CobolParser class >> loadSource: aFilename withLibraries: directories [
 	| newSource |
 	newSource := CobolPPParser preprocessFile: aFilename using: directories.
@@ -6659,7 +6661,7 @@ CobolParser class >> loadSource: aFilename withLibraries: directories [
 		yourself
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> reduceTable [
 ^#(
 	#(548 1 #reduceActionForstartRule1: 2232321 false) 
@@ -9817,27 +9819,27 @@ CobolParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> scannerClass [
 	^CobolScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> startingStateForevaluateSelect [
 	^ 2
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> startingStateForstartRule [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> startingStateForstatement [
 	^ 3
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> symbolNames [
 	^ #('"ABORT"' '"ACCEPT"' '"ACCESS"' '"ADD"' '"ADDRESS"' '"ADVANCING"' '"AFTER"' '"ALIGNED"' '"ALL"' '"ALPHABET"' '"ALPHABETIC"' '"ALPHABETIC-LOWER"' '"ALPHABETIC-UPPER"' '"ALPHANUMERIC"' '"ALPHANUMERIC-EDITED"' '"ALSO"' '"ALTER"' '"ALTERNATE"' '"AND"' '"ANY"' '"ARE"' '"AREA"' '"AREAS"' '"ASCENDING"' '"ASCII"' '"ASSIGN"' '"ASSOCIATED-DATA"' '"ASSOCIATED-DATA-LENGTH"' '"AT"' '"ATTRIBUTE"' '"AUTHOR"' '"AUTO"' '"AUTO-SKIP"' '"BACKGROUND-COLOR"' '"BACKGROUND-COLOUR"' '"BEEP"' '"BEFORE"' '"BELL"' '"BINARY"' '"BIT"' '"BLANK"' '"BLINK"' '"BLOCK"' '"BOTTOM"' '"BOUNDS"' '"BY"' '"BYFUNCTION"' '"BYTITLE"' '"CALL"' '"CANCEL"' '"CAPABLE"' '"CCSVERSION"' '"CD"' '"CF"' '"CH"' '"CHAINING"' '"CHANGED"' '"CHANNEL"' '"CHARACTER"' '"CHARACTERS"' '"CICS"' '"CLASS"' '"CLOB"' '"CLOB-FILE"' '"CLOB-LOCATOR"' '"CLOCK-UNITS"' '"CLOSE"' '"CLOSE-DISPOSITION"' '"CODE-SET"' '"COL"' '"COLLATING"' '"COLUMN"' '"COMMA"' '"COMMITMENT"' '"COMMON"' '"COMMUNICATION"' '"COMP"' '"COMP-1"' '"COMP-2"' '"COMP-3"' '"COMP-4"' '"COMP-5"' '"COMPUTATIONAL"' '"COMPUTATIONAL-1"' '"COMPUTATIONAL-2"' '"COMPUTATIONAL-3"' '"COMPUTATIONAL-4"' '"COMPUTATIONAL-5"' '"COMPUTE"' '"CONFIGURATION"' '"CONTAINS"' '"CONTENT"' '"CONTINUE"' '"CONTROL"' '"CONTROL-POINT"' '"CONVENTION"' '"CONVERTING"' '"CORR"' '"CORRESPONDING"' '"COUNT"' '"CRUNCH"' '"CURRENCY"' '"CURSOR"' '"DATA"' '"DATA-BASE"' '"DATE"' '"DATE-COMPILED"' '"DATE-WRITTEN"' '"DAY"' '"DAY-OF-WEEK"' '"DBCS"' '"DE"' '"DEBUG-CONTENTS"' '"DEBUG-ITEM"' '"DEBUG-LINE"' '"DEBUG-NAME"' '"DEBUG-SUB-1"' '"DEBUG-SUB-2"' '"DEBUG-SUB-3"' '"DEBUGGING"' '"DECIMAL-POINT"' '"DECLARATIVES"' '"DEFAULT"' '"DEFAULT-DISPLAY"' '"DEFINITION"' '"DELETE"' '"DELIMITED"' '"DELIMITER"' '"DEPENDING"' '"DESCENDING"' '"DESTINATION"' '"DETAIL"' '"DFHRESP"' '"DFHVALUE"' '"DISABLE"' '"DISK"' '"DISPLAY"' '"DISPLAY-1"' '"DIVIDE"' '"DIVISION"' '"DONTCARE"' '"DOUBLE"' '"DOWN"' '"DUPLICATES"' '"DYNAMIC"' '"EBCDIC"' '"EGCS"' '"EGI"' '"ELSE"' '"EMI"' '"EMPTY-CHECK"' '"ENABLE"' '"END"' '"END-ACCEPT"' '"END-ADD"' '"END-CALL"' '"END-COMPUTE"' '"END-DELETE"' '"END-DIVIDE"' '"END-EVALUATE"' '"END-EXEC"' '"END-IF"' '"END-MULTIPLY"' '"END-OF-PAGE"' '"END-PERFORM"' '"END-READ"' '"END-RECEIVE"' '"END-RETURN"' '"END-REWRITE"' '"END-SEARCH"' '"END-START"' '"END-STRING"' '"END-SUBTRACT"' '"END-UNSTRING"' '"END-WRITE"' '"ENTRY"' '"ENTRY-PROCEDURE"' '"ENVIRONMENT"' '"EOL"' '"EOP"' '"EOS"' '"EQUAL"' '"ERASE"' '"ERROR"' '"ESCAPE"' '"ESI"' '"EVALUATE"' '"EVENT"' '"EVERY"' '"EXCEPTION"' '"EXCLUSIVE"' '"EXEC"' '"EXHIBIT"' '"EXIT"' '"EXPORT"' '"EXTEND"' '"EXTENDED"' '"EXTERNAL"' '"FALSE"' '"FD"' '"FILE"' '"FILE-CONTROL"' '"FILLER"' '"FINAL"' '"FIRST"' '"FOOTING"' '"FOR"' '"FOREGROUND-COLOR"' '"FOREGROUND-COLOUR"' '"FROM"' '"FULL"' '"FUNCTION"' '"FUNCTION-POINTER"' '"FUNCTIONNAME"' '"GENERATE"' '"GIVING"' '"GLOBAL"' '"GO"' '"GOBACK"' '"GREATER"' '"GRID"' '"GROUP"' '"HEADING"' '"HIGH-VALUE"' '"HIGH-VALUES"' '"HIGHLIGHT"' '"I-O"' '"I-O-CONTROL"' '"ID"' '"IDENTIFICATION"' '"IF"' '"IMPLICIT"' '"IMPORT"' '"IN"' '"INDEX"' '"INDEXED"' '"INDICATE"' '"INITIAL"' '"INITIALIZE"' '"INITIATE"' '"INPUT"' '"INPUT-OUTPUT"' '"INSPECT"' '"INSTALLATION"' '"INTEGER"' '"INTO"' '"INVALID"' '"INVOKE"' '"IS"' '"JUST"' '"JUSTIFIED"' '"KANJI"' '"KEPT"' '"KEY"' '"KEYBOARD"' '"LABEL"' '"LANGUAGE"' '"LAST"' '"LB"' '"LD"' '"LEADING"' '"LEFT"' '"LEFTLINE"' '"LENGTH"' '"LENGTH-CHECK"' '"LESS"' '"LIBACCESS"' '"LIBPARAMETER"' '"LIBRARY"' '"LIMIT"' '"LIMITS"' '"LINAGE"' '"LINAGE-COUNTER"' '"LINE"' '"LINE-COUNTER"' '"LINES"' '"LINKAGE"' '"LIST"' '"LOCAL"' '"LOCAL-STORAGE"' '"LOCK"' '"LONG-DATE"' '"LONG-TIME"' '"LOW-VALUE"' '"LOW-VALUES"' '"LOWER"' '"LOWLIGHT"' '"MEMORY"' '"MERGE"' '"MESSAGE"' '"MMDDYYYY"' '"MODE"' '"MODULES"' '"MORE-LABELS"' '"MOVE"' '"MULTIPLE"' '"MULTIPLY"' '"NAMED"' '"NATIONAL"' '"NATIONAL-EDITED"' '"NATIVE"' '"NEGATIVE"' '"NETWORK"' '"NEXT"' '"NO"' '"NO-ECHO"' '"NOT"' '"NULL"' '"NULLS"' '"NUMBER"' '"NUMERIC"' '"NUMERIC-DATE"' '"NUMERIC-EDITED"' '"NUMERIC-TIME"' '"OBJECT-COMPUTER"' '"OCCURS"' '"ODT"' '"OF"' '"OFF"' '"OMITTED"' '"ON"' '"OPEN"' '"OPTIONAL"' '"OR"' '"ORDER"' '"ORDERLY"' '"ORGANIZATION"' '"OTHER"' '"OUTPUT"' '"OVERFLOW"' '"OVERLINE"' '"OWN"' '"PACKED-DECIMAL"' '"PADDING"' '"PAGE"' '"PAGE-COUNTER"' '"PASSWORD"' '"PERFORM"' '"PF"' '"PH"' '"PIC"' '"PICTURE"' '"PLUS"' '"POINTER"' '"PORT"' '"POSITION"' '"POSITIVE"' '"PRINTER"' '"PRIVATE"' '"PROCEDURE"' '"PROCEDURE-POINTER"' '"PROCEDURES"' '"PROCEED"' '"PROGRAM"' '"PROGRAM-ID"' '"PROGRAM-LIBRARY"' '"PROMPT"' '"PURGE"' '"QUEUE"' '"QUOTE"' '"QUOTES"' '"RANDOM"' '"RD"' '"READ"' '"READER"' '"REAL"' '"RECEIVE"' '"RECEIVED"' '"RECORD"' '"RECORDING"' '"RECORDS"' '"RECURSIVE"' '"REDEFINES"' '"REEL"' '"REF"' '"REFERENCE"' '"REFERENCES"' '"RELATIVE"' '"RELEASE"' '"REMAINDER"' '"REMARKS"' '"REMOTE"' '"REMOVAL"' '"REMOVE"' '"RENAMES"' '"REPLACING"' '"REPORT"' '"REPORTS"' '"REQUIRED"' '"RERUN"' '"RESERVE"' '"RESERVE-VIDEO"' '"RESET"' '"RETURN"' '"RETURN-CODE"' '"RETURNING"' '"REVERSED"' '"REWIND"' '"REWRITE"' '"RF"' '"RH"' '"RIGHT"' '"ROUNDED"' '"RUN"' '"SAME"' '"SAVE"' '"SCREEN"' '"SD"' '"SEARCH"' '"SECTION"' '"SECURE"' '"SECURITY"' '"SEGMENT"' '"SEGMENT-LIMIT"' '"SELECT"' '"SEND"' '"SENTENCE"' '"SEPARATE"' '"SEQUENCE"' '"SEQUENTIAL"' '"SET"' '"SHAREDBYALL"' '"SHAREDBYRUNUNIT"' '"SHARING"' '"SHIFT-IN"' '"SHIFT-OUT"' '"SHORT-DATE"' '"SIGN"' '"SIZE"' '"SORT"' '"SORT-CONTROL"' '"SORT-CORE-SIZE"' '"SORT-FILE-SIZE"' '"SORT-MERGE"' '"SORT-MESSAGE"' '"SORT-MODE-SIZE"' '"SORT-RETURN"' '"SOURCE"' '"SOURCE-COMPUTER"' '"SPACE"' '"SPACES"' '"SPECIAL-NAMES"' '"SQL"' '"SQLIMS"' '"STANDARD"' '"STANDARD-1"' '"STANDARD-2"' '"START"' '"STATUS"' '"STOP"' '"STRING"' '"SUB-QUEUE-1"' '"SUB-QUEUE-2"' '"SUB-QUEUE-3"' '"SUBTRACT"' '"SUM"' '"SYMBOL"' '"SYMBOLIC"' '"SYNC"' '"SYNCHRONIZED"' '"TABLE"' '"TALLY"' '"TALLYING"' '"TAPE"' '"TASK"' '"TERMINAL"' '"TERMINATE"' '"TEST"' '"TEXT"' '"THAN"' '"THEN"' '"THREAD"' '"THREAD-LOCAL"' '"THROUGH"' '"THRU"' '"TIME"' '"TIMER"' '"TIMES"' '"TITLE"' '"TO"' '"TODAYS-DATE"' '"TODAYS-NAME"' '"TOP"' '"TRAILING"' '"TRUE"' '"TRUNCATED"' '"TYPE"' '"TYPEDEF"' '"UNDERLINE"' '"UNIT"' '"UNSTRING"' '"UNTIL"' '"UP"' '"UPON"' '"USAGE"' '"USE"' '"USING"' '"VALUE"' '"VALUES"' '"VARYING"' '"VIRTUAL"' '"WAIT"' '"WHEN"' '"WHEN-COMPILED"' '"WITH"' '"WORDS"' '"WORKING-STORAGE"' '"WRITE"' '"YEAR"' '"YYYYDDD"' '"YYYYMMDD"' '"ZERO"' '"ZERO-FILL"' '"ZEROES"' '"ZEROS"' '<ASTERISKCHAR>' '<DOUBLEASTERISKCHAR>' '<COLONCHAR>' '<COMMACHAR>' '<DOLLARCHAR>' '<DOT_FS>' '<DOT>' '<EQUALCHAR>' '<LESSTHANCHAR>' '<LESSTHANOREQUAL>' '<LPARENCHAR>' '<MINUSCHAR>' '<MORETHANCHAR>' '<MORETHANOREQUAL>' '<NOTEQUALCHAR>' '<PLUSCHAR>' '<RPARENCHAR>' '<SLASHCHAR>' '<NONNUMERICLITERAL>' '<LEVEL_NUMBER_66>' '<LEVEL_NUMBER_77>' '<LEVEL_NUMBER_88>' '<INTEGERLITERAL>' '<NUMERICLITERAL>' '<IDENTIFIER>' '<NEWLINE>' '<COMMENTENTRYLINE>' '<COMMENTLINE>' '<whitespace>' '<SEPARATOR>' '<pictureString>' 'B e g i n' 'startRule' 'compilationUnit' 'programUnit ''unit''+' 'programUnit' 'programUnit ''programUnit''*' 'endProgramStatement' 'identificationDivision' 'identificationDivisionBody ''paragraph''*' 'identificationDivisionBody' 'programIdParagraph' '"PROGRAM" ''keyword''?' '(SwitchToCommentEntry <DOT_FS> ''period'')' '(SwitchToCommentEntry <DOT_FS> ''period'')?' 'commentEntry?' 'authorParagraph' 'SwitchToCommentEntry' 'installationParagraph' 'dateWrittenParagraph' 'dateCompiledParagraph' 'securityParagraph' 'remarksParagraph' 'environmentDivision' 'environmentDivisionBody ''section''*' 'environmentDivisionBody' 'configurationSection' 'configurationSectionParagraph ''paragraph''*' 'configurationSectionParagraph' 'sourceComputerParagraph' 'objectComputerParagraph' 'objectComputerClause ''computerClause''*' 'objectComputerClause' 'memorySizeClause' 'diskSizeClause' 'collatingSequenceClause' 'cobolWord ''alphabetName''+' 'collatingSequenceClauseNational?' 'collatingSequenceClauseAlphanumeric' 'collatingSequenceClauseNational' 'segmentLimitClause' 'characterSetClause' 'specialNamesParagraph' 'specialNameClause ''specialNameClause''+' 'specialNameClause' 'alphabetClause' 'alphabetClauseFormat1' 'alphabetLiterals+' 'alphabetLiterals' 'alphabetAlso+' 'alphabetThrough' 'alphabetAlso' 'literal ''value''+' 'alphabetClauseFormat2' 'channelClause' 'classClause' 'classClauseThrough+' 'classClauseThrough' 'classClauseFrom' 'classClauseTo' 'currencySignClause' 'decimalPointClause' 'defaultComputationalSignClause' '("LEADING" ''keyword'' | "TRAILING" ''keyword'')' '("LEADING" ''keyword'' | "TRAILING" ''keyword'')?' '"CHARACTER" ''keyword''?' 'defaultDisplaySignClause' 'environmentSwitchNameClause' 'environmentSwitchNameSpecialNamesStatusPhrase' '"IS" ''keyword''?' 'odtClause' 'reserveNetworkClause' 'symbolicCharactersClause' 'symbolicCharacters+' '("IN" ''keyword'' /* alphabetName ### */ cobolWord ''alphabetName'')' '("IN" ''keyword'' /* alphabetName ### */ cobolWord ''alphabetName'')?' 'symbolicCharacters' 'cobolWord ''symbolicCharacter''+' 'integerLiteral ''value''+' 'inputOutputSection' 'inputOutputSectionParagraph ''paragraph''*' 'inputOutputSectionParagraph' 'fileControlParagraph' '(<DOT_FS> ''period''? fileControlEntry ''entry'')' '(<DOT_FS> ''period''? fileControlEntry ''entry'')*' 'fileControlEntry' 'fileControlClause ''clause''*' 'selectClause' 'fileControlClause' 'assignClause' 'reserveClause' 'organizationClause' 'paddingCharacterClause' 'recordDelimiterClause' 'accessModeClause' 'recordKeyClause' '"WITH" ''keyword''?' 'alternateRecordKeyClause' 'passwordClause' 'fileStatusClause' 'relativeKeyClause' 'ioControlParagraph' 'ioControlClause ''clause''*' 'ioControlClause' 'rerunClause' 'rerunEveryRecords' 'rerunEveryOf' 'rerunEveryClock' 'sameClause' '"FOR" ''keyword''?' 'cobolWord ''fileName''+' 'multipleFileClause' 'multipleFilePosition+' 'multipleFilePosition' 'commitmentControlClause' 'dataDivision' 'dataDivisionSection ''section''*' 'dataDivisionSection' 'fileSection' 'fileDescriptionEntry ''fileDescription''*' 'fileDescriptionEntry' '(<DOT_FS> ''period''? fileDescriptionEntryClause ''clause'')' '(<DOT_FS> ''period''? fileDescriptionEntryClause ''clause'')*' 'dataDescriptionEntry*' 'fileDescriptionEntryClause' 'externalClause' 'globalClause' 'blockContainsClause' 'blockContainsTo' 'recordContainsClause' 'recordContainsClauseFormat1' 'recordContainsClauseFormat2' '"FROM" ''keyword''?' 'recordContainsTo?' '"CHARACTERS" ''keyword''?' '(
         "DEPENDING" ''keyword'' "ON" ''keyword''? qualifiedDataName ''dependingOnName''
@@ -10103,12 +10105,12 @@ CobolParser class >> symbolNames [
         ?' '"END-WRITE" ''keyword''?' 'writeFromPhrase' 'writeAdvancingPhrase' 'writeAdvancingPage' 'writeAdvancingLines' 'writeAdvancingMnemonic' 'writeAtEndOfPagePhrase' 'writeNotAtEndOfPagePhrase' 'atEndPhrase' 'notAtEndPhrase' 'invalidKeyPhrase' 'notInvalidKeyPhrase' 'onOverflowPhrase' 'notOnOverflowPhrase' 'onSizeErrorPhrase' 'notOnSizeErrorPhrase' 'onExceptionClause' 'notOnExceptionClause' 'arithmeticExpression' 'plusMinus' 'multDivs' 'multDiv' 'powers' 'unary' 'power' 'basis' 'condition' 'andOrCondition' 'combinableCondition' 'simpleCondition' 'classCondition' 'conditionNameReference' 'inData+' 'conditionNameSubscriptReference' '(<COMMACHAR> ''comma''? subscript_ ''subscript'')' '(<COMMACHAR> ''comma''? subscript_ ''subscript'')*' 'relationCondition' 'relationSignCondition' 'relationArithmeticComparison' 'relationCombinedComparison' 'relationCombinedCondition' 'relationalOperator' 'relationalOperatorPart' 'abbreviation' 'identifier' 'tableCall' '(/* <LPARENCHAR> subscript_ (<COMMACHAR>? subscript_)* <RPARENCHAR>*/ conditionNameSubscriptReference ''subscript'')' '(/* <LPARENCHAR> subscript_ (<COMMACHAR>? subscript_)* <RPARENCHAR>*/ conditionNameSubscriptReference ''subscript'')+' 'functionCall' '(<LPARENCHAR> ''left'' argument ''argument'' (<COMMACHAR> ''comma''? argument ''argument'')* <RPARENCHAR> ''right'')' '(<LPARENCHAR> ''left'' argument ''argument'' (<COMMACHAR> ''comma''? argument ''argument'')* <RPARENCHAR> ''right'')*' '(<COMMACHAR> ''comma''? argument ''argument'')' '(<COMMACHAR> ''comma''? argument ''argument'')*' 'referenceModifier' 'characterPosition' 'length' 'subscript_' 'argument' 'qualifiedDataName' 'qualifiedDataNameFormat1' 'qualifiedInData+' 'qualifiedDataNameFormat2' 'qualifiedDataNameFormat3' 'qualifiedDataNameFormat4' 'qualifiedInData' 'inData' 'inFile' 'inMnemonic' 'inSection' 'inLibrary' 'inTable' 'basisName' 'dataDescName' 'functionName' 'paragraphName' 'procedureName' 'programName' 'recordName' 'reportName' 'sectionName' 'cobolWord' 'literal' 'booleanLiteral' 'numericLiteral' 'integerLiteral' 'cicsDfhRespLiteral' 'cicsDfhValueLiteral' 'figurativeConstant' 'specialRegister' 'commentEntry' '<COMMENTENTRYLINE> ''description''+' '<execCode>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CobolFileNode #CobolFileNode #OrderedCollection #OrderedCollection #CobolProgramUnitNode #OrderedCollection #CobolEndProgramStatementNode #CobolIdentificationDivisionNode #OrderedCollection #CobolProgramNode #CobolProgramIdParagraphNode #SmaCCToken #SmaCCToken #SmaCCToken #OrderedCollection #CobolAuthorParagraphNode nil #CobolInstallationParagraphNode #CobolDateWrittenParagraphNode #CobolDateCompiledParagraphNode #CobolSecurityParagraphNode #CobolRemarksParagraphNode #CobolEnvironmentDivisionNode #OrderedCollection #CobolProgramNode #CobolConfigurationSectionNode #OrderedCollection #CobolProgramNode #CobolSourceComputerParagraphNode #CobolObjectComputerParagraphNode #OrderedCollection #CobolProgramNode #CobolMemorySizeClauseNode #CobolDiskSizeClauseNode #CobolCollatingSequenceClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolSegmentLimitClauseNode #CobolCharacterSetClauseNode #CobolSpecialNamesParagraphNode #OrderedCollection #CobolProgramNode #CobolAlphabetClauseNode #CobolAlphabetClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolAlphabetClauseNode #CobolChannelClauseNode #CobolClassClauseNode #OrderedCollection #OrderedCollection #CobolExpressionNode #CobolExpressionNode #CobolCurrencySignClauseNode #CobolDecimalPointClauseNode #CobolDefaultComputationalSignClauseNode #SmaCCToken #SmaCCToken #SmaCCToken #CobolDefaultDisplaySignClauseNode #CobolEnvironmentSwitchNameClauseNode #OrderedCollection #SmaCCToken #CobolOdtClauseNode #CobolReserveNetworkClauseNode #CobolSymbolicCharactersClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolInputOutputSectionNode #OrderedCollection #CobolProgramNode #CobolFileControlParagraphNode #OrderedCollection #OrderedCollection #CobolFileControlEntryNode #OrderedCollection #CobolSelectClauseNode #CobolProgramNode #CobolAssignClauseNode #CobolReserveClauseNode #CobolOrganizationClauseNode #CobolPaddingCharacterClauseNode #CobolRecordDelimiterClauseNode #CobolAccessModeClauseNode #CobolRecordKeyClauseNode #SmaCCToken #CobolAlternateRecordKeyClauseNode #CobolPasswordClauseNode #CobolFileStatusClauseNode #CobolRelativeKeyClauseNode #CobolIoControlParagraphNode #OrderedCollection #CobolProgramNode #CobolRerunClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolSameClauseNode #SmaCCToken #OrderedCollection #CobolMultipleFileClauseNode #OrderedCollection #OrderedCollection #CobolCommitmentControlClauseNode #CobolDataDivisionNode #OrderedCollection #CobolProgramNode #CobolFileSectionNode #OrderedCollection #CobolFileDescriptionEntryNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolProgramNode #CobolExternalClauseNode #CobolGlobalClauseNode #CobolBlockContainsClauseNode #OrderedCollection #CobolRecordContainsClauseNode #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolLabelRecordsClauseNode #OrderedCollection #CobolValueOfClauseNode #OrderedCollection #OrderedCollection #CobolDataRecordsClauseNode #CobolLinageClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolRecordingModeClauseNode #CobolIdentifierNode #CobolCodeSetClauseNode #CobolReportClauseNode #OrderedCollection #CobolDataBaseSectionNode #OrderedCollection #CobolDataBaseSectionEntryNode #CobolWorkingStorageSectionNode #CobolLinkageSectionNode #CobolCommunicationSectionNode #OrderedCollection #OrderedCollection #CobolCommunicationDescriptionEntryNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolProgramNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolDestinationCountClauseNode #CobolDestinationTableClauseNode #OrderedCollection #CobolEndKeyClauseNode #CobolErrorKeyClauseNode #CobolMessageCountClauseNode #CobolMessageDateClauseNode #CobolMessageTimeClauseNode #CobolStatusKeyClauseNode #CobolSymbolicDestinationClauseNode #CobolSymbolicQueueClauseNode #CobolSymbolicSourceClauseNode #CobolSymbolicTerminalClauseNode #CobolSymbolicSubQueueClauseNode #CobolTextLengthClauseNode #CobolLocalStorageSectionNode #CobolScreenSectionNode #OrderedCollection #CobolScreenDescriptionEntryNode #CobolProgramNode #OrderedCollection #CobolScreenDescriptionBlankClauseNode #CobolScreenDescriptionBellClauseNode #CobolScreenDescriptionBlinkClauseNode #CobolScreenDescriptionEraseClauseNode #CobolScreenDescriptionLightClauseNode #CobolScreenDescriptionGridClauseNode #CobolScreenDescriptionReverseVideoClauseNode #CobolScreenDescriptionUnderlineClauseNode #CobolScreenDescriptionSizeClauseNode #CobolScreenDescriptionLineClauseNode #CobolScreenDescriptionColumnClauseNode #CobolScreenDescriptionForegroundColorClauseNode #CobolScreenDescriptionBackgroundColorClauseNode #CobolScreenDescriptionControlClauseNode #CobolScreenDescriptionValueClauseNode #CobolScreenDescriptionPictureClauseNode #CobolScreenDescriptionFromClauseNode #OrderedCollection #CobolScreenDescriptionUsingClauseNode #CobolScreenDescriptionUsageClauseNode #CobolScreenDescriptionBlankWhenZeroClauseNode #CobolScreenDescriptionJustifiedClauseNode #CobolScreenDescriptionSignClauseNode #CobolScreenDescriptionAutoClauseNode #CobolScreenDescriptionSecureClauseNode #CobolScreenDescriptionRequiredClauseNode #CobolScreenDescriptionPromptClauseNode #OrderedCollection #CobolScreenDescriptionFullClauseNode #CobolScreenDescriptionZeroFillClauseNode #CobolReportSectionNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolReportDescriptionEntryNode #CobolReportDescriptionLastDetailClauseNode #CobolReportDescriptionFootingClauseNode #CobolReportDescriptionGlobalClauseNode #CobolReportDescriptionPageLimitClauseNode #SmaCCToken #SmaCCToken #CobolReportDescriptionHeadingClauseNode #CobolReportDescriptionFirstDetailClauseNode #CobolReportDescriptionLastDetailClauseNode #CobolReportDescriptionFootingClauseNode #CobolReportGroupDescriptionEntryNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolProgramNode #OrderedCollection #CobolReportGroupBlankWhenZeroClauseNode #CobolReportGroupColumnNumberClauseNode #CobolReportGroupIndicateClauseNode #CobolReportGroupJustifiedClauseNode #CobolReportGroupLineNumberClauseNode #OrderedCollection #OrderedCollection #CobolReportGroupNextGroupClauseNode #OrderedCollection #OrderedCollection #CobolReportGroupPictureClauseNode #CobolReportGroupResetClauseNode #CobolReportGroupSignClauseNode #CobolReportGroupSourceClauseNode #CobolReportGroupSumClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolReportGroupTypeClauseNode #CobolReportGroupTypeReportHeadingNode #CobolReportGroupTypePageHeadingNode #CobolReportGroupTypeControlHeadingNode #CobolReportGroupTypeDetailNode #CobolReportGroupTypeControlFootingNode #CobolReportGroupUsageClauseNode #CobolReportGroupTypePageFootingNode #CobolReportGroupTypeReportFootingNode #CobolReportGroupValueClauseNode #CobolProgramLibrarySectionNode #OrderedCollection #CobolLibraryDescriptionEntryNode #OrderedCollection #OrderedCollection #CobolProgramNode #OrderedCollection #CobolLibraryAttributeClauseNode #CobolLibraryAttributeClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolLibraryEntryProcedureClauseNode #CobolLibraryEntryProcedureClauseNode #CobolLibraryEntryProcedureForClauseNode #CobolLibraryEntryProcedureGivingClauseNode #CobolLibraryEntryProcedureUsingClauseNode #OrderedCollection #CobolIdentifierNode #CobolLibraryEntryProcedureWithClauseNode #OrderedCollection #CobolIdentifierNode #CobolLibraryIsCommonClauseNode #CobolLibraryIsGlobalClauseNode #OrderedCollection #CobolDataDescriptionEntryNode #CobolProgramNode #OrderedCollection #CobolProgramNode #OrderedCollection #CobolDataValueClauseNode #OrderedCollection #OrderedCollection #CobolDataDescription66EntryNode #CobolDataDescription88EntryNode #CobolExecSqlStatementNode #CobolDataAlignedClauseNode #CobolDataBlankWhenZeroClauseNode #CobolDataCommonOwnLocalClauseNode #CobolDataExternalClauseNode #CobolDataGlobalClauseNode #CobolDataIntegerStringClauseNode #CobolDataJustifiedClauseNode #CobolDataOccursClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolDataPictureClauseNode nil nil #Object #Object #Object #Object #Object #CobolLiteralNode #CobolDataReceivedByClauseNode #CobolDataRecordAreaClauseNode #CobolDataRedefinesClauseNode #CobolDataRenamesClauseNode #CobolDataSignClauseNode #CobolDataSynchronizedClauseNode #CobolDataThreadLocalClauseNode #CobolDataTypeClauseNode #CobolDataTypeDefClauseNode #CobolDataUsageClauseNode #SmaCCToken #SmaCCToken #CobolDataUsingClauseNode #CobolDataValueClauseNode #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolDataWithLowerBoundsClauseNode #CobolProcedureDivisionNode #CobolProcedureDivisionUsingClauseNode #OrderedCollection #CobolProcedureDivisionGivingClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolProgramNode #CobolAnyConditionNode #CobolProcedureDeclarativesNode #OrderedCollection #OrderedCollection #CobolProcedureSectionHeaderNode #OrderedCollection #OrderedCollection #CobolProcedureSectionNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolParagraphNode #CobolSentenceNode #OrderedCollection #CobolStatementNode #CobolAcceptStatementNode #CobolHandlerNode #SmaCCToken #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #CobolAddStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolSentenceNode #CobolAlterStatementNode #OrderedCollection #CobolAlterProceedToNode #CobolCallStatementNode #CobolHandlerNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolCancelStatementNode #OrderedCollection #OrderedCollection #CobolCloseStatementNode #OrderedCollection #CobolCloseFileNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolComputeStatementNode #OrderedCollection #OrderedCollection #CobolContinueStatementNode #CobolDeleteStatementNode #CobolDisableStatementNode #CobolDisplayStatementNode #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolDivideStatementNode #CobolHandlerNode #CobolHandlerNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolEnableStatementNode #CobolEntryStatementNode #OrderedCollection #CobolEvaluateStatementNode #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolEvaluateWhenPhraseNode #OrderedCollection #CobolEvaluateWhenNode #OrderedCollection #CobolProgramNode #OrderedCollection #OrderedCollection #CobolEvaluateWhenOtherNode #CobolExpressionNode #CobolExecCicsStatementNode #Object nil #CobolExecSqlStatementNode #CobolExecSqlImsStatementNode #CobolExhibitStatementNode #OrderedCollection #CobolExpressionNode #CobolExitStatementNode #CobolGenerateStatementNode #CobolGobackStatementNode #CobolGoToStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolIfStatementNode #CobolIfThenNode #CobolIfElseNode #CobolInitializeStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #CobolInitiateStatementNode #CobolInspectStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolMergeStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolMergeOnKeyClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolMoveStatementNode #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolExpressionNode #CobolMultiplyStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolOpenStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolPerformStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolPerformVaryingClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolPurgeStatementNode #OrderedCollection #CobolReadStatementNode #OrderedCollection #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #CobolReceiveStatementNode #CobolReceiveFromStatementNode #CobolProgramNode #OrderedCollection #OrderedCollection #CobolReceiveIntoStatementNode #CobolHandlerNode #CobolHandlerNode #CobolReceiveBeforeNode #CobolReceiveWithNode #CobolReceiveThreadNode #CobolReceiveSizeNode #CobolReceiveStatusNode #CobolReleaseStatementNode #CobolReturnStatementNode #OrderedCollection #CobolRewriteStatementNode #OrderedCollection #CobolSearchStatementNode #OrderedCollection #OrderedCollection #CobolHandlerNode #CobolSendStatementNode #CobolSendStatementSyncNode #OrderedCollection #CobolSendStatementAsyncNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #CobolIdentifierNode #CobolSetStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #CobolProgramNode #CobolExpressionNode #CobolSortStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #CobolSortOnKeyClauseNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolStartStatementNode #OrderedCollection #SmaCCToken #SmaCCToken #CobolStopStatementNode #CobolStringStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolSubtractStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #OrderedCollection #CobolExpressionNode #OrderedCollection #OrderedCollection #CobolTerminateStatementNode #CobolUnstringStatementNode #SmaCCToken #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolUseStatementNode #CobolUseAfterClauseNode #OrderedCollection #CobolUseDebugClauseNode #OrderedCollection #OrderedCollection #CobolWriteStatementNode #CobolHandlerNode #SmaCCToken #OrderedCollection #OrderedCollection #SmaCCToken #OrderedCollection #CobolIdentifierNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolHandlerNode #CobolExpressionNode nil #CobolExpressionNode nil #CobolExpressionNode #CobolExpressionNode nil #CobolExpressionNode #CobolExpressionNode nil #CobolExpressionNode #CobolExpressionNode #CobolClassConditionExpressionNode #CobolExpressionNode #OrderedCollection #CobolSubscriptsNode #OrderedCollection #OrderedCollection #CobolExpressionNode #CobolSignConditionExpressionNode #CobolComparisonExpressionNode #CobolCombinedComparisonExpressionNode #CobolExpressionNode #OrderedCollection #OrderedCollection #CobolAbbreviationNode #CobolExpressionNode #CobolTableCallNode #CobolSubscriptsNode #OrderedCollection #CobolFunctionCallNode #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #OrderedCollection #CobolExpressionNode #CobolExpressionNode #CobolProgramNode #CobolProgramNode #CobolExpressionNode #CobolExpressionNode #OrderedCollection #CobolInExpressionNode nil #CobolInExpressionNode #OrderedCollection #OrderedCollection #OrderedCollection nil #OrderedCollection nil #OrderedCollection #Object #OrderedCollection #Object #CobolExpressionNode #CobolProgramNode #Object #CobolExpressionNode #CobolExpressionNode #CobolExpressionNode #CobolIdentifierNode #CobolExpressionNode #CobolLiteralNode #CobolLiteralNode #CobolLiteralNode #CobolCicsDfhRespLiteralNode #CobolCicsDfhValueLiteralNode #CobolFigurativeConstantNode #CobolSpecialRegisterNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParser class >> transitionTable [
 ^#(
 #[1 0 17 0 229 0 21 0 230 0 25 2 36 0 29 2 37 0 33 2 38 0 37 2 39 0 41 2 42] 
@@ -15353,7 +15355,7 @@ CobolParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolParser >> getNextToken [
 	| isSequenceNumber |
 	[ super getNextToken.
@@ -15371,12 +15373,12 @@ CobolParser >> getNextToken [
 			currentToken := nil ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolParser >> ignoredTokens [
 	^ self currentGLRState attributeNamed: #ignoredTokens
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolParser >> initialParserState [
 	| state |
 	state := super initialParserState.
@@ -15385,24 +15387,24 @@ CobolParser >> initialParserState [
 	^ state
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 CobolParser >> initialize [
 	super initialize.
 	isFixedFormat := true
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser >> isFixedFormat [
 	^ isFixedFormat
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolParser >> isFixedFormat: aBoolean [
 	isFixedFormat := aBoolean.
 	scanner ifNotNil: [ scanner isFixedFormat: aBoolean ]
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForCICSParts1: nodes [
 	| items |
 	items := OrderedCollection new.
@@ -15427,31 +15429,31 @@ CobolParser >> reduceActionForCICSParts1: nodes [
 	^ items
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForSwitchToCommentEntry1: nodes [
 	self scope: #commentEntry.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForSwitchToExec1: nodes [
 	self scope: #execCode.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForSwitchToPic1: nodes [
 	self scope: #pic.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -15461,7 +15463,7 @@ CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval_2: nodes [
 	| result |
 	result := Array new: 3.
@@ -15472,7 +15474,7 @@ CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -15482,14 +15484,14 @@ CobolParser >> reduceActionFor__COMMACHAR___comma___dataValueInterval__2: nodes 
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__IN___keyword_____alphabetName________cobolWord__alphabetName___1: nodes [
 	| result |
 	result := Array new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACHAR___comma___argument__argument_____RPARENCHAR___right__1: nodes [
 	| result |
 	result := Array new: 4.
@@ -15503,7 +15505,7 @@ CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACH
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACHAR___comma___argument__argument_____RPARENCHAR___right___1: nodes [
 	| result |
 	result := Array new: 4.
@@ -15514,7 +15516,7 @@ CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACH
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACHAR___comma___argument__argument_____RPARENCHAR___right___2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -15525,7 +15527,7 @@ CobolParser >> reduceActionFor__LPARENCHAR___left__argument__argument____COMMACH
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor________________________symbolicQueueClause__clause________________symbolicSubQueueClause__clause________________messageDateClause__clause________________messageTimeClause__clause________________symbolicSourceClause__clause________________textLengthClause__clause________________endKeyClause__clause________________statusKeyClause__clause________________messageCountClause__clause______________________dataDescName______10: nodes [
 	| result |
 	result := Array new: 3.
@@ -15534,7 +15536,7 @@ CobolParser >> reduceActionFor________________________symbolicQueueClause__claus
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor________________________symbolicQueueClause__clause________________symbolicSubQueueClause__clause________________messageDateClause__clause________________messageTimeClause__clause________________symbolicSourceClause__clause________________textLengthClause__clause________________endKeyClause__clause________________statusKeyClause__clause________________messageCountClause__clause______________________dataDescName_______1: nodes [
 	| result |
 	result := Array new: 3.
@@ -15544,7 +15546,7 @@ CobolParser >> reduceActionFor________________________symbolicQueueClause__claus
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -15556,7 +15558,7 @@ CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings_2: nodes [
 	| result |
 	result := Array new: 3.
@@ -15569,7 +15571,7 @@ CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings__2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -15579,7 +15581,7 @@ CobolParser >> reduceActionFor_inspectCharacters___inspectAllLeadings__2: nodes 
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_inspectReplacingCharacters___inspectReplacingAllLeadings_1: nodes [
 	| result |
 	result := Array new: 4.
@@ -15593,7 +15595,7 @@ CobolParser >> reduceActionFor_inspectReplacingCharacters___inspectReplacingAllL
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_inspectReplacingCharacters___inspectReplacingAllLeadings_2: nodes [
 	| result |
 	result := Array new: 4.
@@ -15608,7 +15610,7 @@ CobolParser >> reduceActionFor_inspectReplacingCharacters___inspectReplacingAllL
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_openInputStatement___openOutputStatement___openIOStatement___openExtendStatement_3: nodes [
 	| result |
 	result := Array new: 2.
@@ -15619,7 +15621,7 @@ CobolParser >> reduceActionFor_openInputStatement___openOutputStatement___openIO
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_openInputStatement___openOutputStatement___openIOStatement___openExtendStatement__2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -15628,7 +15630,7 @@ CobolParser >> reduceActionFor_openInputStatement___openOutputStatement___openIO
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFor_stringSending__string___COMMACHAR___comma____1: nodes [
 	| result |
 	result := Array new: 2.
@@ -15637,7 +15639,7 @@ CobolParser >> reduceActionFor_stringSending__string___COMMACHAR___comma____1: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation1: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15645,7 +15647,7 @@ CobolParser >> reduceActionForabbreviation1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation2: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15656,7 +15658,7 @@ CobolParser >> reduceActionForabbreviation2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation3: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15665,7 +15667,7 @@ CobolParser >> reduceActionForabbreviation3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation4: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15677,7 +15679,7 @@ CobolParser >> reduceActionForabbreviation4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation5: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15688,7 +15690,7 @@ CobolParser >> reduceActionForabbreviation5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForabbreviation6: nodes [
 	| result |
 	result := CobolAbbreviationNode new.
@@ -15702,7 +15704,7 @@ CobolParser >> reduceActionForabbreviation6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement1: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15713,7 +15715,7 @@ CobolParser >> reduceActionForacceptStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement2: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15725,7 +15727,7 @@ CobolParser >> reduceActionForacceptStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement3: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15737,7 +15739,7 @@ CobolParser >> reduceActionForacceptStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement4: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15750,7 +15752,7 @@ CobolParser >> reduceActionForacceptStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement7: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15763,7 +15765,7 @@ CobolParser >> reduceActionForacceptStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForacceptStatement8: nodes [
 	| result |
 	result := CobolAcceptStatementNode new.
@@ -15777,7 +15779,7 @@ CobolParser >> reduceActionForacceptStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaccessModeClause15: nodes [
 	| result |
 	result := CobolAccessModeClauseNode new.
@@ -15788,7 +15790,7 @@ CobolParser >> reduceActionForaccessModeClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaccessModeClause3: nodes [
 	| result |
 	result := CobolAccessModeClauseNode new.
@@ -15797,7 +15799,7 @@ CobolParser >> reduceActionForaccessModeClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaccessModeClause7: nodes [
 	| result |
 	result := CobolAccessModeClauseNode new.
@@ -15807,7 +15809,7 @@ CobolParser >> reduceActionForaccessModeClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddCorrespondingStatement2: nodes [
 	| result |
 	result := Array new: 3.
@@ -15820,7 +15822,7 @@ CobolParser >> reduceActionForaddCorrespondingStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement10: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15833,7 +15835,7 @@ CobolParser >> reduceActionForaddStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement11: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15846,7 +15848,7 @@ CobolParser >> reduceActionForaddStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement12: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15860,7 +15862,7 @@ CobolParser >> reduceActionForaddStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement1: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15872,7 +15874,7 @@ CobolParser >> reduceActionForaddStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement2: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15885,7 +15887,7 @@ CobolParser >> reduceActionForaddStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement3: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15898,7 +15900,7 @@ CobolParser >> reduceActionForaddStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement4: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15912,7 +15914,7 @@ CobolParser >> reduceActionForaddStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement5: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15925,7 +15927,7 @@ CobolParser >> reduceActionForaddStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement6: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15939,7 +15941,7 @@ CobolParser >> reduceActionForaddStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement7: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15953,7 +15955,7 @@ CobolParser >> reduceActionForaddStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement8: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15968,7 +15970,7 @@ CobolParser >> reduceActionForaddStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddStatement9: nodes [
 	| result |
 	result := CobolAddStatementNode new.
@@ -15980,7 +15982,7 @@ CobolParser >> reduceActionForaddStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddToGivingStatement1: nodes [
 	| result |
 	result := Array new: 4.
@@ -15995,7 +15997,7 @@ CobolParser >> reduceActionForaddToGivingStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddToGivingStatement2: nodes [
 	| result |
 	result := Array new: 4.
@@ -16012,7 +16014,7 @@ CobolParser >> reduceActionForaddToGivingStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForaddToStatement1: nodes [
 	| result |
 	result := Array new: 3.
@@ -16024,7 +16026,7 @@ CobolParser >> reduceActionForaddToStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat113: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16035,7 +16037,7 @@ CobolParser >> reduceActionForalphabetClauseFormat113: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat114: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16047,7 +16049,7 @@ CobolParser >> reduceActionForalphabetClauseFormat114: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat116: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16059,7 +16061,7 @@ CobolParser >> reduceActionForalphabetClauseFormat116: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat120: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16071,7 +16073,7 @@ CobolParser >> reduceActionForalphabetClauseFormat120: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat121: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16084,7 +16086,7 @@ CobolParser >> reduceActionForalphabetClauseFormat121: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat123: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16097,7 +16099,7 @@ CobolParser >> reduceActionForalphabetClauseFormat123: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat127: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16110,7 +16112,7 @@ CobolParser >> reduceActionForalphabetClauseFormat127: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat128: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16124,7 +16126,7 @@ CobolParser >> reduceActionForalphabetClauseFormat128: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat12: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16134,7 +16136,7 @@ CobolParser >> reduceActionForalphabetClauseFormat12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat16: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16144,7 +16146,7 @@ CobolParser >> reduceActionForalphabetClauseFormat16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat17: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16155,7 +16157,7 @@ CobolParser >> reduceActionForalphabetClauseFormat17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat19: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16166,7 +16168,7 @@ CobolParser >> reduceActionForalphabetClauseFormat19: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat22: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16178,7 +16180,7 @@ CobolParser >> reduceActionForalphabetClauseFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat26: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16191,7 +16193,7 @@ CobolParser >> reduceActionForalphabetClauseFormat26: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetClauseFormat28: nodes [
 	| result |
 	result := CobolAlphabetClauseNode new.
@@ -16205,7 +16207,7 @@ CobolParser >> reduceActionForalphabetClauseFormat28: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetLiterals1: nodes [
 	| result |
 	result := Array new: 2.
@@ -16215,7 +16217,7 @@ CobolParser >> reduceActionForalphabetLiterals1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalphabetLiterals2: nodes [
 	| result |
 	result := Array new: 2.
@@ -16227,7 +16229,7 @@ CobolParser >> reduceActionForalphabetLiterals2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalterProceedTo1: nodes [
 	| result |
 	result := CobolAlterProceedToNode new.
@@ -16237,7 +16239,7 @@ CobolParser >> reduceActionForalterProceedTo1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalterProceedTo2: nodes [
 	| result |
 	result := CobolAlterProceedToNode new.
@@ -16249,7 +16251,7 @@ CobolParser >> reduceActionForalterProceedTo2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalterStatement1: nodes [
 	| result |
 	result := CobolAlterStatementNode new.
@@ -16258,7 +16260,7 @@ CobolParser >> reduceActionForalterStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalteredGoTo1: nodes [
 	| result |
 	result := CobolSentenceNode new.
@@ -16267,7 +16269,7 @@ CobolParser >> reduceActionForalteredGoTo1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalteredGoTo2: nodes [
 	| result |
 	result := CobolSentenceNode new.
@@ -16277,7 +16279,7 @@ CobolParser >> reduceActionForalteredGoTo2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause13: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16289,7 +16291,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause14: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16303,7 +16305,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause15: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16316,7 +16318,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause16: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16331,7 +16333,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause1: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16341,7 +16343,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause2: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16353,7 +16355,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause3: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16364,7 +16366,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause4: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16377,7 +16379,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause5: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16388,7 +16390,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause6: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16401,7 +16403,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause7: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16413,7 +16415,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForalternateRecordKeyClause8: nodes [
 	| result |
 	result := CobolAlternateRecordKeyClauseNode new.
@@ -16427,7 +16429,7 @@ CobolParser >> reduceActionForalternateRecordKeyClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForanyCondition1: nodes [
 	| result |
 	result := CobolAnyConditionNode new.
@@ -16435,7 +16437,7 @@ CobolParser >> reduceActionForanyCondition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForargument1: nodes [
 	| result |
 	result := CobolIndexedExpressionNode new.
@@ -16444,7 +16446,7 @@ CobolParser >> reduceActionForargument1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForarithmeticExpression2: nodes [
 	| result |
 	result := CobolBinaryExpressionNode new.
@@ -16454,7 +16456,7 @@ CobolParser >> reduceActionForarithmeticExpression2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForassignClause10: nodes [
 	| result |
 	result := CobolAssignClauseNode new.
@@ -16463,7 +16465,7 @@ CobolParser >> reduceActionForassignClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForassignClause12: nodes [
 	| result |
 	result := CobolAssignClauseNode new.
@@ -16473,7 +16475,7 @@ CobolParser >> reduceActionForassignClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForassignClause1: nodes [
 	| result |
 	result := CobolAssignClauseNode new.
@@ -16482,7 +16484,7 @@ CobolParser >> reduceActionForassignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForassignClause21: nodes [
 	| result |
 	result := CobolAssignClauseNode new.
@@ -16492,7 +16494,7 @@ CobolParser >> reduceActionForassignClause21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForauthorParagraph1: nodes [
 	| result |
 	result := CobolAuthorParagraphNode new.
@@ -16501,7 +16503,7 @@ CobolParser >> reduceActionForauthorParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForauthorParagraph2: nodes [
 	| result |
 	result := CobolAuthorParagraphNode new.
@@ -16511,7 +16513,7 @@ CobolParser >> reduceActionForauthorParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForbasis1: nodes [
 	| result |
 	result := nodes at: 2.
@@ -16520,7 +16522,7 @@ CobolParser >> reduceActionForbasis1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause10: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16532,7 +16534,7 @@ CobolParser >> reduceActionForblockContainsClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause12: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16545,7 +16547,7 @@ CobolParser >> reduceActionForblockContainsClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause1: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16554,7 +16556,7 @@ CobolParser >> reduceActionForblockContainsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause3: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16564,7 +16566,7 @@ CobolParser >> reduceActionForblockContainsClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause4: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16575,7 +16577,7 @@ CobolParser >> reduceActionForblockContainsClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause6: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16587,7 +16589,7 @@ CobolParser >> reduceActionForblockContainsClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause7: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16597,7 +16599,7 @@ CobolParser >> reduceActionForblockContainsClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForblockContainsClause9: nodes [
 	| result |
 	result := CobolBlockContainsClauseNode new.
@@ -16608,7 +16610,7 @@ CobolParser >> reduceActionForblockContainsClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForbooleanLiteral2: nodes [
 	| result |
 	result := CobolLiteralNode new.
@@ -16616,7 +16618,7 @@ CobolParser >> reduceActionForbooleanLiteral2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByContentPhrase2: nodes [
 	| result |
 	result := Array new: 2.
@@ -16629,7 +16631,7 @@ CobolParser >> reduceActionForcallByContentPhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByReference2: nodes [
 	| result |
 	result := Array new: 2.
@@ -16638,7 +16640,7 @@ CobolParser >> reduceActionForcallByReference2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByReference5: nodes [
 	| result |
 	result := Array new: 2.
@@ -16646,7 +16648,7 @@ CobolParser >> reduceActionForcallByReference5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByReferencePhrase2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -16654,7 +16656,7 @@ CobolParser >> reduceActionForcallByReferencePhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByReferencePhrase3: nodes [
 	| result |
 	result := nodes at: 3.
@@ -16663,7 +16665,7 @@ CobolParser >> reduceActionForcallByReferencePhrase3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByValue3: nodes [
 	| result |
 	result := Array new: 2.
@@ -16674,7 +16676,7 @@ CobolParser >> reduceActionForcallByValue3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallByValue4: nodes [
 	| result |
 	result := Array new: 2.
@@ -16684,7 +16686,7 @@ CobolParser >> reduceActionForcallByValue4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement1: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16696,7 +16698,7 @@ CobolParser >> reduceActionForcallStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement2: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16709,7 +16711,7 @@ CobolParser >> reduceActionForcallStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement3: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16723,7 +16725,7 @@ CobolParser >> reduceActionForcallStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement4: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16738,7 +16740,7 @@ CobolParser >> reduceActionForcallStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement5: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16754,7 +16756,7 @@ CobolParser >> reduceActionForcallStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement6: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16771,7 +16773,7 @@ CobolParser >> reduceActionForcallStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement7: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16789,7 +16791,7 @@ CobolParser >> reduceActionForcallStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallStatement8: nodes [
 	| result |
 	result := CobolCallStatementNode new.
@@ -16808,7 +16810,7 @@ CobolParser >> reduceActionForcallStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallUsingParameter1: nodes [
 	| result |
 	result := Array new: 4.
@@ -16821,7 +16823,7 @@ CobolParser >> reduceActionForcallUsingParameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallUsingParameter2: nodes [
 	| result |
 	result := Array new: 4.
@@ -16834,7 +16836,7 @@ CobolParser >> reduceActionForcallUsingParameter2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallUsingParameter3: nodes [
 	| result |
 	result := Array new: 4.
@@ -16847,7 +16849,7 @@ CobolParser >> reduceActionForcallUsingParameter3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallUsingParameter_2: nodes [
 	| result |
 	result := nodes at: 2.
@@ -16858,7 +16860,7 @@ CobolParser >> reduceActionForcallUsingParameter_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcallUsingPhrase1: nodes [
 	| result |
 	result := Array new: 4.
@@ -16874,7 +16876,7 @@ CobolParser >> reduceActionForcallUsingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcancelCall3: nodes [
 	| result |
 	result := Array new: 2.
@@ -16882,7 +16884,7 @@ CobolParser >> reduceActionForcancelCall3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcancelStatement1: nodes [
 	| result |
 	result := CobolCancelStatementNode new.
@@ -16892,7 +16894,7 @@ CobolParser >> reduceActionForcancelStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForchannelClause1: nodes [
 	| result |
 	result := CobolChannelClauseNode new.
@@ -16902,7 +16904,7 @@ CobolParser >> reduceActionForchannelClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForchannelClause2: nodes [
 	| result |
 	result := CobolChannelClauseNode new.
@@ -16913,7 +16915,7 @@ CobolParser >> reduceActionForchannelClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcharacterSetClause1: nodes [
 	| result |
 	result := CobolCharacterSetClauseNode new.
@@ -16923,7 +16925,7 @@ CobolParser >> reduceActionForcharacterSetClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcicsDfhRespLiteral1: nodes [
 	| result |
 	result := CobolCicsDfhRespLiteralNode new.
@@ -16934,7 +16936,7 @@ CobolParser >> reduceActionForcicsDfhRespLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcicsDfhValueLiteral1: nodes [
 	| result |
 	result := CobolCicsDfhValueLiteralNode new.
@@ -16945,7 +16947,7 @@ CobolParser >> reduceActionForcicsDfhValueLiteral1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassClause1: nodes [
 	| result |
 	result := CobolClassClauseNode new.
@@ -16957,7 +16959,7 @@ CobolParser >> reduceActionForclassClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassClause3: nodes [
 	| result |
 	result := CobolClassClauseNode new.
@@ -16970,7 +16972,7 @@ CobolParser >> reduceActionForclassClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassClause4: nodes [
 	| result |
 	result := CobolClassClauseNode new.
@@ -16984,7 +16986,7 @@ CobolParser >> reduceActionForclassClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassClause8: nodes [
 	| result |
 	result := CobolClassClauseNode new.
@@ -16999,7 +17001,7 @@ CobolParser >> reduceActionForclassClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassClauseThrough2: nodes [
 	| result |
 	result := Array new: 3.
@@ -17009,7 +17011,7 @@ CobolParser >> reduceActionForclassClauseThrough2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition16: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17019,7 +17021,7 @@ CobolParser >> reduceActionForclassCondition16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition21: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17029,7 +17031,7 @@ CobolParser >> reduceActionForclassCondition21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition23: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17040,7 +17042,7 @@ CobolParser >> reduceActionForclassCondition23: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition28: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17051,7 +17053,7 @@ CobolParser >> reduceActionForclassCondition28: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition2: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17060,7 +17062,7 @@ CobolParser >> reduceActionForclassCondition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclassCondition7: nodes [
 	| result |
 	result := CobolClassConditionExpressionNode new.
@@ -17069,7 +17071,7 @@ CobolParser >> reduceActionForclassCondition7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseFile1: nodes [
 	| result |
 	result := CobolCloseFileNode new.
@@ -17077,7 +17079,7 @@ CobolParser >> reduceActionForcloseFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseFile2: nodes [
 	| result |
 	result := CobolCloseFileNode new.
@@ -17086,7 +17088,7 @@ CobolParser >> reduceActionForcloseFile2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseFile4: nodes [
 	| result |
 	result := CobolCloseFileNode new.
@@ -17096,7 +17098,7 @@ CobolParser >> reduceActionForcloseFile4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOStatement1: nodes [
 	| result |
 	result := Array new: 2.
@@ -17107,7 +17109,7 @@ CobolParser >> reduceActionForclosePortFileIOStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOStatement2: nodes [
 	| result |
 	result := nodes at: 4.
@@ -17117,7 +17119,7 @@ CobolParser >> reduceActionForclosePortFileIOStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOStatement3: nodes [
 	| result |
 	result := Array new: 2.
@@ -17129,7 +17131,7 @@ CobolParser >> reduceActionForclosePortFileIOStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOStatement4: nodes [
 	| result |
 	result := nodes at: 5.
@@ -17140,7 +17142,7 @@ CobolParser >> reduceActionForclosePortFileIOStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOUsing1: nodes [
 	| result |
 	result := Array new: 2.
@@ -17149,7 +17151,7 @@ CobolParser >> reduceActionForclosePortFileIOUsing1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForclosePortFileIOUsing2: nodes [
 	| result |
 	result := Array new: 2.
@@ -17159,7 +17161,7 @@ CobolParser >> reduceActionForclosePortFileIOUsing2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseReelUnitStatement6: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -17170,7 +17172,7 @@ CobolParser >> reduceActionForcloseReelUnitStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseReelUnitStatement8: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -17183,7 +17185,7 @@ CobolParser >> reduceActionForcloseReelUnitStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseReelUnitStatement9: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -17195,7 +17197,7 @@ CobolParser >> reduceActionForcloseReelUnitStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcloseStatement1: nodes [
 	| result |
 	result := CobolCloseStatementNode new.
@@ -17204,7 +17206,7 @@ CobolParser >> reduceActionForcloseStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcobolWord1: nodes [
 	| result |
 	result := CobolIdentifierNode new.
@@ -17212,7 +17214,7 @@ CobolParser >> reduceActionForcobolWord1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcodeSetClause1: nodes [
 	| result |
 	result := CobolCodeSetClauseNode new.
@@ -17221,7 +17223,7 @@ CobolParser >> reduceActionForcodeSetClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcodeSetClause2: nodes [
 	| result |
 	result := CobolCodeSetClauseNode new.
@@ -17231,7 +17233,7 @@ CobolParser >> reduceActionForcodeSetClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause15: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17245,7 +17247,7 @@ CobolParser >> reduceActionForcollatingSequenceClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause16: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17261,7 +17263,7 @@ CobolParser >> reduceActionForcollatingSequenceClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause1: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17272,7 +17274,7 @@ CobolParser >> reduceActionForcollatingSequenceClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause2: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17285,7 +17287,7 @@ CobolParser >> reduceActionForcollatingSequenceClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause5: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17297,7 +17299,7 @@ CobolParser >> reduceActionForcollatingSequenceClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause6: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17311,7 +17313,7 @@ CobolParser >> reduceActionForcollatingSequenceClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause7: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17324,7 +17326,7 @@ CobolParser >> reduceActionForcollatingSequenceClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcollatingSequenceClause8: nodes [
 	| result |
 	result := CobolCollatingSequenceClauseNode new.
@@ -17339,7 +17341,7 @@ CobolParser >> reduceActionForcollatingSequenceClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcombinableCondition1: nodes [
 	| result |
 	result := CobolUnaryExpressionNode new.
@@ -17348,7 +17350,7 @@ CobolParser >> reduceActionForcombinableCondition1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommitmentControlClause1: nodes [
 	| result |
 	result := CobolCommitmentControlClauseNode new.
@@ -17358,7 +17360,7 @@ CobolParser >> reduceActionForcommitmentControlClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommitmentControlClause2: nodes [
 	| result |
 	result := CobolCommitmentControlClauseNode new.
@@ -17369,7 +17371,7 @@ CobolParser >> reduceActionForcommitmentControlClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntry1: nodes [
 	| result |
 	result := CobolCommunicationDescriptionEntryNode new.
@@ -17381,7 +17383,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntry2: nodes [
 	| result |
 	result := CobolCommunicationDescriptionEntryNode new.
@@ -17392,7 +17394,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntry2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntryFormat11: nodes [
 	| result |
 	result := Array new: 5.
@@ -17409,7 +17411,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntryFormat11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntryFormat13: nodes [
 	| result |
 	result := Array new: 5.
@@ -17427,7 +17429,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntryFormat13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntryFormat21: nodes [
 	| result |
 	result := Array new: 4.
@@ -17441,7 +17443,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntryFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntryFormat22: nodes [
 	| result |
 	result := Array new: 4.
@@ -17456,7 +17458,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntryFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationDescriptionEntryFormat32: nodes [
 	| result |
 	result := Array new: 5.
@@ -17475,7 +17477,7 @@ CobolParser >> reduceActionForcommunicationDescriptionEntryFormat32: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcommunicationSection1: nodes [
 	| result |
 	result := CobolCommunicationSectionNode new.
@@ -17487,14 +17489,14 @@ CobolParser >> reduceActionForcommunicationSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcompilationUnit1: nodes [
 	| result |
 	result := nodes at: 1.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement10: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17507,7 +17509,7 @@ CobolParser >> reduceActionForcomputeStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement11: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17520,7 +17522,7 @@ CobolParser >> reduceActionForcomputeStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement12: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17534,7 +17536,7 @@ CobolParser >> reduceActionForcomputeStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement13: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17547,7 +17549,7 @@ CobolParser >> reduceActionForcomputeStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement14: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17561,7 +17563,7 @@ CobolParser >> reduceActionForcomputeStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement15: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17575,7 +17577,7 @@ CobolParser >> reduceActionForcomputeStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement16: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17590,7 +17592,7 @@ CobolParser >> reduceActionForcomputeStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcomputeStatement9: nodes [
 	| result |
 	result := CobolComputeStatementNode new.
@@ -17602,7 +17604,7 @@ CobolParser >> reduceActionForcomputeStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForconditionNameReference2: nodes [
 	| result |
 	result := CobolInExpressionNode new.
@@ -17612,7 +17614,7 @@ CobolParser >> reduceActionForconditionNameReference2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForconditionNameReference3: nodes [
 	| result |
 	result := CobolSubscriptReferenceExpressionNode new.
@@ -17621,7 +17623,7 @@ CobolParser >> reduceActionForconditionNameReference3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForconditionNameSubscriptReference1: nodes [
 	| result |
 	result := CobolSubscriptsNode new.
@@ -17633,7 +17635,7 @@ CobolParser >> reduceActionForconditionNameSubscriptReference1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForconfigurationSection1: nodes [
 	| result |
 	result := CobolConfigurationSectionNode new.
@@ -17644,7 +17646,7 @@ CobolParser >> reduceActionForconfigurationSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcontinueStatement1: nodes [
 	| result |
 	result := CobolContinueStatementNode new.
@@ -17652,7 +17654,7 @@ CobolParser >> reduceActionForcontinueStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause10: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17663,7 +17665,7 @@ CobolParser >> reduceActionForcurrencySignClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause11: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17677,7 +17679,7 @@ CobolParser >> reduceActionForcurrencySignClause11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause12: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17692,7 +17694,7 @@ CobolParser >> reduceActionForcurrencySignClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause1: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17701,7 +17703,7 @@ CobolParser >> reduceActionForcurrencySignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause2: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17713,7 +17715,7 @@ CobolParser >> reduceActionForcurrencySignClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause3: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17726,7 +17728,7 @@ CobolParser >> reduceActionForcurrencySignClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause4: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17736,7 +17738,7 @@ CobolParser >> reduceActionForcurrencySignClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause5: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17749,7 +17751,7 @@ CobolParser >> reduceActionForcurrencySignClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForcurrencySignClause6: nodes [
 	| result |
 	result := CobolCurrencySignClauseNode new.
@@ -17763,7 +17765,7 @@ CobolParser >> reduceActionForcurrencySignClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataAlignedClause1: nodes [
 	| result |
 	result := CobolDataAlignedClauseNode new.
@@ -17771,7 +17773,7 @@ CobolParser >> reduceActionFordataAlignedClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataBaseSection1: nodes [
 	| result |
 	result := CobolDataBaseSectionNode new.
@@ -17782,7 +17784,7 @@ CobolParser >> reduceActionFordataBaseSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataBaseSectionEntry1: nodes [
 	| result |
 	result := CobolDataBaseSectionEntryNode new.
@@ -17793,7 +17795,7 @@ CobolParser >> reduceActionFordataBaseSectionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataBlankWhenZeroClause1: nodes [
 	| result |
 	result := CobolDataBlankWhenZeroClauseNode new.
@@ -17802,7 +17804,7 @@ CobolParser >> reduceActionFordataBlankWhenZeroClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataBlankWhenZeroClause4: nodes [
 	| result |
 	result := CobolDataBlankWhenZeroClauseNode new.
@@ -17812,7 +17814,7 @@ CobolParser >> reduceActionFordataBlankWhenZeroClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataCommonOwnLocalClause1: nodes [
 	| result |
 	result := CobolDataCommonOwnLocalClauseNode new.
@@ -17820,7 +17822,7 @@ CobolParser >> reduceActionFordataCommonOwnLocalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryExecSql2: nodes [
 	| result |
 	result := CobolExecSqlStatementNode new.
@@ -17832,7 +17834,7 @@ CobolParser >> reduceActionFordataDescriptionEntryExecSql2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryFormat12: nodes [
 	| result |
 	result := CobolDataDescriptionEntryNode new.
@@ -17842,7 +17844,7 @@ CobolParser >> reduceActionFordataDescriptionEntryFormat12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryFormat15: nodes [
 	| result |
 	result := CobolDataDescriptionEntryNode new.
@@ -17853,7 +17855,7 @@ CobolParser >> reduceActionFordataDescriptionEntryFormat15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryFormat16: nodes [
 	| result |
 	result := CobolDataDescriptionEntryNode new.
@@ -17864,7 +17866,7 @@ CobolParser >> reduceActionFordataDescriptionEntryFormat16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryFormat21: nodes [
 	| result |
 	result := CobolDataDescription66EntryNode new.
@@ -17875,7 +17877,7 @@ CobolParser >> reduceActionFordataDescriptionEntryFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDescriptionEntryFormat31: nodes [
 	| result |
 	result := CobolDataDescription88EntryNode new.
@@ -17886,7 +17888,7 @@ CobolParser >> reduceActionFordataDescriptionEntryFormat31: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataDivision1: nodes [
 	| result |
 	result := CobolDataDivisionNode new.
@@ -17897,7 +17899,7 @@ CobolParser >> reduceActionFordataDivision1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataExternalClause1: nodes [
 	| result |
 	result := CobolDataExternalClauseNode new.
@@ -17905,7 +17907,7 @@ CobolParser >> reduceActionFordataExternalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataExternalClause2: nodes [
 	| result |
 	result := CobolDataExternalClauseNode new.
@@ -17915,7 +17917,7 @@ CobolParser >> reduceActionFordataExternalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataExternalClause3: nodes [
 	| result |
 	result := CobolDataExternalClauseNode new.
@@ -17924,7 +17926,7 @@ CobolParser >> reduceActionFordataExternalClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataExternalClause4: nodes [
 	| result |
 	result := CobolDataExternalClauseNode new.
@@ -17935,7 +17937,7 @@ CobolParser >> reduceActionFordataExternalClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataGlobalClause1: nodes [
 	| result |
 	result := CobolDataGlobalClauseNode new.
@@ -17943,7 +17945,7 @@ CobolParser >> reduceActionFordataGlobalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataGlobalClause2: nodes [
 	| result |
 	result := CobolDataGlobalClauseNode new.
@@ -17952,7 +17954,7 @@ CobolParser >> reduceActionFordataGlobalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataIntegerStringClause1: nodes [
 	| result |
 	result := CobolDataIntegerStringClauseNode new.
@@ -17960,7 +17962,7 @@ CobolParser >> reduceActionFordataIntegerStringClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataJustifiedClause3: nodes [
 	| result |
 	result := CobolDataJustifiedClauseNode new.
@@ -17968,7 +17970,7 @@ CobolParser >> reduceActionFordataJustifiedClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataJustifiedClause4: nodes [
 	| result |
 	result := CobolDataJustifiedClauseNode new.
@@ -17977,7 +17979,7 @@ CobolParser >> reduceActionFordataJustifiedClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause10: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -17993,7 +17995,7 @@ CobolParser >> reduceActionFordataOccursClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause12: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18012,7 +18014,7 @@ CobolParser >> reduceActionFordataOccursClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause1: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18025,7 +18027,7 @@ CobolParser >> reduceActionFordataOccursClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause2: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18040,7 +18042,7 @@ CobolParser >> reduceActionFordataOccursClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause3: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18056,7 +18058,7 @@ CobolParser >> reduceActionFordataOccursClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause4: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18070,7 +18072,7 @@ CobolParser >> reduceActionFordataOccursClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause6: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18087,7 +18089,7 @@ CobolParser >> reduceActionFordataOccursClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause7: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18102,7 +18104,7 @@ CobolParser >> reduceActionFordataOccursClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause8: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18119,7 +18121,7 @@ CobolParser >> reduceActionFordataOccursClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataOccursClause9: nodes [
 	| result |
 	result := CobolDataOccursClauseNode new.
@@ -18137,7 +18139,7 @@ CobolParser >> reduceActionFordataOccursClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataPictureClause3: nodes [
 	| result |
 	result := CobolDataPictureClauseNode new.
@@ -18146,7 +18148,7 @@ CobolParser >> reduceActionFordataPictureClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataPictureClause4: nodes [
 	| result |
 	result := CobolDataPictureClauseNode new.
@@ -18156,7 +18158,7 @@ CobolParser >> reduceActionFordataPictureClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataReceivedByClause10: nodes [
 	| result |
 	result := CobolDataReceivedByClauseNode new.
@@ -18166,7 +18168,7 @@ CobolParser >> reduceActionFordataReceivedByClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataReceivedByClause1: nodes [
 	| result |
 	result := CobolDataReceivedByClauseNode new.
@@ -18174,7 +18176,7 @@ CobolParser >> reduceActionFordataReceivedByClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataReceivedByClause4: nodes [
 	| result |
 	result := CobolDataReceivedByClauseNode new.
@@ -18183,7 +18185,7 @@ CobolParser >> reduceActionFordataReceivedByClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRecordAreaClause1: nodes [
 	| result |
 	result := CobolDataRecordAreaClauseNode new.
@@ -18192,7 +18194,7 @@ CobolParser >> reduceActionFordataRecordAreaClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRecordsClause1: nodes [
 	| result |
 	result := CobolDataRecordsClauseNode new.
@@ -18202,7 +18204,7 @@ CobolParser >> reduceActionFordataRecordsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRecordsClause2: nodes [
 	| result |
 	result := CobolDataRecordsClauseNode new.
@@ -18213,7 +18215,7 @@ CobolParser >> reduceActionFordataRecordsClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRedefinesClause1: nodes [
 	| result |
 	result := CobolDataRedefinesClauseNode new.
@@ -18222,7 +18224,7 @@ CobolParser >> reduceActionFordataRedefinesClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRenamesClause1: nodes [
 	| result |
 	result := CobolDataRenamesClauseNode new.
@@ -18231,7 +18233,7 @@ CobolParser >> reduceActionFordataRenamesClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRenamesClause2: nodes [
 	| result |
 	result := CobolDataRenamesClauseNode new.
@@ -18242,7 +18244,7 @@ CobolParser >> reduceActionFordataRenamesClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRequiredValueClause1: nodes [
 	| result |
 	result := CobolDataValueClauseNode new.
@@ -18255,7 +18257,7 @@ CobolParser >> reduceActionFordataRequiredValueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataRequiredValueClause2: nodes [
 	| result |
 	result := CobolDataValueClauseNode new.
@@ -18269,7 +18271,7 @@ CobolParser >> reduceActionFordataRequiredValueClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSignClause10: nodes [
 	| result |
 	result := CobolDataSignClauseNode new.
@@ -18281,7 +18283,7 @@ CobolParser >> reduceActionFordataSignClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSignClause1: nodes [
 	| result |
 	result := CobolDataSignClauseNode new.
@@ -18289,7 +18291,7 @@ CobolParser >> reduceActionFordataSignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSignClause2: nodes [
 	| result |
 	result := CobolDataSignClauseNode new.
@@ -18299,7 +18301,7 @@ CobolParser >> reduceActionFordataSignClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSignClause5: nodes [
 	| result |
 	result := CobolDataSignClauseNode new.
@@ -18308,7 +18310,7 @@ CobolParser >> reduceActionFordataSignClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSignClause6: nodes [
 	| result |
 	result := CobolDataSignClauseNode new.
@@ -18319,7 +18321,7 @@ CobolParser >> reduceActionFordataSignClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSynchronizedClause4: nodes [
 	| result |
 	result := CobolDataSynchronizedClauseNode new.
@@ -18327,7 +18329,7 @@ CobolParser >> reduceActionFordataSynchronizedClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataSynchronizedClause5: nodes [
 	| result |
 	result := CobolDataSynchronizedClauseNode new.
@@ -18336,7 +18338,7 @@ CobolParser >> reduceActionFordataSynchronizedClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataThreadLocalClause1: nodes [
 	| result |
 	result := CobolDataThreadLocalClauseNode new.
@@ -18344,7 +18346,7 @@ CobolParser >> reduceActionFordataThreadLocalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataThreadLocalClause2: nodes [
 	| result |
 	result := CobolDataThreadLocalClauseNode new.
@@ -18353,7 +18355,7 @@ CobolParser >> reduceActionFordataThreadLocalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeClause16: nodes [
 	| result |
 	result := CobolDataTypeClauseNode new.
@@ -18366,7 +18368,7 @@ CobolParser >> reduceActionFordataTypeClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeClause17: nodes [
 	| result |
 	result := CobolDataTypeClauseNode new.
@@ -18376,7 +18378,7 @@ CobolParser >> reduceActionFordataTypeClause17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeClause7: nodes [
 	| result |
 	result := CobolDataTypeClauseNode new.
@@ -18388,7 +18390,7 @@ CobolParser >> reduceActionFordataTypeClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeClause8: nodes [
 	| result |
 	result := CobolDataTypeClauseNode new.
@@ -18397,7 +18399,7 @@ CobolParser >> reduceActionFordataTypeClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeDefClause1: nodes [
 	| result |
 	result := CobolDataTypeDefClauseNode new.
@@ -18405,7 +18407,7 @@ CobolParser >> reduceActionFordataTypeDefClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataTypeDefClause2: nodes [
 	| result |
 	result := CobolDataTypeDefClauseNode new.
@@ -18414,7 +18416,7 @@ CobolParser >> reduceActionFordataTypeDefClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsageClause1: nodes [
 	| result |
 	result := CobolDataUsageClauseNode new.
@@ -18423,7 +18425,7 @@ CobolParser >> reduceActionFordataUsageClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsageClause2: nodes [
 	| result |
 	result := CobolDataUsageClauseNode new.
@@ -18431,7 +18433,7 @@ CobolParser >> reduceActionFordataUsageClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsageClause32: nodes [
 	| result |
 	result := CobolDataUsageClauseNode new.
@@ -18441,7 +18443,7 @@ CobolParser >> reduceActionFordataUsageClause32: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsageClause63: nodes [
 	| result |
 	result := CobolDataUsageClauseNode new.
@@ -18452,7 +18454,7 @@ CobolParser >> reduceActionFordataUsageClause63: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsingClause3: nodes [
 	| result |
 	result := CobolDataUsingClauseNode new.
@@ -18462,7 +18464,7 @@ CobolParser >> reduceActionFordataUsingClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataUsingClause4: nodes [
 	| result |
 	result := CobolDataUsingClauseNode new.
@@ -18473,7 +18475,7 @@ CobolParser >> reduceActionFordataUsingClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataValueClause1: nodes [
 	| result |
 	result := CobolDataValueClauseNode new.
@@ -18485,7 +18487,7 @@ CobolParser >> reduceActionFordataValueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataWithLowerBoundsClause1: nodes [
 	| result |
 	result := CobolDataWithLowerBoundsClauseNode new.
@@ -18494,7 +18496,7 @@ CobolParser >> reduceActionFordataWithLowerBoundsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordataWithLowerBoundsClause2: nodes [
 	| result |
 	result := CobolDataWithLowerBoundsClauseNode new.
@@ -18504,7 +18506,7 @@ CobolParser >> reduceActionFordataWithLowerBoundsClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordateCompiledParagraph1: nodes [
 	| result |
 	result := CobolDateCompiledParagraphNode new.
@@ -18513,7 +18515,7 @@ CobolParser >> reduceActionFordateCompiledParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordateCompiledParagraph2: nodes [
 	| result |
 	result := CobolDateCompiledParagraphNode new.
@@ -18523,7 +18525,7 @@ CobolParser >> reduceActionFordateCompiledParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordateWrittenParagraph1: nodes [
 	| result |
 	result := CobolDateWrittenParagraphNode new.
@@ -18532,7 +18534,7 @@ CobolParser >> reduceActionFordateWrittenParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordateWrittenParagraph2: nodes [
 	| result |
 	result := CobolDateWrittenParagraphNode new.
@@ -18542,7 +18544,7 @@ CobolParser >> reduceActionFordateWrittenParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordecimalPointClause1: nodes [
 	| result |
 	result := CobolDecimalPointClauseNode new.
@@ -18551,7 +18553,7 @@ CobolParser >> reduceActionFordecimalPointClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordecimalPointClause2: nodes [
 	| result |
 	result := CobolDecimalPointClauseNode new.
@@ -18561,7 +18563,7 @@ CobolParser >> reduceActionFordecimalPointClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultComputationalSignClause1: nodes [
 	| result |
 	result := CobolDefaultComputationalSignClauseNode new.
@@ -18572,7 +18574,7 @@ CobolParser >> reduceActionFordefaultComputationalSignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultComputationalSignClause7: nodes [
 	| result |
 	result := CobolDefaultComputationalSignClauseNode new.
@@ -18584,7 +18586,7 @@ CobolParser >> reduceActionFordefaultComputationalSignClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultComputationalSignClause8: nodes [
 	| result |
 	result := CobolDefaultComputationalSignClauseNode new.
@@ -18597,7 +18599,7 @@ CobolParser >> reduceActionFordefaultComputationalSignClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultComputationalSignClause9: nodes [
 	| result |
 	result := CobolDefaultComputationalSignClauseNode new.
@@ -18611,7 +18613,7 @@ CobolParser >> reduceActionFordefaultComputationalSignClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultDisplaySignClause10: nodes [
 	| result |
 	result := CobolDefaultDisplaySignClauseNode new.
@@ -18624,7 +18626,7 @@ CobolParser >> reduceActionFordefaultDisplaySignClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultDisplaySignClause1: nodes [
 	| result |
 	result := CobolDefaultDisplaySignClauseNode new.
@@ -18633,7 +18635,7 @@ CobolParser >> reduceActionFordefaultDisplaySignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultDisplaySignClause2: nodes [
 	| result |
 	result := CobolDefaultDisplaySignClauseNode new.
@@ -18644,7 +18646,7 @@ CobolParser >> reduceActionFordefaultDisplaySignClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultDisplaySignClause5: nodes [
 	| result |
 	result := CobolDefaultDisplaySignClauseNode new.
@@ -18654,7 +18656,7 @@ CobolParser >> reduceActionFordefaultDisplaySignClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordefaultDisplaySignClause6: nodes [
 	| result |
 	result := CobolDefaultDisplaySignClauseNode new.
@@ -18666,7 +18668,7 @@ CobolParser >> reduceActionFordefaultDisplaySignClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement10: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18677,7 +18679,7 @@ CobolParser >> reduceActionFordeleteStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement11: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18688,7 +18690,7 @@ CobolParser >> reduceActionFordeleteStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement12: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18700,7 +18702,7 @@ CobolParser >> reduceActionFordeleteStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement13: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18711,7 +18713,7 @@ CobolParser >> reduceActionFordeleteStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement14: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18723,7 +18725,7 @@ CobolParser >> reduceActionFordeleteStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement15: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18735,7 +18737,7 @@ CobolParser >> reduceActionFordeleteStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement16: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18748,7 +18750,7 @@ CobolParser >> reduceActionFordeleteStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement1: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18757,7 +18759,7 @@ CobolParser >> reduceActionFordeleteStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement2: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18767,7 +18769,7 @@ CobolParser >> reduceActionFordeleteStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement3: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18777,7 +18779,7 @@ CobolParser >> reduceActionFordeleteStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement4: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18788,7 +18790,7 @@ CobolParser >> reduceActionFordeleteStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement5: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18798,7 +18800,7 @@ CobolParser >> reduceActionFordeleteStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement6: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18809,7 +18811,7 @@ CobolParser >> reduceActionFordeleteStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement7: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18820,7 +18822,7 @@ CobolParser >> reduceActionFordeleteStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordeleteStatement8: nodes [
 	| result |
 	result := CobolDeleteStatementNode new.
@@ -18832,7 +18834,7 @@ CobolParser >> reduceActionFordeleteStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordestinationCountClause1: nodes [
 	| result |
 	result := CobolDestinationCountClauseNode new.
@@ -18843,7 +18845,7 @@ CobolParser >> reduceActionFordestinationCountClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordestinationCountClause2: nodes [
 	| result |
 	result := CobolDestinationCountClauseNode new.
@@ -18855,7 +18857,7 @@ CobolParser >> reduceActionFordestinationCountClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordestinationTableClause1: nodes [
 	| result |
 	result := CobolDestinationTableClauseNode new.
@@ -18867,7 +18869,7 @@ CobolParser >> reduceActionFordestinationTableClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordestinationTableClause2: nodes [
 	| result |
 	result := CobolDestinationTableClauseNode new.
@@ -18882,7 +18884,7 @@ CobolParser >> reduceActionFordestinationTableClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisableStatement11: nodes [
 	| result |
 	result := CobolDisableStatementNode new.
@@ -18896,7 +18898,7 @@ CobolParser >> reduceActionFordisableStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisableStatement1: nodes [
 	| result |
 	result := CobolDisableStatementNode new.
@@ -18908,7 +18910,7 @@ CobolParser >> reduceActionFordisableStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisableStatement3: nodes [
 	| result |
 	result := CobolDisableStatementNode new.
@@ -18921,7 +18923,7 @@ CobolParser >> reduceActionFordisableStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisableStatement9: nodes [
 	| result |
 	result := CobolDisableStatementNode new.
@@ -18934,7 +18936,7 @@ CobolParser >> reduceActionFordisableStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause10: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18944,7 +18946,7 @@ CobolParser >> reduceActionFordiskSizeClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause12: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18955,7 +18957,7 @@ CobolParser >> reduceActionFordiskSizeClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause22: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18966,7 +18968,7 @@ CobolParser >> reduceActionFordiskSizeClause22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause24: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18978,7 +18980,7 @@ CobolParser >> reduceActionFordiskSizeClause24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause4: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18987,7 +18989,7 @@ CobolParser >> reduceActionFordiskSizeClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordiskSizeClause6: nodes [
 	| result |
 	result := CobolDiskSizeClauseNode new.
@@ -18997,7 +18999,7 @@ CobolParser >> reduceActionFordiskSizeClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement1: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19007,7 +19009,7 @@ CobolParser >> reduceActionFordisplayStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement2: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19018,7 +19020,7 @@ CobolParser >> reduceActionFordisplayStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement3: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19030,7 +19032,7 @@ CobolParser >> reduceActionFordisplayStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement4: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19043,7 +19045,7 @@ CobolParser >> reduceActionFordisplayStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement5: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19055,7 +19057,7 @@ CobolParser >> reduceActionFordisplayStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement6: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19068,7 +19070,7 @@ CobolParser >> reduceActionFordisplayStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement7: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19082,7 +19084,7 @@ CobolParser >> reduceActionFordisplayStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordisplayStatement8: nodes [
 	| result |
 	result := CobolDisplayStatementNode new.
@@ -19097,7 +19099,7 @@ CobolParser >> reduceActionFordisplayStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideByGivingStatement1: nodes [
 	| result |
 	result := Array new: 3.
@@ -19108,7 +19110,7 @@ CobolParser >> reduceActionFordivideByGivingStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideByGivingStatement2: nodes [
 	| result |
 	result := Array new: 3.
@@ -19121,7 +19123,7 @@ CobolParser >> reduceActionFordivideByGivingStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement1: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19135,7 +19137,7 @@ CobolParser >> reduceActionFordivideStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement2: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19151,7 +19153,7 @@ CobolParser >> reduceActionFordivideStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement3: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19166,7 +19168,7 @@ CobolParser >> reduceActionFordivideStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement4: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19183,7 +19185,7 @@ CobolParser >> reduceActionFordivideStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement5: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19198,7 +19200,7 @@ CobolParser >> reduceActionFordivideStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFordivideStatement6: nodes [
 	| result |
 	result := CobolDivideStatementNode new.
@@ -19215,7 +19217,7 @@ CobolParser >> reduceActionFordivideStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenableStatement10: nodes [
 	| result |
 	result := CobolEnableStatementNode new.
@@ -19228,7 +19230,7 @@ CobolParser >> reduceActionForenableStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenableStatement12: nodes [
 	| result |
 	result := CobolEnableStatementNode new.
@@ -19242,7 +19244,7 @@ CobolParser >> reduceActionForenableStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenableStatement2: nodes [
 	| result |
 	result := CobolEnableStatementNode new.
@@ -19254,7 +19256,7 @@ CobolParser >> reduceActionForenableStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenableStatement4: nodes [
 	| result |
 	result := CobolEnableStatementNode new.
@@ -19267,7 +19269,7 @@ CobolParser >> reduceActionForenableStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForendKeyClause1: nodes [
 	| result |
 	result := CobolEndKeyClauseNode new.
@@ -19278,7 +19280,7 @@ CobolParser >> reduceActionForendKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForendKeyClause2: nodes [
 	| result |
 	result := CobolEndKeyClauseNode new.
@@ -19290,7 +19292,7 @@ CobolParser >> reduceActionForendKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForendProgramStatement1: nodes [
 	| result |
 	result := CobolEndProgramStatementNode new.
@@ -19301,7 +19303,7 @@ CobolParser >> reduceActionForendProgramStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForentryStatement1: nodes [
 	| result |
 	result := CobolEntryStatementNode new.
@@ -19310,7 +19312,7 @@ CobolParser >> reduceActionForentryStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForentryStatement2: nodes [
 	| result |
 	result := CobolEntryStatementNode new.
@@ -19321,7 +19323,7 @@ CobolParser >> reduceActionForentryStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentDivision1: nodes [
 	| result |
 	result := CobolEnvironmentDivisionNode new.
@@ -19332,7 +19334,7 @@ CobolParser >> reduceActionForenvironmentDivision1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameClause1: nodes [
 	| result |
 	result := CobolEnvironmentSwitchNameClauseNode new.
@@ -19341,7 +19343,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameClause2: nodes [
 	| result |
 	result := CobolEnvironmentSwitchNameClauseNode new.
@@ -19353,7 +19355,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameClause3: nodes [
 	| result |
 	result := CobolEnvironmentSwitchNameClauseNode new.
@@ -19363,7 +19365,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameClause4: nodes [
 	| result |
 	result := CobolEnvironmentSwitchNameClauseNode new.
@@ -19376,7 +19378,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameClause5: nodes [
 	| result |
 	result := CobolEnvironmentSwitchNameClauseNode new.
@@ -19386,7 +19388,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase11: nodes [
 	| result |
 	result := Array new: 3.
@@ -19401,7 +19403,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase11: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase12: nodes [
 	| result |
 	result := Array new: 3.
@@ -19417,7 +19419,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase12: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase13: nodes [
 	| result |
 	result := Array new: 3.
@@ -19427,7 +19429,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase13: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase14: nodes [
 	| result |
 	result := Array new: 3.
@@ -19440,7 +19442,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase14: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase15: nodes [
 	| result |
 	result := Array new: 3.
@@ -19454,7 +19456,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase15: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase16: nodes [
 	| result |
 	result := Array new: 3.
@@ -19465,7 +19467,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase16: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase17: nodes [
 	| result |
 	result := Array new: 3.
@@ -19479,7 +19481,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase17: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase18: nodes [
 	| result |
 	result := Array new: 3.
@@ -19494,7 +19496,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase18: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase1: nodes [
 	| result |
 	result := Array new: 3.
@@ -19504,7 +19506,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase1: no
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase22: nodes [
 	| result |
 	result := Array new: 3.
@@ -19516,7 +19518,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase22: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase23: nodes [
 	| result |
 	result := Array new: 3.
@@ -19531,7 +19533,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase23: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase24: nodes [
 	| result |
 	result := Array new: 3.
@@ -19547,7 +19549,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase24: n
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase2: nodes [
 	| result |
 	result := Array new: 3.
@@ -19560,7 +19562,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase2: no
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase3: nodes [
 	| result |
 	result := Array new: 3.
@@ -19574,7 +19576,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase3: no
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase5: nodes [
 	| result |
 	result := Array new: 3.
@@ -19588,7 +19590,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase5: no
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase6: nodes [
 	| result |
 	result := Array new: 3.
@@ -19603,7 +19605,7 @@ CobolParser >> reduceActionForenvironmentSwitchNameSpecialNamesStatusPhrase6: no
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForerrorKeyClause1: nodes [
 	| result |
 	result := CobolErrorKeyClauseNode new.
@@ -19614,7 +19616,7 @@ CobolParser >> reduceActionForerrorKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForerrorKeyClause2: nodes [
 	| result |
 	result := CobolErrorKeyClauseNode new.
@@ -19626,7 +19628,7 @@ CobolParser >> reduceActionForerrorKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateCondition2: nodes [
 	| result |
 	result := CobolRangeConditionNode new.
@@ -19634,7 +19636,7 @@ CobolParser >> reduceActionForevaluateCondition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateCondition3: nodes [
 	| result |
 	result := CobolRangeConditionNode new.
@@ -19644,7 +19646,7 @@ CobolParser >> reduceActionForevaluateCondition3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateCondition4: nodes [
 	| result |
 	result := CobolRangeConditionNode new.
@@ -19653,7 +19655,7 @@ CobolParser >> reduceActionForevaluateCondition4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateCondition5: nodes [
 	| result |
 	result := CobolRangeConditionNode new.
@@ -19664,7 +19666,7 @@ CobolParser >> reduceActionForevaluateCondition5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateStatement1: nodes [
 	| result |
 	result := CobolEvaluateStatementNode new.
@@ -19676,7 +19678,7 @@ CobolParser >> reduceActionForevaluateStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateStatement2: nodes [
 	| result |
 	result := CobolEvaluateStatementNode new.
@@ -19689,7 +19691,7 @@ CobolParser >> reduceActionForevaluateStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateStatement3: nodes [
 	| result |
 	result := CobolEvaluateStatementNode new.
@@ -19702,7 +19704,7 @@ CobolParser >> reduceActionForevaluateStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateStatement4: nodes [
 	| result |
 	result := CobolEvaluateStatementNode new.
@@ -19716,7 +19718,7 @@ CobolParser >> reduceActionForevaluateStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateWhen1: nodes [
 	| result |
 	result := CobolEvaluateWhenNode new.
@@ -19727,7 +19729,7 @@ CobolParser >> reduceActionForevaluateWhen1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateWhenOther1: nodes [
 	| result |
 	result := CobolEvaluateWhenOtherNode new.
@@ -19737,7 +19739,7 @@ CobolParser >> reduceActionForevaluateWhenOther1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForevaluateWhenPhrase1: nodes [
 	| result |
 	result := CobolEvaluateWhenPhraseNode new.
@@ -19746,7 +19748,7 @@ CobolParser >> reduceActionForevaluateWhenPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexecCicsStatement1: nodes [
 	| result |
 	result := CobolExecCicsStatementNode new.
@@ -19757,7 +19759,7 @@ CobolParser >> reduceActionForexecCicsStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexecSqlImsStatement1: nodes [
 	| result |
 	result := CobolExecSqlImsStatementNode new.
@@ -19768,7 +19770,7 @@ CobolParser >> reduceActionForexecSqlImsStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexecSqlStatement1: nodes [
 	| result |
 	result := CobolExecSqlStatementNode new.
@@ -19779,7 +19781,7 @@ CobolParser >> reduceActionForexecSqlStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexhibitStatement1: nodes [
 	| result |
 	result := CobolExhibitStatementNode new.
@@ -19788,7 +19790,7 @@ CobolParser >> reduceActionForexhibitStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexhibitStatement2: nodes [
 	| result |
 	result := CobolExhibitStatementNode new.
@@ -19798,7 +19800,7 @@ CobolParser >> reduceActionForexhibitStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexhibitStatement4: nodes [
 	| result |
 	result := CobolExhibitStatementNode new.
@@ -19809,7 +19811,7 @@ CobolParser >> reduceActionForexhibitStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexitStatement1: nodes [
 	| result |
 	result := CobolExitStatementNode new.
@@ -19817,7 +19819,7 @@ CobolParser >> reduceActionForexitStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexitStatement2: nodes [
 	| result |
 	result := CobolExitStatementNode new.
@@ -19826,7 +19828,7 @@ CobolParser >> reduceActionForexitStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexternalClause1: nodes [
 	| result |
 	result := CobolExternalClauseNode new.
@@ -19834,7 +19836,7 @@ CobolParser >> reduceActionForexternalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForexternalClause2: nodes [
 	| result |
 	result := CobolExternalClauseNode new.
@@ -19843,7 +19845,7 @@ CobolParser >> reduceActionForexternalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfigurativeConstant1: nodes [
 	| result |
 	result := CobolFigurativeConstantNode new.
@@ -19852,7 +19854,7 @@ CobolParser >> reduceActionForfigurativeConstant1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfigurativeConstant2: nodes [
 	| result |
 	result := CobolFigurativeConstantNode new.
@@ -19860,7 +19862,7 @@ CobolParser >> reduceActionForfigurativeConstant2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileControlEntry1: nodes [
 	| result |
 	result := CobolFileControlEntryNode new.
@@ -19869,7 +19871,7 @@ CobolParser >> reduceActionForfileControlEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileControlParagraph1: nodes [
 	| result |
 	result := CobolFileControlParagraphNode new.
@@ -19880,7 +19882,7 @@ CobolParser >> reduceActionForfileControlParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileDescriptionEntry1: nodes [
 	| result |
 	result := CobolFileDescriptionEntryNode new.
@@ -19894,7 +19896,7 @@ CobolParser >> reduceActionForfileDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileSection1: nodes [
 	| result |
 	result := CobolFileSectionNode new.
@@ -19905,7 +19907,7 @@ CobolParser >> reduceActionForfileSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause1: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19914,7 +19916,7 @@ CobolParser >> reduceActionForfileStatusClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause2: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19924,7 +19926,7 @@ CobolParser >> reduceActionForfileStatusClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause5: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19934,7 +19936,7 @@ CobolParser >> reduceActionForfileStatusClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause6: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19945,7 +19947,7 @@ CobolParser >> reduceActionForfileStatusClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause7: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19956,7 +19958,7 @@ CobolParser >> reduceActionForfileStatusClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfileStatusClause8: nodes [
 	| result |
 	result := CobolFileStatusClauseNode new.
@@ -19968,7 +19970,7 @@ CobolParser >> reduceActionForfileStatusClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfunctionCall1: nodes [
 	| result |
 	result := CobolFunctionCallNode new.
@@ -19981,7 +19983,7 @@ CobolParser >> reduceActionForfunctionCall1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForfunctionCall2: nodes [
 	| result |
 	result := CobolFunctionCallNode new.
@@ -19999,7 +20001,7 @@ CobolParser >> reduceActionForfunctionCall2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgenerateStatement1: nodes [
 	| result |
 	result := CobolGenerateStatementNode new.
@@ -20008,7 +20010,7 @@ CobolParser >> reduceActionForgenerateStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForglobalClause1: nodes [
 	| result |
 	result := CobolGlobalClauseNode new.
@@ -20016,7 +20018,7 @@ CobolParser >> reduceActionForglobalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForglobalClause2: nodes [
 	| result |
 	result := CobolGlobalClauseNode new.
@@ -20025,7 +20027,7 @@ CobolParser >> reduceActionForglobalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToDependingOnStatement1: nodes [
 	| result |
 	result := Array new: 3.
@@ -20035,7 +20037,7 @@ CobolParser >> reduceActionForgoToDependingOnStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToDependingOnStatement2: nodes [
 	| result |
 	result := Array new: 3.
@@ -20047,7 +20049,7 @@ CobolParser >> reduceActionForgoToDependingOnStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToDependingOnStatement3: nodes [
 	| result |
 	result := Array new: 3.
@@ -20060,7 +20062,7 @@ CobolParser >> reduceActionForgoToDependingOnStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToStatement1: nodes [
 	| result |
 	result := CobolGoToStatementNode new.
@@ -20069,7 +20071,7 @@ CobolParser >> reduceActionForgoToStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToStatement2: nodes [
 	| result |
 	result := CobolGoToStatementNode new.
@@ -20080,7 +20082,7 @@ CobolParser >> reduceActionForgoToStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToStatement3: nodes [
 	| result |
 	result := CobolGoToStatementNode new.
@@ -20090,7 +20092,7 @@ CobolParser >> reduceActionForgoToStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgoToStatement4: nodes [
 	| result |
 	result := CobolGoToStatementNode new.
@@ -20102,7 +20104,7 @@ CobolParser >> reduceActionForgoToStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForgobackStatement1: nodes [
 	| result |
 	result := CobolGobackStatementNode new.
@@ -20110,7 +20112,7 @@ CobolParser >> reduceActionForgobackStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForidentificationDivision2: nodes [
 	| result |
 	result := CobolIdentificationDivisionNode new.
@@ -20122,7 +20124,7 @@ CobolParser >> reduceActionForidentificationDivision2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifElse1: nodes [
 	| result |
 	result := CobolIfElseNode new.
@@ -20132,7 +20134,7 @@ CobolParser >> reduceActionForifElse1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifElse2: nodes [
 	| result |
 	result := CobolIfElseNode new.
@@ -20141,7 +20143,7 @@ CobolParser >> reduceActionForifElse2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifStatement1: nodes [
 	| result |
 	result := CobolIfStatementNode new.
@@ -20151,7 +20153,7 @@ CobolParser >> reduceActionForifStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifStatement2: nodes [
 	| result |
 	result := CobolIfStatementNode new.
@@ -20162,7 +20164,7 @@ CobolParser >> reduceActionForifStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifStatement3: nodes [
 	| result |
 	result := CobolIfStatementNode new.
@@ -20173,7 +20175,7 @@ CobolParser >> reduceActionForifStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifStatement4: nodes [
 	| result |
 	result := CobolIfStatementNode new.
@@ -20185,7 +20187,7 @@ CobolParser >> reduceActionForifStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifThen1: nodes [
 	| result |
 	result := CobolIfThenNode new.
@@ -20194,7 +20196,7 @@ CobolParser >> reduceActionForifThen1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifThen2: nodes [
 	| result |
 	result := CobolIfThenNode new.
@@ -20202,7 +20204,7 @@ CobolParser >> reduceActionForifThen2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifThen3: nodes [
 	| result |
 	result := CobolIfThenNode new.
@@ -20212,7 +20214,7 @@ CobolParser >> reduceActionForifThen3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForifThen4: nodes [
 	| result |
 	result := CobolIfThenNode new.
@@ -20221,7 +20223,7 @@ CobolParser >> reduceActionForifThen4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinData_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -20230,7 +20232,7 @@ CobolParser >> reduceActionForinData_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinFile1: nodes [
 	| result |
 	result := Array new: 2.
@@ -20239,7 +20241,7 @@ CobolParser >> reduceActionForinFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitializeReplacingBy_1: nodes [
 	| result |
 	result := Array new: 2.
@@ -20250,7 +20252,7 @@ CobolParser >> reduceActionForinitializeReplacingBy_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitializeReplacingBy_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -20259,7 +20261,7 @@ CobolParser >> reduceActionForinitializeReplacingBy_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitializeReplacingPhrase1: nodes [
 	| result |
 	result := nodes at: 2.
@@ -20267,7 +20269,7 @@ CobolParser >> reduceActionForinitializeReplacingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitializeStatement1: nodes [
 	| result |
 	result := CobolInitializeStatementNode new.
@@ -20276,7 +20278,7 @@ CobolParser >> reduceActionForinitializeStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitializeStatement2: nodes [
 	| result |
 	result := CobolInitializeStatementNode new.
@@ -20287,7 +20289,7 @@ CobolParser >> reduceActionForinitializeStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinitiateStatement1: nodes [
 	| result |
 	result := CobolInitiateStatementNode new.
@@ -20296,7 +20298,7 @@ CobolParser >> reduceActionForinitiateStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinputOutputSection1: nodes [
 	| result |
 	result := CobolInputOutputSectionNode new.
@@ -20307,7 +20309,7 @@ CobolParser >> reduceActionForinputOutputSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectAllLeading1: nodes [
 	| result |
 	result := Array new: 3.
@@ -20319,7 +20321,7 @@ CobolParser >> reduceActionForinspectAllLeading1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectAllLeading_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -20332,7 +20334,7 @@ CobolParser >> reduceActionForinspectAllLeading_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectAllLeading_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -20342,7 +20344,7 @@ CobolParser >> reduceActionForinspectAllLeading_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectAllLeadings1: nodes [
 	| result |
 	result := Array new: 3.
@@ -20356,7 +20358,7 @@ CobolParser >> reduceActionForinspectAllLeadings1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectConvertingPhrase1: nodes [
 	| result |
 	result := Array new: 4.
@@ -20371,7 +20373,7 @@ CobolParser >> reduceActionForinspectConvertingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectFor1: nodes [
 	| result |
 	result := Array new: 4.
@@ -20386,7 +20388,7 @@ CobolParser >> reduceActionForinspectFor1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectFor_1: nodes [
 	| result |
 	result := Array new: 4.
@@ -20401,7 +20403,7 @@ CobolParser >> reduceActionForinspectFor_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectFor_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -20412,7 +20414,7 @@ CobolParser >> reduceActionForinspectFor_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectReplacingAllLeading1: nodes [
 	| result |
 	result := Array new: 4.
@@ -20426,7 +20428,7 @@ CobolParser >> reduceActionForinspectReplacingAllLeading1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectReplacingAllLeading_1: nodes [
 	| result |
 	result := Array new: 4.
@@ -20441,7 +20443,7 @@ CobolParser >> reduceActionForinspectReplacingAllLeading_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectReplacingAllLeading_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -20452,7 +20454,7 @@ CobolParser >> reduceActionForinspectReplacingAllLeading_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectReplacingCharacters1: nodes [
 	| result |
 	result := Array new: 3.
@@ -20466,7 +20468,7 @@ CobolParser >> reduceActionForinspectReplacingCharacters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectStatement1: nodes [
 	| result |
 	result := CobolInspectStatementNode new.
@@ -20479,7 +20481,7 @@ CobolParser >> reduceActionForinspectStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectStatement2: nodes [
 	| result |
 	result := CobolInspectStatementNode new.
@@ -20492,7 +20494,7 @@ CobolParser >> reduceActionForinspectStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectStatement3: nodes [
 	| result |
 	result := CobolInspectStatementNode new.
@@ -20507,7 +20509,7 @@ CobolParser >> reduceActionForinspectStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectStatement4: nodes [
 	| result |
 	result := CobolInspectStatementNode new.
@@ -20520,7 +20522,7 @@ CobolParser >> reduceActionForinspectStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinspectTallyingReplacingPhrase1: nodes [
 	| result |
 	result := Array new: 6.
@@ -20542,7 +20544,7 @@ CobolParser >> reduceActionForinspectTallyingReplacingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinstallationParagraph1: nodes [
 	| result |
 	result := CobolInstallationParagraphNode new.
@@ -20551,7 +20553,7 @@ CobolParser >> reduceActionForinstallationParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForinstallationParagraph2: nodes [
 	| result |
 	result := CobolInstallationParagraphNode new.
@@ -20561,7 +20563,7 @@ CobolParser >> reduceActionForinstallationParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForioControlParagraph1: nodes [
 	| result |
 	result := CobolIoControlParagraphNode new.
@@ -20570,7 +20572,7 @@ CobolParser >> reduceActionForioControlParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForioControlParagraph2: nodes [
 	| result |
 	result := CobolIoControlParagraphNode new.
@@ -20581,7 +20583,7 @@ CobolParser >> reduceActionForioControlParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForioControlParagraph3: nodes [
 	| result |
 	result := CobolIoControlParagraphNode new.
@@ -20592,7 +20594,7 @@ CobolParser >> reduceActionForioControlParagraph3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForioControlParagraph4: nodes [
 	| result |
 	result := CobolIoControlParagraphNode new.
@@ -20605,7 +20607,7 @@ CobolParser >> reduceActionForioControlParagraph4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlabelRecordsClause1: nodes [
 	| result |
 	result := CobolLabelRecordsClauseNode new.
@@ -20615,7 +20617,7 @@ CobolParser >> reduceActionForlabelRecordsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlabelRecordsClause3: nodes [
 	| result |
 	result := CobolLabelRecordsClauseNode new.
@@ -20625,7 +20627,7 @@ CobolParser >> reduceActionForlabelRecordsClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlabelRecordsClause4: nodes [
 	| result |
 	result := CobolLabelRecordsClauseNode new.
@@ -20636,7 +20638,7 @@ CobolParser >> reduceActionForlabelRecordsClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlabelRecordsClause6: nodes [
 	| result |
 	result := CobolLabelRecordsClauseNode new.
@@ -20647,7 +20649,7 @@ CobolParser >> reduceActionForlabelRecordsClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat11: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20655,7 +20657,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat12: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20665,7 +20667,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat16: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20676,7 +20678,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat21: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20688,7 +20690,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat22: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20702,7 +20704,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat24: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20717,7 +20719,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat26: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20731,7 +20733,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat26: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat27: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20747,7 +20749,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat27: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryAttributeClauseFormat29: nodes [
 	| result |
 	result := CobolLibraryAttributeClauseNode new.
@@ -20764,7 +20766,7 @@ CobolParser >> reduceActionForlibraryAttributeClauseFormat29: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntry1: nodes [
 	| result |
 	result := CobolLibraryDescriptionEntryNode new.
@@ -20774,7 +20776,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntryFormat11: nodes [
 	| result |
 	result := Array new: 3.
@@ -20786,7 +20788,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntryFormat11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntryFormat13: nodes [
 	| result |
 	result := Array new: 3.
@@ -20799,7 +20801,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntryFormat13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntryFormat14: nodes [
 	| result |
 	result := Array new: 3.
@@ -20813,7 +20815,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntryFormat14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntryFormat22: nodes [
 	| result |
 	result := Array new: 3.
@@ -20827,7 +20829,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntryFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryDescriptionEntryFormat24: nodes [
 	| result |
 	result := Array new: 3.
@@ -20842,7 +20844,7 @@ CobolParser >> reduceActionForlibraryDescriptionEntryFormat24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat11: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureClauseNode new.
@@ -20851,7 +20853,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat12: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureClauseNode new.
@@ -20861,7 +20863,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat210: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureClauseNode new.
@@ -20872,7 +20874,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat210: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat212: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureClauseNode new.
@@ -20884,7 +20886,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat212: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat216: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureClauseNode new.
@@ -20897,7 +20899,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureClauseFormat216: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureForClause1: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureForClauseNode new.
@@ -20906,7 +20908,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureForClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureGivingClause1: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureGivingClauseNode new.
@@ -20915,7 +20917,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureGivingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureUsingClause1: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureUsingClauseNode new.
@@ -20924,7 +20926,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureUsingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryEntryProcedureWithClause1: nodes [
 	| result |
 	result := CobolLibraryEntryProcedureWithClauseNode new.
@@ -20933,7 +20935,7 @@ CobolParser >> reduceActionForlibraryEntryProcedureWithClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryIsCommonClause1: nodes [
 	| result |
 	result := CobolLibraryIsCommonClauseNode new.
@@ -20941,7 +20943,7 @@ CobolParser >> reduceActionForlibraryIsCommonClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryIsCommonClause2: nodes [
 	| result |
 	result := CobolLibraryIsCommonClauseNode new.
@@ -20950,7 +20952,7 @@ CobolParser >> reduceActionForlibraryIsCommonClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryIsGlobalClause1: nodes [
 	| result |
 	result := CobolLibraryIsGlobalClauseNode new.
@@ -20958,7 +20960,7 @@ CobolParser >> reduceActionForlibraryIsGlobalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlibraryIsGlobalClause2: nodes [
 	| result |
 	result := CobolLibraryIsGlobalClauseNode new.
@@ -20967,7 +20969,7 @@ CobolParser >> reduceActionForlibraryIsGlobalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlinageClause1: nodes [
 	| result |
 	result := CobolLinageClauseNode new.
@@ -20978,7 +20980,7 @@ CobolParser >> reduceActionForlinageClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlinageClause2: nodes [
 	| result |
 	result := CobolLinageClauseNode new.
@@ -20990,7 +20992,7 @@ CobolParser >> reduceActionForlinageClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlinageClause5: nodes [
 	| result |
 	result := CobolLinageClauseNode new.
@@ -21002,7 +21004,7 @@ CobolParser >> reduceActionForlinageClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlinageClause6: nodes [
 	| result |
 	result := CobolLinageClauseNode new.
@@ -21015,7 +21017,7 @@ CobolParser >> reduceActionForlinageClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlinkageSection1: nodes [
 	| result |
 	result := CobolLinkageSectionNode new.
@@ -21027,7 +21029,7 @@ CobolParser >> reduceActionForlinkageSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlocalStorageSection1: nodes [
 	| result |
 	result := CobolLocalStorageSectionNode new.
@@ -21039,7 +21041,7 @@ CobolParser >> reduceActionForlocalStorageSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForlocalStorageSection2: nodes [
 	| result |
 	result := CobolLocalStorageSectionNode new.
@@ -21054,7 +21056,7 @@ CobolParser >> reduceActionForlocalStorageSection2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormemorySizeClause13: nodes [
 	| result |
 	result := CobolMemorySizeClauseNode new.
@@ -21064,7 +21066,7 @@ CobolParser >> reduceActionFormemorySizeClause13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormemorySizeClause15: nodes [
 	| result |
 	result := CobolMemorySizeClauseNode new.
@@ -21075,7 +21077,7 @@ CobolParser >> reduceActionFormemorySizeClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormemorySizeClause5: nodes [
 	| result |
 	result := CobolMemorySizeClauseNode new.
@@ -21084,7 +21086,7 @@ CobolParser >> reduceActionFormemorySizeClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormemorySizeClause7: nodes [
 	| result |
 	result := CobolMemorySizeClauseNode new.
@@ -21094,7 +21096,7 @@ CobolParser >> reduceActionFormemorySizeClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase11: nodes [
 	| result |
 	result := Array new: 2.
@@ -21108,7 +21110,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase12: nodes [
 	| result |
 	result := Array new: 2.
@@ -21124,7 +21126,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase13: nodes [
 	| result |
 	result := Array new: 2.
@@ -21137,7 +21139,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase15: nodes [
 	| result |
 	result := Array new: 2.
@@ -21152,7 +21154,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase16: nodes [
 	| result |
 	result := Array new: 2.
@@ -21169,7 +21171,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase1: nodes [
 	| result |
 	result := Array new: 2.
@@ -21180,7 +21182,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase3: nodes [
 	| result |
 	result := Array new: 2.
@@ -21193,7 +21195,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase4: nodes [
 	| result |
 	result := Array new: 2.
@@ -21208,7 +21210,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeCollatingSequencePhrase9: nodes [
 	| result |
 	result := Array new: 2.
@@ -21220,7 +21222,7 @@ CobolParser >> reduceActionFormergeCollatingSequencePhrase9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeOnKeyClause1: nodes [
 	| result |
 	result := CobolMergeOnKeyClauseNode new.
@@ -21229,7 +21231,7 @@ CobolParser >> reduceActionFormergeOnKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeOnKeyClause2: nodes [
 	| result |
 	result := CobolMergeOnKeyClauseNode new.
@@ -21239,7 +21241,7 @@ CobolParser >> reduceActionFormergeOnKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeOnKeyClause6: nodes [
 	| result |
 	result := CobolMergeOnKeyClauseNode new.
@@ -21250,7 +21252,7 @@ CobolParser >> reduceActionFormergeOnKeyClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeStatement1: nodes [
 	| result |
 	result := CobolMergeStatementNode new.
@@ -21264,7 +21266,7 @@ CobolParser >> reduceActionFormergeStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeStatement2: nodes [
 	| result |
 	result := CobolMergeStatementNode new.
@@ -21281,7 +21283,7 @@ CobolParser >> reduceActionFormergeStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeStatement3: nodes [
 	| result |
 	result := CobolMergeStatementNode new.
@@ -21297,7 +21299,7 @@ CobolParser >> reduceActionFormergeStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormergeStatement4: nodes [
 	| result |
 	result := CobolMergeStatementNode new.
@@ -21316,7 +21318,7 @@ CobolParser >> reduceActionFormergeStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageCountClause1: nodes [
 	| result |
 	result := CobolMessageCountClauseNode new.
@@ -21326,7 +21328,7 @@ CobolParser >> reduceActionFormessageCountClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageCountClause2: nodes [
 	| result |
 	result := CobolMessageCountClauseNode new.
@@ -21337,7 +21339,7 @@ CobolParser >> reduceActionFormessageCountClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageCountClause4: nodes [
 	| result |
 	result := CobolMessageCountClauseNode new.
@@ -21349,7 +21351,7 @@ CobolParser >> reduceActionFormessageCountClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageDateClause1: nodes [
 	| result |
 	result := CobolMessageDateClauseNode new.
@@ -21360,7 +21362,7 @@ CobolParser >> reduceActionFormessageDateClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageDateClause2: nodes [
 	| result |
 	result := CobolMessageDateClauseNode new.
@@ -21372,7 +21374,7 @@ CobolParser >> reduceActionFormessageDateClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageTimeClause1: nodes [
 	| result |
 	result := CobolMessageTimeClauseNode new.
@@ -21383,7 +21385,7 @@ CobolParser >> reduceActionFormessageTimeClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormessageTimeClause2: nodes [
 	| result |
 	result := CobolMessageTimeClauseNode new.
@@ -21395,7 +21397,7 @@ CobolParser >> reduceActionFormessageTimeClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveCorrespondingToStatement2: nodes [
 	| result |
 	result := Array new: 3.
@@ -21408,7 +21410,7 @@ CobolParser >> reduceActionFormoveCorrespondingToStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveStatement1: nodes [
 	| result |
 	result := CobolMoveStatementNode new.
@@ -21419,7 +21421,7 @@ CobolParser >> reduceActionFormoveStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveStatement2: nodes [
 	| result |
 	result := CobolMoveStatementNode new.
@@ -21430,7 +21432,7 @@ CobolParser >> reduceActionFormoveStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveStatement3: nodes [
 	| result |
 	result := CobolMoveStatementNode new.
@@ -21442,7 +21444,7 @@ CobolParser >> reduceActionFormoveStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveStatement4: nodes [
 	| result |
 	result := CobolMoveStatementNode new.
@@ -21454,7 +21456,7 @@ CobolParser >> reduceActionFormoveStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormoveToStatement1: nodes [
 	| result |
 	result := Array new: 3.
@@ -21465,7 +21467,7 @@ CobolParser >> reduceActionFormoveToStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultipleFileClause1: nodes [
 	| result |
 	result := CobolMultipleFileClauseNode new.
@@ -21477,7 +21479,7 @@ CobolParser >> reduceActionFormultipleFileClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultipleFileClause2: nodes [
 	| result |
 	result := CobolMultipleFileClauseNode new.
@@ -21490,7 +21492,7 @@ CobolParser >> reduceActionFormultipleFileClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultipleFileClause4: nodes [
 	| result |
 	result := CobolMultipleFileClauseNode new.
@@ -21504,7 +21506,7 @@ CobolParser >> reduceActionFormultipleFileClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyGiving1: nodes [
 	| result |
 	result := Array new: 3.
@@ -21517,7 +21519,7 @@ CobolParser >> reduceActionFormultiplyGiving1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement1: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21530,7 +21532,7 @@ CobolParser >> reduceActionFormultiplyStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement2: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21544,7 +21546,7 @@ CobolParser >> reduceActionFormultiplyStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement3: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21558,7 +21560,7 @@ CobolParser >> reduceActionFormultiplyStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement4: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21573,7 +21575,7 @@ CobolParser >> reduceActionFormultiplyStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement5: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21587,7 +21589,7 @@ CobolParser >> reduceActionFormultiplyStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement6: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21602,7 +21604,7 @@ CobolParser >> reduceActionFormultiplyStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement7: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21617,7 +21619,7 @@ CobolParser >> reduceActionFormultiplyStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFormultiplyStatement8: nodes [
 	| result |
 	result := CobolMultiplyStatementNode new.
@@ -21633,7 +21635,7 @@ CobolParser >> reduceActionFormultiplyStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFornotOnExceptionClause1: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -21643,7 +21645,7 @@ CobolParser >> reduceActionFornotOnExceptionClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFornotOnExceptionClause2: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -21654,7 +21656,7 @@ CobolParser >> reduceActionFornotOnExceptionClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFornotOnSizeErrorPhrase2: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -21666,7 +21668,7 @@ CobolParser >> reduceActionFornotOnSizeErrorPhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForobjectComputerParagraph1: nodes [
 	| result |
 	result := CobolObjectComputerParagraphNode new.
@@ -21678,7 +21680,7 @@ CobolParser >> reduceActionForobjectComputerParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForodtClause1: nodes [
 	| result |
 	result := CobolOdtClauseNode new.
@@ -21687,7 +21689,7 @@ CobolParser >> reduceActionForodtClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForodtClause2: nodes [
 	| result |
 	result := CobolOdtClauseNode new.
@@ -21697,7 +21699,7 @@ CobolParser >> reduceActionForodtClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForonExceptionClause1: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -21706,7 +21708,7 @@ CobolParser >> reduceActionForonExceptionClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenExtendStatement1: nodes [
 	| result |
 	result := Array new: 2.
@@ -21716,7 +21718,7 @@ CobolParser >> reduceActionForopenExtendStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInput1: nodes [
 	| result |
 	result := Array new: 2.
@@ -21725,7 +21727,7 @@ CobolParser >> reduceActionForopenInput1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInput2: nodes [
 	| result |
 	result := Array new: 2.
@@ -21735,7 +21737,7 @@ CobolParser >> reduceActionForopenInput2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInput3: nodes [
 	| result |
 	result := Array new: 2.
@@ -21746,7 +21748,7 @@ CobolParser >> reduceActionForopenInput3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInput4: nodes [
 	| result |
 	result := Array new: 2.
@@ -21758,7 +21760,7 @@ CobolParser >> reduceActionForopenInput4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInputStatement1: nodes [
 	| result |
 	result := Array new: 2.
@@ -21770,7 +21772,7 @@ CobolParser >> reduceActionForopenInputStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenInput_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -21779,7 +21781,7 @@ CobolParser >> reduceActionForopenInput_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForopenStatement1: nodes [
 	| result |
 	result := CobolOpenStatementNode new.
@@ -21789,7 +21791,7 @@ CobolParser >> reduceActionForopenStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFororganizationClause15: nodes [
 	| result |
 	result := CobolOrganizationClauseNode new.
@@ -21798,7 +21800,7 @@ CobolParser >> reduceActionFororganizationClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFororganizationClause30: nodes [
 	| result |
 	result := CobolOrganizationClauseNode new.
@@ -21808,7 +21810,7 @@ CobolParser >> reduceActionFororganizationClause30: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFororganizationClause39: nodes [
 	| result |
 	result := CobolOrganizationClauseNode new.
@@ -21820,7 +21822,7 @@ CobolParser >> reduceActionFororganizationClause39: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFororganizationClause3: nodes [
 	| result |
 	result := CobolOrganizationClauseNode new.
@@ -21828,7 +21830,7 @@ CobolParser >> reduceActionFororganizationClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFororganizationClause45: nodes [
 	| result |
 	result := CobolOrganizationClauseNode new.
@@ -21839,7 +21841,7 @@ CobolParser >> reduceActionFororganizationClause45: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpaddingCharacterClause1: nodes [
 	| result |
 	result := CobolPaddingCharacterClauseNode new.
@@ -21848,7 +21850,7 @@ CobolParser >> reduceActionForpaddingCharacterClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpaddingCharacterClause5: nodes [
 	| result |
 	result := CobolPaddingCharacterClauseNode new.
@@ -21858,7 +21860,7 @@ CobolParser >> reduceActionForpaddingCharacterClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpaddingCharacterClause7: nodes [
 	| result |
 	result := CobolPaddingCharacterClauseNode new.
@@ -21869,7 +21871,7 @@ CobolParser >> reduceActionForpaddingCharacterClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForparagraph1: nodes [
 	| result |
 	result := CobolParagraphNode new.
@@ -21879,7 +21881,7 @@ CobolParser >> reduceActionForparagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForparagraph2: nodes [
 	| result |
 	result := CobolParagraphNode new.
@@ -21889,7 +21891,7 @@ CobolParser >> reduceActionForparagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForparagraphs1: nodes [
 	| result |
 	result := Array new: 2.
@@ -21900,7 +21902,7 @@ CobolParser >> reduceActionForparagraphs1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpasswordClause1: nodes [
 	| result |
 	result := CobolPasswordClauseNode new.
@@ -21909,7 +21911,7 @@ CobolParser >> reduceActionForpasswordClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpasswordClause2: nodes [
 	| result |
 	result := CobolPasswordClauseNode new.
@@ -21919,7 +21921,7 @@ CobolParser >> reduceActionForpasswordClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformAfter1: nodes [
 	| result |
 	result := Array new: 5.
@@ -21933,7 +21935,7 @@ CobolParser >> reduceActionForperformAfter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformAfter_1: nodes [
 	| result |
 	result := Array new: 5.
@@ -21945,7 +21947,7 @@ CobolParser >> reduceActionForperformAfter_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformAfter_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -21957,7 +21959,7 @@ CobolParser >> reduceActionForperformAfter_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformInlineStatement1: nodes [
 	| result |
 	result := Array new: 5.
@@ -21969,7 +21971,7 @@ CobolParser >> reduceActionForperformInlineStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformInlineStatement2: nodes [
 	| result |
 	result := Array new: 5.
@@ -21985,7 +21987,7 @@ CobolParser >> reduceActionForperformInlineStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformProcedureStatement1: nodes [
 	| result |
 	result := Array new: 6.
@@ -21995,7 +21997,7 @@ CobolParser >> reduceActionForperformProcedureStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformProcedureStatement2: nodes [
 	| result |
 	result := Array new: 6.
@@ -22009,7 +22011,7 @@ CobolParser >> reduceActionForperformProcedureStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformProcedureStatement3: nodes [
 	| result |
 	result := Array new: 6.
@@ -22021,7 +22023,7 @@ CobolParser >> reduceActionForperformProcedureStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformProcedureStatement4: nodes [
 	| result |
 	result := Array new: 6.
@@ -22037,7 +22039,7 @@ CobolParser >> reduceActionForperformProcedureStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformStatement1: nodes [
 	| result |
 	result := CobolPerformStatementNode new.
@@ -22050,7 +22052,7 @@ CobolParser >> reduceActionForperformStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformStatement2: nodes [
 	| result |
 	result := CobolPerformStatementNode new.
@@ -22064,7 +22066,7 @@ CobolParser >> reduceActionForperformStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformTestClause2: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -22073,7 +22075,7 @@ CobolParser >> reduceActionForperformTestClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformTestClause4: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -22083,7 +22085,7 @@ CobolParser >> reduceActionForperformTestClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformType1: nodes [
 	| result |
 	result := Array new: 4.
@@ -22094,7 +22096,7 @@ CobolParser >> reduceActionForperformType1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformType2: nodes [
 	| result |
 	result := Array new: 4.
@@ -22105,7 +22107,7 @@ CobolParser >> reduceActionForperformType2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformType3: nodes [
 	| result |
 	result := Array new: 4.
@@ -22116,7 +22118,7 @@ CobolParser >> reduceActionForperformType3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformUntil1: nodes [
 	| result |
 	result := Array new: 2.
@@ -22126,7 +22128,7 @@ CobolParser >> reduceActionForperformUntil1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformUntil2: nodes [
 	| result |
 	result := Array new: 2.
@@ -22137,7 +22139,7 @@ CobolParser >> reduceActionForperformUntil2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformVarying1: nodes [
 	| result |
 	result := Array new: 2.
@@ -22148,7 +22150,7 @@ CobolParser >> reduceActionForperformVarying1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformVarying2: nodes [
 	| result |
 	result := Array new: 2.
@@ -22158,7 +22160,7 @@ CobolParser >> reduceActionForperformVarying2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformVarying3: nodes [
 	| result |
 	result := Array new: 2.
@@ -22169,7 +22171,7 @@ CobolParser >> reduceActionForperformVarying3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformVaryingClause1: nodes [
 	| result |
 	result := CobolPerformVaryingClauseNode new.
@@ -22187,7 +22189,7 @@ CobolParser >> reduceActionForperformVaryingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForperformVaryingPhrase1: nodes [
 	| result |
 	result := Array new: 5.
@@ -22202,7 +22204,7 @@ CobolParser >> reduceActionForperformVaryingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDeclarative1: nodes [
 	| result |
 	result := Array new: 5.
@@ -22218,7 +22220,7 @@ CobolParser >> reduceActionForprocedureDeclarative1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDeclarative_1: nodes [
 	| result |
 	result := Array new: 5.
@@ -22235,7 +22237,7 @@ CobolParser >> reduceActionForprocedureDeclarative_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDeclarative_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -22247,7 +22249,7 @@ CobolParser >> reduceActionForprocedureDeclarative_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDeclaratives1: nodes [
 	| result |
 	result := CobolProcedureDeclarativesNode new.
@@ -22264,7 +22266,7 @@ CobolParser >> reduceActionForprocedureDeclaratives1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision1: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22277,7 +22279,7 @@ CobolParser >> reduceActionForprocedureDivision1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision2: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22291,7 +22293,7 @@ CobolParser >> reduceActionForprocedureDivision2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision5: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22305,7 +22307,7 @@ CobolParser >> reduceActionForprocedureDivision5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision6: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22320,7 +22322,7 @@ CobolParser >> reduceActionForprocedureDivision6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision7: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22335,7 +22337,7 @@ CobolParser >> reduceActionForprocedureDivision7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivision8: nodes [
 	| result |
 	result := CobolProcedureDivisionNode new.
@@ -22351,7 +22353,7 @@ CobolParser >> reduceActionForprocedureDivision8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionBody1: nodes [
 	| result |
 	result := Array new: 3.
@@ -22364,7 +22366,7 @@ CobolParser >> reduceActionForprocedureDivisionBody1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionByReference1: nodes [
 	| result |
 	result := Array new: 3.
@@ -22372,7 +22374,7 @@ CobolParser >> reduceActionForprocedureDivisionByReference1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionByReference2: nodes [
 	| result |
 	result := Array new: 3.
@@ -22381,7 +22383,7 @@ CobolParser >> reduceActionForprocedureDivisionByReference2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionByReference3: nodes [
 	| result |
 	result := Array new: 3.
@@ -22389,7 +22391,7 @@ CobolParser >> reduceActionForprocedureDivisionByReference3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionByReference_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -22402,7 +22404,7 @@ CobolParser >> reduceActionForprocedureDivisionByReference_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionByReference_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -22412,7 +22414,7 @@ CobolParser >> reduceActionForprocedureDivisionByReference_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionGivingClause1: nodes [
 	| result |
 	result := CobolProcedureDivisionGivingClauseNode new.
@@ -22421,7 +22423,7 @@ CobolParser >> reduceActionForprocedureDivisionGivingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionUsingClause2: nodes [
 	| result |
 	result := CobolProcedureDivisionUsingClauseNode new.
@@ -22433,7 +22435,7 @@ CobolParser >> reduceActionForprocedureDivisionUsingClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureDivisionUsingParameter1: nodes [
 	| result |
 	result := Array new: 4.
@@ -22447,7 +22449,7 @@ CobolParser >> reduceActionForprocedureDivisionUsingParameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureName1: nodes [
 	| result |
 	result := CobolProcedureNameNode new.
@@ -22457,7 +22459,7 @@ CobolParser >> reduceActionForprocedureName1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureSection1: nodes [
 	| result |
 	result := CobolProcedureSectionNode new.
@@ -22468,7 +22470,7 @@ CobolParser >> reduceActionForprocedureSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureSectionHeader1: nodes [
 	| result |
 	result := CobolProcedureSectionHeaderNode new.
@@ -22477,7 +22479,7 @@ CobolParser >> reduceActionForprocedureSectionHeader1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprocedureSectionHeader2: nodes [
 	| result |
 	result := CobolProcedureSectionHeaderNode new.
@@ -22487,7 +22489,7 @@ CobolParser >> reduceActionForprocedureSectionHeader2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramIdParagraph1: nodes [
 	| result |
 	result := CobolProgramIdParagraphNode new.
@@ -22499,7 +22501,7 @@ CobolParser >> reduceActionForprogramIdParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramIdParagraph2: nodes [
 	| result |
 	result := CobolProgramIdParagraphNode new.
@@ -22513,7 +22515,7 @@ CobolParser >> reduceActionForprogramIdParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramIdParagraph7: nodes [
 	| result |
 	result := CobolProgramIdParagraphNode new.
@@ -22528,7 +22530,7 @@ CobolParser >> reduceActionForprogramIdParagraph7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramLibrarySection1: nodes [
 	| result |
 	result := CobolProgramLibrarySectionNode new.
@@ -22539,7 +22541,7 @@ CobolParser >> reduceActionForprogramLibrarySection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit10: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22550,7 +22552,7 @@ CobolParser >> reduceActionForprogramUnit10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit11: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22561,7 +22563,7 @@ CobolParser >> reduceActionForprogramUnit11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit12: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22573,7 +22575,7 @@ CobolParser >> reduceActionForprogramUnit12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit13: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22584,7 +22586,7 @@ CobolParser >> reduceActionForprogramUnit13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit14: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22596,7 +22598,7 @@ CobolParser >> reduceActionForprogramUnit14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit15: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22608,7 +22610,7 @@ CobolParser >> reduceActionForprogramUnit15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit16: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22621,7 +22623,7 @@ CobolParser >> reduceActionForprogramUnit16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit1: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22630,7 +22632,7 @@ CobolParser >> reduceActionForprogramUnit1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit2: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22640,7 +22642,7 @@ CobolParser >> reduceActionForprogramUnit2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit3: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22650,7 +22652,7 @@ CobolParser >> reduceActionForprogramUnit3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit4: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22661,7 +22663,7 @@ CobolParser >> reduceActionForprogramUnit4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit5: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22671,7 +22673,7 @@ CobolParser >> reduceActionForprogramUnit5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit6: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22682,7 +22684,7 @@ CobolParser >> reduceActionForprogramUnit6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit7: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22693,7 +22695,7 @@ CobolParser >> reduceActionForprogramUnit7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit8: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22705,7 +22707,7 @@ CobolParser >> reduceActionForprogramUnit8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit9: nodes [
 	| result |
 	result := CobolProgramUnitNode new.
@@ -22715,14 +22717,14 @@ CobolParser >> reduceActionForprogramUnit9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit__programUnit__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit__unit__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -22730,7 +22732,7 @@ CobolParser >> reduceActionForprogramUnit__unit__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForprogramUnit__unit__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -22738,7 +22740,7 @@ CobolParser >> reduceActionForprogramUnit__unit__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForpurgeStatement1: nodes [
 	| result |
 	result := CobolPurgeStatementNode new.
@@ -22747,7 +22749,7 @@ CobolParser >> reduceActionForpurgeStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForqualifiedDataNameFormat21: nodes [
 	| result |
 	result := CobolInExpressionNode new.
@@ -22757,7 +22759,7 @@ CobolParser >> reduceActionForqualifiedDataNameFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForqualifiedDataNameFormat41: nodes [
 	| result |
 	result := CobolInExpressionNode new.
@@ -22767,7 +22769,7 @@ CobolParser >> reduceActionForqualifiedDataNameFormat41: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForqualifiedInData_1: nodes [
 	| result |
 	result := Array new: 2.
@@ -22778,7 +22780,7 @@ CobolParser >> reduceActionForqualifiedInData_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadKey_1: nodes [
 	| result |
 	result := Array new: 2.
@@ -22786,7 +22788,7 @@ CobolParser >> reduceActionForreadKey_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement10: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22804,7 +22806,7 @@ CobolParser >> reduceActionForreadStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement11: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22823,7 +22825,7 @@ CobolParser >> reduceActionForreadStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement12: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22843,7 +22845,7 @@ CobolParser >> reduceActionForreadStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement13: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22861,7 +22863,7 @@ CobolParser >> reduceActionForreadStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement14: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22880,7 +22882,7 @@ CobolParser >> reduceActionForreadStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement15: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22900,7 +22902,7 @@ CobolParser >> reduceActionForreadStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement16: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22921,7 +22923,7 @@ CobolParser >> reduceActionForreadStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement1: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22937,7 +22939,7 @@ CobolParser >> reduceActionForreadStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement2: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22954,7 +22956,7 @@ CobolParser >> reduceActionForreadStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement3: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22972,7 +22974,7 @@ CobolParser >> reduceActionForreadStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement4: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -22991,7 +22993,7 @@ CobolParser >> reduceActionForreadStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreadStatement9: nodes [
 	| result |
 	result := CobolReadStatementNode new.
@@ -23008,7 +23010,7 @@ CobolParser >> reduceActionForreadStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveBefore2: nodes [
 	| result |
 	result := CobolReceiveBeforeNode new.
@@ -23017,7 +23019,7 @@ CobolParser >> reduceActionForreceiveBefore2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveBefore4: nodes [
 	| result |
 	result := CobolReceiveBeforeNode new.
@@ -23027,7 +23029,7 @@ CobolParser >> reduceActionForreceiveBefore4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveFromStatement1: nodes [
 	| result |
 	result := CobolReceiveFromStatementNode new.
@@ -23039,7 +23041,7 @@ CobolParser >> reduceActionForreceiveFromStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement1: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23049,7 +23051,7 @@ CobolParser >> reduceActionForreceiveIntoStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement2: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23060,7 +23062,7 @@ CobolParser >> reduceActionForreceiveIntoStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement3: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23071,7 +23073,7 @@ CobolParser >> reduceActionForreceiveIntoStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement4: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23083,7 +23085,7 @@ CobolParser >> reduceActionForreceiveIntoStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement5: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23094,7 +23096,7 @@ CobolParser >> reduceActionForreceiveIntoStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement6: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23106,7 +23108,7 @@ CobolParser >> reduceActionForreceiveIntoStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement7: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23118,7 +23120,7 @@ CobolParser >> reduceActionForreceiveIntoStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveIntoStatement8: nodes [
 	| result |
 	result := CobolReceiveIntoStatementNode new.
@@ -23131,7 +23133,7 @@ CobolParser >> reduceActionForreceiveIntoStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveSize2: nodes [
 	| result |
 	result := CobolReceiveSizeNode new.
@@ -23140,7 +23142,7 @@ CobolParser >> reduceActionForreceiveSize2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveSize4: nodes [
 	| result |
 	result := CobolReceiveSizeNode new.
@@ -23150,7 +23152,7 @@ CobolParser >> reduceActionForreceiveSize4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement1: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23159,7 +23161,7 @@ CobolParser >> reduceActionForreceiveStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement2: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23169,7 +23171,7 @@ CobolParser >> reduceActionForreceiveStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement3: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23179,7 +23181,7 @@ CobolParser >> reduceActionForreceiveStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement4: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23190,7 +23192,7 @@ CobolParser >> reduceActionForreceiveStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement5: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23200,7 +23202,7 @@ CobolParser >> reduceActionForreceiveStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement6: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23211,7 +23213,7 @@ CobolParser >> reduceActionForreceiveStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement7: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23222,7 +23224,7 @@ CobolParser >> reduceActionForreceiveStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatement8: nodes [
 	| result |
 	result := CobolReceiveStatementNode new.
@@ -23234,7 +23236,7 @@ CobolParser >> reduceActionForreceiveStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatus1: nodes [
 	| result |
 	result := CobolReceiveStatusNode new.
@@ -23243,7 +23245,7 @@ CobolParser >> reduceActionForreceiveStatus1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveStatus2: nodes [
 	| result |
 	result := CobolReceiveStatusNode new.
@@ -23253,7 +23255,7 @@ CobolParser >> reduceActionForreceiveStatus2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveThread1: nodes [
 	| result |
 	result := CobolReceiveThreadNode new.
@@ -23262,7 +23264,7 @@ CobolParser >> reduceActionForreceiveThread1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveThread2: nodes [
 	| result |
 	result := CobolReceiveThreadNode new.
@@ -23272,7 +23274,7 @@ CobolParser >> reduceActionForreceiveThread2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveWith1: nodes [
 	| result |
 	result := CobolReceiveWithNode new.
@@ -23281,7 +23283,7 @@ CobolParser >> reduceActionForreceiveWith1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreceiveWith2: nodes [
 	| result |
 	result := CobolReceiveWithNode new.
@@ -23291,7 +23293,7 @@ CobolParser >> reduceActionForreceiveWith2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClause1: nodes [
 	| result |
 	result := CobolRecordContainsClauseNode new.
@@ -23301,7 +23303,7 @@ CobolParser >> reduceActionForrecordContainsClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClause2: nodes [
 	| result |
 	result := CobolRecordContainsClauseNode new.
@@ -23313,7 +23315,7 @@ CobolParser >> reduceActionForrecordContainsClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClause3: nodes [
 	| result |
 	result := CobolRecordContainsClauseNode new.
@@ -23324,7 +23326,7 @@ CobolParser >> reduceActionForrecordContainsClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat14: nodes [
 	| result |
 	result := Array new: 2.
@@ -23335,7 +23337,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat210: nodes [
 	| result |
 	result := Array new: 4.
@@ -23352,7 +23354,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat210: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat213: nodes [
 	| result |
 	result := Array new: 4.
@@ -23365,7 +23367,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat213: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat214: nodes [
 	| result |
 	result := Array new: 4.
@@ -23383,7 +23385,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat214: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat215: nodes [
 	| result |
 	result := Array new: 4.
@@ -23397,7 +23399,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat215: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat216: nodes [
 	| result |
 	result := Array new: 4.
@@ -23416,7 +23418,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat216: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat21: nodes [
 	| result |
 	result := Array new: 4.
@@ -23427,7 +23429,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat22: nodes [
 	| result |
 	result := Array new: 4.
@@ -23443,7 +23445,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat29: nodes [
 	| result |
 	result := Array new: 4.
@@ -23455,7 +23457,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat29: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat31: nodes [
 	| result |
 	result := Array new: 3.
@@ -23466,7 +23468,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat31: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat32: nodes [
 	| result |
 	result := Array new: 3.
@@ -23478,7 +23480,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat32: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat33: nodes [
 	| result |
 	result := Array new: 3.
@@ -23490,7 +23492,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat33: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordContainsClauseFormat34: nodes [
 	| result |
 	result := Array new: 3.
@@ -23503,7 +23505,7 @@ CobolParser >> reduceActionForrecordContainsClauseFormat34: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordDelimiterClause2: nodes [
 	| result |
 	result := CobolRecordDelimiterClauseNode new.
@@ -23513,7 +23515,7 @@ CobolParser >> reduceActionForrecordDelimiterClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordDelimiterClause3: nodes [
 	| result |
 	result := CobolRecordDelimiterClauseNode new.
@@ -23523,7 +23525,7 @@ CobolParser >> reduceActionForrecordDelimiterClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordDelimiterClause5: nodes [
 	| result |
 	result := CobolRecordDelimiterClauseNode new.
@@ -23534,7 +23536,7 @@ CobolParser >> reduceActionForrecordDelimiterClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordDelimiterClause6: nodes [
 	| result |
 	result := CobolRecordDelimiterClauseNode new.
@@ -23545,7 +23547,7 @@ CobolParser >> reduceActionForrecordDelimiterClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause13: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23556,7 +23558,7 @@ CobolParser >> reduceActionForrecordKeyClause13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause14: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23569,7 +23571,7 @@ CobolParser >> reduceActionForrecordKeyClause14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause15: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23581,7 +23583,7 @@ CobolParser >> reduceActionForrecordKeyClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause16: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23595,7 +23597,7 @@ CobolParser >> reduceActionForrecordKeyClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause1: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23604,7 +23606,7 @@ CobolParser >> reduceActionForrecordKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause2: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23615,7 +23617,7 @@ CobolParser >> reduceActionForrecordKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause3: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23625,7 +23627,7 @@ CobolParser >> reduceActionForrecordKeyClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause4: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23637,7 +23639,7 @@ CobolParser >> reduceActionForrecordKeyClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause5: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23647,7 +23649,7 @@ CobolParser >> reduceActionForrecordKeyClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause6: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23659,7 +23661,7 @@ CobolParser >> reduceActionForrecordKeyClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause7: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23670,7 +23672,7 @@ CobolParser >> reduceActionForrecordKeyClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordKeyClause8: nodes [
 	| result |
 	result := CobolRecordKeyClauseNode new.
@@ -23683,7 +23685,7 @@ CobolParser >> reduceActionForrecordKeyClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordingModeClause1: nodes [
 	| result |
 	result := CobolRecordingModeClauseNode new.
@@ -23692,7 +23694,7 @@ CobolParser >> reduceActionForrecordingModeClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordingModeClause2: nodes [
 	| result |
 	result := CobolRecordingModeClauseNode new.
@@ -23702,7 +23704,7 @@ CobolParser >> reduceActionForrecordingModeClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrecordingModeClause4: nodes [
 	| result |
 	result := CobolRecordingModeClauseNode new.
@@ -23713,7 +23715,7 @@ CobolParser >> reduceActionForrecordingModeClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreferenceModifier1: nodes [
 	| result |
 	result := Array new: 5.
@@ -23724,7 +23726,7 @@ CobolParser >> reduceActionForreferenceModifier1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreferenceModifier2: nodes [
 	| result |
 	result := Array new: 5.
@@ -23736,7 +23738,7 @@ CobolParser >> reduceActionForreferenceModifier2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationArithmeticComparison1: nodes [
 	| result |
 	result := CobolComparisonExpressionNode new.
@@ -23748,7 +23750,7 @@ CobolParser >> reduceActionForrelationArithmeticComparison1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationCombinedComparison1: nodes [
 	| result |
 	result := CobolCombinedComparisonExpressionNode new.
@@ -23762,7 +23764,7 @@ CobolParser >> reduceActionForrelationCombinedComparison1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationSignCondition11: nodes [
 	| result |
 	result := CobolSignConditionExpressionNode new.
@@ -23773,7 +23775,7 @@ CobolParser >> reduceActionForrelationSignCondition11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationSignCondition2: nodes [
 	| result |
 	result := CobolSignConditionExpressionNode new.
@@ -23782,7 +23784,7 @@ CobolParser >> reduceActionForrelationSignCondition2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationSignCondition8: nodes [
 	| result |
 	result := CobolSignConditionExpressionNode new.
@@ -23792,7 +23794,7 @@ CobolParser >> reduceActionForrelationSignCondition8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperator1: nodes [
 	| result |
 	result := Array new: 3.
@@ -23803,7 +23805,7 @@ CobolParser >> reduceActionForrelationalOperator1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperator2: nodes [
 	| result |
 	result := Array new: 3.
@@ -23815,7 +23817,7 @@ CobolParser >> reduceActionForrelationalOperator2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperator5: nodes [
 	| result |
 	result := Array new: 3.
@@ -23827,7 +23829,7 @@ CobolParser >> reduceActionForrelationalOperator5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperator6: nodes [
 	| result |
 	result := Array new: 3.
@@ -23840,7 +23842,7 @@ CobolParser >> reduceActionForrelationalOperator6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart11: nodes [
 	| result |
 	result := Array new: 2.
@@ -23851,7 +23853,7 @@ CobolParser >> reduceActionForrelationalOperatorPart11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart12: nodes [
 	| result |
 	result := Array new: 2.
@@ -23863,7 +23865,7 @@ CobolParser >> reduceActionForrelationalOperatorPart12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart13: nodes [
 	| result |
 	result := Array new: 2.
@@ -23875,7 +23877,7 @@ CobolParser >> reduceActionForrelationalOperatorPart13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart14: nodes [
 	| result |
 	result := Array new: 2.
@@ -23888,7 +23890,7 @@ CobolParser >> reduceActionForrelationalOperatorPart14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart16: nodes [
 	| result |
 	result := Array new: 2.
@@ -23899,7 +23901,7 @@ CobolParser >> reduceActionForrelationalOperatorPart16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart17: nodes [
 	| result |
 	result := Array new: 2.
@@ -23911,7 +23913,7 @@ CobolParser >> reduceActionForrelationalOperatorPart17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart19: nodes [
 	| result |
 	result := Array new: 2.
@@ -23924,7 +23926,7 @@ CobolParser >> reduceActionForrelationalOperatorPart19: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart7: nodes [
 	| result |
 	result := Array new: 2.
@@ -23933,7 +23935,7 @@ CobolParser >> reduceActionForrelationalOperatorPart7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelationalOperatorPart8: nodes [
 	| result |
 	result := Array new: 2.
@@ -23943,7 +23945,7 @@ CobolParser >> reduceActionForrelationalOperatorPart8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelativeKeyClause1: nodes [
 	| result |
 	result := CobolRelativeKeyClauseNode new.
@@ -23952,7 +23954,7 @@ CobolParser >> reduceActionForrelativeKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelativeKeyClause2: nodes [
 	| result |
 	result := CobolRelativeKeyClauseNode new.
@@ -23962,7 +23964,7 @@ CobolParser >> reduceActionForrelativeKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrelativeKeyClause4: nodes [
 	| result |
 	result := CobolRelativeKeyClauseNode new.
@@ -23973,7 +23975,7 @@ CobolParser >> reduceActionForrelativeKeyClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreleaseStatement1: nodes [
 	| result |
 	result := CobolReleaseStatementNode new.
@@ -23982,7 +23984,7 @@ CobolParser >> reduceActionForreleaseStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreleaseStatement2: nodes [
 	| result |
 	result := CobolReleaseStatementNode new.
@@ -23993,7 +23995,7 @@ CobolParser >> reduceActionForreleaseStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForremarksParagraph1: nodes [
 	| result |
 	result := CobolRemarksParagraphNode new.
@@ -24002,7 +24004,7 @@ CobolParser >> reduceActionForremarksParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForremarksParagraph2: nodes [
 	| result |
 	result := CobolRemarksParagraphNode new.
@@ -24012,7 +24014,7 @@ CobolParser >> reduceActionForremarksParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportClause1: nodes [
 	| result |
 	result := CobolReportClauseNode new.
@@ -24021,7 +24023,7 @@ CobolParser >> reduceActionForreportClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportClause2: nodes [
 	| result |
 	result := CobolReportClauseNode new.
@@ -24031,7 +24033,7 @@ CobolParser >> reduceActionForreportClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescription1: nodes [
 	| result |
 	result := nodes at: 2.
@@ -24039,7 +24041,7 @@ CobolParser >> reduceActionForreportDescription1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry10: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24055,7 +24057,7 @@ CobolParser >> reduceActionForreportDescriptionEntry10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry1: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24065,7 +24067,7 @@ CobolParser >> reduceActionForreportDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry2: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24078,7 +24080,7 @@ CobolParser >> reduceActionForreportDescriptionEntry2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry6: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24089,7 +24091,7 @@ CobolParser >> reduceActionForreportDescriptionEntry6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry7: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24103,7 +24105,7 @@ CobolParser >> reduceActionForreportDescriptionEntry7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionEntry9: nodes [
 	| result |
 	result := CobolReportDescriptionEntryNode new.
@@ -24118,7 +24120,7 @@ CobolParser >> reduceActionForreportDescriptionEntry9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionFirstDetailClause1: nodes [
 	| result |
 	result := CobolReportDescriptionFirstDetailClauseNode new.
@@ -24128,7 +24130,7 @@ CobolParser >> reduceActionForreportDescriptionFirstDetailClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionFootingClause1: nodes [
 	| result |
 	result := CobolReportDescriptionFootingClauseNode new.
@@ -24137,7 +24139,7 @@ CobolParser >> reduceActionForreportDescriptionFootingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionGlobalClause1: nodes [
 	| result |
 	result := CobolReportDescriptionGlobalClauseNode new.
@@ -24145,7 +24147,7 @@ CobolParser >> reduceActionForreportDescriptionGlobalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionGlobalClause2: nodes [
 	| result |
 	result := CobolReportDescriptionGlobalClauseNode new.
@@ -24154,7 +24156,7 @@ CobolParser >> reduceActionForreportDescriptionGlobalClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionHeadingClause1: nodes [
 	| result |
 	result := CobolReportDescriptionHeadingClauseNode new.
@@ -24163,7 +24165,7 @@ CobolParser >> reduceActionForreportDescriptionHeadingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionLastDetailClause1: nodes [
 	| result |
 	result := CobolReportDescriptionLastDetailClauseNode new.
@@ -24173,7 +24175,7 @@ CobolParser >> reduceActionForreportDescriptionLastDetailClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionPageLimitClause1: nodes [
 	| result |
 	result := CobolReportDescriptionPageLimitClauseNode new.
@@ -24183,7 +24185,7 @@ CobolParser >> reduceActionForreportDescriptionPageLimitClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionPageLimitClause2: nodes [
 	| result |
 	result := CobolReportDescriptionPageLimitClauseNode new.
@@ -24194,7 +24196,7 @@ CobolParser >> reduceActionForreportDescriptionPageLimitClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescriptionPageLimitClause3: nodes [
 	| result |
 	result := CobolReportDescriptionPageLimitClauseNode new.
@@ -24206,7 +24208,7 @@ CobolParser >> reduceActionForreportDescriptionPageLimitClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportDescription_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -24214,7 +24216,7 @@ CobolParser >> reduceActionForreportDescription_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupBlankWhenZeroClause1: nodes [
 	| result |
 	result := CobolReportGroupBlankWhenZeroClauseNode new.
@@ -24223,7 +24225,7 @@ CobolParser >> reduceActionForreportGroupBlankWhenZeroClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupBlankWhenZeroClause2: nodes [
 	| result |
 	result := CobolReportGroupBlankWhenZeroClauseNode new.
@@ -24233,7 +24235,7 @@ CobolParser >> reduceActionForreportGroupBlankWhenZeroClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupColumnNumberClause1: nodes [
 	| result |
 	result := CobolReportGroupColumnNumberClauseNode new.
@@ -24242,7 +24244,7 @@ CobolParser >> reduceActionForreportGroupColumnNumberClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupColumnNumberClause2: nodes [
 	| result |
 	result := CobolReportGroupColumnNumberClauseNode new.
@@ -24252,7 +24254,7 @@ CobolParser >> reduceActionForreportGroupColumnNumberClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupColumnNumberClause4: nodes [
 	| result |
 	result := CobolReportGroupColumnNumberClauseNode new.
@@ -24263,7 +24265,7 @@ CobolParser >> reduceActionForreportGroupColumnNumberClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntry1: nodes [
 	| result |
 	result := CobolReportGroupDescriptionEntryNode new.
@@ -24274,7 +24276,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntry2: nodes [
 	| result |
 	result := CobolReportGroupDescriptionEntryNode new.
@@ -24285,7 +24287,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntry2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat11: nodes [
 	| result |
 	result := Array new: 4.
@@ -24297,7 +24299,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat15: nodes [
 	| result |
 	result := Array new: 4.
@@ -24310,7 +24312,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat17: nodes [
 	| result |
 	result := Array new: 4.
@@ -24324,7 +24326,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat17: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat18: nodes [
 	| result |
 	result := Array new: 4.
@@ -24339,7 +24341,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat18: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat21: nodes [
 	| result |
 	result := Array new: 4.
@@ -24350,7 +24352,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat22: nodes [
 	| result |
 	result := Array new: 4.
@@ -24362,7 +24364,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat22: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat23: nodes [
 	| result |
 	result := Array new: 4.
@@ -24374,7 +24376,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat23: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat24: nodes [
 	| result |
 	result := Array new: 4.
@@ -24387,7 +24389,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat24: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat31: nodes [
 	| result |
 	result := Array new: 4.
@@ -24398,7 +24400,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat31: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupDescriptionEntryFormat32: nodes [
 	| result |
 	result := Array new: 4.
@@ -24410,7 +24412,7 @@ CobolParser >> reduceActionForreportGroupDescriptionEntryFormat32: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupIndicateClause1: nodes [
 	| result |
 	result := CobolReportGroupIndicateClauseNode new.
@@ -24418,7 +24420,7 @@ CobolParser >> reduceActionForreportGroupIndicateClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupIndicateClause2: nodes [
 	| result |
 	result := CobolReportGroupIndicateClauseNode new.
@@ -24427,7 +24429,7 @@ CobolParser >> reduceActionForreportGroupIndicateClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupJustifiedClause3: nodes [
 	| result |
 	result := CobolReportGroupJustifiedClauseNode new.
@@ -24435,7 +24437,7 @@ CobolParser >> reduceActionForreportGroupJustifiedClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupJustifiedClause4: nodes [
 	| result |
 	result := CobolReportGroupJustifiedClauseNode new.
@@ -24444,7 +24446,7 @@ CobolParser >> reduceActionForreportGroupJustifiedClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause11: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24455,7 +24457,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause12: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24466,7 +24468,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause15: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24478,7 +24480,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause16: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24490,7 +24492,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause1: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24499,7 +24501,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause2: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24508,7 +24510,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause3: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24518,7 +24520,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupLineNumberClause4: nodes [
 	| result |
 	result := CobolReportGroupLineNumberClauseNode new.
@@ -24528,7 +24530,7 @@ CobolParser >> reduceActionForreportGroupLineNumberClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause1: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24538,7 +24540,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause2: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24548,7 +24550,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause3: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24559,7 +24561,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause4: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24570,7 +24572,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause5: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24581,7 +24583,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupNextGroupClause6: nodes [
 	| result |
 	result := CobolReportGroupNextGroupClauseNode new.
@@ -24593,7 +24595,7 @@ CobolParser >> reduceActionForreportGroupNextGroupClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupPictureClause3: nodes [
 	| result |
 	result := CobolReportGroupPictureClauseNode new.
@@ -24602,7 +24604,7 @@ CobolParser >> reduceActionForreportGroupPictureClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupPictureClause4: nodes [
 	| result |
 	result := CobolReportGroupPictureClauseNode new.
@@ -24612,7 +24614,7 @@ CobolParser >> reduceActionForreportGroupPictureClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupResetClause1: nodes [
 	| result |
 	result := CobolReportGroupResetClauseNode new.
@@ -24621,7 +24623,7 @@ CobolParser >> reduceActionForreportGroupResetClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupResetClause2: nodes [
 	| result |
 	result := CobolReportGroupResetClauseNode new.
@@ -24630,7 +24632,7 @@ CobolParser >> reduceActionForreportGroupResetClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupResetClause3: nodes [
 	| result |
 	result := CobolReportGroupResetClauseNode new.
@@ -24640,7 +24642,7 @@ CobolParser >> reduceActionForreportGroupResetClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupResetClause4: nodes [
 	| result |
 	result := CobolReportGroupResetClauseNode new.
@@ -24650,7 +24652,7 @@ CobolParser >> reduceActionForreportGroupResetClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSignClause1: nodes [
 	| result |
 	result := CobolReportGroupSignClauseNode new.
@@ -24660,7 +24662,7 @@ CobolParser >> reduceActionForreportGroupSignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSignClause5: nodes [
 	| result |
 	result := CobolReportGroupSignClauseNode new.
@@ -24671,7 +24673,7 @@ CobolParser >> reduceActionForreportGroupSignClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSignClause6: nodes [
 	| result |
 	result := CobolReportGroupSignClauseNode new.
@@ -24683,7 +24685,7 @@ CobolParser >> reduceActionForreportGroupSignClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSourceClause1: nodes [
 	| result |
 	result := CobolReportGroupSourceClauseNode new.
@@ -24692,7 +24694,7 @@ CobolParser >> reduceActionForreportGroupSourceClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSourceClause2: nodes [
 	| result |
 	result := CobolReportGroupSourceClauseNode new.
@@ -24702,7 +24704,7 @@ CobolParser >> reduceActionForreportGroupSourceClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSumClause1: nodes [
 	| result |
 	result := CobolReportGroupSumClauseNode new.
@@ -24713,7 +24715,7 @@ CobolParser >> reduceActionForreportGroupSumClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupSumClause2: nodes [
 	| result |
 	result := CobolReportGroupSumClauseNode new.
@@ -24728,7 +24730,7 @@ CobolParser >> reduceActionForreportGroupSumClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeClause1: nodes [
 	| result |
 	result := CobolReportGroupTypeClauseNode new.
@@ -24737,7 +24739,7 @@ CobolParser >> reduceActionForreportGroupTypeClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeClause8: nodes [
 	| result |
 	result := CobolReportGroupTypeClauseNode new.
@@ -24747,7 +24749,7 @@ CobolParser >> reduceActionForreportGroupTypeClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlFooting1: nodes [
 	| result |
 	result := CobolReportGroupTypeControlFootingNode new.
@@ -24757,7 +24759,7 @@ CobolParser >> reduceActionForreportGroupTypeControlFooting1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlFooting2: nodes [
 	| result |
 	result := CobolReportGroupTypeControlFootingNode new.
@@ -24767,7 +24769,7 @@ CobolParser >> reduceActionForreportGroupTypeControlFooting2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlFooting3: nodes [
 	| result |
 	result := CobolReportGroupTypeControlFootingNode new.
@@ -24776,7 +24778,7 @@ CobolParser >> reduceActionForreportGroupTypeControlFooting3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlFooting4: nodes [
 	| result |
 	result := CobolReportGroupTypeControlFootingNode new.
@@ -24785,7 +24787,7 @@ CobolParser >> reduceActionForreportGroupTypeControlFooting4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlHeading1: nodes [
 	| result |
 	result := CobolReportGroupTypeControlHeadingNode new.
@@ -24795,7 +24797,7 @@ CobolParser >> reduceActionForreportGroupTypeControlHeading1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlHeading2: nodes [
 	| result |
 	result := CobolReportGroupTypeControlHeadingNode new.
@@ -24805,7 +24807,7 @@ CobolParser >> reduceActionForreportGroupTypeControlHeading2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlHeading3: nodes [
 	| result |
 	result := CobolReportGroupTypeControlHeadingNode new.
@@ -24814,7 +24816,7 @@ CobolParser >> reduceActionForreportGroupTypeControlHeading3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeControlHeading4: nodes [
 	| result |
 	result := CobolReportGroupTypeControlHeadingNode new.
@@ -24823,7 +24825,7 @@ CobolParser >> reduceActionForreportGroupTypeControlHeading4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeDetail2: nodes [
 	| result |
 	result := CobolReportGroupTypeDetailNode new.
@@ -24831,7 +24833,7 @@ CobolParser >> reduceActionForreportGroupTypeDetail2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypePageFooting1: nodes [
 	| result |
 	result := CobolReportGroupTypePageFootingNode new.
@@ -24840,7 +24842,7 @@ CobolParser >> reduceActionForreportGroupTypePageFooting1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypePageFooting2: nodes [
 	| result |
 	result := CobolReportGroupTypePageFootingNode new.
@@ -24848,7 +24850,7 @@ CobolParser >> reduceActionForreportGroupTypePageFooting2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypePageHeading1: nodes [
 	| result |
 	result := CobolReportGroupTypePageHeadingNode new.
@@ -24857,7 +24859,7 @@ CobolParser >> reduceActionForreportGroupTypePageHeading1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypePageHeading2: nodes [
 	| result |
 	result := CobolReportGroupTypePageHeadingNode new.
@@ -24865,7 +24867,7 @@ CobolParser >> reduceActionForreportGroupTypePageHeading2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeReportFooting1: nodes [
 	| result |
 	result := CobolReportGroupTypeReportFootingNode new.
@@ -24874,7 +24876,7 @@ CobolParser >> reduceActionForreportGroupTypeReportFooting1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeReportFooting2: nodes [
 	| result |
 	result := CobolReportGroupTypeReportFootingNode new.
@@ -24882,7 +24884,7 @@ CobolParser >> reduceActionForreportGroupTypeReportFooting2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeReportHeading1: nodes [
 	| result |
 	result := CobolReportGroupTypeReportHeadingNode new.
@@ -24891,7 +24893,7 @@ CobolParser >> reduceActionForreportGroupTypeReportHeading1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupTypeReportHeading2: nodes [
 	| result |
 	result := CobolReportGroupTypeReportHeadingNode new.
@@ -24899,7 +24901,7 @@ CobolParser >> reduceActionForreportGroupTypeReportHeading2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupUsageClause1: nodes [
 	| result |
 	result := CobolReportGroupUsageClauseNode new.
@@ -24907,7 +24909,7 @@ CobolParser >> reduceActionForreportGroupUsageClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupUsageClause3: nodes [
 	| result |
 	result := CobolReportGroupUsageClauseNode new.
@@ -24916,7 +24918,7 @@ CobolParser >> reduceActionForreportGroupUsageClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupUsageClause5: nodes [
 	| result |
 	result := CobolReportGroupUsageClauseNode new.
@@ -24926,7 +24928,7 @@ CobolParser >> reduceActionForreportGroupUsageClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupValueClause1: nodes [
 	| result |
 	result := CobolReportGroupValueClauseNode new.
@@ -24935,7 +24937,7 @@ CobolParser >> reduceActionForreportGroupValueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportGroupValueClause2: nodes [
 	| result |
 	result := CobolReportGroupValueClauseNode new.
@@ -24945,7 +24947,7 @@ CobolParser >> reduceActionForreportGroupValueClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreportSection1: nodes [
 	| result |
 	result := CobolReportSectionNode new.
@@ -24956,7 +24958,7 @@ CobolParser >> reduceActionForreportSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrerunClause1: nodes [
 	| result |
 	result := CobolRerunClauseNode new.
@@ -24967,7 +24969,7 @@ CobolParser >> reduceActionForrerunClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrerunClause2: nodes [
 	| result |
 	result := CobolRerunClauseNode new.
@@ -24978,7 +24980,7 @@ CobolParser >> reduceActionForrerunClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrerunClause4: nodes [
 	| result |
 	result := CobolRerunClauseNode new.
@@ -24991,7 +24993,7 @@ CobolParser >> reduceActionForrerunClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrerunClause5: nodes [
 	| result |
 	result := CobolRerunClauseNode new.
@@ -25004,7 +25006,7 @@ CobolParser >> reduceActionForrerunClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrerunEveryOf7: nodes [
 	| result |
 	result := Array new: 2.
@@ -25017,7 +25019,7 @@ CobolParser >> reduceActionForrerunEveryOf7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause10: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25027,7 +25029,7 @@ CobolParser >> reduceActionForreserveClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause11: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25038,7 +25040,7 @@ CobolParser >> reduceActionForreserveClause11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause1: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25047,7 +25049,7 @@ CobolParser >> reduceActionForreserveClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause4: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25057,7 +25059,7 @@ CobolParser >> reduceActionForreserveClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause5: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25068,7 +25070,7 @@ CobolParser >> reduceActionForreserveClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveClause7: nodes [
 	| result |
 	result := CobolReserveClauseNode new.
@@ -25077,7 +25079,7 @@ CobolParser >> reduceActionForreserveClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveNetworkClause16: nodes [
 	| result |
 	result := CobolReserveNetworkClauseNode new.
@@ -25090,7 +25092,7 @@ CobolParser >> reduceActionForreserveNetworkClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveNetworkClause1: nodes [
 	| result |
 	result := CobolReserveNetworkClauseNode new.
@@ -25099,7 +25101,7 @@ CobolParser >> reduceActionForreserveNetworkClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveNetworkClause3: nodes [
 	| result |
 	result := CobolReserveNetworkClauseNode new.
@@ -25109,7 +25111,7 @@ CobolParser >> reduceActionForreserveNetworkClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveNetworkClause4: nodes [
 	| result |
 	result := CobolReserveNetworkClauseNode new.
@@ -25120,7 +25122,7 @@ CobolParser >> reduceActionForreserveNetworkClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreserveNetworkClause8: nodes [
 	| result |
 	result := CobolReserveNetworkClauseNode new.
@@ -25132,7 +25134,7 @@ CobolParser >> reduceActionForreserveNetworkClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement10: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25144,7 +25146,7 @@ CobolParser >> reduceActionForreturnStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement11: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25156,7 +25158,7 @@ CobolParser >> reduceActionForreturnStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement12: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25169,7 +25171,7 @@ CobolParser >> reduceActionForreturnStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement13: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25182,7 +25184,7 @@ CobolParser >> reduceActionForreturnStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement14: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25196,7 +25198,7 @@ CobolParser >> reduceActionForreturnStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement15: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25210,7 +25212,7 @@ CobolParser >> reduceActionForreturnStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement16: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25225,7 +25227,7 @@ CobolParser >> reduceActionForreturnStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement1: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25235,7 +25237,7 @@ CobolParser >> reduceActionForreturnStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement2: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25246,7 +25248,7 @@ CobolParser >> reduceActionForreturnStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement3: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25257,7 +25259,7 @@ CobolParser >> reduceActionForreturnStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement4: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25269,7 +25271,7 @@ CobolParser >> reduceActionForreturnStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement5: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25281,7 +25283,7 @@ CobolParser >> reduceActionForreturnStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement6: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25294,7 +25296,7 @@ CobolParser >> reduceActionForreturnStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement7: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25307,7 +25309,7 @@ CobolParser >> reduceActionForreturnStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement8: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25321,7 +25323,7 @@ CobolParser >> reduceActionForreturnStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForreturnStatement9: nodes [
 	| result |
 	result := CobolReturnStatementNode new.
@@ -25332,7 +25334,7 @@ CobolParser >> reduceActionForreturnStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement10: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25344,7 +25346,7 @@ CobolParser >> reduceActionForrewriteStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement11: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25356,7 +25358,7 @@ CobolParser >> reduceActionForrewriteStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement12: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25369,7 +25371,7 @@ CobolParser >> reduceActionForrewriteStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement13: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25381,7 +25383,7 @@ CobolParser >> reduceActionForrewriteStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement14: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25394,7 +25396,7 @@ CobolParser >> reduceActionForrewriteStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement15: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25407,7 +25409,7 @@ CobolParser >> reduceActionForrewriteStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement16: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25421,7 +25423,7 @@ CobolParser >> reduceActionForrewriteStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement1: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25430,7 +25432,7 @@ CobolParser >> reduceActionForrewriteStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement2: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25440,7 +25442,7 @@ CobolParser >> reduceActionForrewriteStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement3: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25450,7 +25452,7 @@ CobolParser >> reduceActionForrewriteStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement4: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25461,7 +25463,7 @@ CobolParser >> reduceActionForrewriteStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement5: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25471,7 +25473,7 @@ CobolParser >> reduceActionForrewriteStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement6: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25482,7 +25484,7 @@ CobolParser >> reduceActionForrewriteStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement7: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25493,7 +25495,7 @@ CobolParser >> reduceActionForrewriteStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement8: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25505,7 +25507,7 @@ CobolParser >> reduceActionForrewriteStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForrewriteStatement9: nodes [
 	| result |
 	result := CobolRewriteStatementNode new.
@@ -25516,7 +25518,7 @@ CobolParser >> reduceActionForrewriteStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsameClause1: nodes [
 	| result |
 	result := CobolSameClauseNode new.
@@ -25526,7 +25528,7 @@ CobolParser >> reduceActionForsameClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsameClause2: nodes [
 	| result |
 	result := CobolSameClauseNode new.
@@ -25537,7 +25539,7 @@ CobolParser >> reduceActionForsameClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsameClause4: nodes [
 	| result |
 	result := CobolSameClauseNode new.
@@ -25549,7 +25551,7 @@ CobolParser >> reduceActionForsameClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionAutoClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionAutoClauseNode new.
@@ -25557,7 +25559,7 @@ CobolParser >> reduceActionForscreenDescriptionAutoClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBackgroundColorClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionBackgroundColorClauseNode new.
@@ -25566,7 +25568,7 @@ CobolParser >> reduceActionForscreenDescriptionBackgroundColorClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBackgroundColorClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionBackgroundColorClauseNode new.
@@ -25576,7 +25578,7 @@ CobolParser >> reduceActionForscreenDescriptionBackgroundColorClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBellClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionBellClauseNode new.
@@ -25584,7 +25586,7 @@ CobolParser >> reduceActionForscreenDescriptionBellClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBlankClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionBlankClauseNode new.
@@ -25593,7 +25595,7 @@ CobolParser >> reduceActionForscreenDescriptionBlankClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBlankWhenZeroClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionBlankWhenZeroClauseNode new.
@@ -25602,7 +25604,7 @@ CobolParser >> reduceActionForscreenDescriptionBlankWhenZeroClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBlankWhenZeroClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionBlankWhenZeroClauseNode new.
@@ -25612,7 +25614,7 @@ CobolParser >> reduceActionForscreenDescriptionBlankWhenZeroClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionBlinkClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionBlinkClauseNode new.
@@ -25620,7 +25622,7 @@ CobolParser >> reduceActionForscreenDescriptionBlinkClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionColumnClause27: nodes [
 	| result |
 	result := CobolScreenDescriptionColumnClauseNode new.
@@ -25629,7 +25631,7 @@ CobolParser >> reduceActionForscreenDescriptionColumnClause27: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionColumnClause29: nodes [
 	| result |
 	result := CobolScreenDescriptionColumnClauseNode new.
@@ -25639,7 +25641,7 @@ CobolParser >> reduceActionForscreenDescriptionColumnClause29: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionColumnClause35: nodes [
 	| result |
 	result := CobolScreenDescriptionColumnClauseNode new.
@@ -25650,7 +25652,7 @@ CobolParser >> reduceActionForscreenDescriptionColumnClause35: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionColumnClause47: nodes [
 	| result |
 	result := CobolScreenDescriptionColumnClauseNode new.
@@ -25662,7 +25664,7 @@ CobolParser >> reduceActionForscreenDescriptionColumnClause47: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionControlClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionControlClauseNode new.
@@ -25671,7 +25673,7 @@ CobolParser >> reduceActionForscreenDescriptionControlClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionControlClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionControlClauseNode new.
@@ -25681,7 +25683,7 @@ CobolParser >> reduceActionForscreenDescriptionControlClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionEntry1: nodes [
 	| result |
 	result := CobolScreenDescriptionEntryNode new.
@@ -25691,7 +25693,7 @@ CobolParser >> reduceActionForscreenDescriptionEntry1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionEntry2: nodes [
 	| result |
 	result := CobolScreenDescriptionEntryNode new.
@@ -25702,7 +25704,7 @@ CobolParser >> reduceActionForscreenDescriptionEntry2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionEntry3: nodes [
 	| result |
 	result := CobolScreenDescriptionEntryNode new.
@@ -25713,7 +25715,7 @@ CobolParser >> reduceActionForscreenDescriptionEntry3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionEraseClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionEraseClauseNode new.
@@ -25722,7 +25724,7 @@ CobolParser >> reduceActionForscreenDescriptionEraseClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionForegroundColorClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionForegroundColorClauseNode new.
@@ -25731,7 +25733,7 @@ CobolParser >> reduceActionForscreenDescriptionForegroundColorClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionForegroundColorClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionForegroundColorClauseNode new.
@@ -25741,7 +25743,7 @@ CobolParser >> reduceActionForscreenDescriptionForegroundColorClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionFromClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionFromClauseNode new.
@@ -25750,7 +25752,7 @@ CobolParser >> reduceActionForscreenDescriptionFromClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionFromClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionFromClauseNode new.
@@ -25761,7 +25763,7 @@ CobolParser >> reduceActionForscreenDescriptionFromClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionFullClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionFullClauseNode new.
@@ -25769,7 +25771,7 @@ CobolParser >> reduceActionForscreenDescriptionFullClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionGridClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionGridClauseNode new.
@@ -25777,7 +25779,7 @@ CobolParser >> reduceActionForscreenDescriptionGridClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionJustifiedClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionJustifiedClauseNode new.
@@ -25785,7 +25787,7 @@ CobolParser >> reduceActionForscreenDescriptionJustifiedClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionJustifiedClause4: nodes [
 	| result |
 	result := CobolScreenDescriptionJustifiedClauseNode new.
@@ -25794,7 +25796,7 @@ CobolParser >> reduceActionForscreenDescriptionJustifiedClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionLightClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionLightClauseNode new.
@@ -25802,7 +25804,7 @@ CobolParser >> reduceActionForscreenDescriptionLightClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionLineClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionLineClauseNode new.
@@ -25811,7 +25813,7 @@ CobolParser >> reduceActionForscreenDescriptionLineClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionLineClause21: nodes [
 	| result |
 	result := CobolScreenDescriptionLineClauseNode new.
@@ -25823,7 +25825,7 @@ CobolParser >> reduceActionForscreenDescriptionLineClause21: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionLineClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionLineClauseNode new.
@@ -25833,7 +25835,7 @@ CobolParser >> reduceActionForscreenDescriptionLineClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionLineClause9: nodes [
 	| result |
 	result := CobolScreenDescriptionLineClauseNode new.
@@ -25844,7 +25846,7 @@ CobolParser >> reduceActionForscreenDescriptionLineClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPictureClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionPictureClauseNode new.
@@ -25853,7 +25855,7 @@ CobolParser >> reduceActionForscreenDescriptionPictureClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPictureClause4: nodes [
 	| result |
 	result := CobolScreenDescriptionPictureClauseNode new.
@@ -25863,7 +25865,7 @@ CobolParser >> reduceActionForscreenDescriptionPictureClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause10: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25875,7 +25877,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause13: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25886,7 +25888,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause14: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25899,7 +25901,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25908,7 +25910,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25919,7 +25921,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptClause9: nodes [
 	| result |
 	result := CobolScreenDescriptionPromptClauseNode new.
@@ -25929,7 +25931,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionPromptOccursClause2: nodes [
 	| result |
 	result := Array new: 2.
@@ -25940,7 +25942,7 @@ CobolParser >> reduceActionForscreenDescriptionPromptOccursClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionRequiredClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionRequiredClauseNode new.
@@ -25948,7 +25950,7 @@ CobolParser >> reduceActionForscreenDescriptionRequiredClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionReverseVideoClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionReverseVideoClauseNode new.
@@ -25956,7 +25958,7 @@ CobolParser >> reduceActionForscreenDescriptionReverseVideoClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSecureClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionSecureClauseNode new.
@@ -25964,7 +25966,7 @@ CobolParser >> reduceActionForscreenDescriptionSecureClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSignClause10: nodes [
 	| result |
 	result := CobolScreenDescriptionSignClauseNode new.
@@ -25976,7 +25978,7 @@ CobolParser >> reduceActionForscreenDescriptionSignClause10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSignClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionSignClauseNode new.
@@ -25984,7 +25986,7 @@ CobolParser >> reduceActionForscreenDescriptionSignClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSignClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionSignClauseNode new.
@@ -25994,7 +25996,7 @@ CobolParser >> reduceActionForscreenDescriptionSignClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSignClause5: nodes [
 	| result |
 	result := CobolScreenDescriptionSignClauseNode new.
@@ -26003,7 +26005,7 @@ CobolParser >> reduceActionForscreenDescriptionSignClause5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSignClause6: nodes [
 	| result |
 	result := CobolScreenDescriptionSignClauseNode new.
@@ -26014,7 +26016,7 @@ CobolParser >> reduceActionForscreenDescriptionSignClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSizeClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionSizeClauseNode new.
@@ -26023,7 +26025,7 @@ CobolParser >> reduceActionForscreenDescriptionSizeClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionSizeClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionSizeClauseNode new.
@@ -26033,7 +26035,7 @@ CobolParser >> reduceActionForscreenDescriptionSizeClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionUnderlineClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionUnderlineClauseNode new.
@@ -26041,7 +26043,7 @@ CobolParser >> reduceActionForscreenDescriptionUnderlineClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionUsageClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionUsageClauseNode new.
@@ -26050,7 +26052,7 @@ CobolParser >> reduceActionForscreenDescriptionUsageClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionUsageClause3: nodes [
 	| result |
 	result := CobolScreenDescriptionUsageClauseNode new.
@@ -26060,7 +26062,7 @@ CobolParser >> reduceActionForscreenDescriptionUsageClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionUsingClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionUsingClauseNode new.
@@ -26069,7 +26071,7 @@ CobolParser >> reduceActionForscreenDescriptionUsingClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionValueClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionValueClauseNode new.
@@ -26078,7 +26080,7 @@ CobolParser >> reduceActionForscreenDescriptionValueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionValueClause2: nodes [
 	| result |
 	result := CobolScreenDescriptionValueClauseNode new.
@@ -26088,7 +26090,7 @@ CobolParser >> reduceActionForscreenDescriptionValueClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenDescriptionZeroFillClause1: nodes [
 	| result |
 	result := CobolScreenDescriptionZeroFillClauseNode new.
@@ -26096,7 +26098,7 @@ CobolParser >> reduceActionForscreenDescriptionZeroFillClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForscreenSection1: nodes [
 	| result |
 	result := CobolScreenSectionNode new.
@@ -26107,7 +26109,7 @@ CobolParser >> reduceActionForscreenSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement10: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26119,7 +26121,7 @@ CobolParser >> reduceActionForsearchStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement11: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26131,7 +26133,7 @@ CobolParser >> reduceActionForsearchStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement12: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26144,7 +26146,7 @@ CobolParser >> reduceActionForsearchStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement13: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26157,7 +26159,7 @@ CobolParser >> reduceActionForsearchStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement14: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26171,7 +26173,7 @@ CobolParser >> reduceActionForsearchStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement15: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26185,7 +26187,7 @@ CobolParser >> reduceActionForsearchStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement16: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26200,7 +26202,7 @@ CobolParser >> reduceActionForsearchStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement1: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26210,7 +26212,7 @@ CobolParser >> reduceActionForsearchStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement2: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26221,7 +26223,7 @@ CobolParser >> reduceActionForsearchStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement3: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26232,7 +26234,7 @@ CobolParser >> reduceActionForsearchStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement4: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26244,7 +26246,7 @@ CobolParser >> reduceActionForsearchStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement5: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26256,7 +26258,7 @@ CobolParser >> reduceActionForsearchStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement6: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26269,7 +26271,7 @@ CobolParser >> reduceActionForsearchStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement7: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26282,7 +26284,7 @@ CobolParser >> reduceActionForsearchStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement8: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26296,7 +26298,7 @@ CobolParser >> reduceActionForsearchStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchStatement9: nodes [
 	| result |
 	result := CobolSearchStatementNode new.
@@ -26307,7 +26309,7 @@ CobolParser >> reduceActionForsearchStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchWhen1: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -26318,7 +26320,7 @@ CobolParser >> reduceActionForsearchWhen1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsearchWhen2: nodes [
 	| result |
 	result := CobolHandlerNode new.
@@ -26328,7 +26330,7 @@ CobolParser >> reduceActionForsearchWhen2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsecurityParagraph1: nodes [
 	| result |
 	result := CobolSecurityParagraphNode new.
@@ -26337,7 +26339,7 @@ CobolParser >> reduceActionForsecurityParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsecurityParagraph2: nodes [
 	| result |
 	result := CobolSecurityParagraphNode new.
@@ -26347,7 +26349,7 @@ CobolParser >> reduceActionForsecurityParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsegmentLimitClause1: nodes [
 	| result |
 	result := CobolSegmentLimitClauseNode new.
@@ -26356,7 +26358,7 @@ CobolParser >> reduceActionForsegmentLimitClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsegmentLimitClause2: nodes [
 	| result |
 	result := CobolSegmentLimitClauseNode new.
@@ -26366,7 +26368,7 @@ CobolParser >> reduceActionForsegmentLimitClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForselectClause1: nodes [
 	| result |
 	result := CobolSelectClauseNode new.
@@ -26375,7 +26377,7 @@ CobolParser >> reduceActionForselectClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForselectClause2: nodes [
 	| result |
 	result := CobolSelectClauseNode new.
@@ -26385,7 +26387,7 @@ CobolParser >> reduceActionForselectClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendAdvancingPhrase11: nodes [
 	| result |
 	result := Array new: 2.
@@ -26397,7 +26399,7 @@ CobolParser >> reduceActionForsendAdvancingPhrase11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendAdvancingPhrase8: nodes [
 	| result |
 	result := Array new: 2.
@@ -26408,7 +26410,7 @@ CobolParser >> reduceActionForsendAdvancingPhrase8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatement1: nodes [
 	| result |
 	result := CobolSendStatementNode new.
@@ -26417,7 +26419,7 @@ CobolParser >> reduceActionForsendStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatement2: nodes [
 	| result |
 	result := CobolSendStatementNode new.
@@ -26427,7 +26429,7 @@ CobolParser >> reduceActionForsendStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatement3: nodes [
 	| result |
 	result := CobolSendStatementNode new.
@@ -26437,7 +26439,7 @@ CobolParser >> reduceActionForsendStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatement4: nodes [
 	| result |
 	result := CobolSendStatementNode new.
@@ -26448,7 +26450,7 @@ CobolParser >> reduceActionForsendStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementAsync2: nodes [
 	| result |
 	result := CobolSendStatementAsyncNode new.
@@ -26458,7 +26460,7 @@ CobolParser >> reduceActionForsendStatementAsync2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync1: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26468,7 +26470,7 @@ CobolParser >> reduceActionForsendStatementSync1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync2: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26479,7 +26481,7 @@ CobolParser >> reduceActionForsendStatementSync2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync3: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26491,7 +26493,7 @@ CobolParser >> reduceActionForsendStatementSync3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync4: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26504,7 +26506,7 @@ CobolParser >> reduceActionForsendStatementSync4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync5: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26516,7 +26518,7 @@ CobolParser >> reduceActionForsendStatementSync5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync6: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26529,7 +26531,7 @@ CobolParser >> reduceActionForsendStatementSync6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync7: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26543,7 +26545,7 @@ CobolParser >> reduceActionForsendStatementSync7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsendStatementSync8: nodes [
 	| result |
 	result := CobolSendStatementSyncNode new.
@@ -26558,7 +26560,7 @@ CobolParser >> reduceActionForsendStatementSync8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsentence1: nodes [
 	| result |
 	result := CobolSentenceNode new.
@@ -26567,7 +26569,7 @@ CobolParser >> reduceActionForsentence1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetStatement1: nodes [
 	| result |
 	result := CobolSetStatementNode new.
@@ -26578,7 +26580,7 @@ CobolParser >> reduceActionForsetStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetStatement2: nodes [
 	| result |
 	result := CobolSetStatementNode new.
@@ -26589,7 +26591,7 @@ CobolParser >> reduceActionForsetStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetToStatement_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -26602,7 +26604,7 @@ CobolParser >> reduceActionForsetToStatement_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetToStatement_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -26612,7 +26614,7 @@ CobolParser >> reduceActionForsetToStatement_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetToValue2: nodes [
 	| result |
 	result := CobolSetToValueNode new.
@@ -26620,7 +26622,7 @@ CobolParser >> reduceActionForsetToValue2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetToValue3: nodes [
 	| result |
 	result := CobolSetToValueNode new.
@@ -26629,7 +26631,7 @@ CobolParser >> reduceActionForsetToValue3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsetUpDownByStatement2: nodes [
 	| result |
 	result := Array new: 3.
@@ -26642,7 +26644,7 @@ CobolParser >> reduceActionForsetUpDownByStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortInputProcedurePhrase1: nodes [
 	| result |
 	result := Array new: 3.
@@ -26653,7 +26655,7 @@ CobolParser >> reduceActionForsortInputProcedurePhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortInputProcedurePhrase2: nodes [
 	| result |
 	result := Array new: 3.
@@ -26666,7 +26668,7 @@ CobolParser >> reduceActionForsortInputProcedurePhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortInputProcedurePhrase3: nodes [
 	| result |
 	result := Array new: 3.
@@ -26678,7 +26680,7 @@ CobolParser >> reduceActionForsortInputProcedurePhrase3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortInputProcedurePhrase4: nodes [
 	| result |
 	result := Array new: 3.
@@ -26692,7 +26694,7 @@ CobolParser >> reduceActionForsortInputProcedurePhrase4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortOnKeyClause1: nodes [
 	| result |
 	result := CobolSortOnKeyClauseNode new.
@@ -26701,7 +26703,7 @@ CobolParser >> reduceActionForsortOnKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortOnKeyClause2: nodes [
 	| result |
 	result := CobolSortOnKeyClauseNode new.
@@ -26711,7 +26713,7 @@ CobolParser >> reduceActionForsortOnKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortOnKeyClause6: nodes [
 	| result |
 	result := CobolSortOnKeyClauseNode new.
@@ -26722,7 +26724,7 @@ CobolParser >> reduceActionForsortOnKeyClause6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement10: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26740,7 +26742,7 @@ CobolParser >> reduceActionForsortStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement11: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26758,7 +26760,7 @@ CobolParser >> reduceActionForsortStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement12: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26779,7 +26781,7 @@ CobolParser >> reduceActionForsortStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement13: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26796,7 +26798,7 @@ CobolParser >> reduceActionForsortStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement14: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26816,7 +26818,7 @@ CobolParser >> reduceActionForsortStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement15: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26836,7 +26838,7 @@ CobolParser >> reduceActionForsortStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement16: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26859,7 +26861,7 @@ CobolParser >> reduceActionForsortStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement1: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26873,7 +26875,7 @@ CobolParser >> reduceActionForsortStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement2: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26890,7 +26892,7 @@ CobolParser >> reduceActionForsortStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement3: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26907,7 +26909,7 @@ CobolParser >> reduceActionForsortStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement4: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26927,7 +26929,7 @@ CobolParser >> reduceActionForsortStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement5: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26943,7 +26945,7 @@ CobolParser >> reduceActionForsortStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement6: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26962,7 +26964,7 @@ CobolParser >> reduceActionForsortStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement7: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -26981,7 +26983,7 @@ CobolParser >> reduceActionForsortStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement8: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -27003,7 +27005,7 @@ CobolParser >> reduceActionForsortStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsortStatement9: nodes [
 	| result |
 	result := CobolSortStatementNode new.
@@ -27018,7 +27020,7 @@ CobolParser >> reduceActionForsortStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsourceComputerParagraph1: nodes [
 	| result |
 	result := CobolSourceComputerParagraphNode new.
@@ -27029,7 +27031,7 @@ CobolParser >> reduceActionForsourceComputerParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsourceComputerParagraph2: nodes [
 	| result |
 	result := CobolSourceComputerParagraphNode new.
@@ -27042,7 +27044,7 @@ CobolParser >> reduceActionForsourceComputerParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsourceComputerParagraph3: nodes [
 	| result |
 	result := CobolSourceComputerParagraphNode new.
@@ -27056,7 +27058,7 @@ CobolParser >> reduceActionForsourceComputerParagraph3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForspecialNamesParagraph1: nodes [
 	| result |
 	result := CobolSpecialNamesParagraphNode new.
@@ -27065,7 +27067,7 @@ CobolParser >> reduceActionForspecialNamesParagraph1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForspecialNamesParagraph2: nodes [
 	| result |
 	result := CobolSpecialNamesParagraphNode new.
@@ -27076,7 +27078,7 @@ CobolParser >> reduceActionForspecialNamesParagraph2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForspecialRegister12: nodes [
 	| result |
 	result := CobolSpecialRegisterNode new.
@@ -27085,7 +27087,7 @@ CobolParser >> reduceActionForspecialRegister12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForspecialRegister1: nodes [
 	| result |
 	result := CobolSpecialRegisterNode new.
@@ -27095,7 +27097,7 @@ CobolParser >> reduceActionForspecialRegister1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForspecialRegister2: nodes [
 	| result |
 	result := CobolSpecialRegisterNode new.
@@ -27103,7 +27105,7 @@ CobolParser >> reduceActionForspecialRegister2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey10: nodes [
 	| result |
 	result := Array new: 3.
@@ -27116,7 +27118,7 @@ CobolParser >> reduceActionForstartKey10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey13: nodes [
 	| result |
 	result := Array new: 3.
@@ -27131,7 +27133,7 @@ CobolParser >> reduceActionForstartKey13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey15: nodes [
 	| result |
 	result := Array new: 3.
@@ -27148,7 +27150,7 @@ CobolParser >> reduceActionForstartKey15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey1: nodes [
 	| result |
 	result := Array new: 3.
@@ -27161,7 +27163,7 @@ CobolParser >> reduceActionForstartKey1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey2: nodes [
 	| result |
 	result := Array new: 3.
@@ -27173,7 +27175,7 @@ CobolParser >> reduceActionForstartKey2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey5: nodes [
 	| result |
 	result := Array new: 3.
@@ -27187,7 +27189,7 @@ CobolParser >> reduceActionForstartKey5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey7: nodes [
 	| result |
 	result := Array new: 3.
@@ -27203,7 +27205,7 @@ CobolParser >> reduceActionForstartKey7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartKey9: nodes [
 	| result |
 	result := Array new: 3.
@@ -27217,7 +27219,7 @@ CobolParser >> reduceActionForstartKey9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartRule1: nodes [
 	| result |
 	result := CobolFileNode new.
@@ -27225,7 +27227,7 @@ CobolParser >> reduceActionForstartRule1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement10: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27238,7 +27240,7 @@ CobolParser >> reduceActionForstartStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement11: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27251,7 +27253,7 @@ CobolParser >> reduceActionForstartStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement12: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27265,7 +27267,7 @@ CobolParser >> reduceActionForstartStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement13: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27278,7 +27280,7 @@ CobolParser >> reduceActionForstartStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement14: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27292,7 +27294,7 @@ CobolParser >> reduceActionForstartStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement15: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27306,7 +27308,7 @@ CobolParser >> reduceActionForstartStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement16: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27321,7 +27323,7 @@ CobolParser >> reduceActionForstartStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement1: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27330,7 +27332,7 @@ CobolParser >> reduceActionForstartStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement2: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27340,7 +27342,7 @@ CobolParser >> reduceActionForstartStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement3: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27350,7 +27352,7 @@ CobolParser >> reduceActionForstartStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement4: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27361,7 +27363,7 @@ CobolParser >> reduceActionForstartStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement5: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27371,7 +27373,7 @@ CobolParser >> reduceActionForstartStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement6: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27382,7 +27384,7 @@ CobolParser >> reduceActionForstartStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement7: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27393,7 +27395,7 @@ CobolParser >> reduceActionForstartStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement8: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27405,7 +27407,7 @@ CobolParser >> reduceActionForstartStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstartStatement9: nodes [
 	| result |
 	result := CobolStartStatementNode new.
@@ -27417,7 +27419,7 @@ CobolParser >> reduceActionForstartStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstatusKeyClause1: nodes [
 	| result |
 	result := CobolStatusKeyClauseNode new.
@@ -27428,7 +27430,7 @@ CobolParser >> reduceActionForstatusKeyClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstatusKeyClause2: nodes [
 	| result |
 	result := CobolStatusKeyClauseNode new.
@@ -27440,7 +27442,7 @@ CobolParser >> reduceActionForstatusKeyClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstopStatement1: nodes [
 	| result |
 	result := CobolStopStatementNode new.
@@ -27449,7 +27451,7 @@ CobolParser >> reduceActionForstopStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstopStatement2: nodes [
 	| result |
 	result := CobolStopStatementNode new.
@@ -27458,7 +27460,7 @@ CobolParser >> reduceActionForstopStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringSendingPhrase1: nodes [
 	| result |
 	result := Array new: 5.
@@ -27473,7 +27475,7 @@ CobolParser >> reduceActionForstringSendingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringSendingPhrase2: nodes [
 	| result |
 	result := Array new: 5.
@@ -27488,7 +27490,7 @@ CobolParser >> reduceActionForstringSendingPhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringSendingPhrase_1: nodes [
 	| result |
 	result := Array new: 5.
@@ -27505,7 +27507,7 @@ CobolParser >> reduceActionForstringSendingPhrase_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringSendingPhrase_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -27517,7 +27519,7 @@ CobolParser >> reduceActionForstringSendingPhrase_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement10: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27535,7 +27537,7 @@ CobolParser >> reduceActionForstringStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement11: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27553,7 +27555,7 @@ CobolParser >> reduceActionForstringStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement12: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27572,7 +27574,7 @@ CobolParser >> reduceActionForstringStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement13: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27590,7 +27592,7 @@ CobolParser >> reduceActionForstringStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement14: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27609,7 +27611,7 @@ CobolParser >> reduceActionForstringStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement15: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27628,7 +27630,7 @@ CobolParser >> reduceActionForstringStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement16: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27648,7 +27650,7 @@ CobolParser >> reduceActionForstringStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement1: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27663,7 +27665,7 @@ CobolParser >> reduceActionForstringStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement2: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27679,7 +27681,7 @@ CobolParser >> reduceActionForstringStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement3: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27695,7 +27697,7 @@ CobolParser >> reduceActionForstringStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement4: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27712,7 +27714,7 @@ CobolParser >> reduceActionForstringStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement5: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27728,7 +27730,7 @@ CobolParser >> reduceActionForstringStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement6: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27745,7 +27747,7 @@ CobolParser >> reduceActionForstringStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement7: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27762,7 +27764,7 @@ CobolParser >> reduceActionForstringStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement8: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27780,7 +27782,7 @@ CobolParser >> reduceActionForstringStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForstringStatement9: nodes [
 	| result |
 	result := CobolStringStatementNode new.
@@ -27797,7 +27799,7 @@ CobolParser >> reduceActionForstringStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubscript_1: nodes [
 	| result |
 	result := CobolAllSubscriptNode new.
@@ -27805,7 +27807,7 @@ CobolParser >> reduceActionForsubscript_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractFromGivingStatement1: nodes [
 	| result |
 	result := Array new: 4.
@@ -27821,7 +27823,7 @@ CobolParser >> reduceActionForsubtractFromGivingStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractFromStatement1: nodes [
 	| result |
 	result := Array new: 3.
@@ -27835,7 +27837,7 @@ CobolParser >> reduceActionForsubtractFromStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement10: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27848,7 +27850,7 @@ CobolParser >> reduceActionForsubtractStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement11: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27861,7 +27863,7 @@ CobolParser >> reduceActionForsubtractStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement12: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27875,7 +27877,7 @@ CobolParser >> reduceActionForsubtractStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement1: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27887,7 +27889,7 @@ CobolParser >> reduceActionForsubtractStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement2: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27900,7 +27902,7 @@ CobolParser >> reduceActionForsubtractStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement3: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27913,7 +27915,7 @@ CobolParser >> reduceActionForsubtractStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement4: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27927,7 +27929,7 @@ CobolParser >> reduceActionForsubtractStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement5: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27940,7 +27942,7 @@ CobolParser >> reduceActionForsubtractStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement6: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27954,7 +27956,7 @@ CobolParser >> reduceActionForsubtractStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement7: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27968,7 +27970,7 @@ CobolParser >> reduceActionForsubtractStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement8: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27983,7 +27985,7 @@ CobolParser >> reduceActionForsubtractStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsubtractStatement9: nodes [
 	| result |
 	result := CobolSubtractStatementNode new.
@@ -27995,7 +27997,7 @@ CobolParser >> reduceActionForsubtractStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharacters1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28006,7 +28008,7 @@ CobolParser >> reduceActionForsymbolicCharacters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharacters3: nodes [
 	| result |
 	result := Array new: 3.
@@ -28018,7 +28020,7 @@ CobolParser >> reduceActionForsymbolicCharacters3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharactersClause1: nodes [
 	| result |
 	result := CobolSymbolicCharactersClauseNode new.
@@ -28031,7 +28033,7 @@ CobolParser >> reduceActionForsymbolicCharactersClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharactersClause2: nodes [
 	| result |
 	result := CobolSymbolicCharactersClauseNode new.
@@ -28045,7 +28047,7 @@ CobolParser >> reduceActionForsymbolicCharactersClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharactersClause7: nodes [
 	| result |
 	result := CobolSymbolicCharactersClauseNode new.
@@ -28060,7 +28062,7 @@ CobolParser >> reduceActionForsymbolicCharactersClause7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharactersClause9: nodes [
 	| result |
 	result := CobolSymbolicCharactersClauseNode new.
@@ -28076,7 +28078,7 @@ CobolParser >> reduceActionForsymbolicCharactersClause9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharacters_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28089,7 +28091,7 @@ CobolParser >> reduceActionForsymbolicCharacters_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicCharacters_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -28099,7 +28101,7 @@ CobolParser >> reduceActionForsymbolicCharacters_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicDestinationClause1: nodes [
 	| result |
 	result := CobolSymbolicDestinationClauseNode new.
@@ -28109,7 +28111,7 @@ CobolParser >> reduceActionForsymbolicDestinationClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicDestinationClause2: nodes [
 	| result |
 	result := CobolSymbolicDestinationClauseNode new.
@@ -28120,7 +28122,7 @@ CobolParser >> reduceActionForsymbolicDestinationClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicDestinationClause4: nodes [
 	| result |
 	result := CobolSymbolicDestinationClauseNode new.
@@ -28132,7 +28134,7 @@ CobolParser >> reduceActionForsymbolicDestinationClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicQueueClause1: nodes [
 	| result |
 	result := CobolSymbolicQueueClauseNode new.
@@ -28142,7 +28144,7 @@ CobolParser >> reduceActionForsymbolicQueueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicQueueClause2: nodes [
 	| result |
 	result := CobolSymbolicQueueClauseNode new.
@@ -28153,7 +28155,7 @@ CobolParser >> reduceActionForsymbolicQueueClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicQueueClause4: nodes [
 	| result |
 	result := CobolSymbolicQueueClauseNode new.
@@ -28165,7 +28167,7 @@ CobolParser >> reduceActionForsymbolicQueueClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSourceClause1: nodes [
 	| result |
 	result := CobolSymbolicSourceClauseNode new.
@@ -28175,7 +28177,7 @@ CobolParser >> reduceActionForsymbolicSourceClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSourceClause2: nodes [
 	| result |
 	result := CobolSymbolicSourceClauseNode new.
@@ -28186,7 +28188,7 @@ CobolParser >> reduceActionForsymbolicSourceClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSourceClause4: nodes [
 	| result |
 	result := CobolSymbolicSourceClauseNode new.
@@ -28198,7 +28200,7 @@ CobolParser >> reduceActionForsymbolicSourceClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSubQueueClause1: nodes [
 	| result |
 	result := CobolSymbolicSubQueueClauseNode new.
@@ -28208,7 +28210,7 @@ CobolParser >> reduceActionForsymbolicSubQueueClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSubQueueClause2: nodes [
 	| result |
 	result := CobolSymbolicSubQueueClauseNode new.
@@ -28219,7 +28221,7 @@ CobolParser >> reduceActionForsymbolicSubQueueClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicSubQueueClause8: nodes [
 	| result |
 	result := CobolSymbolicSubQueueClauseNode new.
@@ -28231,7 +28233,7 @@ CobolParser >> reduceActionForsymbolicSubQueueClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicTerminalClause1: nodes [
 	| result |
 	result := CobolSymbolicTerminalClauseNode new.
@@ -28241,7 +28243,7 @@ CobolParser >> reduceActionForsymbolicTerminalClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicTerminalClause3: nodes [
 	| result |
 	result := CobolSymbolicTerminalClauseNode new.
@@ -28252,7 +28254,7 @@ CobolParser >> reduceActionForsymbolicTerminalClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForsymbolicTerminalClause4: nodes [
 	| result |
 	result := CobolSymbolicTerminalClauseNode new.
@@ -28264,7 +28266,7 @@ CobolParser >> reduceActionForsymbolicTerminalClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFortableCall1: nodes [
 	| result |
 	result := CobolTableCallNode new.
@@ -28273,7 +28275,7 @@ CobolParser >> reduceActionFortableCall1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFortableCall2: nodes [
 	| result |
 	result := CobolTableCallNode new.
@@ -28287,7 +28289,7 @@ CobolParser >> reduceActionFortableCall2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFortableCall3: nodes [
 	| result |
 	result := CobolTableCallNode new.
@@ -28300,7 +28302,7 @@ CobolParser >> reduceActionFortableCall3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForterminateStatement1: nodes [
 	| result |
 	result := CobolTerminateStatementNode new.
@@ -28309,7 +28311,7 @@ CobolParser >> reduceActionForterminateStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFortextLengthClause1: nodes [
 	| result |
 	result := CobolTextLengthClauseNode new.
@@ -28320,7 +28322,7 @@ CobolParser >> reduceActionFortextLengthClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionFortextLengthClause2: nodes [
 	| result |
 	result := CobolTextLengthClauseNode new.
@@ -28332,7 +28334,7 @@ CobolParser >> reduceActionFortextLengthClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto1: nodes [
 	| result |
 	result := Array new: 4.
@@ -28341,7 +28343,7 @@ CobolParser >> reduceActionForunstringInto1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto2: nodes [
 	| result |
 	result := Array new: 4.
@@ -28352,7 +28354,7 @@ CobolParser >> reduceActionForunstringInto2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto3: nodes [
 	| result |
 	result := Array new: 4.
@@ -28363,7 +28365,7 @@ CobolParser >> reduceActionForunstringInto3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto4: nodes [
 	| result |
 	result := Array new: 4.
@@ -28376,7 +28378,7 @@ CobolParser >> reduceActionForunstringInto4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto_1: nodes [
 	| result |
 	result := Array new: 4.
@@ -28391,7 +28393,7 @@ CobolParser >> reduceActionForunstringInto_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringInto_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -28402,7 +28404,7 @@ CobolParser >> reduceActionForunstringInto_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringSendingPhrase1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28412,7 +28414,7 @@ CobolParser >> reduceActionForunstringSendingPhrase1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringSendingPhrase2: nodes [
 	| result |
 	result := Array new: 3.
@@ -28426,7 +28428,7 @@ CobolParser >> reduceActionForunstringSendingPhrase2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement10: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28445,7 +28447,7 @@ CobolParser >> reduceActionForunstringStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement11: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28464,7 +28466,7 @@ CobolParser >> reduceActionForunstringStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement12: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28484,7 +28486,7 @@ CobolParser >> reduceActionForunstringStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement13: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28504,7 +28506,7 @@ CobolParser >> reduceActionForunstringStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement14: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28525,7 +28527,7 @@ CobolParser >> reduceActionForunstringStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement15: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28546,7 +28548,7 @@ CobolParser >> reduceActionForunstringStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement16: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28568,7 +28570,7 @@ CobolParser >> reduceActionForunstringStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement1: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28584,7 +28586,7 @@ CobolParser >> reduceActionForunstringStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement2: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28601,7 +28603,7 @@ CobolParser >> reduceActionForunstringStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement3: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28618,7 +28620,7 @@ CobolParser >> reduceActionForunstringStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement4: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28636,7 +28638,7 @@ CobolParser >> reduceActionForunstringStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement5: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28654,7 +28656,7 @@ CobolParser >> reduceActionForunstringStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement6: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28673,7 +28675,7 @@ CobolParser >> reduceActionForunstringStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement7: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28692,7 +28694,7 @@ CobolParser >> reduceActionForunstringStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement8: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28712,7 +28714,7 @@ CobolParser >> reduceActionForunstringStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForunstringStatement9: nodes [
 	| result |
 	result := CobolUnstringStatementNode new.
@@ -28730,7 +28732,7 @@ CobolParser >> reduceActionForunstringStatement9: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseAfterClause16: nodes [
 	| result |
 	result := CobolUseAfterClauseNode new.
@@ -28745,7 +28747,7 @@ CobolParser >> reduceActionForuseAfterClause16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseAfterClause3: nodes [
 	| result |
 	result := CobolUseAfterClauseNode new.
@@ -28757,7 +28759,7 @@ CobolParser >> reduceActionForuseAfterClause3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseAfterClause4: nodes [
 	| result |
 	result := CobolUseAfterClauseNode new.
@@ -28770,7 +28772,7 @@ CobolParser >> reduceActionForuseAfterClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseAfterClause8: nodes [
 	| result |
 	result := CobolUseAfterClauseNode new.
@@ -28784,7 +28786,7 @@ CobolParser >> reduceActionForuseAfterClause8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseAfterOn5: nodes [
 	| result |
 	result := Array new: 2.
@@ -28793,7 +28795,7 @@ CobolParser >> reduceActionForuseAfterOn5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugClause1: nodes [
 	| result |
 	result := CobolUseDebugClauseNode new.
@@ -28804,7 +28806,7 @@ CobolParser >> reduceActionForuseDebugClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugClause2: nodes [
 	| result |
 	result := CobolUseDebugClauseNode new.
@@ -28816,7 +28818,7 @@ CobolParser >> reduceActionForuseDebugClause2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugClause4: nodes [
 	| result |
 	result := CobolUseDebugClauseNode new.
@@ -28829,7 +28831,7 @@ CobolParser >> reduceActionForuseDebugClause4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugOn1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28839,7 +28841,7 @@ CobolParser >> reduceActionForuseDebugOn1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugOn6: nodes [
 	| result |
 	result := Array new: 3.
@@ -28848,7 +28850,7 @@ CobolParser >> reduceActionForuseDebugOn6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugOn_1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28861,7 +28863,7 @@ CobolParser >> reduceActionForuseDebugOn_1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseDebugOn_2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -28871,7 +28873,7 @@ CobolParser >> reduceActionForuseDebugOn_2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForuseStatement1: nodes [
 	| result |
 	result := CobolUseStatementNode new.
@@ -28880,7 +28882,7 @@ CobolParser >> reduceActionForuseStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForvalueOfClause1: nodes [
 	| result |
 	result := CobolValueOfClauseNode new.
@@ -28892,7 +28894,7 @@ CobolParser >> reduceActionForvalueOfClause1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForvaluePair1: nodes [
 	| result |
 	result := Array new: 3.
@@ -28901,7 +28903,7 @@ CobolParser >> reduceActionForvaluePair1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForvaluePair3: nodes [
 	| result |
 	result := Array new: 3.
@@ -28911,7 +28913,7 @@ CobolParser >> reduceActionForvaluePair3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForworkingStorageSection1: nodes [
 	| result |
 	result := CobolWorkingStorageSectionNode new.
@@ -28923,7 +28925,7 @@ CobolParser >> reduceActionForworkingStorageSection1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement10: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -28938,7 +28940,7 @@ CobolParser >> reduceActionForwriteStatement10: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement11: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -28953,7 +28955,7 @@ CobolParser >> reduceActionForwriteStatement11: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement12: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -28969,7 +28971,7 @@ CobolParser >> reduceActionForwriteStatement12: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement13: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -28985,7 +28987,7 @@ CobolParser >> reduceActionForwriteStatement13: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement14: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29002,7 +29004,7 @@ CobolParser >> reduceActionForwriteStatement14: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement15: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29019,7 +29021,7 @@ CobolParser >> reduceActionForwriteStatement15: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement16: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29037,7 +29039,7 @@ CobolParser >> reduceActionForwriteStatement16: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement1: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29049,7 +29051,7 @@ CobolParser >> reduceActionForwriteStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement2: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29062,7 +29064,7 @@ CobolParser >> reduceActionForwriteStatement2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement3: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29075,7 +29077,7 @@ CobolParser >> reduceActionForwriteStatement3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement4: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29089,7 +29091,7 @@ CobolParser >> reduceActionForwriteStatement4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement5: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29103,7 +29105,7 @@ CobolParser >> reduceActionForwriteStatement5: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement6: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29118,7 +29120,7 @@ CobolParser >> reduceActionForwriteStatement6: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement7: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29133,7 +29135,7 @@ CobolParser >> reduceActionForwriteStatement7: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement8: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29149,7 +29151,7 @@ CobolParser >> reduceActionForwriteStatement8: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolParser >> reduceActionForwriteStatement9: nodes [
 	| result |
 	result := CobolWriteStatementNode new.
@@ -29163,23 +29165,23 @@ CobolParser >> reduceActionForwriteStatement9: nodes [
 	^ result
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolParser >> scanner: aScanner [
 	super scanner: aScanner.
 	scanner isFixedFormat: isFixedFormat
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolParser >> sequenceNumbers [
 	^ self currentGLRState attributeNamed: #sequenceNumbers
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolParser >> useAllTokenIds [
 	^ false
 ]

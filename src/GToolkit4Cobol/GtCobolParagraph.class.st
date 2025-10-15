@@ -1,37 +1,39 @@
 Class {
-	#name : #GtCobolParagraph,
-	#superclass : #FAMIXFunction,
+	#name : 'GtCobolParagraph',
+	#superclass : 'FAMIXFunction',
 	#instVars : [
 		'cicsFileAccesses',
 		'execSqlStatements'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> cicsFileAccesses [
 	<MSEProperty: #cicsFileAccesses type: #GtCICSFileAccess opposite: #paragraph>
 	^ cicsFileAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> cicsFileAccesses: anObject [
 	cicsFileAccesses value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> execSqlStatements [
 	<MSEProperty: #execSqlStatements type: #GtCobolExecSqlStatement opposite: #paragraph>
 	<multivalued>
 	^ execSqlStatements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> execSqlStatements: anObject [
 	execSqlStatements value: anObject
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtCobolParagraph >> gtExecSqlsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -40,7 +42,7 @@ GtCobolParagraph >> gtExecSqlsFor: aView [
 		column: 'Statement' text: [ :each | each source ]
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCobolParagraph >> initialize [
 	super initialize.
 	cicsFileAccesses := FMNullMultivalueLink
@@ -53,12 +55,12 @@ GtCobolParagraph >> initialize [
 			selector: #execSqlStatements
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> isInitial [
 	^ self privateState attributeAt: #isInitial ifAbsent: [ false ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolParagraph >> isInitial: aBoolean [
 	^ self privateState attributeAt: #isInitial put: aBoolean
 ]

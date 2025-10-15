@@ -1,15 +1,17 @@
 Class {
-	#name : #CSDParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'GToolkit4Cobol-CSD-Parser'
+	#name : 'CSDParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'GToolkit4Cobol-CSD-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'CSD-Parser'
 }
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CSDParser class >> cacheId [
 	^'2024-10-08T07:49:19.100583-05:00'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSDParser class >> csdStyler: aParserClass [
 	<smaccStyler: #CSDParser priority: 10>
 	| rules |
@@ -43,7 +45,7 @@ CSDParser class >> csdStyler: aParserClass [
 	^ (GtSmaCCParserStyler forParser: aParserClass) stylerRules: rules
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> definitionComment [
 "%ignorecase;
 
@@ -95,12 +97,12 @@ SwitchToValue
 	;"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CSDParser class >> fileExtension [
 	^ '.csd'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> reduceTable [
 ^#(
 	#(10 0 #reduceActionForDefine__definition__1: 319489 false) 
@@ -117,27 +119,27 @@ CSDParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> scannerClass [
 	^CSDScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> symbolNames [
 	^ #('<define>' '<name>' '<lparen>' '<rparen>' '<number>' '<value>' '<whitespace>' 'B e g i n' 'File' 'Define ''definition''*' 'Define' 'Property ''property''+' 'Property' 'SwitchToDefault' 'Value' 'SwitchToValue' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #CSDFileNode #CSDFileNode #OrderedCollection #CSDDefineNode #OrderedCollection #CSDPropertyNode nil #CSDExpressionNode nil #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDParser class >> transitionTable [
 ^#(
 #[1 0 6 0 1 0 9 0 9 0 13 0 10 0 6 0 17] 
@@ -159,7 +161,7 @@ CSDParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForDefine1: nodes [
 	| result |
 	result := CSDDefineNode new.
@@ -168,14 +170,14 @@ CSDParser >> reduceActionForDefine1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForDefine__definition__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForDefine__definition__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -183,7 +185,7 @@ CSDParser >> reduceActionForDefine__definition__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForFile1: nodes [
 	| result |
 	result := CSDFileNode new.
@@ -191,7 +193,7 @@ CSDParser >> reduceActionForFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForProperty1: nodes [
 	| result |
 	result := CSDPropertyNode new.
@@ -202,7 +204,7 @@ CSDParser >> reduceActionForProperty1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForProperty__property__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -210,19 +212,19 @@ CSDParser >> reduceActionForProperty__property__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForSwitchToValue1: nodes [
 	self scope: #value.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForValue1: nodes [
 	| result |
 	result := CSDValueNode new.
@@ -230,7 +232,7 @@ CSDParser >> reduceActionForValue1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CSDParser >> reduceActionForValue2: nodes [
 	| result |
 	result := CSDNumberNode new.

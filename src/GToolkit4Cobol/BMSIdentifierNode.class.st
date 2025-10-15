@@ -1,33 +1,35 @@
 Class {
-	#name : #BMSIdentifierNode,
-	#superclass : #BMSValueNode,
+	#name : 'BMSIdentifierNode',
+	#superclass : 'BMSValueNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSIdentifierNode >> literalValue [
 	^ name value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSIdentifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSIdentifierNode >> tokenVariables [
 	^ #(#name)
 ]

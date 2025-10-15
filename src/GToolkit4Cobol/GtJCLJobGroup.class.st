@@ -1,10 +1,12 @@
 Class {
-	#name : #GtJCLJobGroup,
-	#superclass : #MooseGroup,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtJCLJobGroup',
+	#superclass : 'MooseGroup',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtJCLJobGroup >> gtItemsFor: aView [
 	<gtView>
 	^ aView columnedList

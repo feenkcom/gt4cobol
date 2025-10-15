@@ -1,15 +1,17 @@
 Class {
-	#name : #GtJCLSourceLanguage,
-	#superclass : #FAMIXSourceLanguage,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtJCLSourceLanguage',
+	#superclass : 'FAMIXSourceLanguage',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLSourceLanguage >> gtParserClass [
 	^ JCLParser
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLSourceLanguage >> gtStylerFor: anEntity [
 	| rules |
 	(anEntity mooseModel isNil or: [ anEntity containerFiles size ~= 1 ])

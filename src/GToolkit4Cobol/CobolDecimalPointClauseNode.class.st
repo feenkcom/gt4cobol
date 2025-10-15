@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDecimalPointClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDecimalPointClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDecimalPointClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDecimalPointClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDecimalPointClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDecimalPointClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDecimalPointClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDecimalPointClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

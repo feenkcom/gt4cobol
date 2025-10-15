@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolRangeConditionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRangeConditionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'value',
 		'keywords',
 		'through'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRangeCondition: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRangeConditionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> nodeVariables [
 	^ #(#value #through)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> through [
 	^ through
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> through: aCobolExpressionNode [
 	self through notNil ifTrue: [ self through parent: nil ].
 	through := aCobolExpressionNode.
 	self through notNil ifTrue: [ self through parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRangeConditionNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

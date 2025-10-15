@@ -1,83 +1,85 @@
 Class {
-	#name : #BMSListNode,
-	#superclass : #BMSValueNode,
+	#name : 'BMSListNode',
+	#superclass : 'BMSValueNode',
 	#instVars : [
 		'leftParen',
 		'rightParen',
 		'values',
 		'commas'
 	],
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 BMSListNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSListNode >> literalValue [
 	^ values collect: #literalValue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> tokenVariables [
 	^ #(#leftParen #rightParen)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSListNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

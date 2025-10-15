@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolLibraryEntryProcedureGivingClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLibraryEntryProcedureGivingClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'giving'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLibraryEntryProcedureGivingClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> giving [
 	^ giving
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> giving: aCobolIdentifierNode [
 	self giving notNil ifTrue: [ self giving parent: nil ].
 	giving := aCobolIdentifierNode.
 	self giving notNil ifTrue: [ self giving parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> nodeVariables [
 	^ #(#giving)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureGivingClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

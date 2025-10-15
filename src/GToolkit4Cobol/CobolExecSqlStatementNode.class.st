@@ -1,61 +1,63 @@
 Class {
-	#name : #CobolExecSqlStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolExecSqlStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'_source',
 		'period'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> _source [
 	^ _source
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> _source: aSmaCCToken [
 	_source := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExecSqlStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolExecSqlStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExecSqlStatementNode >> tokenVariables [
 	^ #(#_source #period)
 ]

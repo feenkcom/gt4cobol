@@ -1,33 +1,35 @@
 Class {
-	#name : #JCLNumberNode,
-	#superclass : #JCLValueNode,
+	#name : 'JCLNumberNode',
+	#superclass : 'JCLValueNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLNumberNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitNumber: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLNumberNode >> literalValue [
 	^ value source asNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLNumberNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLNumberNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLNumberNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

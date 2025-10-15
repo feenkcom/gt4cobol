@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolUseStatementNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolUseStatementNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'clause'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUseStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> clause [
 	^ clause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> clause: aCobolProgramNode [
 	self clause notNil ifTrue: [ self clause parent: nil ].
 	clause := aCobolProgramNode.
 	self clause notNil ifTrue: [ self clause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> nodeVariables [
 	^ #(#clause)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUseStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

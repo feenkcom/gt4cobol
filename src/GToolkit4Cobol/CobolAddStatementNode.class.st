@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolAddStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolAddStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'froms',
@@ -9,49 +9,51 @@ Class {
 		'onSizeError',
 		'givings'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAddStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> compositeNodeVariables [
 	^ #(#froms #tos #givings)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> froms [
 	^ froms
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> froms: anOrderedCollection [
 	self setParents: self froms to: nil.
 	froms := anOrderedCollection.
 	self setParents: self froms to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> givings [
 	^ givings
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> givings: anOrderedCollection [
 	self setParents: self givings to: nil.
 	givings := anOrderedCollection.
 	self setParents: self givings to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAddStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -60,58 +62,58 @@ CobolAddStatementNode >> initialize [
 	givings := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> nodeVariables [
 	^ #(#notOnSizeError #onSizeError)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> notOnSizeError [
 	^ notOnSizeError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> notOnSizeError: aCobolHandlerNode [
 	self notOnSizeError notNil ifTrue: [ self notOnSizeError parent: nil ].
 	notOnSizeError := aCobolHandlerNode.
 	self notOnSizeError notNil ifTrue: [ self notOnSizeError parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> onSizeError [
 	^ onSizeError
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> onSizeError: aCobolHandlerNode [
 	self onSizeError notNil ifTrue: [ self onSizeError parent: nil ].
 	onSizeError := aCobolHandlerNode.
 	self onSizeError notNil ifTrue: [ self onSizeError parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> tos [
 	^ tos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAddStatementNode >> tos: anOrderedCollection [
 	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolAddStatementNode >> writesIdentifier: anIdentifierNode [
 	^ tos anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
 ]

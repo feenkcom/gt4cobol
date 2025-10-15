@@ -1,42 +1,44 @@
 Class {
-	#name : #CobolMultipleFileClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolMultipleFileClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'fileNames',
 		'positions'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMultipleFileClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> compositeNodeVariables [
 	^ #(#fileNames #positions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> fileNames [
 	^ fileNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> fileNames: anOrderedCollection [
 	self setParents: self fileNames to: nil.
 	fileNames := anOrderedCollection.
 	self setParents: self fileNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolMultipleFileClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -44,22 +46,22 @@ CobolMultipleFileClauseNode >> initialize [
 	positions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> positions [
 	^ positions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMultipleFileClauseNode >> positions: anOrderedCollection [
 	self setParents: self positions to: nil.
 	positions := anOrderedCollection.

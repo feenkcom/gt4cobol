@@ -1,89 +1,91 @@
 Class {
-	#name : #CobolMoveStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolMoveStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'moveToSendingArea',
 		'tos',
 		'corresponding'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMoveStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> compositeNodeVariables [
 	^ #(#tos)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> corresponding [
 	^ corresponding
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> corresponding: aCobolExpressionNode [
 	self corresponding notNil ifTrue: [ self corresponding parent: nil ].
 	corresponding := aCobolExpressionNode.
 	self corresponding notNil ifTrue: [ self corresponding parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolMoveStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	tos := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> moveToSendingArea [
 	^ moveToSendingArea
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> moveToSendingArea: aCobolExpressionNode [
 	self moveToSendingArea notNil ifTrue: [ self moveToSendingArea parent: nil ].
 	moveToSendingArea := aCobolExpressionNode.
 	self moveToSendingArea notNil ifTrue: [ self moveToSendingArea parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> nodeVariables [
 	^ #(#moveToSendingArea #corresponding)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> tos [
 	^ tos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMoveStatementNode >> tos: anOrderedCollection [
 	self setParents: self tos to: nil.
 	tos := anOrderedCollection.
 	self setParents: self tos to: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolMoveStatementNode >> writesIdentifier: anIdentifierNode [
 	^ tos anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
 ]

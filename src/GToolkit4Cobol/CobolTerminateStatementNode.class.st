@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolTerminateStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolTerminateStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keyword',
 		'reportName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitTerminateStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> nodeVariables [
 	^ #(#reportName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> reportName [
 	^ reportName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> reportName: aCobolExpressionNode [
 	self reportName notNil ifTrue: [ self reportName parent: nil ].
 	reportName := aCobolExpressionNode.
 	self reportName notNil ifTrue: [ self reportName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolTerminateStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

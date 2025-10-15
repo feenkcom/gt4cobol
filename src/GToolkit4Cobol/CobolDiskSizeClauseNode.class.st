@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolDiskSizeClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDiskSizeClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'diskSize'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDiskSizeClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> diskSize [
 	^ diskSize
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> diskSize: aCobolExpressionNode [
 	self diskSize notNil ifTrue: [ self diskSize parent: nil ].
 	diskSize := aCobolExpressionNode.
 	self diskSize notNil ifTrue: [ self diskSize parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDiskSizeClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDiskSizeClauseNode >> nodeVariables [
 	^ #(#diskSize)
 ]

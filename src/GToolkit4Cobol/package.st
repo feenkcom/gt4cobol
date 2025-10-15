@@ -1,1 +1,1 @@
-Package { #name : #GToolkit4Cobol }
+Package { #name : 'GToolkit4Cobol' }

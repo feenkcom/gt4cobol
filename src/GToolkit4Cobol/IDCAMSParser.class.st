@@ -1,22 +1,24 @@
 Class {
-	#name : #IDCAMSParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#name : 'IDCAMSParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> ambiguousTransitions [
 ^#(
 #[ 0 6 0 37]
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 IDCAMSParser class >> cacheId [
 	^'2024-10-23T06:34:37.090209-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> definitionComment [
 "%ignorecase;
 
@@ -54,7 +56,7 @@ Parameters
 	;"
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> reduceTable [
 ^#(
 	#(13 0 #reduceActionForArg__argument__1: 254977 false) 
@@ -79,27 +81,27 @@ IDCAMSParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> scannerClass [
 	^IDCAMSScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> symbolNames [
 	^ #('"("' '")"' '","' '"="' '<id>' '<eols>' '<whitespace>' 'B e g i n' 'File' '(<eols> Step ''step'')' '(<eols> Step ''step'')*' 'Step' 'Arg ''argument''*' 'Arg' 'Value' 'Parameters' '("," ''comma'' Arg ''argument'')' '("," ''comma'' Arg ''argument'')+' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #IDCAMSFileNode #IDCAMSFileNode #IDCAMSStepNode #OrderedCollection #IDCAMSStepNode #OrderedCollection #IDCAMSProgramNode #IDCAMSValueNode #IDCAMSParametersNode #OrderedCollection #OrderedCollection #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSParser class >> transitionTable [
 ^#(
 #[1 0 9 0 5 0 13 0 6 0 17 0 9 0 21 0 12] 
@@ -135,7 +137,7 @@ IDCAMSParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForArg2: nodes [
 	| result |
 	result := IDCAMSAssignmentNode new.
@@ -145,14 +147,14 @@ IDCAMSParser >> reduceActionForArg2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForArg__argument__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForArg__argument__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -160,7 +162,7 @@ IDCAMSParser >> reduceActionForArg__argument__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForFile1: nodes [
 	| result |
 	result := IDCAMSFileNode new.
@@ -169,7 +171,7 @@ IDCAMSParser >> reduceActionForFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForFile3: nodes [
 	| result |
 	result := IDCAMSFileNode new.
@@ -178,7 +180,7 @@ IDCAMSParser >> reduceActionForFile3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForParameters1: nodes [
 	| result |
 	result := IDCAMSParametersNode new.
@@ -188,7 +190,7 @@ IDCAMSParser >> reduceActionForParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForParameters2: nodes [
 	| result |
 	result := IDCAMSParametersNode new.
@@ -200,7 +202,7 @@ IDCAMSParser >> reduceActionForParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForStep1: nodes [
 	| result |
 	result := IDCAMSStepNode new.
@@ -209,7 +211,7 @@ IDCAMSParser >> reduceActionForStep1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForValue1: nodes [
 	| result |
 	result := IDCAMSValueNode new.
@@ -217,7 +219,7 @@ IDCAMSParser >> reduceActionForValue1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionForValue2: nodes [
 	| result |
 	result := IDCAMSValueNode new.
@@ -226,7 +228,7 @@ IDCAMSParser >> reduceActionForValue2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionFor______comma__Arg__argument__1: nodes [
 	| result |
 	result := Array new: 2.
@@ -235,7 +237,7 @@ IDCAMSParser >> reduceActionFor______comma__Arg__argument__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionFor______comma__Arg__argument___1: nodes [
 	| result |
 	result := Array new: 2.
@@ -246,7 +248,7 @@ IDCAMSParser >> reduceActionFor______comma__Arg__argument___1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 IDCAMSParser >> reduceActionFor______comma__Arg__argument___2: nodes [
 	| result |
 	result := nodes at: 1.

@@ -1,6 +1,6 @@
 Class {
-	#name : #GtBMSField,
-	#superclass : #FAMIXStructuralEntity,
+	#name : 'GtBMSField',
+	#superclass : 'FAMIXStructuralEntity',
 	#instVars : [
 		'x',
 		'y',
@@ -9,10 +9,12 @@ Class {
 		'initialValue',
 		'map'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSField >> applyAttributesOn: aRopedText [
 	| index value |
 	color ifNil: [ ^ self ].
@@ -23,7 +25,7 @@ GtBMSField >> applyAttributesOn: aRopedText [
 				foreground: (Color perform: color asLowercase asSymbol) ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSField >> applyInitialValueOn: aSmaCCString [
 	| index value |
 	value := self initialValueString.
@@ -36,27 +38,27 @@ GtBMSField >> applyInitialValueOn: aSmaCCString [
 		with: value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> color [
 	^ color
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> color: anObject [
 	color := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> initialValue [
 	^ initialValue ifNil: [ '' ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> initialValue: anObject [
 	initialValue := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtBMSField >> initialValueString [
 	| value lines |
 	value := self initialValue.
@@ -71,24 +73,24 @@ GtBMSField >> initialValueString [
 	^ value
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> length [
 	^ length
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> length: anObject [
 	length := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> map [
 	<MSEProperty: #map type: #GtBMSMap opposite: #fields>
 	<container>
 	^ map
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> map: anObject [
 	map := FMMultivalueLink
 			on: self
@@ -97,22 +99,22 @@ GtBMSField >> map: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> x [
 	^ x
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> x: anObject [
 	x := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> y [
 	^ y
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSField >> y: anObject [
 	y := anObject
 ]

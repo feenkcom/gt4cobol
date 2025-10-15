@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReportDescriptionLastDetailClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportDescriptionLastDetailClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportDescriptionLastDetailClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportDescriptionLastDetailClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionLastDetailClauseNode >> nodeVariables [
 	^ #(#count)
 ]

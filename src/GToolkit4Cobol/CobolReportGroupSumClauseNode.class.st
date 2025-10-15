@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolReportGroupSumClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupSumClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'names',
 		'commas',
 		'dataNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupSumClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> compositeNodeVariables [
 	^ #(#names #dataNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> compositeTokenVariables [
 	^ #(#keywords #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> dataNames [
 	^ dataNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> dataNames: anOrderedCollection [
 	self setParents: self dataNames to: nil.
 	dataNames := anOrderedCollection.
 	self setParents: self dataNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupSumClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -56,22 +58,22 @@ CobolReportGroupSumClauseNode >> initialize [
 	dataNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> names [
 	^ names
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupSumClauseNode >> names: anOrderedCollection [
 	self setParents: self names to: nil.
 	names := anOrderedCollection.

@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolGobackStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolGobackStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGobackStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGobackStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGobackStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGobackStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGobackStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

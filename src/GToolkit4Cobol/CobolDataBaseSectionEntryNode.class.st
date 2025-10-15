@@ -1,68 +1,70 @@
 Class {
-	#name : #CobolDataBaseSectionEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataBaseSectionEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'level',
 		'values',
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataBaseSectionEntry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataBaseSectionEntryNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> level [
 	^ level
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> level: aCobolLiteralNode [
 	self level notNil ifTrue: [ self level parent: nil ].
 	level := aCobolLiteralNode.
 	self level notNil ifTrue: [ self level parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> nodeVariables [
 	^ #(#level)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> tokenVariables [
 	^ #(#keyword)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionEntryNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

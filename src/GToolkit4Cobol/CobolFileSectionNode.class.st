@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolFileSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolFileSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'fileDescriptions'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFileSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> compositeNodeVariables [
 	^ #(#fileDescriptions)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> fileDescriptions [
 	^ fileDescriptions
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> fileDescriptions: anOrderedCollection [
 	self setParents: self fileDescriptions to: nil.
 	fileDescriptions := anOrderedCollection.
 	self setParents: self fileDescriptions to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFileSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	fileDescriptions := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileSectionNode >> tokenVariables [
 	^ #(#period)
 ]

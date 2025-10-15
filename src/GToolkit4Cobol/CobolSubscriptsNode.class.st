@@ -1,80 +1,82 @@
 Class {
-	#name : #CobolSubscriptsNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSubscriptsNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'left',
 		'subscripts',
 		'commas',
 		'right'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSubscripts: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> compositeNodeVariables [
 	^ #(#subscripts)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSubscriptsNode >> initialize [
 	super initialize.
 	subscripts := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> subscripts [
 	^ subscripts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> subscripts: anOrderedCollection [
 	self setParents: self subscripts to: nil.
 	subscripts := anOrderedCollection.
 	self setParents: self subscripts to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptsNode >> tokenVariables [
 	^ #(#left #right)
 ]

@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolLibraryEntryProcedureWithClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLibraryEntryProcedureWithClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'procedures'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLibraryEntryProcedureWithClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> compositeNodeVariables [
 	^ #(#procedures)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLibraryEntryProcedureWithClauseNode >> initialize [
 	super initialize.
 	procedures := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> procedures [
 	^ procedures
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> procedures: anOrderedCollection [
 	self setParents: self procedures to: nil.
 	procedures := anOrderedCollection.
 	self setParents: self procedures to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLibraryEntryProcedureWithClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

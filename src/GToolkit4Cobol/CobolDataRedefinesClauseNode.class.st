@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolDataRedefinesClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataRedefinesClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'redefines'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataRedefinesClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> nodeVariables [
 	^ #(#redefines)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> redefines [
 	^ redefines
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> redefines: aCobolIdentifierNode [
 	self redefines notNil ifTrue: [ self redefines parent: nil ].
 	redefines := aCobolIdentifierNode.
 	self redefines notNil ifTrue: [ self redefines parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRedefinesClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

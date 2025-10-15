@@ -1,10 +1,12 @@
 Class {
-	#name : #BMSParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#name : 'BMSParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSParser class >> bmsStyler: aParserClass [
 	<smaccStyler: #BMSParser priority: 10>
 	^ (GtSmaCCParserStyler forParser: aParserClass)
@@ -33,12 +35,12 @@ BMSParser class >> bmsStyler: aParserClass [
 					styleBlock: [ :styler | styler foreground: Color red ]}
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 BMSParser class >> cacheId [
 	^'2024-10-02T05:17:40.491654-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> definitionComment [
 "%ignorecase;
 
@@ -94,12 +96,12 @@ Values
 	;"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSParser class >> fileExtension [
 	^ '.bms'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> reduceTable [
 ^#(
 	#(13 0 #reduceActionForMacro__macro__1: 421889 false) 
@@ -123,27 +125,27 @@ BMSParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> scannerClass [
 	^BMSScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> symbolNames [
 	^ #('"("' '")"' '","' '"="' '<number>' '<string>' '<id>' '<comment>' '<continuation>' '<whitespace>' 'B e g i n' 'File' 'Macro ''macro''*' 'Macro' 'Fields' 'Field' 'Value' 'Values' '<macro>' '<name>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #BMSFileNode #BMSFileNode #OrderedCollection #BMSMacroNode #OrderedCollection #BMSFieldNode #BMSValueNode #OrderedCollection #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSParser class >> transitionTable [
 ^#(
 #[1 0 9 0 12 0 13 0 13 0 6 0 19 0 6 0 20 0 6 0 21] 
@@ -175,7 +177,7 @@ BMSParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForField1: nodes [
 	| result |
 	result := BMSFieldNode new.
@@ -185,7 +187,7 @@ BMSParser >> reduceActionForField1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForField2: nodes [
 	| result |
 	result := BMSFieldNode new.
@@ -193,7 +195,7 @@ BMSParser >> reduceActionForField2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForFields1: nodes [
 	| result |
 	result := Array new: 2.
@@ -203,7 +205,7 @@ BMSParser >> reduceActionForFields1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForFields2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -212,7 +214,7 @@ BMSParser >> reduceActionForFields2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForFile1: nodes [
 	| result |
 	result := BMSFileNode new.
@@ -220,7 +222,7 @@ BMSParser >> reduceActionForFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro1: nodes [
 	| result |
 	result := BMSMacroNode new.
@@ -228,7 +230,7 @@ BMSParser >> reduceActionForMacro1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro2: nodes [
 	| result |
 	result := BMSMacroNode new.
@@ -238,7 +240,7 @@ BMSParser >> reduceActionForMacro2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro3: nodes [
 	| result |
 	result := BMSMacroNode new.
@@ -247,7 +249,7 @@ BMSParser >> reduceActionForMacro3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro4: nodes [
 	| result |
 	result := BMSMacroNode new.
@@ -258,14 +260,14 @@ BMSParser >> reduceActionForMacro4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro__macro__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForMacro__macro__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -273,7 +275,7 @@ BMSParser >> reduceActionForMacro__macro__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForValue1: nodes [
 	| result |
 	result := BMSIdentifierNode new.
@@ -281,7 +283,7 @@ BMSParser >> reduceActionForValue1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForValue2: nodes [
 	| result |
 	result := BMSNumberNode new.
@@ -289,7 +291,7 @@ BMSParser >> reduceActionForValue2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForValue3: nodes [
 	| result |
 	result := BMSStringNode new.
@@ -297,7 +299,7 @@ BMSParser >> reduceActionForValue3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForValue4: nodes [
 	| result |
 	result := BMSListNode new.
@@ -306,7 +308,7 @@ BMSParser >> reduceActionForValue4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 BMSParser >> reduceActionForValue5: nodes [
 	| result |
 	result := BMSListNode new.
@@ -317,12 +319,12 @@ BMSParser >> reduceActionForValue5: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BMSParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 BMSParser >> useAllTokenIds [
 	^ false
 ]

@@ -1,55 +1,57 @@
 Class {
-	#name : #CobolWorkingStorageSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolWorkingStorageSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'entries',
 		'execSqls'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitWorkingStorageSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> compositeNodeVariables [
 	^ #(#entries #execSqls)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> entries [
 	^ entries
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: nil.
 	entries := anOrderedCollection.
 	self setParents: self entries to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> execSqls [
 	^ execSqls
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> execSqls: anOrderedCollection [
 	self setParents: self execSqls to: nil.
 	execSqls := anOrderedCollection.
 	self setParents: self execSqls to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolWorkingStorageSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -57,27 +59,27 @@ CobolWorkingStorageSectionNode >> initialize [
 	execSqls := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolWorkingStorageSectionNode >> tokenVariables [
 	^ #(#period)
 ]

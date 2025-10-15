@@ -1,41 +1,43 @@
 Class {
-	#name : #CobolSubscriptReferenceExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolSubscriptReferenceExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'value',
 		'subscript'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSubscriptReferenceExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> nodeVariables [
 	^ #(#value #subscript)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> subscript [
 	^ subscript
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> subscript: aCobolSubscriptsNode [
 	self subscript notNil ifTrue: [ self subscript parent: nil ].
 	subscript := aCobolSubscriptsNode.
 	self subscript notNil ifTrue: [ self subscript parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSubscriptReferenceExpressionNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

@@ -1,18 +1,20 @@
 Class {
-	#name : #CobolDataUsageClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataUsageClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataUsageClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataUsageClause: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataUsageClauseNode >> byteSizeBasedOn: anInteger [
 	(#('BINARY' 'COMP' 'COMP-4' 'COMP-5')
 		anySatisfy: [ :each | self hasKeyword: each ])
@@ -26,23 +28,23 @@ CobolDataUsageClauseNode >> byteSizeBasedOn: anInteger [
 	^ anInteger
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataUsageClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataUsageClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataUsageClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataUsageClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

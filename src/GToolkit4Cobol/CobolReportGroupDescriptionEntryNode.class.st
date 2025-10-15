@@ -1,83 +1,85 @@
 Class {
-	#name : #CobolReportGroupDescriptionEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupDescriptionEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'level',
 		'name',
 		'clauses',
 		'period'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupDescriptionEntry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupDescriptionEntryNode >> initialize [
 	super initialize.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> level [
 	^ level
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> level: aCobolLiteralNode [
 	self level notNil ifTrue: [ self level parent: nil ].
 	level := aCobolLiteralNode.
 	self level notNil ifTrue: [ self level parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> nodeVariables [
 	^ #(#level #name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupDescriptionEntryNode >> tokenVariables [
 	^ #(#period)
 ]

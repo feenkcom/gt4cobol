@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolDestinationTableClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDestinationTableClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'times',
 		'indexNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDestinationTableClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> compositeNodeVariables [
 	^ #(#indexNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> indexNames [
 	^ indexNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> indexNames: anOrderedCollection [
 	self setParents: self indexNames to: nil.
 	indexNames := anOrderedCollection.
 	self setParents: self indexNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDestinationTableClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	indexNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> nodeVariables [
 	^ #(#times)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> times [
 	^ times
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDestinationTableClauseNode >> times: aCobolLiteralNode [
 	self times notNil ifTrue: [ self times parent: nil ].
 	times := aCobolLiteralNode.

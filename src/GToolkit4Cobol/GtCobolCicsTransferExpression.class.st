@@ -1,24 +1,26 @@
 Class {
-	#name : #GtCobolCicsTransferExpression,
-	#superclass : #FAMIXAssociation,
+	#name : 'GtCobolCicsTransferExpression',
+	#superclass : 'FAMIXAssociation',
 	#instVars : [
 		'fromProgram',
 		'toPrograms'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsTransferExpression >> from [
 	^ fromProgram
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsTransferExpression >> to [
 	^ toPrograms
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsTransferExpression >> toPrograms: anObject [
 	toPrograms value: anObject
 ]

@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolReportClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'reportNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> compositeNodeVariables [
 	^ #(#reportNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	reportNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> reportNames [
 	^ reportNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportClauseNode >> reportNames: anOrderedCollection [
 	self setParents: self reportNames to: nil.
 	reportNames := anOrderedCollection.

@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolFunctionCallNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolFunctionCallNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'keyword',
 		'name',
@@ -12,57 +12,59 @@ Class {
 		'colon',
 		'length'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFunctionCall: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> colon [
 	^ colon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> colon: aSmaCCToken [
 	colon := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> compositeNodeVariables [
 	^ #(#arguments)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> compositeTokenVariables [
 	^ #(#lefts #rights #commas #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFunctionCallNode >> initialize [
 	super initialize.
 	lefts := OrderedCollection new: 2.
@@ -71,83 +73,83 @@ CobolFunctionCallNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> lefts [
 	^ lefts
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> lefts: anOrderedCollection [
 	lefts := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> length [
 	^ length
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> length: aCobolExpressionNode [
 	self length notNil ifTrue: [ self length parent: nil ].
 	length := aCobolExpressionNode.
 	self length notNil ifTrue: [ self length parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> name: anObject [
 	self setParent: self name to: nil.
 	name := anObject.
 	self setParent: self name to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> nodeVariables [
 	^ #(#position #length)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> otherVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> position [
 	^ position
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> position: aCobolExpressionNode [
 	self position notNil ifTrue: [ self position parent: nil ].
 	position := aCobolExpressionNode.
 	self position notNil ifTrue: [ self position parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> rights [
 	^ rights
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> rights: anOrderedCollection [
 	rights := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFunctionCallNode >> tokenVariables [
 	^ #(#keyword #colon)
 ]

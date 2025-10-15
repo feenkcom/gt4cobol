@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReportGroupTypeControlFootingNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupTypeControlFootingNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'controlFooting'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupTypeControlFooting: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> controlFooting [
 	^ controlFooting
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> controlFooting: aCobolIdentifierNode [
 	self controlFooting notNil ifTrue: [ self controlFooting parent: nil ].
 	controlFooting := aCobolIdentifierNode.
 	self controlFooting notNil ifTrue: [ self controlFooting parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupTypeControlFootingNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlFootingNode >> nodeVariables [
 	^ #(#controlFooting)
 ]

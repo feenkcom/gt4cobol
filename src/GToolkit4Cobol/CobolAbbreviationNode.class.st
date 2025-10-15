@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolAbbreviationNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolAbbreviationNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'value',
 		'leftParen',
@@ -10,104 +10,106 @@ Class {
 		'ops',
 		'not'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> abbreviation [
 	^ abbreviation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> abbreviation: aCobolAbbreviationNode [
 	self abbreviation notNil ifTrue: [ self abbreviation parent: nil ].
 	abbreviation := aCobolAbbreviationNode.
 	self abbreviation notNil ifTrue: [ self abbreviation parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAbbreviation: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> compositeTokenVariables [
 	^ #(#keywords #ops)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAbbreviationNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	ops := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> leftParen [
 	^ leftParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> leftParen: aSmaCCToken [
 	leftParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> nodeVariables [
 	^ #(#value #abbreviation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> not [
 	^ not
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> not: aSmaCCToken [
 	not := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> ops [
 	^ ops
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> ops: anOrderedCollection [
 	ops := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> rightParen [
 	^ rightParen
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> rightParen: aSmaCCToken [
 	rightParen := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> tokenVariables [
 	^ #(#leftParen #rightParen #not)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAbbreviationNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

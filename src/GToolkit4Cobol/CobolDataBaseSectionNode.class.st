@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolDataBaseSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataBaseSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'databaseSections'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataBaseSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> compositeNodeVariables [
 	^ #(#databaseSections)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> databaseSections [
 	^ databaseSections
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> databaseSections: anOrderedCollection [
 	self setParents: self databaseSections to: nil.
 	databaseSections := anOrderedCollection.
 	self setParents: self databaseSections to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataBaseSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	databaseSections := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBaseSectionNode >> tokenVariables [
 	^ #(#period)
 ]

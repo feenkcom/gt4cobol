@@ -1,18 +1,20 @@
 Class {
-	#name : #CobolLiteralNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolLiteralNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLiteral: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 CobolLiteralNode >> literalString [
 	| str |
 	str := value source.
@@ -23,17 +25,17 @@ CobolLiteralNode >> literalString [
 	^ nil
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLiteralNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLiteralNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLiteralNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

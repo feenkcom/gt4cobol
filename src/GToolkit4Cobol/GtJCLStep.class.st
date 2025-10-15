@@ -1,6 +1,6 @@
 Class {
-	#name : #GtJCLStep,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtJCLStep',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'job',
 		'program',
@@ -8,17 +8,19 @@ Class {
 		'proc',
 		'calledProc'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> calledProc [
 	<MSEProperty: #calledProc type: #GtJCLProc opposite: #calledBySteps>
 	<container>
 	^ calledProc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> calledProc: anObject [
 	calledProc := FMMultivalueLink
 			on: self
@@ -27,19 +29,19 @@ GtJCLStep >> calledProc: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> dataDescriptors [
 	<MSEProperty: #dataDescriptors type: #GtJCLDataDescriptor opposite: #step>
 	<multivalued>
 	^ dataDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> dataDescriptors: anObject [
 	dataDescriptors value: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtJCLStep >> initialize [
 	super initialize.
 	dataDescriptors := FMNullMultivalueLink
@@ -48,14 +50,14 @@ GtJCLStep >> initialize [
 			selector: #dataDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> job [
 	<MSEProperty: #job type: #GtJCLJob opposite: #steps>
 	<container>
 	^ job
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> job: anObject [
 	job := FMMultivalueLink
 			on: self
@@ -64,14 +66,14 @@ GtJCLStep >> job: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> proc [
 	<MSEProperty: #proc type: #GtJCLProc opposite: #steps>
 	<container>
 	^ proc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> proc: anObject [
 	proc := FMMultivalueLink
 			on: self
@@ -80,14 +82,14 @@ GtJCLStep >> proc: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> program [
 	<MSEProperty: #program type: #GtCobolProgram opposite: #jclSteps>
 	<container>
 	^ program
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLStep >> program: anObject [
 	program := FMMultivalueLink
 			on: self

@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolReportGroupTypeControlHeadingNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupTypeControlHeadingNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'controlHeading'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupTypeControlHeading: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> controlHeading [
 	^ controlHeading
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> controlHeading: aCobolIdentifierNode [
 	self controlHeading notNil ifTrue: [ self controlHeading parent: nil ].
 	controlHeading := aCobolIdentifierNode.
 	self controlHeading notNil ifTrue: [ self controlHeading parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupTypeControlHeadingNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupTypeControlHeadingNode >> nodeVariables [
 	^ #(#controlHeading)
 ]

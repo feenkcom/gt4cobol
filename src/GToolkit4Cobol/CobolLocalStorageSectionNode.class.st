@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolLocalStorageSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLocalStorageSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'periods',
@@ -8,49 +8,51 @@ Class {
 		'execSqls',
 		'localName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLocalStorageSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> compositeNodeVariables [
 	^ #(#entries #execSqls)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> compositeTokenVariables [
 	^ #(#keywords #periods)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> entries [
 	^ entries
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> entries: anOrderedCollection [
 	self setParents: self entries to: nil.
 	entries := anOrderedCollection.
 	self setParents: self entries to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> execSqls [
 	^ execSqls
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> execSqls: anOrderedCollection [
 	self setParents: self execSqls to: nil.
 	execSqls := anOrderedCollection.
 	self setParents: self execSqls to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLocalStorageSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -59,39 +61,39 @@ CobolLocalStorageSectionNode >> initialize [
 	execSqls := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> localName [
 	^ localName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> localName: aCobolIdentifierNode [
 	self localName notNil ifTrue: [ self localName parent: nil ].
 	localName := aCobolIdentifierNode.
 	self localName notNil ifTrue: [ self localName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> nodeVariables [
 	^ #(#localName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLocalStorageSectionNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]

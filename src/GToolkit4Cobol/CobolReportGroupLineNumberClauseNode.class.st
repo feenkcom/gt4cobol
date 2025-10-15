@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolReportGroupLineNumberClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupLineNumberClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'pageNumber',
 		'keywords',
 		'advance'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupLineNumberClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> advance [
 	^ advance
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> advance: aCobolLiteralNode [
 	self advance notNil ifTrue: [ self advance parent: nil ].
 	advance := aCobolLiteralNode.
 	self advance notNil ifTrue: [ self advance parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupLineNumberClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> nodeVariables [
 	^ #(#pageNumber #advance)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> pageNumber [
 	^ pageNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupLineNumberClauseNode >> pageNumber: aCobolLiteralNode [
 	self pageNumber notNil ifTrue: [ self pageNumber parent: nil ].
 	pageNumber := aCobolLiteralNode.

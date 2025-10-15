@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDataBlankWhenZeroClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataBlankWhenZeroClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBlankWhenZeroClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataBlankWhenZeroClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBlankWhenZeroClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataBlankWhenZeroClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBlankWhenZeroClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataBlankWhenZeroClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

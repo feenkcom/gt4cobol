@@ -1,71 +1,73 @@
 Class {
-	#name : #CobolLinageClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolLinageClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count',
 		'dataNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitLinageClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> compositeNodeVariables [
 	^ #(#dataNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> count: aCobolExpressionNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolExpressionNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> dataNames [
 	^ dataNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> dataNames: anOrderedCollection [
 	self setParents: self dataNames to: nil.
 	dataNames := anOrderedCollection.
 	self setParents: self dataNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolLinageClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	dataNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolLinageClauseNode >> nodeVariables [
 	^ #(#count)
 ]

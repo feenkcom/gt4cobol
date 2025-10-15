@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolReleaseStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolReleaseStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'recordName',
 		'fromName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReleaseStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> fromName [
 	^ fromName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> fromName: aCobolExpressionNode [
 	self fromName notNil ifTrue: [ self fromName parent: nil ].
 	fromName := aCobolExpressionNode.
 	self fromName notNil ifTrue: [ self fromName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReleaseStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> nodeVariables [
 	^ #(#recordName #fromName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> recordName [
 	^ recordName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReleaseStatementNode >> recordName: aCobolExpressionNode [
 	self recordName notNil ifTrue: [ self recordName parent: nil ].
 	recordName := aCobolExpressionNode.

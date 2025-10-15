@@ -1,82 +1,84 @@
 Class {
-	#name : #CobolReceiveFromStatementNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReceiveFromStatementNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'name',
 		'keywords',
 		'dataName',
 		'receiveClauses'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReceiveFromStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> compositeNodeVariables [
 	^ #(#receiveClauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReceiveFromStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	receiveClauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> nodeVariables [
 	^ #(#name #dataName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> receiveClauses [
 	^ receiveClauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReceiveFromStatementNode >> receiveClauses: anOrderedCollection [
 	self setParents: self receiveClauses to: nil.
 	receiveClauses := anOrderedCollection.

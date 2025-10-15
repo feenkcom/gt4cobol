@@ -1,6 +1,6 @@
-Extension { #name : #AbstractFileReference }
+Extension { #name : 'AbstractFileReference' }
 
-{ #category : #'*GToolkit4Cobol' }
+{ #category : '*GToolkit4Cobol' }
 AbstractFileReference >> gtBMSScreenFor: aView [
 	<gtView>
 	(self extension = 'bms' and: [ self exists ]) ifFalse: [ ^ aView empty ].

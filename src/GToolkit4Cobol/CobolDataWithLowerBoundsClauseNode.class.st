@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDataWithLowerBoundsClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataWithLowerBoundsClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataWithLowerBoundsClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataWithLowerBoundsClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataWithLowerBoundsClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataWithLowerBoundsClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataWithLowerBoundsClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataWithLowerBoundsClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

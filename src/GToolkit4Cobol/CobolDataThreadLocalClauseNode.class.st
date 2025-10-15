@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDataThreadLocalClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataThreadLocalClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataThreadLocalClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataThreadLocalClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataThreadLocalClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataThreadLocalClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataThreadLocalClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataThreadLocalClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

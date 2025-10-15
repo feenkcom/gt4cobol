@@ -1,6 +1,6 @@
 Class {
-	#name : #GtCobolFileDescriptor,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtCobolFileDescriptor',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'program',
 		'variables',
@@ -8,34 +8,36 @@ Class {
 		'fileStatusVariables',
 		'recordKey'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> assigns [
 	<MSEProperty: #assigns type: #GtCobolAssignFile opposite: #fileDescriptor>
 	<multivalued>
 	^ assigns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> assigns: anObject [
 	assigns value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> fileStatusVariables [
 	<MSEProperty: #fileStatusVariables type: #GtCobolVariable opposite: #fileStatusInDescriptors>
 	<multivalued>
 	^ fileStatusVariables
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> fileStatusVariables: anObject [
 	fileStatusVariables value: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolFileDescriptor >> initialize [
 	super initialize.
 	variables := FMMultiMultivalueLink on: self opposite: #fileDescriptors.
@@ -48,14 +50,14 @@ GtCobolFileDescriptor >> initialize [
 			opposite: #fileStatusInDescriptors
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> program [
 	<MSEProperty: #program type: #GtCobolProgram opposite: #fileDescriptors>
 	<container>
 	^ program
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> program: anObject [
 	program := FMMultivalueLink
 			on: self
@@ -64,14 +66,14 @@ GtCobolFileDescriptor >> program: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> recordKey [
 	<MSEProperty: #recordKey type: #GtCobolVariable opposite: #recordKeyInDescriptors>
 	<multivalued>
 	^ recordKey
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> recordKey: anObject [
 	recordKey := FMMultivalueLink
 			on: self
@@ -80,14 +82,14 @@ GtCobolFileDescriptor >> recordKey: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> variables [
 	<MSEProperty: #variables type: #GtCobolVariable opposite: #fileDescriptors>
 	<multivalued>
 	^ variables
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolFileDescriptor >> variables: anObject [
 	variables value: anObject
 ]

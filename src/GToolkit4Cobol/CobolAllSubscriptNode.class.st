@@ -1,28 +1,30 @@
 Class {
-	#name : #CobolAllSubscriptNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolAllSubscriptNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAllSubscriptNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAllSubscript: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAllSubscriptNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAllSubscriptNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAllSubscriptNode >> tokenVariables [
 	^ #(#keyword)
 ]

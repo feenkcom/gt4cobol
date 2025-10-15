@@ -1,6 +1,6 @@
 Class {
-	#name : #JCLListNode,
-	#superclass : #JCLValueNode,
+	#name : 'JCLListNode',
+	#superclass : 'JCLValueNode',
 	#instVars : [
 		'left',
 		'right',
@@ -8,35 +8,37 @@ Class {
 		'commas',
 		'parameters'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitList: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> compositeNodeVariables [
 	^ #(#values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JCLListNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
@@ -44,59 +46,59 @@ JCLListNode >> initialize [
 	parameters := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLListNode >> literalValue [
 	^ parameters isEmpty ifTrue: [ values collect: #literalValue ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> otherVariables [
 	^ #(#parameters)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> parameters [
 	^ parameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> parameters: anOrderedCollection [
 	self setParent: self parameters to: nil.
 	parameters := anOrderedCollection.
 	self setParent: self parameters to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> tokenVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLListNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

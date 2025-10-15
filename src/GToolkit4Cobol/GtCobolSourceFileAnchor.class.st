@@ -1,23 +1,25 @@
 Class {
-	#name : #GtCobolSourceFileAnchor,
-	#superclass : #FAMIXIndexedFileEntityAnchor,
+	#name : 'GtCobolSourceFileAnchor',
+	#superclass : 'FAMIXIndexedFileEntityAnchor',
 	#instVars : [
 		'sourceText'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolSourceFileAnchor >> completeText [
 	^ self sourceText
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolSourceFileAnchor >> sourceText [
 	^ sourceText asString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolSourceFileAnchor >> sourceText: anObject [
 	sourceText := anObject
 ]

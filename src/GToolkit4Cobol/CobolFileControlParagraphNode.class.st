@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolFileControlParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolFileControlParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'entries',
 		'periods'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFileControlParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> compositeNodeVariables [
 	^ #(#entries)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> compositeTokenVariables [
 	^ #(#periods)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> entries [
 	^ entries
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> entries: anOrderedCollection [
 	self setParents: self entries to: nil.
 	entries := anOrderedCollection.
 	self setParents: self entries to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFileControlParagraphNode >> initialize [
 	super initialize.
 	entries := OrderedCollection new: 2.
 	periods := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileControlParagraphNode >> tokenVariables [
 	^ #(#keyword)
 ]

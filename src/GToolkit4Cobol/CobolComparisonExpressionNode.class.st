@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolComparisonExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolComparisonExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'left',
 		'ops',
@@ -8,86 +8,88 @@ Class {
 		'not',
 		'right'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitComparisonExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> compositeTokenVariables [
 	^ #(#ops #keywords #leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolComparisonExpressionNode >> initialize [
 	super initialize.
 	ops := OrderedCollection new: 2.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> left: aCobolExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
 	left := aCobolExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> not [
 	^ not
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> not: aSmaCCToken [
 	not := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> ops [
 	^ ops
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> ops: anOrderedCollection [
 	ops := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> right: aCobolExpressionNode [
 	self right notNil ifTrue: [ self right parent: nil ].
 	right := aCobolExpressionNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolComparisonExpressionNode >> tokenVariables [
 	^ #(#not)
 ]

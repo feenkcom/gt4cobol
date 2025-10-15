@@ -1,55 +1,57 @@
 Class {
-	#name : #IDCAMSAssignmentNode,
-	#superclass : #IDCAMSProgramNode,
+	#name : 'IDCAMSAssignmentNode',
+	#superclass : 'IDCAMSProgramNode',
 	#instVars : [
 		'name',
 		'equals',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignment: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> tokenVariables [
 	^ #(#name #equals)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSAssignmentNode >> value: anIDCAMSValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := anIDCAMSValueNode.

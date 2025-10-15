@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolDisplayStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolDisplayStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'displaies',
@@ -8,59 +8,61 @@ Class {
 		'upon',
 		'_at'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> _at [
 	^ _at
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> _at: aCobolExpressionNode [
 	self _at notNil ifTrue: [ self _at parent: nil ].
 	_at := aCobolExpressionNode.
 	self _at notNil ifTrue: [ self _at parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDisplayStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> compositeNodeVariables [
 	^ #(#displaies)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> compositeTokenVariables [
 	^ #(#keywords #commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> displaies [
 	^ displaies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> displaies: anOrderedCollection [
 	self setParents: self displaies to: nil.
 	displaies := anOrderedCollection.
 	self setParents: self displaies to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDisplayStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -68,27 +70,27 @@ CobolDisplayStatementNode >> initialize [
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> nodeVariables [
 	^ #(#upon #_at)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> upon [
 	^ upon
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDisplayStatementNode >> upon: aCobolIdentifierNode [
 	self upon notNil ifTrue: [ self upon parent: nil ].
 	upon := aCobolIdentifierNode.

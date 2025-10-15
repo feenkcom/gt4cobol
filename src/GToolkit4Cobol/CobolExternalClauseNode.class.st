@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolExternalClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolExternalClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExternalClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExternalClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExternalClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolExternalClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExternalClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExternalClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

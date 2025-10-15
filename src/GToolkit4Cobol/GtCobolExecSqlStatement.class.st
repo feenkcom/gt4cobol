@@ -1,14 +1,16 @@
 Class {
-	#name : #GtCobolExecSqlStatement,
-	#superclass : #FAMIXBehaviouralEntity,
+	#name : 'GtCobolExecSqlStatement',
+	#superclass : 'FAMIXBehaviouralEntity',
 	#instVars : [
 		'source',
 		'paragraph'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #views }
+{ #category : 'views' }
 GtCobolExecSqlStatement >> gtReferencedTablesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -17,7 +19,7 @@ GtCobolExecSqlStatement >> gtReferencedTablesFor: aView [
 		column: 'Table' text: [ :each | each gtDisplayString ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolExecSqlStatement >> mooseNameOn: stream [
 	| instream |
 	self containerFiles notEmpty
@@ -33,14 +35,14 @@ GtCobolExecSqlStatement >> mooseNameOn: stream [
 		whileTrue: [ stream nextPut: instream next ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolExecSqlStatement >> paragraph [
 	<MSEProperty: #paragraph type: #GtCobolParagraph opposite: #execSqlStatements>
 	<container>
 	^ paragraph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolExecSqlStatement >> paragraph: anObject [
 	paragraph := FMMultivalueLink
 			on: self
@@ -49,17 +51,17 @@ GtCobolExecSqlStatement >> paragraph: anObject [
 			to: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolExecSqlStatement >> referencedTables [
 	^ self outgoingReferences collect: #to
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolExecSqlStatement >> source [
 	^ source
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolExecSqlStatement >> source: anObject [
 	source := anObject
 ]

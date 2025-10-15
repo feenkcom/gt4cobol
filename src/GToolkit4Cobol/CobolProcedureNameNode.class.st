@@ -1,59 +1,61 @@
 Class {
-	#name : #CobolProcedureNameNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolProcedureNameNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'name',
 		'keyword',
 		'sectionName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcedureName: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> name: aCobolExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> nodeVariables [
 	^ #(#name #sectionName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> sectionName [
 	^ sectionName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> sectionName: aCobolExpressionNode [
 	self sectionName notNil ifTrue: [ self sectionName parent: nil ].
 	sectionName := aCobolExpressionNode.
 	self sectionName notNil ifTrue: [ self sectionName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureNameNode >> tokenVariables [
 	^ #(#keyword)
 ]

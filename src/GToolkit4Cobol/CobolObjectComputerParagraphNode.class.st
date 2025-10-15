@@ -1,87 +1,89 @@
 Class {
-	#name : #CobolObjectComputerParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolObjectComputerParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'periods',
 		'computerName',
 		'computerClauses'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitObjectComputerParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> compositeNodeVariables [
 	^ #(#computerClauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> compositeTokenVariables [
 	^ #(#periods)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> computerClauses [
 	^ computerClauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> computerClauses: anOrderedCollection [
 	self setParents: self computerClauses to: nil.
 	computerClauses := anOrderedCollection.
 	self setParents: self computerClauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> computerName [
 	^ computerName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> computerName: aCobolIdentifierNode [
 	self computerName notNil ifTrue: [ self computerName parent: nil ].
 	computerName := aCobolIdentifierNode.
 	self computerName notNil ifTrue: [ self computerName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolObjectComputerParagraphNode >> initialize [
 	super initialize.
 	periods := OrderedCollection new: 2.
 	computerClauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> nodeVariables [
 	^ #(#computerName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolObjectComputerParagraphNode >> tokenVariables [
 	^ #(#keyword)
 ]

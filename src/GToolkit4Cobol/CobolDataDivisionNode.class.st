@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolDataDivisionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataDivisionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'sections'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataDivision: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> compositeNodeVariables [
 	^ #(#sections)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataDivisionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sections := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> sections [
 	^ sections
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> sections: anOrderedCollection [
 	self setParents: self sections to: nil.
 	sections := anOrderedCollection.
 	self setParents: self sections to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDivisionNode >> tokenVariables [
 	^ #(#period)
 ]

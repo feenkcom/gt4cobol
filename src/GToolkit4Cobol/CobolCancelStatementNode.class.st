@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolCancelStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolCancelStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'cancels'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCancelStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> cancels [
 	^ cancels
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> cancels: anOrderedCollection [
 	self setParents: self cancels to: nil.
 	cancels := anOrderedCollection.
 	self setParents: self cancels to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> compositeNodeVariables [
 	^ #(#cancels)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolCancelStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	cancels := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCancelStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

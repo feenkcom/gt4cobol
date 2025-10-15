@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolMergeOnKeyClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolMergeOnKeyClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'mergeNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMergeOnKeyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> compositeNodeVariables [
 	^ #(#mergeNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolMergeOnKeyClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	mergeNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> mergeNames [
 	^ mergeNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolMergeOnKeyClauseNode >> mergeNames: anOrderedCollection [
 	self setParents: self mergeNames to: nil.
 	mergeNames := anOrderedCollection.

@@ -1,53 +1,55 @@
 Class {
-	#name : #CobolExhibitStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolExhibitStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'exhibits'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExhibitStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> compositeNodeVariables [
 	^ #(#exhibits)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> exhibits [
 	^ exhibits
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> exhibits: anOrderedCollection [
 	self setParents: self exhibits to: nil.
 	exhibits := anOrderedCollection.
 	self setParents: self exhibits to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolExhibitStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	exhibits := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExhibitStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

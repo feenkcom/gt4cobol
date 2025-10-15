@@ -1,51 +1,53 @@
 Class {
-	#name : #CobolSortOnKeyClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSortOnKeyClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'sortNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSortOnKeyClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> compositeNodeVariables [
 	^ #(#sortNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSortOnKeyClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	sortNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> sortNames [
 	^ sortNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSortOnKeyClauseNode >> sortNames: anOrderedCollection [
 	self setParents: self sortNames to: nil.
 	sortNames := anOrderedCollection.

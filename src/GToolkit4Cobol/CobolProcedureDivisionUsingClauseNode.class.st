@@ -1,43 +1,45 @@
 Class {
-	#name : #CobolProcedureDivisionUsingClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolProcedureDivisionUsingClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'optionals',
 		'anies',
 		'values'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcedureDivisionUsingClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> anies [
 	^ anies
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> anies: anOrderedCollection [
 	self setParents: self anies to: nil.
 	anies := anOrderedCollection.
 	self setParents: self anies to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> compositeNodeVariables [
 	^ #(#optionals #anies #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolProcedureDivisionUsingClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -46,34 +48,34 @@ CobolProcedureDivisionUsingClauseNode >> initialize [
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> optionals [
 	^ optionals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> optionals: anOrderedCollection [
 	self setParents: self optionals to: nil.
 	optionals := anOrderedCollection.
 	self setParents: self optionals to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionUsingClauseNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

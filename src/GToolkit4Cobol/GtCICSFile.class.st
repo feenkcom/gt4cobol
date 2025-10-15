@@ -1,6 +1,6 @@
 Class {
-	#name : #GtCICSFile,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtCICSFile',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'datasetName',
 		'jclDataDescriptors',
@@ -8,31 +8,33 @@ Class {
 		'jclFileReferences',
 		'keys'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> cicsFileAccesses [
 	<MSEProperty: #cicsFileAccesses type: #GtCICSFileAccess opposite: #cicsFile>
 	^ cicsFileAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> cicsFileAccesses: anObject [
 	cicsFileAccesses value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> datasetName [
 	^ datasetName
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> datasetName: anObject [
 	datasetName := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> fileDescriptors [
 	<MSEProperty: #fileDescriptors type: #GtCobolFileDescriptor>
 	<derived>
@@ -42,7 +44,7 @@ GtCICSFile >> fileDescriptors [
 	^ vars
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> gtFieldsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -65,7 +67,7 @@ GtCICSFile >> gtFieldsFor: aView [
 			width: 100
 ]
 
-{ #category : #views }
+{ #category : 'views' }
 GtCICSFile >> gtReferencesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -75,7 +77,7 @@ GtCICSFile >> gtReferencesFor: aView [
 		column: 'To' text: [ :each | each to ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> gtVariablesFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -85,7 +87,7 @@ GtCICSFile >> gtVariablesFor: aView [
 		column: 'Fields' text: [ :each | each components size ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> initialize [
 	super initialize.
 	jclFileReferences := FMNullMultivalueLink
@@ -98,29 +100,29 @@ GtCICSFile >> initialize [
 			selector: #cicsFileAccesses
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> jclFileReferences [
 	<MSEProperty: #jclFileReferences type: #GtJCLFileReference opposite: #cicsFile>
 	<multivalued>
 	^ jclFileReferences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> jclFileReferences: anObject [
 	jclFileReferences value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> keys [
 	^ keys ifNil: [ #() ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFile >> keys: anObject [
 	keys := anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> mooseNameOn: stream [
 	(datasetName notNil and: [ self name ~= datasetName ])
 		ifTrue: [ stream << datasetName.
@@ -128,7 +130,7 @@ GtCICSFile >> mooseNameOn: stream [
 		ifFalse: [ super mooseNameOn: stream ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCICSFile >> variables [
 	<MSEProperty: #variables type: #GtCobolVariable>
 	<derived>

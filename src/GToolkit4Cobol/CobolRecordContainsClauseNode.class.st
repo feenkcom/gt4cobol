@@ -1,76 +1,78 @@
 Class {
-	#name : #CobolRecordContainsClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRecordContainsClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'count',
 		'dependingOnName',
 		'toCount'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRecordContainsClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> dependingOnName [
 	^ dependingOnName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> dependingOnName: aCobolExpressionNode [
 	self dependingOnName notNil ifTrue: [ self dependingOnName parent: nil ].
 	dependingOnName := aCobolExpressionNode.
 	self dependingOnName notNil ifTrue: [ self dependingOnName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRecordContainsClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> nodeVariables [
 	^ #(#count #dependingOnName #toCount)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> toCount [
 	^ toCount
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordContainsClauseNode >> toCount: aCobolLiteralNode [
 	self toCount notNil ifTrue: [ self toCount parent: nil ].
 	toCount := aCobolLiteralNode.

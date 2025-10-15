@@ -1,59 +1,61 @@
 Class {
-	#name : #CobolBinaryExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolBinaryExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'left',
 		'op',
 		'right'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitBinaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> left: aCobolExpressionNode [
 	self left notNil ifTrue: [ self left parent: nil ].
 	left := aCobolExpressionNode.
 	self left notNil ifTrue: [ self left parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> nodeVariables [
 	^ #(#left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> right: aCobolProgramNode [
 	self right notNil ifTrue: [ self right parent: nil ].
 	right := aCobolProgramNode.
 	self right notNil ifTrue: [ self right parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolBinaryExpressionNode >> tokenVariables [
 	^ #(#op)
 ]

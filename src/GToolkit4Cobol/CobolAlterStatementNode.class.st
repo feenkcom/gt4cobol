@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolAlterStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolAlterStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keyword',
 		'alterTos'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAlterStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> alterTos [
 	^ alterTos
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> alterTos: anOrderedCollection [
 	self setParents: self alterTos to: nil.
 	alterTos := anOrderedCollection.
 	self setParents: self alterTos to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> compositeNodeVariables [
 	^ #(#alterTos)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAlterStatementNode >> initialize [
 	super initialize.
 	alterTos := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAlterStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

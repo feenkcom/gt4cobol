@@ -1,65 +1,67 @@
 Class {
-	#name : #CobolReportGroupNextGroupClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportGroupNextGroupClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'groupNumber',
 		'advance'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportGroupNextGroupClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> advance [
 	^ advance
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> advance: aCobolLiteralNode [
 	self advance notNil ifTrue: [ self advance parent: nil ].
 	advance := aCobolLiteralNode.
 	self advance notNil ifTrue: [ self advance parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> groupNumber [
 	^ groupNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> groupNumber: aCobolLiteralNode [
 	self groupNumber notNil ifTrue: [ self groupNumber parent: nil ].
 	groupNumber := aCobolLiteralNode.
 	self groupNumber notNil ifTrue: [ self groupNumber parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolReportGroupNextGroupClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportGroupNextGroupClauseNode >> nodeVariables [
 	^ #(#groupNumber #advance)
 ]

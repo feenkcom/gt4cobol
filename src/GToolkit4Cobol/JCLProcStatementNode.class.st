@@ -1,18 +1,20 @@
 Class {
-	#name : #JCLProcStatementNode,
-	#superclass : #JCLStatementNode,
+	#name : 'JCLProcStatementNode',
+	#superclass : 'JCLStatementNode',
 	#instVars : [
 		'statements'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLProcStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcStatement: self
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 JCLProcStatementNode >> buildComponents [
 	| index current each |
 	current := self.
@@ -27,23 +29,23 @@ JCLProcStatementNode >> buildComponents [
 	statements do: #buildComponents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLProcStatementNode >> compositeNodeVariables [
 	^ #(#statements #values)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 JCLProcStatementNode >> initialize [
 	super initialize.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLProcStatementNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLProcStatementNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.

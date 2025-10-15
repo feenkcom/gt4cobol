@@ -1,23 +1,25 @@
 Class {
-	#name : #GtCICSFileAccess,
-	#superclass : #FAMIXAssociation,
+	#name : 'GtCICSFileAccess',
+	#superclass : 'FAMIXAssociation',
 	#instVars : [
 		'cicsFile',
 		'paragraph',
 		'variable',
 		'ridfld'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> cicsFile [
 	<MSEProperty: #cicsFile type: #GtCICSFile opposite: #cicsFileAccesses>
 	<container>
 	^ cicsFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> cicsFile: anObject [
 	cicsFile := FMMultivalueLink
 			on: self
@@ -26,19 +28,19 @@ GtCICSFileAccess >> cicsFile: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> from [
 	^ self paragraph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> paragraph [
 	<MSEProperty: #paragraph type: #GtCobolParagraph opposite: #cicsFileAccesses>
 	<container>
 	^ paragraph
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> paragraph: anObject [
 	paragraph := FMMultivalueLink
 			on: self
@@ -47,14 +49,14 @@ GtCICSFileAccess >> paragraph: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> ridfld [
 	<MSEProperty: #ridfld type: #GtCobolVariable opposite: #ridfldFileAccesses>
 	<container>
 	^ ridfld
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> ridfld: anObject [
 	ridfld := FMMultivalueLink
 			on: self
@@ -63,19 +65,19 @@ GtCICSFileAccess >> ridfld: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> to [
 	^ self cicsFile
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> variable [
 	<MSEProperty: #variable type: #GtCobolVariable opposite: #cicsFileAccesses>
 	<container>
 	^ variable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSFileAccess >> variable: anObject [
 	variable := FMMultivalueLink
 			on: self

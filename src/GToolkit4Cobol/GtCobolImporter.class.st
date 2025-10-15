@@ -1,6 +1,6 @@
 Class {
-	#name : #GtCobolImporter,
-	#superclass : #Object,
+	#name : 'GtCobolImporter',
+	#superclass : 'Object',
 	#instVars : [
 		'model',
 		'copyBookDirectories',
@@ -21,10 +21,12 @@ Class {
 		'tables',
 		'stubbedVariables'
 	],
-	#category : #'GToolkit4Cobol-Importer'
+	#category : 'GToolkit4Cobol-Importer',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Importer'
 }
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> addCommonAreaAssignmentFor: targets from: aNode in: aFile [
 	targets
 		do: [ :program | 
@@ -47,7 +49,7 @@ GtCobolImporter >> addCommonAreaAssignmentFor: targets from: aNode in: aFile [
 								mooseModel: model) ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> addReturnAssignmentsFor: program from: aNode [
 	| file |
 	file := program containerFiles first.
@@ -84,24 +86,24 @@ GtCobolImporter >> addReturnAssignmentsFor: program from: aNode [
 										mooseModel: model) ] ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> completeSourceFor: aNode [
 	^ aNode topParent
 		attributeNamed: #completeSourceString
 		ifAbsentPut: [ aNode topParent completeSource ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolImporter >> copyBookDirectories [
 	^ copyBookDirectories
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolImporter >> copyBookDirectories: anObject [
 	copyBookDirectories := anObject
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> ensureCondition: node [
 	^ node
 		attributeNamed: #entity
@@ -123,7 +125,7 @@ GtCobolImporter >> ensureCondition: node [
 			cond ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCobolImporter >> ensureFile: aFileReference [
 	| filename |
 	filename := aFileReference pathString.
@@ -157,7 +159,7 @@ GtCobolImporter >> ensureFile: aFileReference [
 			file ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 GtCobolImporter >> ensureFolderNamed: aFileReference [
 	self hasImportDirectory ifFalse: [ ^ nil ].
 	^ folders
@@ -173,24 +175,24 @@ GtCobolImporter >> ensureFolderNamed: aFileReference [
 			folder ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> ensureJCLJob: aName [
 	^ jobs at: aName asUppercase ifAbsentPut: [ GtJCLJob new name: aName ]
 ]
 
-{ #category : #'importing-bms' }
+{ #category : 'importing-bms' }
 GtCobolImporter >> ensureMap: mapName [
 	^ maps at: mapName asUppercase ifAbsentPut: [ GtBMSMap new name: mapName ]
 ]
 
-{ #category : #'importing-bms' }
+{ #category : 'importing-bms' }
 GtCobolImporter >> ensureMapSet: mapSetName [
 	^ mapSets
 		at: mapSetName asUppercase
 		ifAbsentPut: [ GtBMSMapSet new name: mapSetName ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> ensureProgram: aString [
 	^ programs
 		at: aString asUppercase
@@ -200,7 +202,7 @@ GtCobolImporter >> ensureProgram: aString [
 				mooseModel: model ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> ensureStubVariable: aString [
 	stubbedVariables ifNil: [ stubbedVariables := Dictionary new ].
 	^ stubbedVariables
@@ -211,7 +213,7 @@ GtCobolImporter >> ensureStubVariable: aString [
 				isStub: true ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> ensureTableNamed: tbl [
 	^ tables
 		at: tbl
@@ -220,7 +222,7 @@ GtCobolImporter >> ensureTableNamed: tbl [
 				mooseModel: model ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> ensureVariable: node [
 	^ node
 		attributeNamed: #entity
@@ -252,7 +254,7 @@ GtCobolImporter >> ensureVariable: node [
 			var ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> entityFor: aNode [
 	^ aNode withAllParents
 		detect: [ :each | (each attributeNamed: #entity) notNil ]
@@ -260,18 +262,18 @@ GtCobolImporter >> entityFor: aNode [
 		ifNone: [  ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtCobolImporter >> finishImport [
 	self importDataSetIndices.
 	finishActions do: [ :each | each value ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCobolImporter >> hasImportDirectory [
 	^ (model privateState attributeAt: #rootFolder ifAbsent: [  ]) notNil
 ]
 
-{ #category : #'importing-bms' }
+{ #category : 'importing-bms' }
 GtCobolImporter >> importBMSFile: aFileReference [
 	| currentMap currentMapSet |
 	currentFile := self ensureFile: aFileReference.
@@ -329,7 +331,7 @@ GtCobolImporter >> importBMSFile: aFileReference [
 	^ currentMap
 ]
 
-{ #category : #'importing-csd' }
+{ #category : 'importing-csd' }
 GtCobolImporter >> importCSDDefineFile: aDefineNode [
 	| cicsFile |
 	cicsFile := GtCICSFile new.
@@ -350,7 +352,7 @@ GtCobolImporter >> importCSDDefineFile: aDefineNode [
 	currentFile addEntity: cicsFile
 ]
 
-{ #category : #'importing-csd' }
+{ #category : 'importing-csd' }
 GtCobolImporter >> importCSDFile: aFileReference [
 	| groups |
 	currentFile := self ensureFile: aFileReference.
@@ -366,19 +368,19 @@ GtCobolImporter >> importCSDFile: aFileReference [
 		do: [ :each | self importCSDTransaction: each ]
 ]
 
-{ #category : #'importing-csd' }
+{ #category : 'importing-csd' }
 GtCobolImporter >> importCSDMapSet: aDefineNode [
 	(aDefineNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :str | (self ensureMapSet: (aDefineNode propertyNamed: 'MAPSET')) description: str ]
 ]
 
-{ #category : #'importing-csd' }
+{ #category : 'importing-csd' }
 GtCobolImporter >> importCSDProgram: aDefineNode [
 	(aDefineNode propertyNamed: 'DESCRIPTION')
 		ifNotNil: [ :str | (self ensureProgram: (aDefineNode propertyNamed: 'PROGRAM')) description: str ]
 ]
 
-{ #category : #'importing-csd' }
+{ #category : 'importing-csd' }
 GtCobolImporter >> importCSDTransaction: aNode [
 	| transaction |
 	transaction := GtCICSTransaction new.
@@ -399,7 +401,7 @@ GtCobolImporter >> importCSDTransaction: aNode [
 	currentFile addEntity: transaction
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importCallsIn: ast [
 	ast
 		withAllNodesOfType: CobolCallStatementNode
@@ -415,7 +417,7 @@ GtCobolImporter >> importCallsIn: ast [
 			call mooseModel: model ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importDataIn: ast [
 	| index |
 	index := 1.
@@ -440,7 +442,7 @@ GtCobolImporter >> importDataIn: ast [
 					var redefinesVariable offsets do: [ :each | var addOffset: each ] ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importDataReferencesIn: ast [
 	ast
 		withAllNodesOfType: CobolIdentifierNode
@@ -451,7 +453,7 @@ GtCobolImporter >> importDataReferencesIn: ast [
 				ifNotNil: [ self importVariableReference: each ] ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtCobolImporter >> importDataSetIndices [
 	model allCobolPrograms
 		detect: [ :each | each name = 'IDCAMS' ]
@@ -463,7 +465,7 @@ GtCobolImporter >> importDataSetIndices [
 						ifFound: [ :dd | dd input ifNotNil: [ :input | self importIDCAMS: input ] ] ] ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtCobolImporter >> importDirectory: aDirectory [
 	model rootFolder: aDirectory.
 	(BMSParser sourceFilesIn: aDirectory) do: [ :each | self importBMSFile: each ].
@@ -473,7 +475,7 @@ GtCobolImporter >> importDirectory: aDirectory [
 	self finishImport
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importFile: aFileReference [
 	| ast |
 	variables := Dictionary new.
@@ -499,7 +501,7 @@ GtCobolImporter >> importFile: aFileReference [
 		importCallsIn: ast
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importFileDescriptorsIn: ast [
 	| descriptor descriptors |
 	descriptors := Dictionary new.
@@ -538,7 +540,7 @@ GtCobolImporter >> importFileDescriptorsIn: ast [
 								ifNotNil: [ finishActions add: [ self linkFileDescriptor: d toJCLDD: each ] ] ] ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importFileReadWritesIn: ast [
 	ast
 		withAllNodesOfType: CobolReadStatementNode
@@ -583,7 +585,7 @@ GtCobolImporter >> importFileReadWritesIn: ast [
 										sourceAnchor: (self sourceAnchorFor: node)) ] ] ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtCobolImporter >> importIDCAMS: input [
 	| ast |
 	ast := IDCAMSParser parse: input.
@@ -610,7 +612,7 @@ GtCobolImporter >> importIDCAMS: input [
 														pairsCollect: [ :a :b | b source asInteger to: b source asInteger + a source asInteger ]) ] ] ] ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> importJCLDD: aNode into: step [
 	| dd |
 	dd := GtJCLDataDescriptor new
@@ -676,7 +678,7 @@ GtCobolImporter >> importJCLDD: aNode into: step [
 							cicsFiles add: cicsFile ] ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> importJCLExec: aNode into: owner [
 	| step |
 	step := GtJCLStep new
@@ -705,7 +707,7 @@ GtCobolImporter >> importJCLExec: aNode into: owner [
 		do: [ :each | each isDD ifTrue: [ self importJCLDD: each into: step ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> importJCLFile: aFileReference [
 	| ast |
 	currentFile := self ensureFile: aFileReference.
@@ -720,7 +722,7 @@ GtCobolImporter >> importJCLFile: aFileReference [
 			each isPROC ifTrue: [ self importJCLProc: each ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> importJCLJob: aNode [
 	| job |
 	job := self ensureJCLJob: aNode name source.
@@ -741,7 +743,7 @@ GtCobolImporter >> importJCLJob: aNode [
 				ifNotNil: [ :name | job description: name ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> importJCLProc: aNode [
 	| proc |
 	proc := GtJCLProc new name: aNode name source.
@@ -762,7 +764,7 @@ GtCobolImporter >> importJCLProc: aNode [
 				ifNotNil: [ :name | proc description: name ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importMapCallsIn: ast [
 	ast
 		withAllNodesOfType: CobolExecCicsStatementNode
@@ -789,7 +791,7 @@ GtCobolImporter >> importMapCallsIn: ast [
 												mooseModel: model) ] ] ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importParagraphsIn: ast [
 	| initial labels |
 	initial := true.
@@ -874,7 +876,7 @@ GtCobolImporter >> importParagraphsIn: ast [
 				value: perform thru ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importReturnsIn: ast [
 	| program |
 	program := currentProgram.
@@ -885,7 +887,7 @@ GtCobolImporter >> importReturnsIn: ast [
 				ifTrue: [ finishActions add: [ self addReturnAssignmentsFor: program from: node ] ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importSqlIn: ast [
 	ast
 		withAllNodesOfType: CobolExecSqlStatementNode
@@ -944,7 +946,7 @@ GtCobolImporter >> importSqlIn: ast [
 								mooseModel: model ] ] ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importVariableReference: idNode [
 	| var vars |
 	(idNode parent isKindOf: CobolInExpressionNode)
@@ -980,7 +982,7 @@ GtCobolImporter >> importVariableReference: idNode [
 				mooseModel: model)
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> importXctlCallsIn: ast [
 	ast xctlNodes
 		do: [ :each | 
@@ -1002,7 +1004,7 @@ GtCobolImporter >> importXctlCallsIn: ast [
 			currentFile addEntity: expr ]
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 GtCobolImporter >> initialize [
 	super initialize.
 	folders := Dictionary new.
@@ -1023,7 +1025,7 @@ GtCobolImporter >> initialize [
 	tables := Dictionary new
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 GtCobolImporter >> is: var inContainers: aCollection [
 	| current index |
 	index := 1.
@@ -1035,7 +1037,7 @@ GtCobolImporter >> is: var inContainers: aCollection [
 	^ index > aCollection size
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> linkFileDescriptor: fileDescriptor toJCLDD: assignmentNode [
 	fileDescriptor program jclSteps
 		do: [ :step | 
@@ -1051,7 +1053,7 @@ GtCobolImporter >> linkFileDescriptor: fileDescriptor toJCLDD: assignmentNode [
 										mooseModel: model) ] ] ]
 ]
 
-{ #category : #'importing-jcl' }
+{ #category : 'importing-jcl' }
 GtCobolImporter >> linkStep: step toProc: aString [
 	| procs jclProc |
 	procs := (model allWithType: GtJCLProc)
@@ -1064,23 +1066,23 @@ GtCobolImporter >> linkStep: step toProc: aString [
 	step calledProc: jclProc
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolImporter >> model [
 	^ model
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolImporter >> model: anObject [
 	model := anObject
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> paragraphFor: aNode [
 	^ (self entityFor: aNode)
 		ifNotNil: [ :ent | (ent isKindOf: GtCobolParagraph) ifTrue: [ ent ] ]
 ]
 
-{ #category : #importing }
+{ #category : 'importing' }
 GtCobolImporter >> sourceAnchorFor: aNode [
 	^ (GtCobolSourceFileAnchor
 		file: currentFile
@@ -1091,7 +1093,7 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 		yourself
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> tablesReferencedIn: aSqlString [
 	| select insert delete update tableNames tableParser tablesParser |
 	tableParser := ((#word asPParser | '_' asPParser) plus token
@@ -1119,7 +1121,7 @@ GtCobolImporter >> tablesReferencedIn: aSqlString [
 	^ tableNames isPetit2Failure ifTrue: [ #() ] ifFalse: [ tableNames ]
 ]
 
-{ #category : #'importing-cobol' }
+{ #category : 'importing-cobol' }
 GtCobolImporter >> variableForNode: aNode [
 	| current |
 	aNode ifNil: [ ^ nil ].

@@ -1,17 +1,19 @@
 Class {
-	#name : #GtCobolCicsReturnExpression,
-	#superclass : #GtCobolCicsTransferExpression,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtCobolCicsReturnExpression',
+	#superclass : 'GtCobolCicsTransferExpression',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsReturnExpression >> fromProgram [
 	<MSEProperty: #fromProgram type: #GtCobolProgram opposite: #returnToExpressions>
 	<container>
 	^ fromProgram
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsReturnExpression >> fromProgram: anObject [
 	fromProgram := FMMultivalueLink
 			on: self
@@ -20,13 +22,13 @@ GtCobolCicsReturnExpression >> fromProgram: anObject [
 			to: anObject
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolCicsReturnExpression >> initialize [
 	super initialize.
 	toPrograms := FMMultiMultivalueLink on: self opposite: #returnFromExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsReturnExpression >> toPrograms [
 	<MSEProperty: #toPrograms type: #GtCobolProgram opposite: #returnFromExpressions>
 	<multivalued>

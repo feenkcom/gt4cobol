@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolExpressionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolExpressionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'leftParens',
 		'rightParens'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> compositeTokenVariables [
 	^ #(#leftParens #rightParens)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolExpressionNode >> initialize [
 	super initialize.
 	leftParens := OrderedCollection new: 2.
 	rightParens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> leftParens [
 	^ leftParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> leftParens: anOrderedCollection [
 	leftParens := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> rightParens [
 	^ rightParens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolExpressionNode >> rightParens: anOrderedCollection [
 	rightParens := anOrderedCollection
 ]

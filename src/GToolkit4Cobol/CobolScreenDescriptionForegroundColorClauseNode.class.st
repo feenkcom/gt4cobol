@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolScreenDescriptionForegroundColorClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionForegroundColorClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'foreground'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionForegroundColorClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> foreground [
 	^ foreground
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> foreground: aCobolExpressionNode [
 	self foreground notNil ifTrue: [ self foreground parent: nil ].
 	foreground := aCobolExpressionNode.
 	self foreground notNil ifTrue: [ self foreground parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionForegroundColorClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionForegroundColorClauseNode >> nodeVariables [
 	^ #(#foreground)
 ]

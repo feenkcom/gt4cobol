@@ -1,36 +1,38 @@
 Trait {
-	#name : #TIDCAMSProgramNodeVisitor,
+	#name : 'TIDCAMSProgramNodeVisitor',
 	#traits : 'TSmaCCParseNodeVisitor',
 	#classTraits : 'TSmaCCParseNodeVisitor classTrait',
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitAssignment: anAssignment [
 	^ self visitProgram: anAssignment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitFile: aFile [
 	^ self visitProgram: aFile
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitParameters: aParameters [
 	^ self visitProgram: aParameters
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitProgram: aProgram [
 	^ self visitSmaCCParseNode: aProgram
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitStep: aStep [
 	^ self visitProgram: aStep
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 TIDCAMSProgramNodeVisitor >> visitValue: aValue [
 	^ self visitProgram: aValue
 ]

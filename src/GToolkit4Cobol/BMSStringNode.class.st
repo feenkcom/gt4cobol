@@ -1,18 +1,20 @@
 Class {
-	#name : #BMSStringNode,
-	#superclass : #BMSValueNode,
+	#name : 'BMSStringNode',
+	#superclass : 'BMSValueNode',
 	#instVars : [
 		'value'
 	],
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSStringNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitString: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSStringNode >> literalValue [
 	| string |
 	string := value source.
@@ -21,17 +23,17 @@ BMSStringNode >> literalValue [
 		with: (String with: string first)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSStringNode >> tokenVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSStringNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSStringNode >> value: aSmaCCToken [
 	value := aSmaCCToken
 ]

@@ -1,85 +1,87 @@
 Class {
-	#name : #CobolDataDescription88EntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataDescription88EntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'level',
 		'name',
 		'clause',
 		'period'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataDescription88Entry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> clause [
 	^ clause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> clause: aCobolDataValueClauseNode [
 	self clause notNil ifTrue: [ self clause parent: nil ].
 	clause := aCobolDataValueClauseNode.
 	self clause notNil ifTrue: [ self clause parent: self ]
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescription88EntryNode >> dataName [
 	^ name ifNotNil: [ name source ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolDataDescription88EntryNode >> hasSpecialLevel [
 	^ true
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> level [
 	^ level
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> level: aSmaCCToken [
 	level := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataDescription88EntryNode >> levelNumber [
 	^ 88
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> name: aCobolIdentifierNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolIdentifierNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> nodeVariables [
 	^ #(#name #clause)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataDescription88EntryNode >> tokenVariables [
 	^ #(#level #period)
 ]

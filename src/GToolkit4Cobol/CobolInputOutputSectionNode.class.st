@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolInputOutputSectionNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolInputOutputSectionNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'period',
 		'paragraphs'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInputOutputSection: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> compositeNodeVariables [
 	^ #(#paragraphs)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolInputOutputSectionNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	paragraphs := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> paragraphs [
 	^ paragraphs
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> paragraphs: anOrderedCollection [
 	self setParents: self paragraphs to: nil.
 	paragraphs := anOrderedCollection.
 	self setParents: self paragraphs to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInputOutputSectionNode >> tokenVariables [
 	^ #(#period)
 ]

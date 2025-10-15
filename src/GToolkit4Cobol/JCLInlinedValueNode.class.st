@@ -1,44 +1,46 @@
 Class {
-	#name : #JCLInlinedValueNode,
-	#superclass : #JCLValueNode,
+	#name : 'JCLInlinedValueNode',
+	#superclass : 'JCLValueNode',
 	#instVars : [
 		'star',
 		'input'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInlinedValue: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> input [
 	^ input
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> input: aSmaCCToken [
 	input := aSmaCCToken
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLInlinedValueNode >> literalValue [
 	^ input source
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> star [
 	^ star
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> star: aSmaCCToken [
 	star := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLInlinedValueNode >> tokenVariables [
 	^ #(#star #input)
 ]

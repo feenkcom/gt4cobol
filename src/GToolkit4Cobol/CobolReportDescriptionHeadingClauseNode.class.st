@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolReportDescriptionHeadingClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolReportDescriptionHeadingClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'count'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitReportDescriptionHeadingClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> count [
 	^ count
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> count: aCobolLiteralNode [
 	self count notNil ifTrue: [ self count parent: nil ].
 	count := aCobolLiteralNode.
 	self count notNil ifTrue: [ self count parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> nodeVariables [
 	^ #(#count)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolReportDescriptionHeadingClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

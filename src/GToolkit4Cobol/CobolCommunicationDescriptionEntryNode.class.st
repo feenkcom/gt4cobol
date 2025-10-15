@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolCommunicationDescriptionEntryNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolCommunicationDescriptionEntryNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'cdName',
@@ -8,61 +8,63 @@ Class {
 		'dataNames',
 		'period'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCommunicationDescriptionEntry: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> cdName [
 	^ cdName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> cdName: aCobolIdentifierNode [
 	self cdName notNil ifTrue: [ self cdName parent: nil ].
 	cdName := aCobolIdentifierNode.
 	self cdName notNil ifTrue: [ self cdName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> compositeNodeVariables [
 	^ #(#clauses #dataNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> dataNames [
 	^ dataNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> dataNames: anOrderedCollection [
 	self setParents: self dataNames to: nil.
 	dataNames := anOrderedCollection.
 	self setParents: self dataNames to: self
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolCommunicationDescriptionEntryNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -70,32 +72,32 @@ CobolCommunicationDescriptionEntryNode >> initialize [
 	dataNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> nodeVariables [
 	^ #(#cdName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCommunicationDescriptionEntryNode >> tokenVariables [
 	^ #(#period)
 ]

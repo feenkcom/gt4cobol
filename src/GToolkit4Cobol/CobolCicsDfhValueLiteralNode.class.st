@@ -1,66 +1,68 @@
 Class {
-	#name : #CobolCicsDfhValueLiteralNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolCicsDfhValueLiteralNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'keyword',
 		'left',
 		'value',
 		'right'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCicsDfhValueLiteral: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> left [
 	^ left
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> left: aSmaCCToken [
 	left := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> right [
 	^ right
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> right: aSmaCCToken [
 	right := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> tokenVariables [
 	^ #(#keyword #left #right)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCicsDfhValueLiteralNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

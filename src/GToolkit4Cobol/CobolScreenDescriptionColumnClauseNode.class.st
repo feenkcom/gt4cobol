@@ -1,68 +1,70 @@
 Class {
-	#name : #CobolScreenDescriptionColumnClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionColumnClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'columnNumber',
 		'op'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionColumnClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> columnNumber [
 	^ columnNumber
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> columnNumber: aCobolExpressionNode [
 	self columnNumber notNil ifTrue: [ self columnNumber parent: nil ].
 	columnNumber := aCobolExpressionNode.
 	self columnNumber notNil ifTrue: [ self columnNumber parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionColumnClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> nodeVariables [
 	^ #(#columnNumber)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionColumnClauseNode >> tokenVariables [
 	^ #(#op)
 ]

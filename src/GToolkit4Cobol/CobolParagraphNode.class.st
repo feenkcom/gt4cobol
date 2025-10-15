@@ -1,70 +1,72 @@
 Class {
-	#name : #CobolParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'name',
 		'period',
 		'sentences'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> compositeNodeVariables [
 	^ #(#sentences)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolParagraphNode >> initialize [
 	super initialize.
 	sentences := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> name: aCobolExpressionNode [
 	self name notNil ifTrue: [ self name parent: nil ].
 	name := aCobolExpressionNode.
 	self name notNil ifTrue: [ self name parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> nodeVariables [
 	^ #(#name)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> period [
 	^ period
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> period: aSmaCCToken [
 	period := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> sentences [
 	^ sentences
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> sentences: anOrderedCollection [
 	self setParents: self sentences to: nil.
 	sentences := anOrderedCollection.
 	self setParents: self sentences to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolParagraphNode >> tokenVariables [
 	^ #(#period)
 ]

@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolScreenDescriptionSizeClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolScreenDescriptionSizeClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'_size'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> _size [
 	^ _size
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> _size: aCobolExpressionNode [
 	self _size notNil ifTrue: [ self _size parent: nil ].
 	_size := aCobolExpressionNode.
 	self _size notNil ifTrue: [ self _size parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitScreenDescriptionSizeClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolScreenDescriptionSizeClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolScreenDescriptionSizeClauseNode >> nodeVariables [
 	^ #(#_size)
 ]

@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolHandlerNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolHandlerNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'statements',
 		'when'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitHandler: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> compositeNodeVariables [
 	^ #(#statements)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolHandlerNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	statements := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> nodeVariables [
 	^ #(#when)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> statements [
 	^ statements
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> statements: anOrderedCollection [
 	self setParents: self statements to: nil.
 	statements := anOrderedCollection.
 	self setParents: self statements to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> when [
 	^ when
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolHandlerNode >> when: aCobolExpressionNode [
 	self when notNil ifTrue: [ self when parent: nil ].
 	when := aCobolExpressionNode.

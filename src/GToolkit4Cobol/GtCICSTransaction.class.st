@@ -1,30 +1,32 @@
 Class {
-	#name : #GtCICSTransaction,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtCICSTransaction',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'program',
 		'group'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSTransaction >> group [
 	^ group
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSTransaction >> group: anObject [
 	group := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSTransaction >> program [
 	<MSEProperty: #program type: #GtCobolProgram opposite: #transaction>
 	^ program
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCICSTransaction >> program: anObject [
 	| oldValue |
 	anObject == program ifTrue: [ ^ self ].

@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolAssignClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolAssignClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'assignment'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitAssignClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> assignment [
 	^ assignment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> assignment: aCobolExpressionNode [
 	self assignment notNil ifTrue: [ self assignment parent: nil ].
 	assignment := aCobolExpressionNode.
 	self assignment notNil ifTrue: [ self assignment parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolAssignClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolAssignClauseNode >> nodeVariables [
 	^ #(#assignment)
 ]

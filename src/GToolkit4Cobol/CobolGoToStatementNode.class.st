@@ -1,69 +1,71 @@
 Class {
-	#name : #CobolGoToStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolGoToStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'procedureNames',
 		'dependingOn'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitGoToStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> compositeNodeVariables [
 	^ #(#procedureNames)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> dependingOn [
 	^ dependingOn
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> dependingOn: aCobolExpressionNode [
 	self dependingOn notNil ifTrue: [ self dependingOn parent: nil ].
 	dependingOn := aCobolExpressionNode.
 	self dependingOn notNil ifTrue: [ self dependingOn parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolGoToStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 	procedureNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> nodeVariables [
 	^ #(#dependingOn)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> procedureNames [
 	^ procedureNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolGoToStatementNode >> procedureNames: anOrderedCollection [
 	self setParents: self procedureNames to: nil.
 	procedureNames := anOrderedCollection.

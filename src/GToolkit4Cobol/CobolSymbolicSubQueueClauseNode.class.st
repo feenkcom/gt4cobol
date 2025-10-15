@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolSymbolicSubQueueClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSymbolicSubQueueClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'dataName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSymbolicSubQueueClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> dataName [
 	^ dataName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> dataName: aCobolIdentifierNode [
 	self dataName notNil ifTrue: [ self dataName parent: nil ].
 	dataName := aCobolIdentifierNode.
 	self dataName notNil ifTrue: [ self dataName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSymbolicSubQueueClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSymbolicSubQueueClauseNode >> nodeVariables [
 	^ #(#dataName)
 ]

@@ -1,19 +1,21 @@
 Class {
-	#name : #CobolDataPictureClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataPictureClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'picture'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataPictureClause: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolDataPictureClauseNode >> byteSize [
 	| stream length char |
 	stream := picture value readStream.
@@ -27,38 +29,38 @@ CobolDataPictureClauseNode >> byteSize [
 	^ length
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataPictureClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> picture [
 	^ picture
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> picture: aSmaCCToken [
 	picture := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataPictureClauseNode >> tokenVariables [
 	^ #(#picture)
 ]

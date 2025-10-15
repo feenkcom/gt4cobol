@@ -1,63 +1,65 @@
 Class {
-	#name : #CobolDataRenamesClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataRenamesClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'renameName',
 		'toName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataRenamesClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataRenamesClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> nodeVariables [
 	^ #(#renameName #toName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> renameName [
 	^ renameName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> renameName: aCobolExpressionNode [
 	self renameName notNil ifTrue: [ self renameName parent: nil ].
 	renameName := aCobolExpressionNode.
 	self renameName notNil ifTrue: [ self renameName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> toName [
 	^ toName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataRenamesClauseNode >> toName: aCobolExpressionNode [
 	self toName notNil ifTrue: [ self toName parent: nil ].
 	toName := aCobolExpressionNode.

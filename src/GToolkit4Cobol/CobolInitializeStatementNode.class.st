@@ -1,30 +1,32 @@
 Class {
-	#name : #CobolInitializeStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolInitializeStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'initializes',
 		'replacings'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitInitializeStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> compositeNodeVariables [
 	^ #(#initializes #replacings)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolInitializeStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -32,41 +34,41 @@ CobolInitializeStatementNode >> initialize [
 	replacings := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> initializes [
 	^ initializes
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> initializes: anOrderedCollection [
 	self setParents: self initializes to: nil.
 	initializes := anOrderedCollection.
 	self setParents: self initializes to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> replacings [
 	^ replacings
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolInitializeStatementNode >> replacings: anOrderedCollection [
 	self setParents: self replacings to: nil.
 	replacings := anOrderedCollection.
 	self setParents: self replacings to: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolInitializeStatementNode >> writesIdentifier: anIdentifierNode [
 	^ initializes anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
 ]

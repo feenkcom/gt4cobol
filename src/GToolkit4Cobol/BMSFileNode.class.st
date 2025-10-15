@@ -1,34 +1,36 @@
 Class {
-	#name : #BMSFileNode,
-	#superclass : #BMSProgramNode,
+	#name : 'BMSFileNode',
+	#superclass : 'BMSProgramNode',
 	#instVars : [
 		'macros'
 	],
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSFileNode >> compositeNodeVariables [
 	^ #(#macros)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 BMSFileNode >> initialize [
 	super initialize.
 	macros := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSFileNode >> macros [
 	^ macros
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSFileNode >> macros: anOrderedCollection [
 	self setParents: self macros to: nil.
 	macros := anOrderedCollection.

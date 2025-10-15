@@ -1,53 +1,55 @@
 Class {
-	#name : #BMSMacroNode,
-	#superclass : #BMSProgramNode,
+	#name : 'BMSMacroNode',
+	#superclass : 'BMSProgramNode',
 	#instVars : [
 		'macro',
 		'fields',
 		'commas',
 		'name'
 	],
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitMacro: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> commas [
 	^ commas
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> commas: anOrderedCollection [
 	commas := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> compositeNodeVariables [
 	^ #(#fields)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> compositeTokenVariables [
 	^ #(#commas)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> fields [
 	^ fields
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> fields: anOrderedCollection [
 	self setParents: self fields to: nil.
 	fields := anOrderedCollection.
 	self setParents: self fields to: self
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 BMSMacroNode >> getValue: aString [
 	fields
 		do: [ :each | 
@@ -56,34 +58,34 @@ BMSMacroNode >> getValue: aString [
 	^ nil
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 BMSMacroNode >> initialize [
 	super initialize.
 	fields := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> macro [
 	^ macro
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> macro: aSmaCCToken [
 	macro := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSMacroNode >> tokenVariables [
 	^ #(#macro #name)
 ]

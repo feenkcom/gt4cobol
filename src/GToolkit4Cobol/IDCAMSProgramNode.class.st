@@ -1,10 +1,12 @@
 Class {
-	#name : #IDCAMSProgramNode,
-	#superclass : #SmaCCParseNode,
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#name : 'IDCAMSProgramNode',
+	#superclass : 'SmaCCParseNode',
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSProgramNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProgram: self
 ]

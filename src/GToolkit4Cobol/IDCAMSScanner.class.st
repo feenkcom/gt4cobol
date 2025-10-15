@@ -1,39 +1,41 @@
 Class {
-	#name : #IDCAMSScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#name : 'IDCAMSScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> emptySymbolTokenId [
 	^ 19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> errorTokenId [
 	^ 20
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> keywordFor: aString [
 	^ aString asUppercase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scan1 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(7) ].
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForToken [
 	self step.
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
 	^ self scanForTokenX5
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForTokenX1 [
 	self recordMatch: #(5).
 	self step.
@@ -60,7 +62,7 @@ IDCAMSScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForTokenX2 [
 	[ self recordMatch: #(5).
 	self step.
@@ -70,7 +72,7 @@ IDCAMSScanner >> scanForTokenX2 [
 						or: [ currentCharacter between: $a and: $z ] ] ] ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForTokenX3 [
 	[ self recordMatch: #(6).
 	self step.
@@ -79,7 +81,7 @@ IDCAMSScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForTokenX4 [
 	[ self recordMatch: #(7).
 	self step.
@@ -88,7 +90,7 @@ IDCAMSScanner >> scanForTokenX4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> scanForTokenX5 [
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
@@ -106,12 +108,12 @@ IDCAMSScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil #whitespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSScanner >> tokenClass [
 	^SmaCCCaseInsensitiveToken
 ]

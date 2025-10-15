@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDataSignClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDataSignClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataSignClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDataSignClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataSignClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDataSignClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataSignClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDataSignClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

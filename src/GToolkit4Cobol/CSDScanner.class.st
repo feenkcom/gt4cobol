@@ -1,10 +1,12 @@
 Class {
-	#name : #CSDScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'GToolkit4Cobol-CSD-Parser'
+	#name : 'CSDScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'GToolkit4Cobol-CSD-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'CSD-Parser'
 }
 
-{ #category : #'generated-initialization' }
+{ #category : 'generated-initialization' }
 CSDScanner class >> initializeKeywordMap [
 	keywordMap := Dictionary new.
 	#(#(2 'DEFINE' 1))
@@ -15,22 +17,22 @@ CSDScanner class >> initializeKeywordMap [
 	^ keywordMap
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> emptySymbolTokenId [
 	^ 17
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> errorTokenId [
 	^ 18
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> keywordFor: aString [
 	^ aString asUppercase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> scanForToken [
 	scope == #value ifTrue: [ ^ self scanForTokenX1 ].
 	scope == #default
@@ -53,7 +55,7 @@ CSDScanner >> scanForToken [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> scanForTokenX1 [
 	self step.
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(3) ].
@@ -83,12 +85,12 @@ CSDScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil #whitespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CSDScanner >> tokenClass [
 	^SmaCCCaseInsensitiveToken
 ]

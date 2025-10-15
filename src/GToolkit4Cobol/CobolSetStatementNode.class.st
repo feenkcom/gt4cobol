@@ -1,30 +1,32 @@
 Class {
-	#name : #CobolSetStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolSetStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'sets',
 		'values'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSetStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> compositeNodeVariables [
 	^ #(#sets #values)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSetStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -32,41 +34,41 @@ CobolSetStatementNode >> initialize [
 	values := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> sets [
 	^ sets
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> sets: anOrderedCollection [
 	self setParents: self sets to: nil.
 	sets := anOrderedCollection.
 	self setParents: self sets to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSetStatementNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.
 	self setParents: self values to: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolSetStatementNode >> writesIdentifier: anIdentifierNode [
 	^ sets anySatisfy: [ :each | anIdentifierNode isDescendantFrom: each ]
 ]

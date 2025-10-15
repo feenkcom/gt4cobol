@@ -1,6 +1,6 @@
 Class {
-	#name : #CobolCallStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolCallStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'call',
@@ -12,61 +12,63 @@ Class {
 		'values',
 		'contents'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitCallStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> call [
 	^ call
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> call: aCobolExpressionNode [
 	self call notNil ifTrue: [ self call parent: nil ].
 	call := aCobolExpressionNode.
 	self call notNil ifTrue: [ self call parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> compositeNodeVariables [
 	^ #(#references #values #contents)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> contents [
 	^ contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> contents: anOrderedCollection [
 	self setParents: self contents to: nil.
 	contents := anOrderedCollection.
 	self setParents: self contents to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> giving [
 	^ giving
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> giving: aCobolExpressionNode [
 	self giving notNil ifTrue: [ self giving parent: nil ].
 	giving := aCobolExpressionNode.
 	self giving notNil ifTrue: [ self giving parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolCallStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -75,27 +77,27 @@ CobolCallStatementNode >> initialize [
 	contents := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> nodeVariables [
 	^ #(#call #onExceptionClause #notOnExceptionClause #onOverflowPhrase #giving)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> notOnExceptionClause [
 	^ notOnExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 	self notOnExceptionClause notNil
 		ifTrue: [ self notOnExceptionClause parent: nil ].
@@ -104,48 +106,48 @@ CobolCallStatementNode >> notOnExceptionClause: aCobolHandlerNode [
 		ifTrue: [ self notOnExceptionClause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> onExceptionClause [
 	^ onExceptionClause
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> onExceptionClause: aCobolHandlerNode [
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: nil ].
 	onExceptionClause := aCobolHandlerNode.
 	self onExceptionClause notNil ifTrue: [ self onExceptionClause parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> onOverflowPhrase [
 	^ onOverflowPhrase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> onOverflowPhrase: aCobolHandlerNode [
 	self onOverflowPhrase notNil ifTrue: [ self onOverflowPhrase parent: nil ].
 	onOverflowPhrase := aCobolHandlerNode.
 	self onOverflowPhrase notNil ifTrue: [ self onOverflowPhrase parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> references [
 	^ references
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> references: anOrderedCollection [
 	self setParents: self references to: nil.
 	references := anOrderedCollection.
 	self setParents: self references to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> values [
 	^ values
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolCallStatementNode >> values: anOrderedCollection [
 	self setParents: self values to: nil.
 	values := anOrderedCollection.

@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolFileNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolFileNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'units'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitFile: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileNode >> compositeNodeVariables [
 	^ #(#units)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolFileNode >> initialize [
 	super initialize.
 	units := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileNode >> units [
 	^ units
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolFileNode >> units: anOrderedCollection [
 	self setParents: self units to: nil.
 	units := anOrderedCollection.

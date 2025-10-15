@@ -1,22 +1,24 @@
 Class {
-	#name : #JCLParser,
-	#superclass : #SmaCCGLRParser,
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#name : 'JCLParser',
+	#superclass : 'SmaCCGLRParser',
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> ambiguousTransitions [
 ^#(
 #[ 0 38 0 157]
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 JCLParser class >> cacheId [
 	^'2025-10-15T13:49:41.150653-05:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> definitionComment [
 "%ignorecase;
 
@@ -151,17 +153,17 @@ SwitchToDefault
 	;"
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLParser class >> fileExtension [
 	^ '.jcl'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLParser class >> fileExtensions [
 	^ #('.jcl' '.prc')
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 JCLParser class >> jclStyler: aParserClass [
 	<smaccStyler: #JCLParser priority: 10>
 	| rules variables |
@@ -191,7 +193,7 @@ JCLParser class >> jclStyler: aParserClass [
 	^ (GtSmaCCParserStyler forParser: aParserClass) stylerRules: rules
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> reduceTable [
 ^#(
 	#(37 0 #reduceActionForSwitchToDefault1: 2590721 true) 
@@ -231,27 +233,27 @@ JCLParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> scannerClass [
 	^JCLScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> startingStateForFile [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> symbolNames [
 	^ #('<slashSlash>' '<eol>' '<whitespace>' '<comment>' '<proc>' '<pend>' '<statementName>' '<name>' '<number>' '<string>' '<star>' '<equals>' '<separator>' '<leftParen>' '<rightParen>' '<symbolicName>' '<starName>' '<inputCharacter>' '<endOfFile>' '<endOfInput>' 'B e g i n' 'File' 'Statement ''statement''+' 'Statement' 'SwitchToStartOfLine' 'StatementWithoutEOL' 'ProcStatement' 'ProcEnd' 'ProcHeader' 'Parameters' 'KeywordParameters' 'KeywordParameter' 'PositionalParameters' 'Value' 'SwitchToStar' 'List' 'SwitchToDefault' '<input>' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> symbolTypes [
 	^ #(#SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #SmaCCToken #JCLFileNode #JCLFileNode #OrderedCollection #JCLStatementNode nil #JCLStatementNode #JCLProcStatementNode #JCLStatementNode #OrderedCollection #OrderedCollection #OrderedCollection #JCLKeywordParameterNode #OrderedCollection #JCLValueNode nil #JCLListNode nil #SmaCCToken #SmaCCToken #SmaCCErrorNode)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLParser class >> transitionTable [
 ^#(
 #[1 0 6 0 1 0 9 0 22 0 13 0 23 0 17 0 24 0 21 0 26 0 21 0 27 0 29 0 29 0 33 0 37] 
@@ -317,7 +319,7 @@ JCLParser class >> transitionTable [
 	).
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForFile1: nodes [
 	| result |
 	result := JCLFileNode new.
@@ -325,7 +327,7 @@ JCLParser >> reduceActionForFile1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForKeywordParameter1: nodes [
 	| result |
 	result := JCLKeywordParameterNode new.
@@ -335,7 +337,7 @@ JCLParser >> reduceActionForKeywordParameter1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForKeywordParameters1: nodes [
 	| result |
 	result := Array new: 2.
@@ -344,7 +346,7 @@ JCLParser >> reduceActionForKeywordParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForKeywordParameters2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -353,7 +355,7 @@ JCLParser >> reduceActionForKeywordParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForList1: nodes [
 	| result |
 	result := JCLListNode new.
@@ -362,7 +364,7 @@ JCLParser >> reduceActionForList1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForList2: nodes [
 	| result |
 	result := JCLListNode new.
@@ -374,7 +376,7 @@ JCLParser >> reduceActionForList2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForParameters1: nodes [
 	| result |
 	result := Array new: 3.
@@ -386,7 +388,7 @@ JCLParser >> reduceActionForParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForParameters2: nodes [
 	| result |
 	result := Array new: 3.
@@ -400,7 +402,7 @@ JCLParser >> reduceActionForParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForParameters3: nodes [
 	| result |
 	result := Array new: 3.
@@ -412,7 +414,7 @@ JCLParser >> reduceActionForParameters3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForParameters4: nodes [
 	| result |
 	result := Array new: 3.
@@ -422,7 +424,7 @@ JCLParser >> reduceActionForParameters4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForPositionalParameters1: nodes [
 	| result |
 	result := Array new: 2.
@@ -432,7 +434,7 @@ JCLParser >> reduceActionForPositionalParameters1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForPositionalParameters2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -441,7 +443,7 @@ JCLParser >> reduceActionForPositionalParameters2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForProcHeader1: nodes [
 	| result |
 	result := Array new: 6.
@@ -456,7 +458,7 @@ JCLParser >> reduceActionForProcHeader1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForProcHeader2: nodes [
 	| result |
 	result := Array new: 6.
@@ -472,7 +474,7 @@ JCLParser >> reduceActionForProcHeader2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForProcStatement1: nodes [
 	| result |
 	result := JCLProcStatementNode new.
@@ -487,7 +489,7 @@ JCLParser >> reduceActionForProcStatement1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForStatementWithoutEOL1: nodes [
 	| result |
 	result := JCLStatementNode new.
@@ -499,7 +501,7 @@ JCLParser >> reduceActionForStatementWithoutEOL1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForStatementWithoutEOL2: nodes [
 	| result |
 	result := JCLStatementNode new.
@@ -512,7 +514,7 @@ JCLParser >> reduceActionForStatementWithoutEOL2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForStatement__statement__1: nodes [
 	| result |
 	result := OrderedCollection new: 2.
@@ -520,7 +522,7 @@ JCLParser >> reduceActionForStatement__statement__1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForStatement__statement__2: nodes [
 	| result |
 	result := nodes at: 1.
@@ -528,25 +530,25 @@ JCLParser >> reduceActionForStatement__statement__2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForSwitchToDefault1: nodes [
 	self scope: #default.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForSwitchToStar1: nodes [
 	self scope: #star.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForSwitchToStartOfLine1: nodes [
 	self scope: #startOfLine.
 	^ nil
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForValue1: nodes [
 	| result |
 	result := JCLNumberNode new.
@@ -554,7 +556,7 @@ JCLParser >> reduceActionForValue1: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForValue2: nodes [
 	| result |
 	result := JCLStringNode new.
@@ -562,7 +564,7 @@ JCLParser >> reduceActionForValue2: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForValue3: nodes [
 	| result |
 	result := JCLNameNode new.
@@ -570,7 +572,7 @@ JCLParser >> reduceActionForValue3: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForValue4: nodes [
 	| result |
 	result := JCLNameNode new.
@@ -579,7 +581,7 @@ JCLParser >> reduceActionForValue4: nodes [
 	^ result
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 JCLParser >> reduceActionForValue9: nodes [
 	| result |
 	result := JCLInlinedValueNode new.
@@ -588,12 +590,12 @@ JCLParser >> reduceActionForValue9: nodes [
 	^ result
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 JCLParser >> useAllTokenIds [
 	^ false
 ]

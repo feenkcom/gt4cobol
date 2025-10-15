@@ -1,52 +1,54 @@
 Class {
-	#name : #IDCAMSStepNode,
-	#superclass : #IDCAMSProgramNode,
+	#name : 'IDCAMSStepNode',
+	#superclass : 'IDCAMSProgramNode',
 	#instVars : [
 		'name',
 		'arguments'
 	],
-	#category : #'GToolkit4Cobol-IDCAMS'
+	#category : 'GToolkit4Cobol-IDCAMS',
+	#package : 'GToolkit4Cobol',
+	#tag : 'IDCAMS'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitStep: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> arguments [
 	^ arguments
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> arguments: anOrderedCollection [
 	self setParents: self arguments to: nil.
 	arguments := anOrderedCollection.
 	self setParents: self arguments to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> compositeNodeVariables [
 	^ #(#arguments)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 IDCAMSStepNode >> initialize [
 	super initialize.
 	arguments := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 IDCAMSStepNode >> tokenVariables [
 	^ #(#name)
 ]

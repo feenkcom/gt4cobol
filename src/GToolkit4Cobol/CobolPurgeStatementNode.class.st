@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolPurgeStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolPurgeStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keyword',
 		'cdNames'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitPurgeStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> cdNames [
 	^ cdNames
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> cdNames: anOrderedCollection [
 	self setParents: self cdNames to: nil.
 	cdNames := anOrderedCollection.
 	self setParents: self cdNames to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> compositeNodeVariables [
 	^ #(#cdNames)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolPurgeStatementNode >> initialize [
 	super initialize.
 	cdNames := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPurgeStatementNode >> tokenVariables [
 	^ #(#keyword)
 ]

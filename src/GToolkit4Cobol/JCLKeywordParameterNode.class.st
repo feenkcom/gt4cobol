@@ -1,55 +1,57 @@
 Class {
-	#name : #JCLKeywordParameterNode,
-	#superclass : #JCLProgramNode,
+	#name : 'JCLKeywordParameterNode',
+	#superclass : 'JCLProgramNode',
 	#instVars : [
 		'key',
 		'equals',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-JCL-Parser'
+	#category : 'GToolkit4Cobol-JCL-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'JCL-Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitKeywordParameter: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> equals [
 	^ equals
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> equals: aSmaCCToken [
 	equals := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> key [
 	^ key
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> key: aSmaCCToken [
 	key := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> tokenVariables [
 	^ #(#key #equals)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 JCLKeywordParameterNode >> value: aJCLValueNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aJCLValueNode.

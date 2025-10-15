@@ -1,10 +1,12 @@
 Class {
-	#name : #GtCobolProgramGroup,
-	#superclass : #MooseGroup,
-	#category : #'GToolkit4Cobol-Model'
+	#name : 'GtCobolProgramGroup',
+	#superclass : 'MooseGroup',
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolProgramGroup >> gtItemsFor: aView [
 	<gtView>
 	^ aView columnedList
@@ -24,7 +26,7 @@ GtCobolProgramGroup >> gtItemsFor: aView [
 			width: 45
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolProgramGroup >> gtProgramDependenciesFor: aView [
 	<gtView>
 	^ aView mondrian 
@@ -34,7 +36,7 @@ GtCobolProgramGroup >> gtProgramDependenciesFor: aView [
 			self paintProgramDependenciesWith: m ]
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtCobolProgramGroup >> paintProgramDependenciesWith: mondrian [
 	^ GtCobolProgram
 		paintProgramDependenciesWith: mondrian

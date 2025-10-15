@@ -1,52 +1,54 @@
 Class {
-	#name : #CobolRecordDelimiterClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolRecordDelimiterClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'assignmentName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitRecordDelimiterClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> assignmentName [
 	^ assignmentName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> assignmentName: aCobolIdentifierNode [
 	self assignmentName notNil ifTrue: [ self assignmentName parent: nil ].
 	assignmentName := aCobolIdentifierNode.
 	self assignmentName notNil ifTrue: [ self assignmentName parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolRecordDelimiterClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolRecordDelimiterClauseNode >> nodeVariables [
 	^ #(#assignmentName)
 ]

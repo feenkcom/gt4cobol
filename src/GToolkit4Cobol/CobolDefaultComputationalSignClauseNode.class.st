@@ -1,34 +1,36 @@
 Class {
-	#name : #CobolDefaultComputationalSignClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolDefaultComputationalSignClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDefaultComputationalSignClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitDefaultComputationalSignClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDefaultComputationalSignClauseNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolDefaultComputationalSignClauseNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDefaultComputationalSignClauseNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolDefaultComputationalSignClauseNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]

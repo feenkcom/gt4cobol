@@ -1,33 +1,35 @@
 Class {
-	#name : #CobolIdentifierNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolIdentifierNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'name'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentifierNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIdentifier: self
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolIdentifierNode >> isWritten [
 	^ self isVariableWritten: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentifierNode >> name [
 	^ name
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentifierNode >> name: aSmaCCToken [
 	name := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIdentifierNode >> tokenVariables [
 	^ #(#name)
 ]

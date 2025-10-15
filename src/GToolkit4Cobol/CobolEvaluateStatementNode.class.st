@@ -1,31 +1,33 @@
 Class {
-	#name : #CobolEvaluateStatementNode,
-	#superclass : #CobolStatementNode,
+	#name : 'CobolEvaluateStatementNode',
+	#superclass : 'CobolStatementNode',
 	#instVars : [
 		'keywords',
 		'selects',
 		'whens',
 		'other'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitEvaluateStatement: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> compositeNodeVariables [
 	^ #(#selects #whens)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolEvaluateStatementNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
@@ -33,51 +35,51 @@ CobolEvaluateStatementNode >> initialize [
 	whens := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> nodeVariables [
 	^ #(#other)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> other [
 	^ other
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> other: aCobolEvaluateWhenOtherNode [
 	self other notNil ifTrue: [ self other parent: nil ].
 	other := aCobolEvaluateWhenOtherNode.
 	self other notNil ifTrue: [ self other parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> selects [
 	^ selects
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> selects: anOrderedCollection [
 	self setParents: self selects to: nil.
 	selects := anOrderedCollection.
 	self setParents: self selects to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> whens [
 	^ whens
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolEvaluateStatementNode >> whens: anOrderedCollection [
 	self setParents: self whens to: nil.
 	whens := anOrderedCollection.

@@ -1,25 +1,27 @@
 Class {
-	#name : #BMSScanner,
-	#superclass : #SmaCCScanner,
-	#category : #'GToolkit4Cobol-BMS-Parser'
+	#name : 'BMSScanner',
+	#superclass : 'SmaCCScanner',
+	#category : 'GToolkit4Cobol-BMS-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'BMS-Parser'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BMSScanner >> continuation [
 	^ self comment
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> emptySymbolTokenId [
 	^ 21
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> errorTokenId [
 	^ 22
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 BMSScanner >> id [
 	| column |
 	column := stream columnNumberFor: start.
@@ -34,32 +36,32 @@ BMSScanner >> id [
 	^ self createTokenFor: outputStream contents
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> idId [
 	^ 7
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> keywordFor: aString [
 	^ aString asUppercase
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> macroId [
 	^ 19
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> nameId [
 	^ 20
 ]
 
-{ #category : #'initialize-release' }
+{ #category : 'initialize-release' }
 BMSScanner >> on: aStream [
 	super on: (SmaCCLineNumberStream on: aStream)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan1 [
 	[ self step.
 	currentCharacter == $"
@@ -70,7 +72,7 @@ BMSScanner >> scan1 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan2 [
 	[ self recordMatch: #(7).
 	self step.
@@ -82,7 +84,7 @@ BMSScanner >> scan2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan3 [
 	[ self step.
 	'-_' includes: currentCharacter ] whileTrue.
@@ -93,7 +95,7 @@ BMSScanner >> scan3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan4 [
 	[ self step.
 	currentCharacter == $'
@@ -104,7 +106,7 @@ BMSScanner >> scan4 [
 	true ] whileTrue
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan5 [
 	self step.
 	currentCharacter isDigit
@@ -115,7 +117,7 @@ BMSScanner >> scan5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan6 [
 	self step.
 	currentCharacter isDigit
@@ -127,7 +129,7 @@ BMSScanner >> scan6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan7 [
 	self step.
 	currentCharacter isDigit
@@ -137,7 +139,7 @@ BMSScanner >> scan7 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan8 [
 	[ self recordMatch: #(5).
 	self step.
@@ -147,7 +149,7 @@ BMSScanner >> scan8 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scan9 [
 	[ self recordMatch: #(5 7).
 	self step.
@@ -159,7 +161,7 @@ BMSScanner >> scan9 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForToken [
 	self step.
 	currentCharacter == $" ifTrue: [ ^ self scan1 ].
@@ -169,7 +171,7 @@ BMSScanner >> scanForToken [
 	^ self scanForTokenX6
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX1 [
 	[ self recordMatch: #(5 7).
 	self step.
@@ -196,7 +198,7 @@ BMSScanner >> scanForTokenX1 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX2 [
 	[ self recordMatch: #(8).
 	self step.
@@ -206,7 +208,7 @@ BMSScanner >> scanForTokenX2 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX3 [
 	self recordMatch: #(9).
 	self step.
@@ -215,7 +217,7 @@ BMSScanner >> scanForTokenX3 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX4 [
 	[ self recordMatch: #(10).
 	self step.
@@ -224,7 +226,7 @@ BMSScanner >> scanForTokenX4 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX5 [
 	self step.
 	currentCharacter == $. ifTrue: [ ^ self scan5 ].
@@ -232,7 +234,7 @@ BMSScanner >> scanForTokenX5 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> scanForTokenX6 [
 	currentCharacter == $* ifTrue: [ ^ self scanForTokenX2 ].
 	currentCharacter == $+ ifTrue: [ ^ self scanForTokenX5 ].
@@ -249,12 +251,12 @@ BMSScanner >> scanForTokenX6 [
 	^ self reportLastMatch
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> tokenActions [
 	^ #(nil nil nil nil nil nil #id #comment #continuation #whitespace)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 BMSScanner >> tokenClass [
 	^SmaCCCaseInsensitiveToken
 ]

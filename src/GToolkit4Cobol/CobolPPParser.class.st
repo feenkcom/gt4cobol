@@ -1,14 +1,16 @@
 Class {
-	#name : #CobolPPParser,
-	#superclass : #SmaCCGLRParser,
+	#name : 'CobolPPParser',
+	#superclass : 'SmaCCGLRParser',
 	#instVars : [
 		'newSource',
 		'directories'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> ambiguousTransitions [
 ^#(
 #[ 0 78 4 205] 
@@ -1668,12 +1670,12 @@ CobolPPParser class >> ambiguousTransitions [
 	).
 ]
 
-{ #category : #'generated-accessing' }
+{ #category : 'generated-accessing' }
 CobolPPParser class >> cacheId [
 	^'2024-11-27T07:36:47.406212-06:00'
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> definitionComment [
 "/*
 * Copyright (C) 2017, Ulrich Wolffgang <ulrich.wolffgang@proleap.io>
@@ -2440,7 +2442,7 @@ charDataKeyword
     ;"
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CobolPPParser class >> preprocess: aFileReference using: aDirectoryCollection [
 	| source newSource parser |
 	source := aFileReference asFileReference contents.
@@ -2454,7 +2456,7 @@ CobolPPParser class >> preprocess: aFileReference using: aDirectoryCollection [
 	^ newSource
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CobolPPParser class >> preprocessFile: aFileReference using: aDirectoryCollection [
 	| source newSource parser |
 	source := aFileReference asFileReference contents.
@@ -2468,7 +2470,7 @@ CobolPPParser class >> preprocessFile: aFileReference using: aDirectoryCollectio
 	^ newSource
 ]
 
-{ #category : #processing }
+{ #category : 'processing' }
 CobolPPParser class >> preprocessSource: source using: aDirectoryCollection [
 	| newSource parser |
 	newSource := SmaCCAnnotatedString on: source.
@@ -2481,7 +2483,7 @@ CobolPPParser class >> preprocessSource: source using: aDirectoryCollection [
 	^ newSource
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> reduceTable [
 ^#(
 	#(297 0 #reduceFor: 692225 false) 
@@ -3226,17 +3228,17 @@ CobolPPParser class >> reduceTable [
 	).
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> scannerClass [
 	^CobolPPScanner
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> startingStateForstartRule [
 	^ 1
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> symbolNames [
 	^ #('"$ELSE"' '"$END"' '"$IF"' '"ADATA"' '"ADV"' '"ALIAS"' '"ANSI"' '"ANY"' '"APOST"' '"AR"' '"ARITH"' '"AUTO"' '"AWO"' '"BIN"' '"BLOCK0"' '"BUF"' '"BUFSIZE"' '"BY"' '"CBL"' '"CBLCARD"' '"CICS"' '"CO"' '"COBOL2"' '"COBOL3"' '"CODEPAGE"' '"COMPAT"' '"COMPILE"' '"COPY"' '"CP"' '"CPP"' '"CPSM"' '"CS"' '"CURR"' '"CURRENCY"' '"DATA"' '"DATEPROC"' '"DBCS"' '"DD"' '"DEBUG"' '"DECK"' '"DIAGTRUNC"' '"DLI"' '"DLL"' '"DP"' '"DTR"' '"DU"' '"DUMP"' '"DYN"' '"DYNAM"' '"EDF"' '"EJECT"' '"EJPD"' '"EN"' '"END-EXEC"' '"ENGLISH"' '"EPILOG"' '"EXCI"' '"EXEC"' '"EXIT"' '"EXP"' '"EXPORTALL"' '"EXTEND"' '"FASTSRT"' '"FEPI"' '"FLAG"' '"FLAGSTD"' '"FSRT"' '"FULL"' '"GDS"' '"GRAPHIC"' '"HOOK"' '"IN"' '"INTDATE"' '"JA"' '"JP"' '"KA"' '"LANG"' '"LANGUAGE"' '"LC"' '"LEASM"' '"LENGTH"' '"LIB"' '"LILIAN"' '"LIN"' '"LINECOUNT"' '"LINKAGE"' '"LIST"' '"LM"' '"LONGMIXED"' '"LONGUPPER"' '"LU"' '"MAP"' '"MARGINS"' '"MAX"' '"MD"' '"MDECK"' '"MIG"' '"MIXED"' '"NAME"' '"NAT"' '"NATIONAL"' '"NATLANG"' '"NN"' '"NO"' '"NOADATA"' '"NOADV"' '"NOALIAS"' '"NOAWO"' '"NOBLOCK0"' '"NOC"' '"NOCBLCARD"' '"NOCICS"' '"NOCMPR2"' '"NOCOMPILE"' '"NOCPSM"' '"NOCURR"' '"NOCURRENCY"' '"NOD"' '"NODATEPROC"' '"NODBCS"' '"NODE"' '"NODEBUG"' '"NODECK"' '"NODIAGTRUNC"' '"NODLL"' '"NODP"' '"NODTR"' '"NODU"' '"NODUMP"' '"NODYN"' '"NODYNAM"' '"NOEDF"' '"NOEJPD"' '"NOEPILOG"' '"NOEXIT"' '"NOEXP"' '"NOEXPORTALL"' '"NOF"' '"NOFASTSRT"' '"NOFEPI"' '"NOFLAG"' '"NOFLAGMIG"' '"NOFLAGSTD"' '"NOFSRT"' '"NOGRAPHIC"' '"NOHOOK"' '"NOLENGTH"' '"NOLIB"' '"NOLINKAGE"' '"NOLIST"' '"NOMAP"' '"NOMD"' '"NOMDECK"' '"NONAME"' '"NONUM"' '"NONUMBER"' '"NOOBJ"' '"NOOBJECT"' '"NOOFF"' '"NOOFFSET"' '"NOOPSEQUENCE"' '"NOOPT"' '"NOOPTIMIZE"' '"NOOPTIONS"' '"NOP"' '"NOPFD"' '"NOPROLOG"' '"NORENT"' '"NOS"' '"NOSEP"' '"NOSEPARATE"' '"NOSEQ"' '"NOSEQUENCE"' '"NOSOURCE"' '"NOSPIE"' '"NOSQL"' '"NOSQLC"' '"NOSQLCCSID"' '"NOSSR"' '"NOSSRANGE"' '"NOSTDTRUNC"' '"NOTERM"' '"NOTERMINAL"' '"NOTEST"' '"NOTHREAD"' '"NOTRIG"' '"NOVBREF"' '"NOWD"' '"NOWORD"' '"NOX"' '"NOXREF"' '"NOZWB"' '"NS"' '"NSEQ"' '"NSYMBOL"' '"NUM"' '"NUMBER"' '"NUMPROC"' '"OBJ"' '"OBJECT"' '"OF"' '"OFF"' '"OFFSET"' '"ON"' '"OP"' '"OPMARGINS"' '"OPSEQUENCE"' '"OPT"' '"OPTFILE"' '"OPTIMIZE"' '"OPTIONS"' '"OUT"' '"OUTDD"' '"PFD"' '"PGMN"' '"PGMNAME"' '"PPTDBG"' '"PROCESS"' '"PROLOG"' '"QUOTE"' '"RENT"' '"REPLACE"' '"REPLACING"' '"RMODE"' '"SEP"' '"SEPARATE"' '"SEQ"' '"SEQUENCE"' '"SHORT"' '"SIZE"' '"SKIP1"' '"SKIP2"' '"SKIP3"' '"SOURCE"' '"SP"' '"SPACE"' '"SPIE"' '"SQL"' '"SQLC"' '"SQLCCSID"' '"SQLIMS"' '"SS"' '"SSR"' '"SSRANGE"' '"STD"' '"SUPPRESS"' '"SYSEIB"' '"SZ"' '"TERM"' '"TERMINAL"' '"TEST"' '"THREAD"' '"TITLE"' '"TRIG"' '"TRUNC"' '"UE"' '"UPPER"' '"VBREF"' '"WD"' '"WORD"' '"XMLPARSE"' '"XMLSS"' '"XOPTS"' '"XP"' '"XREF"' '"YEARWINDOW"' '"YW"' '"ZWB"' '<LPARENCHAR>' '<RPARENCHAR>' '<C_CHAR>' '<D_CHAR>' '<E_CHAR>' '<F_CHAR>' '<H_CHAR>' '<I_CHAR>' '<M_CHAR>' '<N_CHAR>' '<Q_CHAR>' '<S_CHAR>' '<U_CHAR>' '<W_CHAR>' '<X_CHAR>' '<COMMACHAR>' '<DOT>' '<DOUBLEEQUALCHAR>' '<NONNUMERICLITERAL>' '<NUMERICLITERAL>' '<IDENTIFIER>' '<FILENAME>' '<NEWLINE>' '<whitespace>' '<TEXT>' 'B e g i n' 'startRule' '(
         items
@@ -3255,7 +3257,7 @@ CobolPPParser class >> symbolNames [
         )?' 'execCicsStatement' 'execSqlStatement' 'execSqlImsStatement' 'copyStatement' '(<NEWLINE>* (directoryPhrase | familyPhrase | replacingPhrase | "SUPPRESS"))' '(<NEWLINE>* (directoryPhrase | familyPhrase | replacingPhrase | "SUPPRESS"))*' '<NEWLINE>*' 'StartCopy' 'copySource' 'copyLibrary' 'replacingPhrase' '(<NEWLINE>+ replaceClause)' '(<NEWLINE>+ replaceClause)*' '<NEWLINE>+' 'replaceArea' '(copyStatement | charData)' '(copyStatement | charData)*' 'replaceByStatement' '(<NEWLINE>* replaceClause)' '(<NEWLINE>* replaceClause)+' 'replaceOffStatement' 'replaceClause' 'directoryPhrase' 'familyPhrase' 'replaceable' 'replacement' 'ejectStatement' 'skipStatement' 'titleStatement' 'pseudoText' 'charData' '(charDataLine | <NEWLINE>)' '(charDataLine | <NEWLINE>)+' 'charDataSql' '(charDataLine | "COPY" | "REPLACE" | <NEWLINE>)' '(charDataLine | "COPY" | "REPLACE" | <NEWLINE>)+' 'charDataLine' '(cobolWord | literal | filename | <TEXT> | <DOT> | <LPARENCHAR> | <RPARENCHAR>)' '(cobolWord | literal | filename | <TEXT> | <DOT> | <LPARENCHAR> | <RPARENCHAR>)+' 'cobolWord' 'literal' 'filename' 'charDataKeyword' 'E O F' 'error')
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolPPParser class >> transitionTable [
 ^#(
 #[1 0 6 0 3 0 6 0 4 0 6 0 5 0 6 0 6 0 6 0 7 0 6 0 8 0 6 0 9 0 6 0 10 0 6 0 11 0 6 0 12 0 6 0 13 0 6 0 14 0 6 0 15 0 6 0 16 0 6 0 17 0 6 0 18 0 6 0 19 0 6 0 20 0 6 0 22 0 6 0 23 0 6 0 24 0 6 0 25 0 6 0 26 0 6 0 27 0 6 0 28 0 6 0 29 0 6 0 30 0 6 0 31 0 6 0 32 0 6 0 33 0 6 0 34 0 6 0 35 0 6 0 36 0 6 0 37 0 6 0 38 0 6 0 39 0 6 0 40 0 6 0 41 0 6 0 42 0 6 0 43 0 6 0 44 0 6 0 45 0 6 0 46 0 6 0 47 0 6 0 48 0 6 0 49 0 6 0 50 0 6 0 51 0 6 0 52 0 6 0 53 0 6 0 55 0 6 0 56 0 6 0 57 0 6 0 59 0 6 0 60 0 6 0 61 0 6 0 62 0 6 0 63 0 6 0 65 0 6 0 66 0 6 0 67 0 6 0 68 0 6 0 69 0 6 0 70 0 6 0 71 0 6 0 72 0 6 0 73 0 6 0 74 0 6 0 75 0 6 0 76 0 6 0 77 0 6 0 78 0 6 0 79 0 6 0 81 0 6 0 82 0 6 0 83 0 6 0 84 0 6 0 85 0 6 0 86 0 6 0 87 0 6 0 88 0 6 0 89 0 6 0 90 0 6 0 91 0 6 0 92 0 6 0 93 0 6 0 94 0 6 0 95 0 6 0 96 0 6 0 97 0 6 0 98 0 6 0 99 0 6 0 100 0 6 0 101 0 6 0 102 0 6 0 103 0 6 0 104 0 6 0 105 0 6 0 106 0 6 0 107 0 6 0 108 0 6 0 109 0 6 0 110 0 6 0 111 0 6 0 112 0 6 0 113 0 6 0 114 0 6 0 115 0 6 0 116 0 6 0 117 0 6 0 118 0 6 0 119 0 6 0 120 0 6 0 121 0 6 0 122 0 6 0 123 0 6 0 124 0 6 0 125 0 6 0 126 0 6 0 127 0 6 0 128 0 6 0 129 0 6 0 130 0 6 0 131 0 6 0 132 0 6 0 133 0 6 0 134 0 6 0 135 0 6 0 136 0 6 0 137 0 6 0 138 0 6 0 139 0 6 0 140 0 6 0 141 0 6 0 142 0 6 0 143 0 6 0 144 0 6 0 145 0 6 0 146 0 6 0 147 0 6 0 148 0 6 0 149 0 6 0 150 0 6 0 151 0 6 0 152 0 6 0 153 0 6 0 154 0 6 0 155 0 6 0 156 0 6 0 157 0 6 0 158 0 6 0 159 0 6 0 160 0 6 0 161 0 6 0 162 0 6 0 163 0 6 0 164 0 6 0 165 0 6 0 166 0 6 0 167 0 6 0 168 0 6 0 169 0 6 0 170 0 6 0 171 0 6 0 172 0 6 0 173 0 6 0 174 0 6 0 175 0 6 0 176 0 6 0 177 0 6 0 178 0 6 0 179 0 6 0 180 0 6 0 181 0 6 0 182 0 6 0 183 0 6 0 184 0 6 0 185 0 6 0 186 0 6 0 187 0 6 0 189 0 6 0 190 0 6 0 191 0 6 0 192 0 6 0 193 0 6 0 194 0 6 0 195 0 6 0 196 0 6 0 197 0 6 0 198 0 6 0 199 0 6 0 200 0 6 0 201 0 6 0 202 0 6 0 203 0 6 0 204 0 6 0 205 0 6 0 206 0 6 0 207 0 6 0 208 0 6 0 209 0 6 0 210 0 6 0 211 0 6 0 212 0 6 0 213 0 6 0 214 0 6 0 215 0 6 0 216 0 6 0 217 0 6 0 218 0 6 0 219 0 6 0 220 0 6 0 221 0 6 0 222 0 6 0 223 0 6 0 224 0 6 0 225 0 6 0 226 0 6 0 227 0 6 0 228 0 6 0 229 0 6 0 230 0 6 0 231 0 6 0 232 0 6 0 233 0 6 0 234 0 6 0 235 0 6 0 236 0 6 0 237 0 6 0 238 0 6 0 239 0 6 0 240 0 6 0 242 0 6 0 243 0 6 0 244 0 6 0 245 0 6 0 247 0 6 0 248 0 6 0 249 0 6 0 250 0 6 0 251 0 6 0 252 0 6 0 253 0 6 0 254 0 6 0 255 0 6 1 0 0 6 1 1 0 6 1 2 0 6 1 3 0 6 1 5 0 6 1 6 0 6 1 7 0 6 1 9 0 6 1 10 0 6 1 11 0 6 1 12 0 6 1 13 0 6 1 14 0 6 1 15 0 6 1 16 0 6 1 17 0 6 1 18 0 6 1 19 0 6 1 20 0 6 1 21 0 6 1 22 0 6 1 23 0 6 1 24 0 6 1 25 0 6 1 26 0 6 1 27 0 6 1 28 0 6 1 29 0 6 1 31 0 6 1 32 0 6 1 33 0 6 1 34 0 6 1 35 0 6 1 37 0 9 1 39 0 13 1 41 0 6 1 107] 
@@ -4353,7 +4355,7 @@ CobolPPParser class >> transitionTable [
 	).
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> advanceToEndOfLine: anIndex [
 	| char index end |
 	index := anIndex.
@@ -4366,7 +4368,7 @@ CobolPPParser >> advanceToEndOfLine: anIndex [
 	^ index - 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> backupToStartOfLine: anIndex [
 	| char index |
 	index := anIndex.
@@ -4378,7 +4380,7 @@ CobolPPParser >> backupToStartOfLine: anIndex [
 	^ index + 1
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> commentArgs: args [
 	| starts |
 	starts := Dictionary new.
@@ -4395,7 +4397,7 @@ CobolPPParser >> commentArgs: args [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> currentDirectoryPhrases [
 	nodeStack
 		reverseDo: [ :each | 
@@ -4404,7 +4406,7 @@ CobolPPParser >> currentDirectoryPhrases [
 	^ OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> currentFamilyPhrases [
 	nodeStack
 		reverseDo: [ :each | 
@@ -4413,7 +4415,7 @@ CobolPPParser >> currentFamilyPhrases [
 	^ OrderedCollection new
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> currentReplacements [
 	nodeStack
 		reverseDo: [ :each | 
@@ -4422,24 +4424,24 @@ CobolPPParser >> currentReplacements [
 	^ OrderedCollection new
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolPPParser >> directories [
 	^ directories
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolPPParser >> directories: anObject [
 	directories := anObject
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> find: file in: aDirectory [
 	(aDirectory childrenMatching: file , '.cpy') ifNotEmpty: [ :col | ^ col first ].
 	(aDirectory childrenMatching: file) ifNotEmpty: [ :col | ^ col first ].
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> finishCopyArgs: args [
 	| replacementArray sourceArray file |
 	replacementArray := args first.
@@ -4464,7 +4466,7 @@ CobolPPParser >> finishCopyArgs: args [
 	self commentArgs: args
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> nameFor: aCollection [
 	aCollection first value = '=='
 		ifTrue: [ ^ String
@@ -4472,17 +4474,17 @@ CobolPPParser >> nameFor: aCollection [
 	self error: 'Not implemented yet'
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolPPParser >> newSource [
 	^ newSource
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 CobolPPParser >> newSource: anObject [
 	newSource := anObject
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionForStartCopy1: nodes [
 	^ {#replacement.
 		OrderedCollection withAll: self currentReplacements.
@@ -4490,36 +4492,36 @@ CobolPPParser >> reduceActionForStartCopy1: nodes [
 		OrderedCollection withAll: self currentFamilyPhrases}
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionForcopySource2: nodes [
 	^ {(nodes at: 1) first.
 		nil}
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionForcopySource7: nodes [
 	^ {(nodes at: 1) first.
 		nodes at: 3}
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionFordirectoryPhrase4: nodes [
 	^ self currentDirectoryPhrases add: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionForfamilyPhrase2: nodes [
 	^ self currentFamilyPhrases add: (nodes at: 3)
 ]
 
-{ #category : #'generated-reduction actions' }
+{ #category : 'generated-reduction actions' }
 CobolPPParser >> reduceActionForreplaceClause1: nodes [
 	^ self currentReplacements
 		add: {nodes at: 1.
 				nodes at: 5}
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> replace: search with: replace in: smaccString [
 	| index position |
 	[ index := smaccString asString indexOfSubCollection: search.
@@ -4531,7 +4533,7 @@ CobolPPParser >> replace: search with: replace in: smaccString [
 				with: replace ]
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> replace: args withFile: fn replacements: replacements [
 	| start stop inserted |
 	start := self backupToStartOfLine: (self startPositionFrom: args).
@@ -4552,7 +4554,7 @@ CobolPPParser >> replace: args withFile: fn replacements: replacements [
 		with: (self class preprocessSource: inserted using: directories)
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> startPositionFrom: args [
 	args
 		do: [ :each | 
@@ -4562,7 +4564,7 @@ CobolPPParser >> startPositionFrom: args [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> stopPositionFrom: args [
 	args
 		reverseDo: [ :each | 
@@ -4572,7 +4574,7 @@ CobolPPParser >> stopPositionFrom: args [
 	^ nil
 ]
 
-{ #category : #private }
+{ #category : 'private' }
 CobolPPParser >> tokensIn: args do: aBlock [
 	args
 		do: [ :each | 
@@ -4581,12 +4583,12 @@ CobolPPParser >> tokensIn: args do: aBlock [
 				ifTrue: [ self tokensIn: each do: aBlock ] ]
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolPPParser >> tryAllTokens [
 	^ true
 ]
 
-{ #category : #testing }
+{ #category : 'testing' }
 CobolPPParser >> useAllTokenIds [
 	^ false
 ]

@@ -1,87 +1,89 @@
 Class {
-	#name : #CobolIoControlParagraphNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolIoControlParagraphNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'periods',
 		'clauses',
 		'fileName'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitIoControlParagraph: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> clauses [
 	^ clauses
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> clauses: anOrderedCollection [
 	self setParents: self clauses to: nil.
 	clauses := anOrderedCollection.
 	self setParents: self clauses to: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> compositeNodeVariables [
 	^ #(#clauses)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> compositeTokenVariables [
 	^ #(#periods)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> fileName [
 	^ fileName
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> fileName: aCobolIdentifierNode [
 	self fileName notNil ifTrue: [ self fileName parent: nil ].
 	fileName := aCobolIdentifierNode.
 	self fileName notNil ifTrue: [ self fileName parent: self ]
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolIoControlParagraphNode >> initialize [
 	super initialize.
 	periods := OrderedCollection new: 2.
 	clauses := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> nodeVariables [
 	^ #(#fileName)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> periods [
 	^ periods
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> periods: anOrderedCollection [
 	periods := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolIoControlParagraphNode >> tokenVariables [
 	^ #(#keyword)
 ]

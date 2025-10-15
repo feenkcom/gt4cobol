@@ -1,50 +1,52 @@
 Class {
-	#name : #CobolSendStatementAsyncNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolSendStatementAsyncNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keywords',
 		'sendLocation'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitSendStatementAsync: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> compositeTokenVariables [
 	^ #(#keywords)
 ]
 
-{ #category : #'generated-initialize-release' }
+{ #category : 'generated-initialize-release' }
 CobolSendStatementAsyncNode >> initialize [
 	super initialize.
 	keywords := OrderedCollection new: 2.
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> keywords [
 	^ keywords
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> keywords: anOrderedCollection [
 	keywords := anOrderedCollection
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> nodeVariables [
 	^ #(#sendLocation)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> sendLocation [
 	^ sendLocation
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolSendStatementAsyncNode >> sendLocation: aCobolExpressionNode [
 	self sendLocation notNil ifTrue: [ self sendLocation parent: nil ].
 	sendLocation := aCobolExpressionNode.

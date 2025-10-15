@@ -1,6 +1,6 @@
 Class {
-	#name : #GtJCLDataDescriptor,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtJCLDataDescriptor',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'step',
 		'cicsFiles',
@@ -9,22 +9,24 @@ Class {
 		'jclFileReferences',
 		'inputOffset'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> assigns [
 	<MSEProperty: #assigns type: #GtCobolAssignFile opposite: #jclDataDescriptor>
 	<multivalued>
 	^ assigns
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> assigns: anObject [
 	assigns value: anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtJCLDataDescriptor >> initialize [
 	super initialize.
 	assigns := FMNullMultivalueLink
@@ -37,46 +39,46 @@ GtJCLDataDescriptor >> initialize [
 			selector: #jclFileReferences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> input [
 	^ input
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> input: aString [
 	input := aString
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> inputOffset [
 	^ inputOffset
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> inputOffset: anObject [
 	inputOffset := anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> jclFileReferences [
 	<MSEProperty: #jclFileReferences type: #GtJCLFileReference opposite: #jclDataDescriptor>
 	<multivalued>
 	^ jclFileReferences
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> jclFileReferences: anObject [
 	jclFileReferences value: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> step [
 	<MSEProperty: #step type: #GtJCLStep opposite: #dataDescriptors>
 	<container>
 	^ step
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtJCLDataDescriptor >> step: anObject [
 	step := FMMultivalueLink
 			on: self

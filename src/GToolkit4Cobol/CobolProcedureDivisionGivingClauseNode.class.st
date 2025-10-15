@@ -1,46 +1,48 @@
 Class {
-	#name : #CobolProcedureDivisionGivingClauseNode,
-	#superclass : #CobolProgramNode,
+	#name : 'CobolProcedureDivisionGivingClauseNode',
+	#superclass : 'CobolProgramNode',
 	#instVars : [
 		'keyword',
 		'returning'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitProcedureDivisionGivingClause: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> keyword [
 	^ keyword
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> keyword: aSmaCCToken [
 	keyword := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> nodeVariables [
 	^ #(#returning)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> returning [
 	^ returning
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> returning: aCobolIdentifierNode [
 	self returning notNil ifTrue: [ self returning parent: nil ].
 	returning := aCobolIdentifierNode.
 	self returning notNil ifTrue: [ self returning parent: self ]
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolProcedureDivisionGivingClauseNode >> tokenVariables [
 	^ #(#keyword)
 ]

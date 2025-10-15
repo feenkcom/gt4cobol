@@ -1,44 +1,46 @@
 Class {
-	#name : #CobolUnaryExpressionNode,
-	#superclass : #CobolExpressionNode,
+	#name : 'CobolUnaryExpressionNode',
+	#superclass : 'CobolExpressionNode',
 	#instVars : [
 		'op',
 		'value'
 	],
-	#category : #'GToolkit4Cobol-Parser'
+	#category : 'GToolkit4Cobol-Parser',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Parser'
 }
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> acceptVisitor: aProgramVisitor [
 	^ aProgramVisitor visitUnaryExpression: self
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> nodeVariables [
 	^ #(#value)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> op [
 	^ op
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> op: aSmaCCToken [
 	op := aSmaCCToken
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> tokenVariables [
 	^ #(#op)
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> value [
 	^ value
 ]
 
-{ #category : #generated }
+{ #category : 'generated' }
 CobolUnaryExpressionNode >> value: aCobolExpressionNode [
 	self value notNil ifTrue: [ self value parent: nil ].
 	value := aCobolExpressionNode.

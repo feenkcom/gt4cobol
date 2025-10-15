@@ -1,13 +1,15 @@
 Class {
-	#name : #GtBMSMapSet,
-	#superclass : #FAMIXNamedEntity,
+	#name : 'GtBMSMapSet',
+	#superclass : 'FAMIXNamedEntity',
 	#instVars : [
 		'maps'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #'as yet unclassified' }
+{ #category : 'as yet unclassified' }
 GtBMSMapSet >> gtScreenFor: aView [
 	<gtView>
 	maps size = 1 ifFalse: [ ^ aView empty ].
@@ -17,7 +19,7 @@ GtBMSMapSet >> gtScreenFor: aView [
 		view: #gtScreenFor:
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtBMSMapSet >> initialize [
 	super initialize.
 	maps := FMNullMultivalueLink
@@ -26,14 +28,14 @@ GtBMSMapSet >> initialize [
 			selector: #maps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMapSet >> maps [
 	<MSEProperty: #maps type: #GtBMSMap opposite: #mapSet>
 	<multivalued>
 	^ maps
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtBMSMapSet >> maps: anObject [
 	maps := anObject
 ]

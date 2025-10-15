@@ -1,20 +1,22 @@
 Class {
-	#name : #GtCobolCicsXctlExpression,
-	#superclass : #GtCobolCicsTransferExpression,
+	#name : 'GtCobolCicsXctlExpression',
+	#superclass : 'GtCobolCicsTransferExpression',
 	#instVars : [
 		'commonAreaVariable'
 	],
-	#category : #'GToolkit4Cobol-Model'
+	#category : 'GToolkit4Cobol-Model',
+	#package : 'GToolkit4Cobol',
+	#tag : 'Model'
 }
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsXctlExpression >> commonAreaVariable [
 	<MSEProperty: #commonAreaVariable type: #GtCobolVariable opposite: #xctlExpressions>
 	<container>
 	^ commonAreaVariable
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsXctlExpression >> commonAreaVariable: anObject [
 	commonAreaVariable := FMMultivalueLink
 			on: self
@@ -23,14 +25,14 @@ GtCobolCicsXctlExpression >> commonAreaVariable: anObject [
 			to: anObject
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsXctlExpression >> fromProgram [
 	<MSEProperty: #fromProgram type: #GtCobolProgram opposite: #xctlToExpressions>
 	<container>
 	^ fromProgram
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsXctlExpression >> fromProgram: anObject [
 	fromProgram := FMMultivalueLink
 			on: self
@@ -39,13 +41,13 @@ GtCobolCicsXctlExpression >> fromProgram: anObject [
 			to: anObject
 ]
 
-{ #category : #initialization }
+{ #category : 'initialization' }
 GtCobolCicsXctlExpression >> initialize [
 	super initialize.
 	toPrograms := FMMultiMultivalueLink on: self opposite: #xctlFromExpressions
 ]
 
-{ #category : #accessing }
+{ #category : 'accessing' }
 GtCobolCicsXctlExpression >> toPrograms [
 	<MSEProperty: #toPrograms type: #GtCobolProgram opposite: #xctlFromExpressions>
 	<multivalued>
