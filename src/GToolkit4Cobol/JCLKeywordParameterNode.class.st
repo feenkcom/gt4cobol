@@ -52,8 +52,8 @@ JCLKeywordParameterNode >> value [
 ]
 
 { #category : 'generated' }
-JCLKeywordParameterNode >> value: aJCLValueNode [
+JCLKeywordParameterNode >> value: aJCLProgramNode [
 	self value notNil ifTrue: [ self value parent: nil ].
-	value := aJCLValueNode.
+	value := aJCLProgramNode.
 	self value notNil ifTrue: [ self value parent: self ]
 ]

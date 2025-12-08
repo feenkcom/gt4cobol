@@ -15,7 +15,7 @@ IDCAMSParser class >> ambiguousTransitions [
 
 { #category : 'generated-accessing' }
 IDCAMSParser class >> cacheId [
-	^'2024-10-23T06:34:37.090209-05:00'
+	^'2025-12-08T05:30:15.801046-06:00'
 ]
 
 { #category : 'generated' }
@@ -32,7 +32,7 @@ IDCAMSParser class >> definitionComment [
 	: [a-z0-9\.\-]+
 	;
 <eols>
-	: [\r\n]+
+	: [\r\n]([\ \	]*[\r\n])*
 	;
 <whitespace>
 	: [\ \t]+
@@ -59,25 +59,25 @@ Parameters
 { #category : 'generated' }
 IDCAMSParser class >> reduceTable [
 ^#(
-	#(13 0 #reduceActionForArg__argument__1: 254977 false) 
-	#(11 0 #reduceActionForArg__argument__1: 195585 false) 
-	#(12 2 #reduceActionForStep1: 234497 false) 
-	#(9 2 #reduceActionForFile1: 165889 false) 
-	#(15 1 #reduceActionForValue1: 354305 false) 
-	#(13 2 #reduceActionForArg__argument__2: 254978 false) 
-	#(14 1 #liftFirstValue: 279553 false) 
-	#(9 3 #reduceActionForFile3: 165891 false) 
-	#(9 3 #reduceActionForFile1: 165890 false) 
-	#(11 2 #reduceActionForArg__argument__2: 195586 false) 
-	#(15 2 #reduceActionForValue2: 354306 false) 
-	#(9 4 #reduceActionForFile3: 165892 false) 
-	#(10 2 #liftSecondValue: 195585 false) 
-	#(14 3 #reduceActionForArg2: 279554 false) 
-	#(16 3 #reduceActionForParameters1: 409601 false) 
-	#(18 1 #reduceActionFor______comma__Arg__argument___1: 514049 false) 
-	#(17 2 #reduceActionFor______comma__Arg__argument__1: 514049 false) 
-	#(16 4 #reduceActionForParameters2: 409602 false) 
-	#(18 2 #reduceActionFor______comma__Arg__argument___2: 514050 false)
+	#(13 0 #reduceActionForArg__argument__1: 270337 false) 
+	#(11 0 #reduceActionForArg__argument__1: 210945 false) 
+	#(12 2 #reduceActionForStep1: 249857 false) 
+	#(9 2 #reduceActionForFile1: 181249 false) 
+	#(15 1 #reduceActionForValue1: 369665 false) 
+	#(13 2 #reduceActionForArg__argument__2: 270338 false) 
+	#(14 1 #liftFirstValue: 294913 false) 
+	#(9 3 #reduceActionForFile3: 181251 false) 
+	#(9 3 #reduceActionForFile1: 181250 false) 
+	#(11 2 #reduceActionForArg__argument__2: 210946 false) 
+	#(15 2 #reduceActionForValue2: 369666 false) 
+	#(9 4 #reduceActionForFile3: 181252 false) 
+	#(10 2 #liftSecondValue: 210945 false) 
+	#(14 3 #reduceActionForArg2: 294914 false) 
+	#(16 3 #reduceActionForParameters1: 424961 false) 
+	#(18 1 #reduceActionFor______comma__Arg__argument___1: 529409 false) 
+	#(17 2 #reduceActionFor______comma__Arg__argument__1: 529409 false) 
+	#(16 4 #reduceActionForParameters2: 424962 false) 
+	#(18 2 #reduceActionFor______comma__Arg__argument___2: 529410 false)
 	).
 ]
 

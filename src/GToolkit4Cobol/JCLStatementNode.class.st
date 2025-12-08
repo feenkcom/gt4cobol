@@ -7,7 +7,8 @@ Class {
 		'values',
 		'commas',
 		'parameters',
-		'name'
+		'name',
+		'continuations'
 	],
 	#category : 'GToolkit4Cobol-JCL-Parser',
 	#package : 'GToolkit4Cobol',
@@ -41,7 +42,7 @@ JCLStatementNode >> compositeNodeVariables [
 
 { #category : 'generated' }
 JCLStatementNode >> compositeTokenVariables [
-	^ #(#commas)
+	^ #(#commas #continuations)
 ]
 
 { #category : 'testing' }
@@ -50,11 +51,22 @@ JCLStatementNode >> contains: aStatementNode [
 	^ self operationName = 'EXEC' and: [ aStatementNode operationName = 'DD' ]
 ]
 
+{ #category : 'generated' }
+JCLStatementNode >> continuations [
+	^ continuations
+]
+
+{ #category : 'generated' }
+JCLStatementNode >> continuations: anOrderedCollection [
+	continuations := anOrderedCollection
+]
+
 { #category : 'generated-initialize-release' }
 JCLStatementNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	continuations := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 ]
 

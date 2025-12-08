@@ -6,7 +6,8 @@ Class {
 		'right',
 		'values',
 		'commas',
-		'parameters'
+		'parameters',
+		'continuations'
 	],
 	#category : 'GToolkit4Cobol-JCL-Parser',
 	#package : 'GToolkit4Cobol',
@@ -35,7 +36,17 @@ JCLListNode >> compositeNodeVariables [
 
 { #category : 'generated' }
 JCLListNode >> compositeTokenVariables [
-	^ #(#commas)
+	^ #(#commas #continuations)
+]
+
+{ #category : 'generated' }
+JCLListNode >> continuations [
+	^ continuations
+]
+
+{ #category : 'generated' }
+JCLListNode >> continuations: anOrderedCollection [
+	continuations := anOrderedCollection
 ]
 
 { #category : 'generated-initialize-release' }
@@ -43,6 +54,7 @@ JCLListNode >> initialize [
 	super initialize.
 	values := OrderedCollection new: 2.
 	commas := OrderedCollection new: 2.
+	continuations := OrderedCollection new: 2.
 	parameters := OrderedCollection new: 2.
 ]
 

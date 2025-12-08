@@ -13,6 +13,11 @@ TJCLProgramNodeVisitor >> visitFile: aFile [
 ]
 
 { #category : 'generated' }
+TJCLProgramNodeVisitor >> visitIfStatement: anIfStatement [
+	^ self visitStatement: anIfStatement
+]
+
+{ #category : 'generated' }
 TJCLProgramNodeVisitor >> visitInlinedValue: anInlinedValue [
 	^ self visitValue: anInlinedValue
 ]

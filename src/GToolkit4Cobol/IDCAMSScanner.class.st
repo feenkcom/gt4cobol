@@ -23,6 +23,22 @@ IDCAMSScanner >> keywordFor: aString [
 
 { #category : 'generated' }
 IDCAMSScanner >> scan1 [
+	[ self recordMatch: #(6).
+	self step.
+	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
+		ifTrue: [ [ self step.
+			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
+				whileTrue.
+			(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+				ifTrue: [ ^ self scan1 ].
+			^ self reportLastMatch ].
+	currentCharacter == Character lf or: [ currentCharacter == Character cr ] ]
+		whileTrue.
+	^ self reportLastMatch
+]
+
+{ #category : 'generated' }
+IDCAMSScanner >> scan2 [
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(7) ].
 	^ self reportLastMatch
@@ -32,7 +48,7 @@ IDCAMSScanner >> scan1 [
 IDCAMSScanner >> scanForToken [
 	self step.
 	currentCharacter == $( ifTrue: [ ^ self recordAndReportMatch: #(1) ].
-	^ self scanForTokenX5
+	^ self scanForTokenX4
 ]
 
 { #category : 'generated' }
@@ -40,12 +56,12 @@ IDCAMSScanner >> scanForTokenX1 [
 	self recordMatch: #(5).
 	self step.
 	currentCharacter == Character lf ifTrue: [ ^ self recordAndReportMatch: #(7) ].
-	currentCharacter == Character cr ifTrue: [ ^ self scan1 ].
+	currentCharacter == Character cr ifTrue: [ ^ self scan2 ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
 		ifTrue: [ [ self step.
 			currentCharacter == Character lf
 				ifTrue: [ ^ self recordAndReportMatch: #(7) ].
-			currentCharacter == Character cr ifTrue: [ ^ self scan1 ].
+			currentCharacter == Character cr ifTrue: [ ^ self scan2 ].
 			currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
 				whileTrue.
 			^ self reportLastMatch ].
@@ -74,15 +90,6 @@ IDCAMSScanner >> scanForTokenX2 [
 
 { #category : 'generated' }
 IDCAMSScanner >> scanForTokenX3 [
-	[ self recordMatch: #(6).
-	self step.
-	currentCharacter == Character lf or: [ currentCharacter == Character cr ] ]
-		whileTrue.
-	^ self reportLastMatch
-]
-
-{ #category : 'generated' }
-IDCAMSScanner >> scanForTokenX4 [
 	[ self recordMatch: #(7).
 	self step.
 	currentCharacter == Character tab or: [ currentCharacter == Character space ] ]
@@ -91,15 +98,15 @@ IDCAMSScanner >> scanForTokenX4 [
 ]
 
 { #category : 'generated' }
-IDCAMSScanner >> scanForTokenX5 [
+IDCAMSScanner >> scanForTokenX4 [
 	currentCharacter == $) ifTrue: [ ^ self recordAndReportMatch: #(2) ].
 	currentCharacter == $, ifTrue: [ ^ self recordAndReportMatch: #(3) ].
 	currentCharacter == $- ifTrue: [ ^ self scanForTokenX1 ].
 	currentCharacter == $= ifTrue: [ ^ self recordAndReportMatch: #(4) ].
 	(currentCharacter == Character tab or: [ currentCharacter == Character space ])
-		ifTrue: [ ^ self scanForTokenX4 ].
-	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
 		ifTrue: [ ^ self scanForTokenX3 ].
+	(currentCharacter == Character lf or: [ currentCharacter == Character cr ])
+		ifTrue: [ ^ self scan1 ].
 	(currentCharacter == $.
 		or: [ (currentCharacter between: $0 and: $9)
 				or: [ (currentCharacter between: $A and: $Z)

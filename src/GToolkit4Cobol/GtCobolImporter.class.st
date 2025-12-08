@@ -1096,7 +1096,7 @@ GtCobolImporter >> sourceAnchorFor: aNode [
 { #category : 'importing-cobol' }
 GtCobolImporter >> tablesReferencedIn: aSqlString [
 	| select insert delete update tableNames tableParser tablesParser |
-	tableParser := ((#word asPParser | '_' asPParser) plus token
+	tableParser := ((#word asPParser | '_' asPParser | '.' asPParser) plus token
 			, ('AS' asPParser trim optional , #word asPParser plus trim) optional)
 			==> #first.
 	tablesParser := (tableParser , (',' asPParser trim , tableParser) star)
