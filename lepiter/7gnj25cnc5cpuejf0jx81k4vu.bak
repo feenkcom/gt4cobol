@@ -66,14 +66,14 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-15T20:57:59.998798+02:00"
+						"dateAndTimeString" : "2026-09-01T12:46:56.096332+02:00"
 					}
 				},
 				"uid" : {
 					"__type" : "uid",
 					"uidString" : "hgPQCGzfDQCC7YBtBmINfg=="
 				},
-				"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference.\rrepository := IceRepositoryCreator\r\t\tfromUrl: 'https://github.com/aws-samples/aws-mainframe-modernization-carddemo.git'\r\t\tto: AWSCardDemo rootDirectory.\rAWSCardDemo\r\tcopyBookDirectories: {AWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'}.\rAWSCardDemo rootDirectory"
+				"code" : "AWSCardDemo cloneRepository"
 			},
 			{
 				"__type" : "textSnippet",

@@ -29,7 +29,7 @@
 					"__type" : "time",
 					"time" : {
 						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T13:56:14.005004-05:00"
+						"dateAndTimeString" : "2026-09-01T12:49:00.151213+02:00"
 					}
 				},
 				"uid" : {
@@ -39,78 +39,7 @@
 				"paragraphStyle" : {
 					"__type" : "textStyle"
 				},
-				"string" : "First we need to download the AWS CardDemo source code."
-			},
-			{
-				"__type" : "pharoSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-09-26T13:56:34.551341-05:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2025-10-15T21:37:31.119487+02:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "hgPQCGzfDQCC7YBtBmINfg=="
-				},
-				"code" : "AWSCardDemo rootDirectory: 'aws-carddemo' asFileReference.\rrepository := PureGitRepository on: AWSCardDemo rootDirectory.\rrepository operations\r\tclone: 'git@github.com:aws-samples/aws-mainframe-modernization-carddemo.git'.\rAWSCardDemo\r\tcopyBookDirectories: {AWSCardDemo rootDirectory / 'app/cpy'.\r\t\t\tAWSCardDemo rootDirectory / 'app/cpy-bms'}.\rAWSCardDemo rootDirectory"
-			},
-			{
-				"__type" : "textSnippet",
-				"children" : {
-					"__type" : "snippets",
-					"items" : [ ]
-				},
-				"createEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"createTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-11T17:22:27.353015+01:00"
-					}
-				},
-				"editEmail" : {
-					"__type" : "email",
-					"emailString" : "<unknown>"
-				},
-				"editTime" : {
-					"__type" : "time",
-					"time" : {
-						"__type" : "dateAndTime",
-						"dateAndTimeString" : "2024-11-11T17:22:30.028545+01:00"
-					}
-				},
-				"uid" : {
-					"__type" : "uid",
-					"uidString" : "dDdWPgfjDQCC5QrCBNzNHA=="
-				},
-				"paragraphStyle" : {
-					"__type" : "textStyle"
-				},
-				"string" : "Or:"
+				"string" : "First we need to download the AWS CardDemo source code:"
 			},
 			{
 				"__type" : "pharoSnippet",
